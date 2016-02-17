@@ -27,6 +27,7 @@ public class Game extends StateBasedGame{
     public static final int width = 512;
     public static final int height = 352;
     
+    //C'est ic la classe main du jeu
     public Game(String name) {
         super(name);
         this.addState(new MainMenu(mainMenu));
