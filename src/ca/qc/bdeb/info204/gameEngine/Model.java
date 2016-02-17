@@ -6,10 +6,34 @@
 package ca.qc.bdeb.info204.gameEngine;
 
 import ca.qc.bdeb.info204.playerEngine.PlayerEngine;
+import java.util.Observable;
+
 /**
  *
  * @author 1455367
  */
-public class Model {
+public class Model extends Observable{
     private static PlayerEngine player;
+    private static boolean running = false;
+    
+    private Thread thread = new Thread(){
+
+        @Override
+        public void run() {
+            while (true){
+                while (running) {
+                    
+                }
+            }
+        }
+    };
+
+    public Model() {
+        
+    }
+    
+    public void init(){
+        
+    }
+
 }
