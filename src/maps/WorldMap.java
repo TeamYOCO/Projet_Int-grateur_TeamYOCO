@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.qc.bdeb.info204.maps;
+package maps;
 
-import org.newdawn.slick.tiled.TiledMap;
+import java.util.ArrayList;
 
 /**
  *
  * @author 1455367
  */
-public class MiniMap {
-    private static TiledMap map;
+public class WorldMap {
+    private ArrayList<MiniMap> maps;
 }

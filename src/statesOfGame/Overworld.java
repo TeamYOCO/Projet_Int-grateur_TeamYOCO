@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.qc.bdeb.info204.statesOfGame;
+package statesOfGame;
 
+import gameEngine.Model;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 /**
  *
  * @author 1455367
  */
-public class MainMenu extends BasicGameState{
-
+public class Overworld extends BasicGameState{
+    
     private static int stateID;
+    private static Model model;
 
-    public MainMenu(int stateID) {
-        MainMenu.stateID = stateID;
+    public Overworld(int stateID, Model model) {
+        Overworld.stateID = stateID;
     }
     
     @Override
@@ -35,5 +37,4 @@ public class MainMenu extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
     }
-    
 }
