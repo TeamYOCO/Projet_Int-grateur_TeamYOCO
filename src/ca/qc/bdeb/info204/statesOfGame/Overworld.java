@@ -5,6 +5,7 @@
  */
 package ca.qc.bdeb.info204.statesOfGame;
 
+import ca.qc.bdeb.info204.gameEngine.Model;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 /**
@@ -14,8 +15,9 @@ import org.newdawn.slick.state.*;
 public class Overworld extends BasicGameState{
     
     private static int stateID;
+    private Model model;
 
-    public Overworld(int stateID) {
+    public Overworld(int stateID, Model model) {
         Overworld.stateID = stateID;
     }
     
