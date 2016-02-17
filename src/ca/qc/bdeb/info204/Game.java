@@ -1,5 +1,6 @@
 package ca.qc.bdeb.info204;
 
+import ca.qc.bdeb.info204.gameEngine.Model;
 import ca.qc.bdeb.info204.statesOfGame.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -26,12 +27,13 @@ public class Game extends StateBasedGame{
     public static final int menu = 5;
     public static final int width = 512;
     public static final int height = 352;
+    private Model model;
     
     //C'est ic la classe main du jeu
     public Game(String name) {
         super(name);
         this.addState(new MainMenu(mainMenu));
-        this.addState(new Overworld(overworld));
+        this.addState(new Overworld(overworld, model));
     }
     
     @Override
