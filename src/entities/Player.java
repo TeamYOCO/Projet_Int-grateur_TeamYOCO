@@ -55,8 +55,11 @@ public class Player extends Mob{
     public Animation[] getAnimation(){
         return animations;
     }
-    public Point getPosition(){
-        return coords;
+    public int getX(){
+        return coords.x;
+    }
+    public int getY(){
+        return coords.y;
     }
     public int getDirection(){
         return direction;

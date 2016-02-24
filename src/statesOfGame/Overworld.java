@@ -41,7 +41,7 @@ public class Overworld extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         this.map.render(0, 0);
-        grphcs.drawAnimation(model.getPlayer().getAnimation()[model.getPlayer().getDirection()+(model.getPlayer().getMoving() ? 4 : 0)], model.getPlayer().getPosition().x - 32, model.getPlayer().getPosition().y - 60);
+        grphcs.drawAnimation(model.getPlayer().getAnimation()[model.getPlayer().getDirection()+(model.getPlayer().getMoving() ? 4 : 0)], (float)model.getPlayer().getX() - 32, (float)model.getPlayer().getY() - 60);
     }
 
     @Override
