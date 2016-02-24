@@ -5,7 +5,6 @@
  */
 package entities;
 
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
@@ -25,4 +24,11 @@ public abstract class Entity {
     
     public abstract void update();
     
+    public Point getCoords(){
+        return coords;
+    }
+
+    public Rectangle getHitBox() {
+        return hitBox;
+    }
 }
