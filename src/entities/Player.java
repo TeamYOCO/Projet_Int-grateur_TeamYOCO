@@ -19,7 +19,11 @@ import playerEngine.PlayerEngine;
  */
 public class Player extends Mob{
     
-    protected PlayerEngine engine;
+    private PlayerEngine engine;
+    private int direction = 4;
+    private int speed = 1;
+    
+    
 
     public Player(Animation[] animation, Rectangle hitBox, Point coords,int direction) throws SlickException {
         super(animation, hitBox, coords, direction);
@@ -42,6 +46,12 @@ public class Player extends Mob{
 		return animation;
 	}
     
-    
+    @Override
+    public void update() {
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
     
 }
