@@ -5,7 +5,6 @@
  */
 package entities;
 
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import org.newdawn.slick.Animation;

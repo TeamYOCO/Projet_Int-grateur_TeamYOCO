@@ -5,10 +5,7 @@
  */
 package entities;
 
-import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
-import org.newdawn.slick.Animation;
 
 /**
  *
@@ -21,7 +18,7 @@ public abstract class Mob extends Entity{
 
     public Mob(Point coords, int direction) {
         super(coords);
-        this.direction=direction;
+        this.direction = direction;
     }
     
     

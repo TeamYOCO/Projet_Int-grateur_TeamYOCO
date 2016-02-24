@@ -16,7 +16,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.newdawn.slick.tiled.TiledMap;
 
 
 public class Game extends StateBasedGame{
@@ -51,6 +50,7 @@ public class Game extends StateBasedGame{
         try{
             appGc = new AppGameContainer(new Game(gameName));
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
+            appGc.setShowFPS(false);
             appGc.start();
         }catch(SlickException ex){
             ex.printStackTrace();
