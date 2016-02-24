@@ -22,11 +22,13 @@ public class Player extends Mob{
     private PlayerEngine engine;
     private int direction = 4;
     private int speed = 1;
+    private boolean moving;
     
     
 
     public Player(Point coords,int direction) throws SlickException {
         super(coords, direction);
+        moving=false;
         this.hitpoints=100;
         this.hitBox=new Rectangle(32,32);
         SpriteSheet spriteSheet = new SpriteSheet("res/textures/sprites/people/soldier_altcolor.png", 64, 64);
@@ -49,6 +51,21 @@ public class Player extends Mob{
     
     @Override
     public void update() {
+    }
+    public Animation[] getAnimation(){
+        return animations;
+    }
+    public Point getPosition(){
+        return coords;
+    }
+    public int getDirection(){
+        return direction;
+    }
+    public boolean getMoving(){
+        return moving;
+    }
+    public void setMoving(boolean moving){
+        this.moving=moving;
     }
 
     public void setDirection(int direction) {

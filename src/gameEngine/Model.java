@@ -43,7 +43,7 @@ public class Model extends Observable{
     
     public void init() throws SlickException{
         playerEngine = new PlayerEngine();
-        Player player=new Player(new Point(9*32,11*32),2);
+        Player player=new Player(new Point(9*32,11*32),3);
         
     }
 
