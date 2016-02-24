@@ -19,9 +19,8 @@ public abstract class Mob extends Entity{
     protected int hitpoints;
     protected int direction;
 
-    public Mob(Animation[] animation, Rectangle hitBox, Point coords, int direction) {
-        super(animation, hitBox, coords);
-        this.direction=direction;
+    public Mob(Point coords) {
+        super(coords);
     }
     
     

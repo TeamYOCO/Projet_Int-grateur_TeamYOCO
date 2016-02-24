@@ -5,7 +5,6 @@
  */
 package entities;
 
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
@@ -25,8 +24,8 @@ public class Player extends Mob{
     
     
 
-    public Player(Animation[] animation, Rectangle hitBox, Point coords,int direction) throws SlickException {
-        super(animation, hitBox, coords, direction);
+    public Player( Point coords) throws SlickException {
+        super(coords);
         SpriteSheet spriteSheet = new SpriteSheet("res/textures/sprites/people/soldier_altcolor.png", 64, 64);
 		this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
