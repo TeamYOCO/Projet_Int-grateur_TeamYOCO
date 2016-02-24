@@ -5,10 +5,20 @@
  */
 package entities;
 
+import java.awt.Image;
+import java.awt.Rectangle;
+import playerEngine.PlayerEngine;
+
 /**
  *
  * @author Seb
  */
 public class Player extends Mob{
+    
+    protected PlayerEngine engine;
+    
+    public Player(Image image, Rectangle hitBox) {
+        super(image, hitBox);
+    }
     
 }

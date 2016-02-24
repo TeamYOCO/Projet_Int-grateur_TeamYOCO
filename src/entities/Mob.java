@@ -5,10 +5,20 @@
  */
 package entities;
 
+import java.awt.Image;
+import java.awt.Rectangle;
+
 /**
  *
  * @author Seb
  */
-public class Mob extends Entity{
+public abstract class Mob extends Entity{
+    
+    protected int hitpoints;
+    
+    public Mob(Image image, Rectangle hitBox) {
+        super(image, hitBox);
+        
+    }
     
 }
