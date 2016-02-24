@@ -7,9 +7,12 @@ package gameEngine;
 
 import entities.Entity;
 import entities.Player;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import playerEngine.PlayerEngine;
 import java.util.Observable;
+import org.newdawn.slick.SlickException;
 
 /**
  *
@@ -38,8 +41,9 @@ public class Model extends Observable{
         
     }
     
-    public void init(){
+    public void init() throws SlickException{
         playerEngine = new PlayerEngine();
+        Player player=new Player(new Point(9*32,11*32),2);
         
     }
 
