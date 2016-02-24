@@ -6,6 +6,7 @@
 package entities;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
@@ -15,10 +16,10 @@ import java.awt.Rectangle;
 public abstract class Mob extends Entity{
     
     protected int hitpoints;
-    
-    public Mob(Image image, Rectangle hitBox) {
-        super(image, hitBox);
-        
+
+    public Mob(Image image, Rectangle hitBox, Point coords) {
+        super(image, hitBox, coords);
     }
+    
     
 }

@@ -6,6 +6,7 @@
 package entities;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
@@ -15,10 +16,12 @@ import java.awt.Rectangle;
 public abstract class Entity {
     protected Image image;
     protected Rectangle hitBox;
+    protected Point coords;
 
-    public Entity(Image image, Rectangle hitBox) {
+    public Entity(Image image, Rectangle hitBox, Point coords) {
         this.image = image;
         this.hitBox = hitBox;
+        this.coords = coords;
     }
     
 }
