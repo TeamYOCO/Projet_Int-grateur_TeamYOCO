@@ -48,9 +48,8 @@ public class Player extends Mob{
 		return animation;
 	}
     
-    @Override
-    public void update() {
-    }
+
+
     public Animation[] getAnimation(){
         return animations;
     }
@@ -63,6 +62,9 @@ public class Player extends Mob{
     public int getDirection(){
         return direction;
     }
+    public void setDirection(int direction){
+        this.direction=direction;
+    }
     public boolean getMoving(){
         return moving;
     }
@@ -70,8 +72,8 @@ public class Player extends Mob{
         this.moving=moving;
     }
 
-    public void setDirection(int direction) {
-        this.direction = direction;
+    @Override
+    public void update() {
     }
     
 }
