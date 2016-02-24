@@ -44,8 +44,8 @@ public class Model extends Observable {
 
     public void init() throws SlickException {
         playerEngine = new PlayerEngine();
-        Player player = new Player(new Point(288, 352), 3);
-        System.out.println("player");
+        Player player = new Player(new Point(288,352),3); 
+        
     }
 
     public static Player getPlayer() {
