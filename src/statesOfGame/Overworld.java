@@ -33,8 +33,8 @@ public class Overworld extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        this.container=gc;
-        this.map=new TiledMap("res/maps/map_1-1.tmx");
+        this.container = gc;
+        this.map = new TiledMap("res/maps/map_1-1.tmx");
 
     }
 
@@ -48,16 +48,19 @@ public class Overworld extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
             System.out.println("Right");
-            
+            model.getPlayer().setDirection(3);
         }
         if (gc.getInput().isKeyDown(Input.KEY_UP)) {
             System.out.println("Up");
+            model.getPlayer().setDirection(2);
         }
         if (gc.getInput().isKeyDown(Input.KEY_LEFT)) {
             System.out.println("Left");
+            model.getPlayer().setDirection(1);
         }
         if (gc.getInput().isKeyDown(Input.KEY_DOWN)) {
             System.out.println("Down");
+            model.getPlayer().setDirection(4);
         }
     }
 }

@@ -27,6 +27,7 @@ public class Player extends Mob{
 
     public Player(Point coords,int direction) throws SlickException {
         super(coords, direction);
+        this.hitpoints=100;
         this.hitBox=new Rectangle(32,32);
         SpriteSheet spriteSheet = new SpriteSheet("res/textures/sprites/people/soldier_altcolor.png", 64, 64);
 		this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
