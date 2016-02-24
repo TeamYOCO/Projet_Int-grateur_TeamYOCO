@@ -19,8 +19,7 @@ public abstract class Entity {
     protected Rectangle hitBox;
     protected Point coords;
 
-    public Entity(Animation[] animation, Rectangle hitBox, Point coords) {
-        this.animations=animation;
+    public Entity(Rectangle hitBox, Point coords) {
         this.hitBox = hitBox;
         this.coords = coords;
     }
