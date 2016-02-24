@@ -48,6 +48,7 @@ public class Overworld extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
             System.out.println("Right");
+            
         }
         if (gc.getInput().isKeyDown(Input.KEY_UP)) {
             System.out.println("Up");
