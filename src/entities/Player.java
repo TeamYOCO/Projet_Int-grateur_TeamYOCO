@@ -16,12 +16,22 @@ import playerEngine.PlayerEngine;
  */
 public class Player extends Mob{
     
-    protected PlayerEngine engine;
+    private PlayerEngine engine;
+    private int direction = 4;
+    private int speed = 1;
+    
+    
 
     public Player(Image image, Rectangle hitBox, Point coords) {
         super(image, hitBox, coords);
     }
     
-    
+    @Override
+    public void update() {
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
     
 }

@@ -24,4 +24,6 @@ public abstract class Entity {
         this.coords = coords;
     }
     
+    public abstract void update();
+    
 }
