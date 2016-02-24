@@ -40,6 +40,10 @@ public class Model extends Observable{
     
     public void init(){
         playerEngine = new PlayerEngine();
+        
     }
 
+    public static Player getPlayer() {
+        return player;
+    }
 }

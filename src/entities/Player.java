@@ -36,7 +36,6 @@ public class Player extends Mob{
 		this.animations[5] = loadAnimation(spriteSheet, 1, 9, 1);
 		this.animations[6] = loadAnimation(spriteSheet, 1, 9, 2);
 		this.animations[7] = loadAnimation(spriteSheet, 1, 9, 3);
-        this.direction=2;
     }
      private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
 		Animation animation = new Animation();
