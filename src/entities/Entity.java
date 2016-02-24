@@ -8,18 +8,19 @@ package entities;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import org.newdawn.slick.Animation;
 
 /**
  *
  * @author Seb
  */
 public abstract class Entity {
-    protected Image image;
+    protected Animation[] animations = new Animation[8];
     protected Rectangle hitBox;
     protected Point coords;
 
-    public Entity(Image image, Rectangle hitBox, Point coords) {
-        this.image = image;
+    public Entity(Animation[] animation, Rectangle hitBox, Point coords) {
+        this.animations=animation;
         this.hitBox = hitBox;
         this.coords = coords;
     }

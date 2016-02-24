@@ -8,6 +8,7 @@ package entities;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import org.newdawn.slick.Animation;
 
 /**
  *
@@ -17,8 +18,8 @@ public abstract class Mob extends Entity{
     
     protected int hitpoints;
 
-    public Mob(Image image, Rectangle hitBox, Point coords) {
-        super(image, hitBox, coords);
+    public Mob(Animation[] animation, Rectangle hitBox, Point coords) {
+        super(animation, hitBox, coords);
     }
     
     
