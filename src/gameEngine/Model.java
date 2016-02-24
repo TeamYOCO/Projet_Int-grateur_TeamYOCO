@@ -5,6 +5,9 @@
  */
 package gameEngine;
 
+import entities.Entity;
+import entities.Player;
+import java.util.ArrayList;
 import playerEngine.PlayerEngine;
 import java.util.Observable;
 
@@ -13,8 +16,11 @@ import java.util.Observable;
  * @author 1455367
  */
 public class Model extends Observable{
-    private static PlayerEngine player;
+    private static PlayerEngine playerEngine;
+    private static Player player;
     private static boolean running = false;
+    private static ArrayList<Entity> list = new ArrayList();
+    private static ArrayList<Entity> listRemove = new ArrayList();
     
     private Thread thread = new Thread(){
 
@@ -33,7 +39,7 @@ public class Model extends Observable{
     }
     
     public void init(){
-        
+        playerEngine = new PlayerEngine();
     }
 
 }

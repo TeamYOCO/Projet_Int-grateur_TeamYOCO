@@ -16,32 +16,37 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.newdawn.slick.tiled.TiledMap;
 
 
 public class Game extends StateBasedGame{
     public static final String gameName = "Projet intégrateur V1.0";
-    public static final int mainMenu = 0;
-    public static final int overworld = 1;
-    public static final int inventory = 2;
-    public static final int skillTree = 3;
-    public static final int map = 4;
-    public static final int menu = 5;
-    public static final int width = 512;
-    public static final int height = 352;
+    public static final int MAINMENU = 0;
+    public static final int OVERWORLD = 1;
+    public static final int INVENTORY = 2;
+    public static final int SKILLTREE = 3;
+    public static final int MAP = 4;
+    public static final int MENU = 5;
+    public static final int WIDTH = 512;
+    public static final int HEIGHT = 352;
     public static Model model;
+    private GameContainer container;
+    private TiledMap map;
     
     //C'est ic la classe main du jeu
     public Game(String name) {
         super(name);
-        this.addState(new MainMenu(mainMenu));
-        this.addState(new Overworld(overworld, model));
+        this.addState(new MainMenu(MAINMENU));
+        this.addState(new Overworld(OVERWORLD, model));
     }
     
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        this.getState(mainMenu).init(gc, this);
-        this.getState(overworld).init(gc, this);
-        this.enterState(mainMenu);
+        this.getState(MAINMENU).init(gc, this);
+        this.getState(OVERWORLD).init(gc, this);
+        this.enterState(MAINMENU);
+        this.container=gc;
+        this.map=new TiledMap("res/maps/untitled.tmx");
     }
     
     public static void main(String[] args) throws SlickException {
@@ -49,7 +54,7 @@ public class Game extends StateBasedGame{
         AppGameContainer appGc;
         try{
             appGc = new AppGameContainer(new Game(gameName));
-            appGc.setDisplayMode(width, height, true);
+            appGc.setDisplayMode(WIDTH, HEIGHT, false);
             appGc.start();
         }catch(SlickException ex){
             ex.printStackTrace();
