@@ -30,8 +30,6 @@ public class Game extends StateBasedGame{
     public static final int WIDTH = 512;
     public static final int HEIGHT = 352;
     public static Model model;
-    private GameContainer container;
-    private TiledMap map;
     
     //C'est ic la classe main du jeu
     public Game(String name) {
@@ -45,8 +43,6 @@ public class Game extends StateBasedGame{
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
         this.enterState(MAINMENU);
-        this.container=gc;
-        this.map=new TiledMap("res/maps/untitled.tmx");
     }
     
     public static void main(String[] args) throws SlickException {
