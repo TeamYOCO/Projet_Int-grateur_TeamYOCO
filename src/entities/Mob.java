@@ -11,8 +11,8 @@ import java.awt.Point;
  *
  * @author Seb
  */
-public abstract class Mob extends Entity{
-    
+public abstract class Mob extends Entity {
+
     protected int hitpoints;
     protected int direction;
 
@@ -20,6 +20,5 @@ public abstract class Mob extends Entity{
         super(coords);
         this.direction = direction;
     }
-    
-    
+
 }

@@ -17,8 +17,8 @@ import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class Game extends StateBasedGame {
 
-public class Game extends StateBasedGame{
     public static final String gameName = "Projet intégrateur V1.0";
     public static final int MAINMENU = 0;
     public static final int OVERWORLD = 1;
@@ -29,54 +29,56 @@ public class Game extends StateBasedGame{
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
     public static Model model;
-    
+
     //C'est ic la classe main du jeu
     public Game(String name) {
         super(name);
         this.addState(new MainMenu(MAINMENU));
         this.addState(new Overworld(OVERWORLD, model));
     }
-    
+
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
+        model=new Model();
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
         this.enterState(OVERWORLD);
     }
-    
+
     public static void main(String[] args) throws SlickException {
         loadNatives(Game.class);
         AppGameContainer appGc;
-        try{
+        try {
             appGc = new AppGameContainer(new Game(gameName));
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
             appGc.setShowFPS(false);
             appGc.start();
-        }catch(SlickException ex){
+        } catch (SlickException ex) {
             ex.printStackTrace();
         }
     }
+
     private static void loadNatives(Class c) {
         final File jarFile = new File(c.getProtectionDomain().getCodeSource().getLocation().getPath());
         final String path = "res/native/";
- 
+
         if (jarFile.isFile()) {
             try {
                 // Run with JAR file
                 final JarFile jar = new JarFile(jarFile);
- 
+
                 final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
                 final String nativeFolderPath = jarFile.getParent() + "/native/";
                 final File nativeFolder = new File(nativeFolderPath);
                 nativeFolder.delete();
                 nativeFolder.mkdir();
- 
+
                 while (entries.hasMoreElements()) {
                     final String name = entries.nextElement().getName();
- 
+
                     if (name.startsWith(path)) { //filter according to the path
                         Object temp = null;
- 
+
                         InputStream is = c.getResourceAsStream("/" + name);
                         String nativeName = name.replace(path, "");
                         File nativePath = new File(nativeFolderPath + nativeName);
@@ -94,12 +96,12 @@ public class Game extends StateBasedGame{
                                 is.close();
                                 os.close();
                             }
- 
+
                         }
                     }
                 }
                 jar.close();
- 
+
                 System.setProperty("org.lwjgl.librarypath", nativeFolderPath);
             } catch (IOException ex) {
                 Logger.getLogger(c.getName()).log(Level.SEVERE, null, ex);
@@ -111,10 +113,7 @@ public class Game extends StateBasedGame{
                 Logger.getLogger(c.getName()).log(Level.SEVERE, null, ex);
             }
         }
- 
-}
 
-    
+    }
 
-    
 }

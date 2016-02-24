@@ -12,5 +12,6 @@ import org.newdawn.slick.tiled.TiledMap;
  * @author 1455367
  */
 public class MiniMap {
+
     private static TiledMap map;
 }

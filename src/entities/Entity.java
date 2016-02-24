@@ -14,6 +14,7 @@ import org.newdawn.slick.Animation;
  * @author Seb
  */
 public abstract class Entity {
+
     protected Animation[] animations = new Animation[8];
     protected Rectangle hitBox;
     protected Point coords;
@@ -21,10 +22,10 @@ public abstract class Entity {
     public Entity(Point coords) {
         this.coords = coords;
     }
-    
+
     public abstract void update();
-    
-    public Point getCoords(){
+
+    public Point getCoords() {
         return coords;
     }
 

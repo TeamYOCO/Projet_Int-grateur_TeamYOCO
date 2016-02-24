@@ -10,5 +10,6 @@ package playerEngine;
  * @author 1455367
  */
 public class PlayerEngine {
+
     private static String name;
 }

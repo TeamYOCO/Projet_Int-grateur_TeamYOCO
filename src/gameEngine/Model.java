@@ -18,20 +18,21 @@ import org.newdawn.slick.SlickException;
  *
  * @author 1455367
  */
-public class Model extends Observable{
+public class Model extends Observable {
+
     private static PlayerEngine playerEngine;
     private static Player player;
     private static boolean running = false;
     private static ArrayList<Entity> list = new ArrayList();
     private static ArrayList<Entity> listRemove = new ArrayList();
-    
-    private Thread thread = new Thread(){
+
+    private Thread thread = new Thread() {
 
         @Override
         public void run() {
-            while (true){
+            while (true) {
                 while (running) {
-                    
+
                 }
             }
         }
@@ -40,11 +41,11 @@ public class Model extends Observable{
     public Model() throws SlickException {
         init();
     }
-    
-    public void init() throws SlickException{
+
+    public void init() throws SlickException {
         playerEngine = new PlayerEngine();
-        Player player=new Player(new Point(288,352),3);
-        
+        Player player = new Player(new Point(288, 352), 3);
+
     }
 
     public static Player getPlayer() {

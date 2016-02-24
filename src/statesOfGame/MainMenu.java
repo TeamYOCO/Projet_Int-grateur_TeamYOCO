@@ -7,18 +7,19 @@ package statesOfGame;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+
 /**
  *
  * @author 1455367
  */
-public class MainMenu extends BasicGameState{
+public class MainMenu extends BasicGameState {
 
     private static int stateID;
 
     public MainMenu(int stateID) {
         MainMenu.stateID = stateID;
     }
-    
+
     @Override
     public int getID() {
         return stateID;
@@ -35,5 +36,5 @@ public class MainMenu extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
     }
-    
+
 }

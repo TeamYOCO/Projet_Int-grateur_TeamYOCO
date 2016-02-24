@@ -12,5 +12,6 @@ import java.util.ArrayList;
  * @author 1455367
  */
 public class WorldMap {
+
     private ArrayList<MiniMap> maps;
 }

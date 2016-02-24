@@ -41,29 +41,25 @@ public class Overworld extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         this.map.render(0, 0);
-        grphcs.drawAnimation(model.getPlayer().getAnimation()[model.getPlayer().getDirection()+(model.getPlayer().getMoving() ? 4 : 0)], (float)model.getPlayer().getX() - 32, (float)model.getPlayer().getY() - 60);
+        grphcs.drawAnimation(model.getPlayer().getAnimation()[model.getPlayer().getDirection() + (model.getPlayer().getMoving() ? 4 : 0)], (float) model.getPlayer().getX() - 32, (float) model.getPlayer().getY() - 60);
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
             model.getPlayer().setMoving(true);
-            System.out.println("Right");
             model.getPlayer().setDirection(2);
         }
         if (gc.getInput().isKeyDown(Input.KEY_UP)) {
-                        model.getPlayer().setMoving(true);
-            System.out.println("Up");
+            model.getPlayer().setMoving(true);
             model.getPlayer().setDirection(1);
         }
         if (gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-                        model.getPlayer().setMoving(true);
-            System.out.println("Left");
+            model.getPlayer().setMoving(true);
             model.getPlayer().setDirection(0);
         }
         if (gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-                        model.getPlayer().setMoving(true);
-            System.out.println("Down");
+            model.getPlayer().setMoving(true);
             model.getPlayer().setDirection(3);
         }
     }

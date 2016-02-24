@@ -10,5 +10,5 @@ package playerEngine;
  * @author 1455367
  */
 public class EquipementInventory {
-    
+
 }
