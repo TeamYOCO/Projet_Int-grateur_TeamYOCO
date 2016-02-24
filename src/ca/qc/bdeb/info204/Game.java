@@ -31,9 +31,10 @@ public class Game extends StateBasedGame{
     public static Model model;
     
     //C'est ic la classe main du jeu
-    public Game(String name) {
+    public Game(String name) throws SlickException {
         super(name);
         this.addState(new MainMenu(MAINMENU));
+        model = new Model();
         this.addState(new Overworld(OVERWORLD, model));
     }
     
