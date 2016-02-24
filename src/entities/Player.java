@@ -46,12 +46,13 @@ public class Player extends Mob{
 		return animation;
 	}
     
-    @Override
-    public void update() {
-    }
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    @Override
+    public void update() {
     }
     
 }

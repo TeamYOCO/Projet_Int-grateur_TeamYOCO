@@ -20,7 +20,6 @@ public class Overworld extends BasicGameState {
     private static Model model;
     private GameContainer container;
     private TiledMap map;
-    private Animation[] animations = new Animation[8];
 
     public Overworld(int stateID, Model model) {
         Overworld.stateID = stateID;
@@ -47,19 +46,15 @@ public class Overworld extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            System.out.println("Right");
             model.getPlayer().setDirection(3);
         }
         if (gc.getInput().isKeyDown(Input.KEY_UP)) {
-            System.out.println("Up");
             model.getPlayer().setDirection(2);
         }
         if (gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            System.out.println("Left");
             model.getPlayer().setDirection(1);
         }
         if (gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-            System.out.println("Down");
             model.getPlayer().setDirection(4);
         }
     }
