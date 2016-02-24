@@ -35,11 +35,6 @@ public class Overworld extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.container=gc;
         this.map=new TiledMap("res/maps/map_1-1.tmx");
-        
-    }
-        
-        this.container = gc;
-        this.map = new TiledMap("res/maps/map_1-1.tmx");
 
     }
 
