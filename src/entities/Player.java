@@ -29,6 +29,7 @@ public class Player extends Mob {
         this.hitpoints=100;
         this.hitBox=new Rectangle(32,32);
         SpriteSheet spriteSheet = new SpriteSheet("res/maps/tileset/sprites/people/soldier_altcolor.png", 64, 64);
+        
 		this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
 		this.animations[2] = loadAnimation(spriteSheet, 0, 1, 2);
