@@ -21,6 +21,7 @@ public class Overworld extends BasicGameState {
     private GameContainer container;
     private TiledMap map;
     private Animation[] animations = new Animation[8];
+    public static SpriteSheet spriteSheet1;
 
     public Overworld(int stateID, Model model) {
         Overworld.stateID = stateID;
@@ -35,7 +36,7 @@ public class Overworld extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         this.container = gc;
         this.map = new TiledMap("res/maps/map_1-1.tmx");
-
+        spriteSheet1 = new SpriteSheet("res/maps/New Folder/LPC Base Assets/sprites/people/soldier_altcolor.png", 64, 64);
     }
 
     @Override

@@ -5,12 +5,14 @@
  */
 package entities;
 
+import ca.qc.bdeb.info204.Game;
 import java.awt.Point;
 import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import playerEngine.PlayerEngine;
+import statesOfGame.Overworld;
 
 /**
  *
@@ -28,7 +30,7 @@ public class Player extends Mob {
         moving=false;
         this.hitpoints=100;
         this.hitBox=new Rectangle(32,32);
-        SpriteSheet spriteSheet = new SpriteSheet("res/maps/New Folder/LPC Base Assets/sprites/people/soldier_altcolor.png", 64, 64);
+        SpriteSheet spriteSheet = Overworld.spriteSheet1;
 		this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
 		this.animations[2] = loadAnimation(spriteSheet, 0, 1, 2);
