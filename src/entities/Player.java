@@ -21,8 +21,8 @@ public class Player extends Mob{
     
     protected PlayerEngine engine;
 
-    public Player(Animation[] animation, Rectangle hitBox, Point coords) throws SlickException {
-        super(animation, hitBox, coords);
+    public Player(Animation[] animation, Rectangle hitBox, Point coords,int direction) throws SlickException {
+        super(animation, hitBox, coords, direction);
         SpriteSheet spriteSheet = new SpriteSheet("res/textures/sprites/people/soldier_altcolor.png", 64, 64);
 		this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
@@ -32,6 +32,7 @@ public class Player extends Mob{
 		this.animations[5] = loadAnimation(spriteSheet, 1, 9, 1);
 		this.animations[6] = loadAnimation(spriteSheet, 1, 9, 2);
 		this.animations[7] = loadAnimation(spriteSheet, 1, 9, 3);
+        this.direction=2;
     }
      private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
 		Animation animation = new Animation();
