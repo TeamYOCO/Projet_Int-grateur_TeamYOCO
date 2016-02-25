@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="32">
+    <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+        <image source="New folder/LPC Base Assets/tiles/grass.png" width="96" height="192"/>
+    </tileset>
+    <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+        <image source="New folder/LPC Base Assets/tiles/dirt.png" width="96" height="192"/>
+    </tileset>
+    <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+        <image source="New folder/LPC Base Assets/tiles/dirt2.png" width="96" height="192"/>
+    </tileset>
+    <tileset firstgid="55" name="grassalt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+        <image source="New folder/LPC Base Assets/tiles/grassalt.png" width="96" height="192"/>
+    </tileset>
+    <tileset firstgid="73" name="watergrass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+        <image source="New folder/LPC Base Assets/tiles/watergrass.png" width="96" height="192"/>
+    </tileset>
+    <tileset firstgid="91" name="house_7" tilewidth="32" tileheight="32" tilecount="63" columns="9">
+        <image source="New folder/LPC Base Assets/tiles/house_7.png" width="288" height="224"/>
+    </tileset>
+    <tileset firstgid="154" name="treetop" tilewidth="32" tileheight="32" tilecount="42" columns="6">
+        <image source="New folder/LPC Base Assets/tiles/treetop.png" width="192" height="224"/>
+    </tileset>
+    <tileset firstgid="196" name="trunk" tilewidth="32" tileheight="32" tilecount="18" columns="6">
+        <image source="New folder/LPC Base Assets/tiles/trunk.png" width="192" height="96"/>
+    </tileset>
+    <tileset firstgid="214" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+        <image source="New folder/LPC Base Assets/tiles/mountains.png" width="384" height="288"/>
+    </tileset>
+    <tileset firstgid="322" name="bridges" tilewidth="32" tileheight="32" tilecount="42" columns="6">
+        <image source="New folder/LPC Base Assets/tiles/bridges.png" width="192" height="224"/>
+    </tileset>
+    <tileset firstgid="364" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
+        <image source="New folder/LPC Base Assets/tiles/cabinets.png" width="192" height="416"/>
+    </tileset>
+    <tileset firstgid="442" name="country" tilewidth="32" tileheight="32" tilecount="20" columns="5">
+        <image source="New folder/LPC Base Assets/tiles/country.png" width="160" height="128"/>
+    </tileset>
+    <tileset firstgid="462" name="chests" tilewidth="32" tileheight="32" tilecount="6" columns="2">
+        <image source="New folder/LPC Base Assets/tiles/chests.png" width="64" height="96"/>
+    </tileset>
+    <tileset firstgid="468" name="forest_tiles" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+        <image source="New folder/LPC_forest/forest_tiles.png" width="512" height="512"/>
+    </tileset>
+    <layer name="Background" width="50" height="50">
+        <data encoding="base64" compression="gzip">
+            H4sIAAAAAAAAC+2Z227bMBBE9a4XyZ/VIJc2Tvv/f1IbEIHTk6FEoKLhBwYYgLYlkrs7u2Rm12ma1g3LDfM2nrfPlw0rMOP7Rc+WMZ9bNF7D8xc8s+q3X9Px34J5ytplnrI+v+N6s973vmj/onm5Fte/6N1WO+x/+pPzMxb0F+203Yyb5+O79EXywfsNHweYA1LszT3/xnfo+zInx3zefFun73G5x+PzAOWdNaxHXpMT5BZhzptL9DGfOfL3W4Md9CP97X2ZO/QZOcGxuei5y7wt/j6CecM9uHbwWceInCLH9+pIGZ9lh31PX6f89D7Nw1QvGAvn8Rl2OLfM31nrp1rrz85/ci3lzp4dP274LbxU4mGeeH/Mn1p9dQ1NcbJdLfG4ai93fAVbmBvpTK+dY65ZKZ9cP9I6R/G4Vvbod+wj84b7q9Ui25TOf9vHdVrsmLVussN11pyq1VTuc9b36dx3XFt49XrDz+n7OeMzhXaY6z6/9u4r5K9rR6pxvj/t1aLXyt6Jo3vLI9ByXg8MDAwMDAwMDAwM/B+SFpCQ9IFnQvnf03qA9ZekDzyT3/9ov9ZaadfXE8ToOmXtJGk+ScOzflXTcB5pB22wRmeNPekOnOMMPbGFN+QP9SrHwT2PWg/IetbZdlynf3UN+q7GJ2tfjon1IO6/rNHDDtaYpBuaP0lT92/Wpm1Lr3i4L5a0OPPEeVzTua239uSVa5B9mfiTeiH8zdoiY93TDvuaZ4F7Pknz9Rz0g/Olhx2sQ+6DOD9S3tr/3j/n6GmH9ddUn5wLrrcXvU8/MD/KOr3sqPU/aueBx+4npLsKbe3FK98pEn8Yh9R7SPv1Gd+r7pZeg9dJuetYsF77XEx3RubT2XaYW+a18712pvsO5nvKfbzXkzkrJh9bXFINSj0f5r5rEWtVzxrVYg9rj3tPzI/Ux3tkDFrsGX2nx+AvVkmAEhAnAAA=
+        </data>
+    </layer>
+    <layer name="road" width="50" height="50">
+        <data encoding="base64" compression="gzip">
+            H4sIAAAAAAAAC+2XS07EMAyGmzMMCIR43QJpDsGCA8AGrsqABMwC2HZ6FByVisi0jZPYzkzlT/o1r8j2HydNpmnKOAddgC4L49TGfOwXNXy0ji/W6vd1qf1Yod/x530lpx9j3nZu/L0Gvh6JdbUmjusY/XL6WCNxQamRwweuf87PJqMHQ40noLMJnRLGxJTi463AR46OQNdEDfXeub9Xr9b99/Gc4eMqoZZQx02/zm4S8+G6OfdxDr6POT4wtX3cQ/4Hhhoo50jodeq+MoyhzEsYg+KjJeTHPqj9mfIffk+J9Qhjngh1xuC8D3o6lx6T4xzD88rhS/vO4+dOIid3j+fYCXnwSPro0P6T7L2PL/08b4U9hEjPlSZSXpbiQ/uZ6JGYuxr9kMip3Y/UfLeuVwztfqSeJdR7o+ZZO+RMIeZD42way8mNdh+kqP2/zzAMY4oN6AX0WruQQt5BH6Bt7UIK+QR9gb5rF7JgYmv+UPbE3JrfusPZE7E1b3vCMAyj5wc7GT3KECcAAA==
+        </data>
+    </layer>
+    <layer name="foreground" width="50" height="50">
+        <data encoding="base64" compression="gzip">
+            H4sIAAAAAAAAC+3YsY4BQRzH8dmcjms8gNfwBCjuFE55RINonHc4Ou6t7hRcgSeYng6h45dQyGQnZszu7Ep+n+SbmNiM/0Qyxa6FEDuH9qiIto77uHZAIni8ILic4+S4T1h5i2dfUM6h1+s5so77hFWweFaKZBWvuZLK+hsNNY0i+L24SGU9RhNNP14nsyOV9SdqaGp6ncyOVNZt1NHURb/oD039jWhEKus++rqpdfN5gGZojv79jWhE3vm+p6wXaIlWEc5Qwr1Z1lQJzPaQEc7zqDfM+q6p+kTnqGHWD011w3Ns4h3Rm2PSA0QkY/i/ERERERERERElLa3vg22l9X2wrTjeBxM9O95T6cJ7iogo3BlNSRcvECcAAA==
+        </data>
+    </layer>
+    <layer name="top" width="50" height="50">
+        <data encoding="base64" compression="gzip">
+            H4sIAAAAAAAAC+3YuQoCMRSF4fGdfB5BLAS11FJLfQfXcd/3fSvUF/MUt4gowoxjYuR88JNJGq9FmjgO0aNwyPQEwdD1P6J6fubrEsp3EZVQ2dAsXiRlTct3RjlzUR019I/lWUzWLIqgnHLWQV3UMzCXVylZ8yiOCsoZERERERERERER/R6b3oPfcZ3n9+ApmqG5iYF8evUevEYbtDUyUXCO6ITOpgf50AVd0c30ID7YcidGaIwmsq+gKqrJ3pY7sUBLtJJ9E7VQW/a23Ikd2qOD7PtogIayt/lOEBHR/7oDNfxHdxAnAAA=
+        </data>
+    </layer>
+</map>
