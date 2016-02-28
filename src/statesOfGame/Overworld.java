@@ -34,6 +34,7 @@ public class Overworld extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        model.init();
         this.container = gc;
         this.map = new TiledMap("res/maps/map_1-1.tmx");
         spriteSheet1 = new SpriteSheet("res/maps/New Folder/LPC Base Assets/sprites/people/soldier_altcolor.png", 64, 64);

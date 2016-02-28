@@ -39,7 +39,7 @@ public class Model extends Observable {
     };
 
     public Model() throws SlickException {
-        init();
+        
     }
 
     public void init() throws SlickException {
