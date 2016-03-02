@@ -47,6 +47,11 @@ public class MiniMap {
     }
 
     // Les méthodes suivantes sont des getters
+
+    public static TiledMap getTiledMap() {
+        return tiledMap;
+    }
+    
     public int getObjectCount() {
         return this.tiledMap.getObjectCount(0);
     }
