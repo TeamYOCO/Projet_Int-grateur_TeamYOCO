@@ -67,9 +67,9 @@ public class Player extends Mob {
     @Override
     public void update(int delta) {
         if (moving) {
-            if(map.isCollision(x, y))
-            
-        }
+            if(map.isCollision(x, y)){}
+                
+                }
         
     }
     
