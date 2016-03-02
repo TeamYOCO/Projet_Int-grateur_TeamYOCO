@@ -39,7 +39,7 @@ public class Game extends StateBasedGame {
     public void initStatesList(GameContainer gc) throws SlickException {
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
-        this.enterState(OVERWORLD);
+        this.enterState(MAINMENU);
     }
 
     // Boucle main
