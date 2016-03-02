@@ -40,8 +40,8 @@ public class Player extends Mob {
 
     @Override
     public void init() throws SlickException {
-        this.x = 300;
-        this.y = 300;
+        this.x = 620;
+        this.y = 430;
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);

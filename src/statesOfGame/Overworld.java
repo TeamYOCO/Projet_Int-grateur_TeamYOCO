@@ -26,7 +26,7 @@ public class Overworld extends BasicGameState {
     private MiniMap map = new MiniMap();
     private Player player = new Player(map);
     private PlayerController controller = new PlayerController(player);
-    private Camera cam = new Camera(player);
+    private Camera cam = new Camera(player, map);
     private boolean running = false;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
