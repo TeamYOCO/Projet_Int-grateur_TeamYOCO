@@ -22,7 +22,7 @@ public class Player extends Mob {
 
     private PlayerEngine engine;
     private int direction = 2;
-    private int speed = 1;
+    private float speed = (float) 0.2;
     private boolean moving;
     private MiniMap map;
     private boolean attacking = false;
@@ -97,10 +97,43 @@ public class Player extends Mob {
                 case 3:
                     this.x = this.x + .2f * delta;
                     break;
+        if (moving) {
+            if(!map.isCollision(futurX(x), futurY(y))){
+            this.x=futurX(x);
+            this.y=futurY(y);
+            }else{
+                
             }
         }
     }
-
+    
+    private float futurX(float x){
+        switch (direction){
+                case 0:
+                    return x;
+                case 1:
+                   return (int) (x-speed);
+                case 2:
+                    return x;
+                case 3:
+                    return (int) (x+speed);
+            }
+        return x;
+    }
+    
+    private float futurY(float y){
+         switch (direction){
+                case 0:
+                    return (int) (y-speed);
+                case 1:
+                   return y;
+                case 2:
+                    return (int) (y+speed);
+                case 3:
+                    return y;
+            }
+        return y;
+    }
     public int getDirection() {
         return direction;
     }
