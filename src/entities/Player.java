@@ -27,6 +27,7 @@ public class Player extends Mob {
     private MiniMap map;
     private boolean attacking = false;
     private Animation[] attackAnimation = new Animation[4];
+    private float atttimer = 10;
 
     public Player(MiniMap map) {
         this.map = map;
@@ -72,6 +73,16 @@ public class Player extends Mob {
     // Update la position du joueur
     @Override
     public void update(int delta) {
+        if (atttimer < 500){
+            atttimer += delta;
+        }
+        else{
+            attacking = false;
+            for (int i = 0; i < attackAnimation.length; i++) {
+                attackAnimation[i].restart();
+            }
+        }
+            
         if (moving && !attacking) {
             switch (direction) {
                 case 0:
@@ -88,7 +99,6 @@ public class Player extends Mob {
                     break;
             }
         }
-
     }
 
     public int getDirection() {
@@ -109,5 +119,6 @@ public class Player extends Mob {
 
     public void attack(){
         attacking = true;
+        atttimer = 0;
     }
 }
