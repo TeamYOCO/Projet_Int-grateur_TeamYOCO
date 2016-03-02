@@ -16,7 +16,7 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Entity {
 
-    protected Animation[] animations = new Animation[8];
+    protected Animation[] moveAnimations = new Animation[8];
     protected Rectangle hitBox;
     protected float x, y;
 

@@ -53,6 +53,9 @@ public class PlayerController implements KeyListener {
                 this.player.setDirection(3);
                 this.player.setMoving(true);
                 break;
+            case Input.KEY_D:
+                this.player.attack();
+                break;
         }
     }
 
