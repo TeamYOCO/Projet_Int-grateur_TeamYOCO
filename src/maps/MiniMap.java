@@ -28,9 +28,10 @@ public class MiniMap{
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
+        System.out.println(tiledMap.getLayerCount());
     }
 
-    // Affiche le background de la map
+
     public void renderBackground() {
         tiledMap.render(0, 0);
     }
@@ -39,7 +40,6 @@ public class MiniMap{
     public void renderForeground() {
     }
 
-    // Détecte si le joueur entre en collision avec les éléments collision de la map
     public boolean isCollision(float x, float y) {
         int tileW = this.tiledMap.getTileWidth();
         int tileH = this.tiledMap.getTileHeight();
