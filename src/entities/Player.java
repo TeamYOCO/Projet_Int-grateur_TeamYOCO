@@ -67,6 +67,7 @@ public class Player extends Mob {
     @Override
     public void update(int delta) {
         if (moving) {
+            
             switch (direction){
                 case 0:
                     this.y = this.y - .2f * delta;
@@ -82,6 +83,7 @@ public class Player extends Mob {
                     break;
             }
         }
+        
     }
 
     public int getDirection() {
@@ -99,5 +101,6 @@ public class Player extends Mob {
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
-
+    
+    
 }
