@@ -14,9 +14,14 @@ import org.newdawn.slick.tiled.TiledMap;
  *
  * @author 1455367
  */
-public class MiniMap {
+public class MiniMap{
 
     private static TiledMap tiledMap;
+
+    public MiniMap() {
+    }
+
+
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
@@ -36,14 +41,16 @@ public class MiniMap {
     public boolean isCollision(float x, float y) {
         int tileW = this.tiledMap.getTileWidth();
         int tileH = this.tiledMap.getTileHeight();
-        int logicLayer = this.tiledMap.getLayerIndex("logic");
+        int logicLayer = this.tiledMap.getLayerIndex("collision");
         Image tile = this.tiledMap.getTileImage((int) x / tileW, (int) y / tileH, logicLayer);
         boolean collision = tile != null;
         if (collision) {
             Color color = tile.getColor((int) x % tileW, (int) y % tileH);
             collision = color.getAlpha() > 0;
         }
+        System.out.println(collision);
         return collision;
+        
     }
 
     // Les méthodes suivantes sont des getters

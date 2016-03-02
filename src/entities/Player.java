@@ -67,13 +67,17 @@ public class Player extends Mob {
     @Override
     public void update(int delta) {
         if (moving) {
-            if(map.isCollision(x, y)){}
+            if(!map.isCollision(futurX(x), futurY(y))){
+            this.x=futurX(x);
+            this.y=futurY(y);
+            }else{
                 
-                }
+            }
+        }
         
     }
     
-    private float futurX(int x){
+    private float futurX(float x){
         switch (direction){
                 case 0:
                     return x;
@@ -87,7 +91,7 @@ public class Player extends Mob {
         return x;
     }
     
-    private float futurY(int y){
+    private float futurY(float y){
          switch (direction){
                 case 0:
                     return (int) (y-speed);
