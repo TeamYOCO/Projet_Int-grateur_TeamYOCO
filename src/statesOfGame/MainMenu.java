@@ -19,10 +19,10 @@ import org.newdawn.slick.state.*;
 public class MainMenu extends BasicGameState {
 
     private static int stateID;
-    private int playX = 400;
-    private int playY = 200;
-    private int newGameX = 400;
-    private int newGameY = 50;
+    private final int playX = 400,playY = 200;
+    private final int newGameX = 400,newGameY = 50;
+    private final int settingsX = 200, settingsY = 50;
+    private final int creditsX = 200, creditsY = 50;
 
     public MainMenu(int stateID) {
         MainMenu.stateID = stateID;
@@ -43,9 +43,13 @@ public class MainMenu extends BasicGameState {
         
         
         g.drawRect(WIDTH/2-playX/2, HEIGHT/3-playY/2, playX, playY);
-        g.drawString("Play",WIDTH/2-playX/2, HEIGHT/3-10);//10 : depends on the string lenght
+        g.drawString("Play",WIDTH/2-15, HEIGHT/3-10);//10 : depends on the string lenght
         g.drawRect(WIDTH/2-newGameX/2,  HEIGHT/3+playY/2+10, newGameX, newGameY);
-        g.drawString("New Game", WIDTH/2-15, HEIGHT/3+playY/2+10+5);//15 & 5 : depends on the string lenght
+        g.drawString("New Game", WIDTH/2-30, HEIGHT/3+playY/2+10+15);//15 & 5 : depends on the string lenght
+        g.drawRect(WIDTH/2-settingsX, HEIGHT/3+playY/2+10+newGameY+10, settingsX, settingsY);
+        g.drawString("Paramètres", WIDTH/2-settingsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);
+        g.drawRect(WIDTH/2, HEIGHT/3+playY/2+10+newGameY+10, creditsX, creditsY);
+        g.drawString("Credits", WIDTH/2+creditsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);
     }
 
     @Override
