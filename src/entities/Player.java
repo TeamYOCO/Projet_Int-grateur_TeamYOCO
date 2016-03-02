@@ -72,26 +72,12 @@ public class Player extends Mob {
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (moving && !attacking) {
-            switch (direction) {
-                case 0:
-                    this.y = this.y - .2f * delta;
-                    break;
-                case 1:
-                    this.x = this.x - .2f * delta;
-                    break;
-                case 2:
-                    this.y = this.y + .2f * delta;
-                    break;
-                case 3:
-                    this.x = this.x + .2f * delta;
-                    break;
-        if (moving) {
+        if (moving /*&& !attacking*/) {
             if(!map.isCollision(futurX(x), futurY(y))){
             this.x=futurX(x);
             this.y=futurY(y);
             }else{
-                
+                System.out.println("coll");
             }
         }
 
@@ -99,12 +85,8 @@ public class Player extends Mob {
     
     private float futurX(float x){
         switch (direction){
-                case 0:
-                    return x;
                 case 1:
                    return (int) (x-speed);
-                case 2:
-                    return x;
                 case 3:
                     return (int) (x+speed);
             }
@@ -115,12 +97,8 @@ public class Player extends Mob {
          switch (direction){
                 case 0:
                     return (int) (y-speed);
-                case 1:
-                   return y;
                 case 2:
                     return (int) (y+speed);
-                case 3:
-                    return y;
             }
         return y;
     }

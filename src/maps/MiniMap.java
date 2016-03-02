@@ -48,7 +48,6 @@ public class MiniMap{
             Color color = tile.getColor((int) x % tileW, (int) y % tileH);
             collision = color.getAlpha() > 0;
         }
-        System.out.println(collision);
         return collision;
         
     }
