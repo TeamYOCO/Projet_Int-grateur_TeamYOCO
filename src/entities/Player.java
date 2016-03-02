@@ -51,7 +51,7 @@ public class Player extends Mob {
         SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/male_walkcycle.png", 64, 64);
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
-            this.moveAnimations[i+4] = loadAnimation(moveSpriteSheet, 1, 9, i);
+            this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
         }
         SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
         for (int i = 0; i < 4; i++) {
@@ -73,16 +73,15 @@ public class Player extends Mob {
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (atttimer < 500){
+        if (atttimer < 500) {
             atttimer += delta;
-        }
-        else{
+        } else {
             attacking = false;
             for (int i = 0; i < attackAnimation.length; i++) {
                 attackAnimation[i].restart();
             }
         }
-            
+
         if (moving && !attacking) {
             switch (direction) {
                 case 0:
@@ -97,43 +96,46 @@ public class Player extends Mob {
                 case 3:
                     this.x = this.x + .2f * delta;
                     break;
-        if (moving) {
-            if(!map.isCollision(futurX(x), futurY(y))){
-            this.x=futurX(x);
-            this.y=futurY(y);
-            }else{
-                
+            }
+            if (moving) {
+                if (!map.isCollision(futurX(x), futurY(y))) {
+                    this.x = futurX(x);
+                    this.y = futurY(y);
+                } else {
+
+                }
             }
         }
     }
-    
-    private float futurX(float x){
-        switch (direction){
-                case 0:
-                    return x;
-                case 1:
-                   return (int) (x-speed);
-                case 2:
-                    return x;
-                case 3:
-                    return (int) (x+speed);
-            }
+
+    private float futurX(float x) {
+        switch (direction) {
+            case 0:
+                return x;
+            case 1:
+                return (int) (x - speed);
+            case 2:
+                return x;
+            case 3:
+                return (int) (x + speed);
+        }
         return x;
     }
-    
-    private float futurY(float y){
-         switch (direction){
-                case 0:
-                    return (int) (y-speed);
-                case 1:
-                   return y;
-                case 2:
-                    return (int) (y+speed);
-                case 3:
-                    return y;
-            }
+
+    private float futurY(float y) {
+        switch (direction) {
+            case 0:
+                return (int) (y - speed);
+            case 1:
+                return y;
+            case 2:
+                return (int) (y + speed);
+            case 3:
+                return y;
+        }
         return y;
     }
+
     public int getDirection() {
         return direction;
     }
@@ -150,7 +152,7 @@ public class Player extends Mob {
         this.moving = moving;
     }
 
-    public void attack(){
+    public void attack() {
         attacking = true;
         atttimer = 0;
     }
