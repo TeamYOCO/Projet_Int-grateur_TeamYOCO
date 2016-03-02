@@ -2,7 +2,6 @@ package ca.qc.bdeb.info204;
 
 import statesOfGame.MainMenu;
 import statesOfGame.Overworld;
-import gameEngine.Model;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import java.io.File;
@@ -28,24 +27,22 @@ public class Game extends StateBasedGame {
     public static final int MENU = 5;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
-    public static Model model;
 
     //C'est ic la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
         this.addState(new MainMenu(MAINMENU));
-        model = new Model();
-        this.addState(new Overworld(OVERWORLD, model));
+        this.addState(new Overworld(OVERWORLD));
     }
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        model=new Model();
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
         this.enterState(OVERWORLD);
     }
 
+    // Boucle main
     public static void main(String[] args) throws SlickException {
         loadNatives(Game.class);
         AppGameContainer appGc;
@@ -59,6 +56,7 @@ public class Game extends StateBasedGame {
         }
     }
 
+    // Load les natives !ne pas toucher!
     private static void loadNatives(Class c) {
         final File jarFile = new File(c.getProtectionDomain().getCodeSource().getLocation().getPath());
         final String path = "res/native/";

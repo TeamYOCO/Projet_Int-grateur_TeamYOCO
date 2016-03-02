@@ -5,10 +5,15 @@
  */
 package statesOfGame;
 
-import gameEngine.Model;
+import entities.Entity;
+import entities.Player;
+import gameEngine.Camera;
+import gameEngine.PlayerController;
+import java.util.ArrayList;
+import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.tiled.TiledMap;
+import org.newdawn.slick.tests.TileMapTest;
 
 /**
  *
@@ -17,13 +22,16 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Overworld extends BasicGameState {
 
     private static int stateID;
-    private static Model model;
     private GameContainer container;
-    private TiledMap map;
-    private Animation[] animations = new Animation[8];
-    public static SpriteSheet spriteSheet1;
+    private MiniMap map = new MiniMap();
+    private Player player = new Player(map);
+    private PlayerController controller = new PlayerController(player);
+    private Camera cam = new Camera(player);
+    private boolean running = false;
+    private ArrayList<Entity> list = new ArrayList();
+    private ArrayList<Entity> listRemove = new ArrayList();
 
-    public Overworld(int stateID, Model model) {
+    public Overworld(int stateID) {
         Overworld.stateID = stateID;
     }
 
@@ -33,37 +41,25 @@ public class Overworld extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        model.init();
-        this.container = gc;
-        this.map = new TiledMap("res/maps/map_1-1.tmx");
-        spriteSheet1 = new SpriteSheet("res/maps/New Folder/LPC Base Assets/sprites/people/soldier_altcolor.png", 64, 64);
+    public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
+        this.container = container;
+        this.map.init();
+        this.player.init();
+        this.controller.setInput(container.getInput());
+        container.getInput().addKeyListener(controller);
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        this.map.render(0, 0);
-        System.out.println(model.getPlayer().getDirection());
-        grphcs.drawAnimation(model.getPlayer().getAnimation()[model.getPlayer().getDirection() + (model.getPlayer().getMoving() ? 4 : 0)], (float) model.getPlayer().getX() - 32, (float) model.getPlayer().getY() - 60);
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        this.cam.place(container, g);
+        this.map.renderBackground();
+        this.player.render(g);
+        this.map.renderForeground();
     }
 
     @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            model.getPlayer().setMoving(true);
-            model.getPlayer().setDirection(2);
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_UP)) {
-            model.getPlayer().setMoving(true);
-            model.getPlayer().setDirection(1);
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            model.getPlayer().setMoving(true);
-            model.getPlayer().setDirection(0);
-        }
-        if (gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-            model.getPlayer().setMoving(true);
-            model.getPlayer().setDirection(3);
-        }
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        this.player.update(delta);
+        this.cam.update(container);
     }
 }

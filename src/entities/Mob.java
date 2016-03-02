@@ -16,9 +16,7 @@ public abstract class Mob extends Entity {
     protected int hitpoints;
     protected int direction;
 
-    public Mob(Point coords, int direction) {
-        super(coords);
-        this.direction = direction;
+    public Mob() {
     }
 
 }

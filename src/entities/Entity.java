@@ -5,9 +5,10 @@
  */
 package entities;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
 /**
  *
@@ -17,19 +18,33 @@ public abstract class Entity {
 
     protected Animation[] animations = new Animation[8];
     protected Rectangle hitBox;
-    protected Point coords;
+    protected float x, y;
 
-    public Entity(Point coords) {
-        this.coords = coords;
-    }
 
-    public abstract void update();
+    public abstract void update(int delta);
 
-    public Point getCoords() {
-        return coords;
-    }
 
     public Rectangle getHitBox() {
         return hitBox;
+    }
+    
+    public abstract void init() throws SlickException;
+    
+    public abstract void render(Graphics g) throws SlickException;
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
     }
 }
