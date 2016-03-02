@@ -43,13 +43,13 @@ public class MainMenu extends BasicGameState {
         
         
         g.drawRect(WIDTH/2-playX/2, HEIGHT/3-playY/2, playX, playY);
-        g.drawString("Play",WIDTH/2-15, HEIGHT/3-10);//10 : depends on the string lenght
+        g.drawString("Continuer",WIDTH/2-35, HEIGHT/3-10);//10 : depends on the string lenght
         g.drawRect(WIDTH/2-newGameX/2,  HEIGHT/3+playY/2+10, newGameX, newGameY);
-        g.drawString("New Game", WIDTH/2-30, HEIGHT/3+playY/2+10+15);//15 & 5 : depends on the string lenght
+        g.drawString("Nouvelle partie", WIDTH/2-70, HEIGHT/3+playY/2+10+15);//15 & 5 : depends on the string lenght
         g.drawRect(WIDTH/2-settingsX, HEIGHT/3+playY/2+10+newGameY+10, settingsX, settingsY);
-        g.drawString("Paramètres", WIDTH/2-settingsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);
+        g.drawString("Paramètres", WIDTH/2-settingsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);//40 & 15 : depends on the string lenght
         g.drawRect(WIDTH/2, HEIGHT/3+playY/2+10+newGameY+10, creditsX, creditsY);
-        g.drawString("Credits", WIDTH/2+creditsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);
+        g.drawString("Credits", WIDTH/2+creditsX/2-40, HEIGHT/3+playY/2+10+newGameY+10+15);//40 & 15 : depends on the string lenght
     }
 
     @Override
@@ -59,11 +59,12 @@ public class MainMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         
-        if((mouseX>WIDTH/2-playX/2 && mouseX<WIDTH/2+playX/2) && (mouseY<HEIGHT-HEIGHT/3+playY/2+10 && mouseY>HEIGHT-HEIGHT/3+playY/2+10+newGameY)){
+        if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
             if(input.isMouseButtonDown(0)){
                 sbg.enterState(OVERWORLD);
             }
         }
+        
         
     }
 
