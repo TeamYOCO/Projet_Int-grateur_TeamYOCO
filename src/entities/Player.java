@@ -97,10 +97,10 @@ public class Player extends Mob {
         float futurX = this.x;
         switch (this.direction) {
             case 1:
-                futurX = this.x - .2f * delta;
+                futurX = this.x - speed * delta;
                 break;
             case 3:
-                futurX = this.x + .2f * delta;
+                futurX = this.x + speed * delta;
                 break;
         }
         return futurX;
@@ -111,10 +111,10 @@ public class Player extends Mob {
         float futurY = this.y;
         switch (this.direction) {
             case 0:
-                futurY = this.y - .2f * delta;
+                futurY = this.y - speed * delta;
                 break;
             case 2:
-                futurY = this.y + .2f * delta;
+                futurY = this.y + speed * delta;
                 break;
         }
         return futurY;
