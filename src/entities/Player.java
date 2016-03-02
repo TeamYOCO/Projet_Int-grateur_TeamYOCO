@@ -22,7 +22,7 @@ public class Player extends Mob {
 
     private PlayerEngine engine;
     private int direction = 2;
-    private float speed = (float) 0.2;
+    private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
     private boolean attacking = false;
@@ -83,57 +83,41 @@ public class Player extends Mob {
         }
 
         if (moving && !attacking) {
-            switch (direction) {
-                case 0:
-                    this.y = this.y - .2f * delta;
-                    break;
-                case 1:
-                    this.x = this.x - .2f * delta;
-                    break;
-                case 2:
-                    this.y = this.y + .2f * delta;
-                    break;
-                case 3:
-                    this.x = this.x + .2f * delta;
-                    break;
-            }
-            if (moving) {
-                if (!map.isCollision(futurX(x), futurY(y))) {
-                    this.x = futurX(x);
-                    this.y = futurY(y);
-                } else {
+            if (!map.isCollision(futurX(delta), futurY(delta))) {
+                this.x = futurX(delta);
+                this.y = futurY(delta);
+            } else {
 
-                }
             }
         }
     }
 
-    private float futurX(float x) {
-        switch (direction) {
-            case 0:
-                return x;
+    // Teste la position pour se déplacer en X
+    private float futurX(int delta) {
+        float futurX = this.x;
+        switch (this.direction) {
             case 1:
-                return (int) (x - speed);
-            case 2:
-                return x;
+                futurX = this.x - .2f * delta;
+                break;
             case 3:
-                return (int) (x + speed);
+                futurX = this.x + .2f * delta;
+                break;
         }
-        return x;
+        return futurX;
     }
 
-    private float futurY(float y) {
-        switch (direction) {
+    // Teste la position pour se déplacer en Y
+    private float futurY(int delta) {
+        float futurY = this.y;
+        switch (this.direction) {
             case 0:
-                return (int) (y - speed);
-            case 1:
-                return y;
+                futurY = this.y - .2f * delta;
+                break;
             case 2:
-                return (int) (y + speed);
-            case 3:
-                return y;
+                futurY = this.y + .2f * delta;
+                break;
         }
-        return y;
+        return futurY;
     }
 
     public int getDirection() {
