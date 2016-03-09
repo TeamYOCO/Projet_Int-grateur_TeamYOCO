@@ -39,13 +39,5 @@ public class Bee extends Mob {
         g.drawAnimation(moveAnimations[2], x, y);
     }
     
-    private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
-        Animation animation = new Animation();
-        for (int x = startX; x < endX; x++) {
-            animation.addFrame(spriteSheet.getSprite(x, y), 100);
-        }
-        return animation;
-    }
-    
     
 }
