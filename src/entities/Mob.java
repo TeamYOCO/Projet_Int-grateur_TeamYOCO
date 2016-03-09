@@ -16,8 +16,17 @@ public abstract class Mob extends Entity {
     protected Animation[] moveAnimations;
     protected int hitpoints;
     protected int direction;
+    protected boolean moving;
 
     public Mob() {
+    }
+    
+    public boolean getMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
     }
 
 }
