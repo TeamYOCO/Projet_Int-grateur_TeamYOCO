@@ -38,14 +38,7 @@ public class Bee extends Mob {
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(moveAnimations[2], x, y);
     }
-    
-    private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
-        Animation animation = new Animation();
-        for (int x = startX; x < endX; x++) {
-            animation.addFrame(spriteSheet.getSprite(x, y), 100);
-        }
-        return animation;
-    }
+
     
     
 }
