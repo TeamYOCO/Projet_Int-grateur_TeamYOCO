@@ -8,24 +8,32 @@ package entities;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
 
 /**
  *
  * @author Seb
  */
-public class particles extends Entity{
+public class particles extends Entity {
 
-    private  Animation  animation = new Animation();
-    private int lifeSpam;
-    private boolean dead;
+    private Animation animation = new Animation();
+    private int lifeSpam, speedX, speedY, direction;
+
+    public particles(int lifeSpam, int speedX, int speedY, int direction) {
+        this.lifeSpam = lifeSpam;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.direction = direction;
+    }
 
     public particles(Animation animation) {
     }
-    
+
     @Override
     public void update(int delta) {
-        
+        lifeSpam -= delta;
+        if (lifeSpam <= 0) {
+            dead = true;
+        }
     }
 
     @Override
@@ -34,7 +42,7 @@ public class particles extends Entity{
 
     @Override
     public void render(Graphics g) throws SlickException {
-        
+        g.drawAnimation(animation, x, y);
     }
-    
+
 }

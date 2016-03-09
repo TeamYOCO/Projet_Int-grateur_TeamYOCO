@@ -6,6 +6,7 @@
 package entities;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -29,9 +30,11 @@ public class Player extends Mob {
     private Animation[] attackAnimation = new Animation[4];
     private Animation[] swordAnimations = new Animation[4];
     private float atttimer = 10;
+    private ArrayList <Entity> list;
 
-    public Player(MiniMap map) {
+    public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
+        this.list = list;
     }
 
     @Override
