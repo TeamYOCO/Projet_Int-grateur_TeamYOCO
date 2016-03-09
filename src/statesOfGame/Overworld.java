@@ -85,7 +85,7 @@ public class Overworld extends BasicGameState {
     private void changeMap(int objectID) throws SlickException {
     player.setX(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "dest-x", Float.toString(player.getX()))));
     player.setY( Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "dest-y", Float.toString(player.getY()))));
-    String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "dest-map", "undefined");
+    String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "destMap", "undefined");
     if (!"undefined".equals(newMap)) {
         this.map.changeMap(newMap);
     }
