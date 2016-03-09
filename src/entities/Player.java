@@ -54,6 +54,10 @@ public class Player extends Mob {
         for (int i = 0; i < 4; i++) {
             attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
         }
+        SpriteSheet swordAttSpriteSheet = new SpriteSheet("res/sprites/sword_sheet_128.png", 64, 64);
+        for (int i = 0; i < 4; i++) {
+            swordAnimations[i] = loadAnimation(swordAttSpriteSheet, 0, 5, i);
+        }
     }
 
     @Override
@@ -128,7 +132,8 @@ public class Player extends Mob {
     public void attack() {
         attacking = true;
         atttimer = 0;
-
+        Particle swordSwing = new Particle(swordAnimations[direction],500, 0, 0, direction,this.x-32, this.y-64);
+        list.add(swordSwing);
     }
 
     public boolean getMoving() {

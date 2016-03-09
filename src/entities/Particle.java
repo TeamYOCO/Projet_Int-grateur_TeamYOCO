@@ -13,20 +13,21 @@ import org.newdawn.slick.SlickException;
  *
  * @author Seb
  */
-public class particles extends Entity {
+public class Particle extends Entity {
 
     private Animation animation = new Animation();
     private int lifeSpam, speedX, speedY, direction;
 
-    public particles(int lifeSpam, int speedX, int speedY, int direction) {
+    public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y) {
+        this.animation = animation;
         this.lifeSpam = lifeSpam;
         this.speedX = speedX;
         this.speedY = speedY;
         this.direction = direction;
+        this.x = x;
+        this.y = y;
     }
 
-    public particles(Animation animation) {
-    }
 
     @Override
     public void update(int delta) {
