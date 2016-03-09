@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="30" tilewidth="32" tileheight="32" nextobjectid="38">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="grassalt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/grassalt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="55" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="73" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="181" name="trunk" tilewidth="32" tileheight="32" tilecount="18" columns="6">
+  <image source="../tiles/trunk.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="199" name="treetop" tilewidth="32" tileheight="32" tilecount="42" columns="6">
+  <image source="../tiles/treetop.png" width="192" height="224"/>
+ </tileset>
+ <tileset firstgid="241" name="watergrass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/watergrass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="259" name="forest_tiles" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="../tiles/forest_tiles.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="515" name="chests" tilewidth="32" tileheight="32" tilecount="6" columns="2">
+  <image source="../tiles/chests.png" width="64" height="96"/>
+ </tileset>
+ <tileset firstgid="521" name="water" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/water.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="539" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <layer name="collision" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2ZSQ7DIAxFI67RTQd1UIf7X69CEQIhhwbs4OL8JyE22fjlxxCYJrscXPuwzqWyxuDEz0cXZ2vjxfACIvBBAy808EKD/kKTeoGbSO4FbmaQF5rg4uRkx21wx1vlpHbfvRcserkKfB8WvZwL/91r6x3dC9Vf4IXuufDy20t4ptbLe/C1nPLyTM5zPJzznRL/nCnNPW4pU9pZkvKSr+3curSzxPUSfHwa+/MSo3tZWrv27sX36Eejlzxjkl65SPQXKjNr6srPfOBl5t5pP9CCppdemdC6g033gTXvu4eXEc8hOffpvd77Fxo40QTQIAAA
+  </data>
+ </layer>
+ <layer name="background" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC43WS3LbMBAEUKpsxwtuQNrJCRL7/jeMWEWV208NJQuWJOIzQE9/NJZlGeezXp8tnv18tnNsje8780a8G/HuNr7GfmvUzNor8zbqDPbyTIN1I9at8XtjXu6Tawd1d8bG0u/v+sRyjfGsKxZi7r1zvOGfc3K9dV4vy/JyfZ6uz9v1+Ty/H++OsefL19ydPbPP9mKGw7p879Vgftawf86TNxtrE6/ERj7kOY/vbycGz+fzFJ+/zs8/J0Yr55lpYJQ6gzVy2T6mFmZaTX40DTV9Dd63OxyfP8Hg/cTh+P4R3BnsmfrJOzkne6IfrGW8aVMfSC64p3g0Pg729Qy3d++hoQOLY/zlxOdY/3G5x1Wsm694p9ardkf73T7tjxzT07al8y85l5w+8Pgd/Lj5yufla/z18h17fUAvV1PtkVveRe9MfPUxfScxsKaY6te3NU8nFj9Oftz48nli8+vSOdA8zjzLd96h8WLW30c+lnjpN55Vj3PNeLBXw1VvHIzrhe3/hZyd1VUH9rpxLO8if/W9PJc4pz+tzGu1raH/p77FunFeXtiz2f+JmQ6a9868pOGf/PM/gLneNJffzVm9uJ0ne9t0pCZnNZse5JDabpnT+CHfB/u0fGz52bxEjORc1m/ZNfNP72dP254z7ukR+pLz9+X+XrP8a1q0Zy2n9CJr7Mxt/zMal/Thpiv9fFZXnus/9kOMXKNW8n7qyz7Ki5ZVbS89MTmhTpuP6yPewwxomMgLOdnG7KFade3gERc5O8tQedue5lueyTPMMqrVabkv1/WDhlfDxLxsupWf3lNNmlft/vIk6zQOmA/OV4stv7cyd2MPubxN9sh39rr1stVpZ20e9iijm9/Ibe/atJ29fpRvasFx+yA2rc9mrhoWH7lnXe9m7xrf9fqZZpufW79lq/ppnPHMTfdtn8Y7z9E0nDXVtrk4896W/dZunuunPqNHmlErNeRKaniWLY1Ds1x3vVmTPdMPG872pGWN3rOzR+Ixy2Hf68lqrd258VW92fOWmc0/5UvzNTlkZtgD79h8tGljW+7v3zzAnqibltXW8+zuJa+9Q+Lp/q4RdzFrvBT/1k/zSv03P1TvalYdN5ybZhtPWoaYvXp98z1x0tf0rhzTx8VEzzNnPLf9+V/faR5gPu6sF2PPqW7bfcw1e9E8Qf81s2f8blqZ+deY1Gh50uq0u7XcECN1+CjT1Yl+b5Y1b1GnjRN5nrZn81P533Cf+WreT4zFRK9qNbz3WO7P0DLKO5ujK2vtvRlmvb3MUdftHG0s99Er/Q+Q82b5087UsmM2X5/RHxv+clQfnPVqYz/ft341rjRe5Dn8/Bev1GfrgznQxvQC79X4Zm8eaTH5ezvrXyMlPzXQIAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAvgy8hIPy0CAAAA==
+  </data>
+ </layer>
+ <layer name="road" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Zy0rDQBiF/7yIXYqgrYr3ghIXSXaK24rbglvdK+gb6BvoG+gDOoE58DtmJpl7UzxwmFyqyX/mm0vpkoiWa+xJQbQh3R5PhWfyeMKuo30RfhV+oPX2I9npTWTyLvxE6+1ny1zAy79+C7xsU1rvBKzh0NCvR459Dl5mlNa7A9/vwFCX6Z6vwMs+pfEmdeei9qtrP4dS6vllSna85BJ46dNpoOxsczHNHSadeL5vCl74O3blYjtmuvpoaL91fa7r+UN54Tr2yHEs4wi8XFFYX2ueNySXmOvMUIGXBYX1reZ5yGWL0u+ZXJw6l7E4Vi7qXLRH6fZKIZyKl7HoTPTnPOH8MhZhPYqdi+v+LKZM616s9eiG3NdyVTkyjcWLLVO++/ZWIfOLxYsvUyaWfPbbJvHvAzl5sZmfbOWbXU5eTD4f6Au/8rVaVV5K4Ua6lK5lW8nj1peOdfMxY/o+naP2O9L/3oP6K3bMc2rkNddc+pSTl3vS/95TMiMTtGClvTenOOMqJy9lj/m4aehvVrXSttdD8ZOTF9QIFpAFzivlvGZW7+H/cH582FkFXngGnAmVEeSBeabW/D0+A3Y+RH2fhX2bkxdeD59T+XyCTGrNucqNOqa+RH3fhX3b8vIDQd315NAgAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAvgy8hIPy0CAAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAvgy8hIPy0CAAAA==
+  </data>
+ </layer>
+ <layer name="foreground" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YSw6CMBCGC3Fn4vux0xupa+NaXatxqSTqAYzewccpLRGTcZxiKSK1zpf8aYGWDD/DtEEIt5nmHYClLAzndbzn1jUCw3mu+sEwTP5wfaHpeuwNhevrtCmcLwzDfIOeVF+hQY5x5clFahi11LXRd8OxiiHoY3/+2Zex1EShuP87VI65xExqHmkH+qFM/++4wEpqHWkP+qGCaIzrucFkS9kXogJU9V/H4By7EOdsRSdOOObhR0mqDtQgfFHdi/Ln19e9GvJD15d3/v+6L035/EUDXzAtdAz3A9e0QWaM6h1TOfPwRbd+7NCxbfuBgn9XEuJ8iWMp3u8HbEXnfSfxBd4P1xD8LX2KjSfE1kvepiWsMS2ktka+6PqSpr586hmzhFqLz0AnINW5EyHVuLA9SE+OKXy5AShIXv7QIAAA
+  </data>
+ </layer>
+ <objectgroup name="tp" width="100" height="100">
+  <object id="29" x="193" y="577" width="29" height="39"/>
+  <object id="30" x="1025" y="804" width="28" height="36"/>
+  <object id="31" x="2220" y="385" width="18" height="95"/>
+  <object id="32" x="3" y="133" width="10" height="86"/>
+ </objectgroup>
+</map>
