@@ -4,7 +4,7 @@
   <image source="../tiles/country.png" width="160" height="128"/>
   <tile id="0">
    <properties>
-    <property name="destMap" value="res/maps/map_1-1.tmx"/>
+    <property name="destMap" value="res/maps/map_1-1.tm"/>
     <property name="destX" value="256"/>
     <property name="destY" value="288"/>
    </properties>
@@ -45,7 +45,7 @@
  </tileset>
  <layer name="collision" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACzvFyMBwagTha0B8Hgu+jkcOGZ9C03MJiLGBi3jkcAF8eoaqeRcYIZha5sHikRg96HFPD/PwAVqbRykYzOaRG0b0MA89DnGlJ3LNoxagRfwCAMmq6f1ABgAA
+   H4sIAAAAAAAACzvFyMBwagTha0B8Hgu+jkcOGZ9C03MJiLGBi3jkcAF8eoaqeRcYIZha5sHikRg96HFPD/PwAVqbRykYzOaRG0b0MA89DnGlJ3LNoxYAxcdtRkSexIVhgJC6O0AMAKnc/Y9ABgAA
   </data>
  </layer>
  <layer name="background" width="20" height="20">
@@ -79,10 +79,10 @@
   </data>
  </layer>
  <objectgroup name="tp" width="100" height="100">
-  <object id="14" type="tp" x="291" y="622" width="52" height="14">
+  <object id="14" type="tp" x="291" y="622" width="58" height="14">
    <properties>
     <property name="destMap" value="res/maps/map_1-1.tmx"/>
-    <property name="destX" value="256"/>
+    <property name="destX" value="272"/>
     <property name="destY" value="288"/>
    </properties>
   </object>

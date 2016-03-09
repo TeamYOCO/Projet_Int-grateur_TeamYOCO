@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="35">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="36">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
  </tileset>
@@ -86,11 +86,11 @@
    <property name="destX" value=""/>
    <property name="destY" value=""/>
   </properties>
-  <object id="32" type="tp" x="257" y="241" width="30" height="29">
+  <object id="32" type="tp" x="256" y="258" width="30" height="29">
    <properties>
     <property name="destMap" value="res/maps/Maison_1.tmx"/>
-    <property name="destX" value="336"/>
-    <property name="destY" value="640"/>
+    <property name="destX" value="320"/>
+    <property name="destY" value="608"/>
    </properties>
   </object>
   <object id="33" type="tp" x="512" y="1" width="94" height="12">
