@@ -20,7 +20,7 @@ public abstract class Mob extends Entity {
 
     public Mob() {
     }
-    
+
     public boolean getMoving() {
         return moving;
     }

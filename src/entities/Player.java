@@ -122,10 +122,17 @@ public class Player extends Mob {
         this.direction = direction;
     }
 
-
     public void attack() {
         attacking = true;
         atttimer = 0;
 
+    }
+
+    public boolean getMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
     }
 }
