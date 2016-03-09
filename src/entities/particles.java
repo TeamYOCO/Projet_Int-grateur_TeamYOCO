@@ -8,6 +8,7 @@ package entities;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -15,7 +16,12 @@ import org.newdawn.slick.SlickException;
  */
 public class particles extends Entity{
 
-    private  Animation [] animations = new Animation[4];
+    private  Animation  animation = new Animation();
+    private int lifeSpam;
+    private boolean dead;
+
+    public particles(Animation animation) {
+    }
     
     @Override
     public void update(int delta) {
