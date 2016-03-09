@@ -28,7 +28,6 @@ public class MiniMap{
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
-        System.out.println(tiledMap.getLayerCount());
     }
 
 
