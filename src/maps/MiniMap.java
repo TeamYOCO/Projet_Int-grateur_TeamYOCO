@@ -31,11 +31,16 @@ public class MiniMap{
 
 
     public void renderBackground() {
-        tiledMap.render(0, 0);
+        tiledMap.render(0, 0,1);
+        tiledMap.render(0, 0,2);
+        tiledMap.render(0, 0,3);
+        tiledMap.render(0, 0,4);
     }
 
     // Affiche le foreground de la map
     public void renderForeground() {
+        tiledMap.render(0, 0,5);
+        tiledMap.render(0, 0,6);
     }
 
     public boolean isCollision(float x, float y) {
