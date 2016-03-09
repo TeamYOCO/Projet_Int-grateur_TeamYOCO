@@ -141,4 +141,12 @@ public class Player extends Mob {
         attacking = true;
         atttimer = 0;
     }
+    
+    public float getX(){
+        return x;
+    }
+    
+    public float getY(){
+        return y;
+    }
 }

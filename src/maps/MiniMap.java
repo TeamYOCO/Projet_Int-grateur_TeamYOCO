@@ -58,7 +58,6 @@ public class MiniMap{
         
     }
 
-    // Les méthodes suivantes sont des getters
     public TiledMap getTiledMap() {
         return tiledMap;
     }
@@ -91,7 +90,6 @@ public class MiniMap{
         return this.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
 
-    // Change la map
     public void changeMap(String file) throws SlickException {
         this.tiledMap = new TiledMap(file);
     }

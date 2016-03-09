@@ -61,5 +61,33 @@ public class Overworld extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         this.player.update(delta);
         this.cam.update(container);
+        updateTrigger();
     }
+
+    private void updateTrigger() throws SlickException {
+        for (int objectID = 0; objectID < this.map.getTiledMap().getObjectCount(0); objectID++) {
+            if (isInTrigger(objectID)) {
+                System.out.println("yup");
+                if ("tp".equals(this.map.getTiledMap().getObjectType(0, objectID))) {
+                    changeMap(objectID);
+                    System.out.println("yup2");
+                }
+            }
+        }
+    }
+
+    private boolean isInTrigger(int id) {
+        return player.getX() > this.map.getTiledMap().getObjectX(0, id)
+                && player.getX() < this.map.getTiledMap().getObjectX(0, id) + this.map.getTiledMap().getObjectWidth(0, id)
+                && player.getY() > this.map.getTiledMap().getObjectY(0, id)
+                && player.getY() < this.map.getTiledMap().getObjectY(0, id) + this.map.getTiledMap().getObjectHeight(0, id);
+    }
+    private void changeMap(int objectID) throws SlickException {
+    player.setX(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "dest-x", Float.toString(player.getX()))));
+    player.setY( Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "dest-y", Float.toString(player.getY()))));
+    String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "dest-map", "undefined");
+    if (!"undefined".equals(newMap)) {
+        this.map.changeMap(newMap);
+    }
+}
 }
