@@ -67,10 +67,8 @@ public class Overworld extends BasicGameState {
     private void updateTrigger() throws SlickException {
         for (int objectID = 0; objectID < this.map.getTiledMap().getObjectCount(0); objectID++) {
             if (isInTrigger(objectID)) {
-                System.out.println("yup");
                 if ("tp".equals(this.map.getTiledMap().getObjectType(0, objectID))) {
                     changeMap(objectID);
-                    System.out.println("yup2");
                 }
             }
         }
