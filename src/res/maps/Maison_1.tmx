@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="14">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="15">
  <tileset firstgid="1" name="country" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../tiles/country.png" width="160" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="destMap" value="res/maps/map_1-1.tmx"/>
+    <property name="destX" value="256"/>
+    <property name="destY" value="288"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="21" name="inside" tilewidth="32" tileheight="32" tilecount="100" columns="10">
   <image source="../tiles/inside.png" width="320" height="320"/>
@@ -71,4 +78,13 @@
    H4sIAAAAAAAAC2NgGAWjYBSMgpEL1BgH2gVDFwAA5AEqykAGAAA=
   </data>
  </layer>
+ <objectgroup name="tp" width="100" height="100">
+  <object id="14" type="tp" x="291" y="622" width="52" height="14">
+   <properties>
+    <property name="destMap" value="res/maps/map_1-1.tmx"/>
+    <property name="destX" value="256"/>
+    <property name="destY" value="288"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

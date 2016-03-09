@@ -48,6 +48,7 @@ public class MiniMap{
         int tileW = this.tiledMap.getTileWidth();
         int tileH = this.tiledMap.getTileHeight();
         int logicLayer = this.tiledMap.getLayerIndex("collision");
+        System.out.println(x+" "+y+" "+logicLayer);
         Image tile = this.tiledMap.getTileImage((int) x / tileW, (int) y / tileH, logicLayer);
         boolean collision = tile != null;
         if (collision) {
