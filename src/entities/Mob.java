@@ -13,7 +13,7 @@ import org.newdawn.slick.Animation;
  */
 public abstract class Mob extends Entity {
 
-    protected Animation[] moveAnimations = new Animation[8];
+    protected Animation[] moveAnimations;
     protected int hitpoints;
     protected int direction;
 

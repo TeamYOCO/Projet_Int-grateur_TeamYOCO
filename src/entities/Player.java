@@ -34,16 +34,9 @@ public class Player extends Mob {
         this.map = map;
     }
 
-    private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
-        Animation animation = new Animation();
-        for (int x = startX; x < endX; x++) {
-            animation.addFrame(spriteSheet.getSprite(x, y), 100);
-        }
-        return animation;
-    }
-
     @Override
     public void init() throws SlickException {
+        this.moveAnimations = new Animation[8];
         this.x = 620;
         this.y = 430;
         moving = false;
@@ -126,7 +119,7 @@ public class Player extends Mob {
     }
 
     public void setDirection(int direction) {
-            this.direction = direction;
+        this.direction = direction;
     }
 
     public boolean getMoving() {
@@ -140,5 +133,6 @@ public class Player extends Mob {
     public void attack() {
         attacking = true;
         atttimer = 0;
+
     }
 }

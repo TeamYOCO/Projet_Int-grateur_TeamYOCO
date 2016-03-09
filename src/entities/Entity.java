@@ -6,8 +6,10 @@
 package entities;
 
 import java.awt.Rectangle;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -45,5 +47,13 @@ public abstract class Entity {
 
     public void setY(float y) {
         this.y = y;
+    }
+    
+    protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
+        Animation animation = new Animation();
+        for (int x = startX; x < endX; x++) {
+            animation.addFrame(spriteSheet.getSprite(x, y), 100);
+        }
+        return animation;
     }
 }
