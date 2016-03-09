@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.tests.TileMapTest;
 
 /**
  *
