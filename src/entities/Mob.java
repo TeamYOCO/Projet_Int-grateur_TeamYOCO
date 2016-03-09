@@ -5,7 +5,7 @@
  */
 package entities;
 
-import java.awt.Point;
+import org.newdawn.slick.Animation;
 
 /**
  *
@@ -13,6 +13,7 @@ import java.awt.Point;
  */
 public abstract class Mob extends Entity {
 
+    protected Animation[] moveAnimations = new Animation[8];
     protected int hitpoints;
     protected int direction;
 

@@ -27,6 +27,7 @@ public class Player extends Mob {
     private MiniMap map;
     private boolean attacking = false;
     private Animation[] attackAnimation = new Animation[4];
+    private Animation[] swordAnimations = new Animation[4];
     private float atttimer = 10;
 
     public Player(MiniMap map) {
@@ -125,7 +126,7 @@ public class Player extends Mob {
     }
 
     public void setDirection(int direction) {
-        this.direction = direction;
+            this.direction = direction;
     }
 
     public boolean getMoving() {

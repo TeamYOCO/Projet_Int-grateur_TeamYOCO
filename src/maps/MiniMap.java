@@ -7,6 +7,7 @@ package maps;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -16,7 +17,8 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class MiniMap{
 
-    private static TiledMap tiledMap;
+    private TiledMap tiledMap;
+    private Music backgroundSong;
 
     public MiniMap() {
     }
@@ -58,8 +60,7 @@ public class MiniMap{
     }
 
     // Les méthodes suivantes sont des getters
-
-    public static TiledMap getTiledMap() {
+    public TiledMap getTiledMap() {
         return tiledMap;
     }
     

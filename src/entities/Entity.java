@@ -6,7 +6,6 @@
 package entities;
 
 import java.awt.Rectangle;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
@@ -16,7 +15,7 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Entity {
 
-    protected Animation[] moveAnimations = new Animation[8];
+    
     protected Rectangle hitBox;
     protected float x, y;
 
