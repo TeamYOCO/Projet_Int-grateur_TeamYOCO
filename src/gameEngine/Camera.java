@@ -38,6 +38,8 @@ public class Camera {
     // Se charge de positionner la caméra
     public void update(GameContainer container) {
         int w = container.getWidth() / 10;
+        int min = container.getWidth() / 2;
+        int max = this.map.getTiledMap().getWidth() * this.map.getTiledMap().getTileWidth() - container.getWidth() / 2;
         if (this.player.getX() > this.xCamera + w) {
             this.xCamera = this.player.getX() - w;
         } else if (this.player.getX() < this.xCamera - w) {
@@ -48,6 +50,22 @@ public class Camera {
             this.yCamera = this.player.getY() - h;
         } else if (this.player.getY() < this.yCamera - h) {
             this.yCamera = this.player.getY() + h;
+        }
+        if(this.map.getTiledMap().getWidth() * this.map.getTiledMap().getTileWidth()>=container.getWidth()){
+        if (this.xCamera < min) {
+            this.xCamera = min;
+        } else if (this.xCamera > max) {
+            this.xCamera = max;
+        }
+        }
+        min = container.getHeight() / 2;
+        max = this.map.getTiledMap().getHeight() * this.map.getTiledMap().getTileHeight() - container.getHeight() / 2;
+        if(this.map.getTiledMap().getHeight() * this.map.getTiledMap().getTileHeight()>=container.getHeight()){
+        if (this.yCamera < min) {
+            this.yCamera = min;
+        } else if (this.yCamera > max) {
+            this.yCamera = max;
+        }
         }
     }
 }
