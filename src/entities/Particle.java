@@ -5,6 +5,7 @@
  */
 package entities;
 
+import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -18,7 +19,7 @@ public class Particle extends Entity {
     protected Animation animation = new Animation();
     protected int lifeSpam, speedX, speedY, direction;
 
-    public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y) {
+    public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Rectangle hitBox) {
         this.animation = animation;
         this.lifeSpam = lifeSpam;
         this.speedX = speedX;
@@ -26,6 +27,7 @@ public class Particle extends Entity {
         this.direction = direction;
         this.x = x;
         this.y = y;
+        this.hitBox = hitBox;
     }
 
     public Particle() {

@@ -58,4 +58,8 @@ public abstract class Entity {
     public boolean isDead() {
         return dead;
     }
+
+    public Rectangle getHitbox() {
+        return this.hitBox;
+    }
 }

@@ -5,6 +5,7 @@
  */
 package entities;
 
+import java.awt.Rectangle;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -18,9 +19,9 @@ import org.newdawn.slick.SpriteSheet;
 public class SwordSwingParticle extends Particle{
     
     private Image image;
-    
-    public SwordSwingParticle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y) {
-        super(animation, lifeSpam, speedX, speedY, direction, x, y);
+
+    public SwordSwingParticle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Rectangle hitBox) {
+        super(animation, lifeSpam, speedX, speedY, direction, x, y, hitBox);
     }
 
     public SwordSwingParticle(int direction, float x, float y, int lifeSpam) throws SlickException {
@@ -44,7 +45,5 @@ public class SwordSwingParticle extends Particle{
     public void render(Graphics g) throws SlickException {
         g.drawImage(image, x, y);
     }
-    
-    
     
 }
