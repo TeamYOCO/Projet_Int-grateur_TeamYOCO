@@ -13,13 +13,14 @@ import org.newdawn.slick.SlickException;
  *
  * @author Seb
  */
-public class particles extends Entity{
+public class particles extends Entity {
 
-    private  Animation [] animations = new Animation[4];
+    private Animation[] animations = new Animation[4];
+    private int lifeSpam;
     
     @Override
     public void update(int delta) {
-        
+
     }
 
     @Override
@@ -28,7 +29,7 @@ public class particles extends Entity{
 
     @Override
     public void render(Graphics g) throws SlickException {
-        
+
     }
-    
+
 }
