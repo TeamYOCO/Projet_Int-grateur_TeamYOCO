@@ -142,10 +142,10 @@ public class Player extends Mob {
                 swordSwing = new SwordSwingParticle(direction, x-50, y-50, 500);
                 break;
             case 2:
-                swordSwing = new SwordSwingParticle(direction, x, y, 500);
+                swordSwing = new SwordSwingParticle(direction, x-30, y-10, 500);
                 break;
             case 3:
-                swordSwing = new SwordSwingParticle(direction, x, y, 500);
+                swordSwing = new SwordSwingParticle(direction, x+10, y-30, 500);
                 break;
         }
         list.add(swordSwing);
