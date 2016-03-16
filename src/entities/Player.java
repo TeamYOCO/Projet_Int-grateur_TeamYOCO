@@ -129,10 +129,25 @@ public class Player extends Mob {
         this.direction = direction;
     }
 
-    public void attack() {
+    public void attack() throws SlickException {
+        System.out.println(direction);
         attacking = true;
         atttimer = 0;
-        Particle swordSwing = new Particle(swordAnimations[direction],500, 0, 0, direction,this.x-32, this.y-64);
+        Particle swordSwing = new Particle();
+        switch (direction){
+            case 0:
+                swordSwing = new SwordSwingParticle(direction, x, y-64, 500);
+                break;
+            case 1:
+                swordSwing = new SwordSwingParticle(direction, x-50, y-50, 500);
+                break;
+            case 2:
+                swordSwing = new SwordSwingParticle(direction, x, y, 500);
+                break;
+            case 3:
+                swordSwing = new SwordSwingParticle(direction, x, y, 500);
+                break;
+        }
         list.add(swordSwing);
     }
 
