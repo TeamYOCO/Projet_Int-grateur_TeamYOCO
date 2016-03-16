@@ -6,6 +6,7 @@
 package entities;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -29,21 +30,16 @@ public class Player extends Mob {
     private Animation[] attackAnimation = new Animation[4];
     private Animation[] swordAnimations = new Animation[4];
     private float atttimer = 10;
+    private ArrayList <Entity> list;
 
-    public Player(MiniMap map) {
+    public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
-    }
-
-    private Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
-        Animation animation = new Animation();
-        for (int x = startX; x < endX; x++) {
-            animation.addFrame(spriteSheet.getSprite(x, y), 100);
-        }
-        return animation;
+        this.list = list;
     }
 
     @Override
     public void init() throws SlickException {
+        this.moveAnimations = new Animation[8];
         this.x = 620;
         this.y = 430;
         moving = false;
@@ -57,6 +53,10 @@ public class Player extends Mob {
         SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
         for (int i = 0; i < 4; i++) {
             attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
+        }
+        SpriteSheet swordAttSpriteSheet = new SpriteSheet("res/sprites/sword_sheet_128.png", 64, 64);
+        for (int i = 0; i < 4; i++) {
+            swordAnimations[i] = loadAnimation(swordAttSpriteSheet, 0, 5, i);
         }
     }
 
@@ -126,7 +126,14 @@ public class Player extends Mob {
     }
 
     public void setDirection(int direction) {
-            this.direction = direction;
+        this.direction = direction;
+    }
+
+    public void attack() {
+        attacking = true;
+        atttimer = 0;
+        Particle swordSwing = new Particle(swordAnimations[direction],500, 0, 0, direction,this.x-32, this.y-64);
+        list.add(swordSwing);
     }
 
     public boolean getMoving() {
@@ -135,10 +142,5 @@ public class Player extends Mob {
 
     public void setMoving(boolean moving) {
         this.moving = moving;
-    }
-
-    public void attack() {
-        attacking = true;
-        atttimer = 0;
     }
 }

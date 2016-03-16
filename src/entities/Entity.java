@@ -6,8 +6,10 @@
 package entities;
 
 import java.awt.Rectangle;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -15,20 +17,18 @@ import org.newdawn.slick.SlickException;
  */
 public abstract class Entity {
 
-    
     protected Rectangle hitBox;
     protected float x, y;
-
+    protected boolean dead = false;
 
     public abstract void update(int delta);
-
 
     public Rectangle getHitBox() {
         return hitBox;
     }
-    
+
     public abstract void init() throws SlickException;
-    
+
     public abstract void render(Graphics g) throws SlickException;
 
     public float getX() {
@@ -45,5 +45,17 @@ public abstract class Entity {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
+        Animation animation = new Animation();
+        for (int x = startX; x < endX; x++) {
+            animation.addFrame(spriteSheet.getSprite(x, y), 100);
+        }
+        return animation;
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }

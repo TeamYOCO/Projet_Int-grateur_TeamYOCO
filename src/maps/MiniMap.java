@@ -28,16 +28,20 @@ public class MiniMap{
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
-        System.out.println(tiledMap.getLayerCount());
     }
 
 
     public void renderBackground() {
-        tiledMap.render(0, 0);
+        tiledMap.render(0, 0,1);
+        tiledMap.render(0, 0,2);
+        tiledMap.render(0, 0,3);
+        tiledMap.render(0, 0,4);
     }
 
     // Affiche le foreground de la map
     public void renderForeground() {
+        tiledMap.render(0, 0,5);
+        tiledMap.render(0, 0,6);
     }
 
     public boolean isCollision(float x, float y) {
@@ -54,7 +58,6 @@ public class MiniMap{
         
     }
 
-    // Les méthodes suivantes sont des getters
     public TiledMap getTiledMap() {
         return tiledMap;
     }
@@ -87,7 +90,6 @@ public class MiniMap{
         return this.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
 
-    // Change la map
     public void changeMap(String file) throws SlickException {
         this.tiledMap = new TiledMap(file);
     }
