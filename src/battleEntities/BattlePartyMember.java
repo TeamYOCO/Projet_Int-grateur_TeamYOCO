@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package playerEngine;
+package battleEntities;
+
+import org.newdawn.slick.Animation;
 
 /**
  *
  * @author 1455367
  */
-public class PlayerEngine {
-
-    private static String name;
+public class BattlePartyMember extends BattleEntity{
+    
+    private Animation attackAnimation;
+    private Animation spellAnimation;
 }

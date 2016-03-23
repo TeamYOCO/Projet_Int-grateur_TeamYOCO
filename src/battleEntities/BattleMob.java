@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package playerEngine;
+package battleEntities;
 
 /**
  *
  * @author 1455367
  */
-public class EquipementInventory {
-
+public class BattleMob {
+    
 }

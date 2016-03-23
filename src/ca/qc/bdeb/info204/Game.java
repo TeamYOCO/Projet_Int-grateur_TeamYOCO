@@ -25,6 +25,7 @@ public class Game extends StateBasedGame {
     public static final int SKILLTREE = 3;
     public static final int MAP = 4;
     public static final int MENU = 5;
+    public static final int COMBATSCREEN = 6;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
 

@@ -56,15 +56,6 @@ public class PlayerController implements KeyListener {
                 this.player.setDirection(3);
                 this.player.setMoving(true);
                 break;
-            case Input.KEY_D:
-        {
-            try {
-                this.player.attack();
-            } catch (SlickException ex) {
-                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                break;
         }
     }
 

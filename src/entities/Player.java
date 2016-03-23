@@ -13,24 +13,18 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import playerEngine.PlayerEngine;
 
 /**
  *
  * @author Seb
  */
 public class Player extends Mob {
-
-    private PlayerEngine engine;
+    
     private int direction = 2;
     private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
-    private boolean attacking = false;
-    private Animation[] attackAnimation = new Animation[4];
-    private Animation[] swordAnimations = new Animation[4];
-    private float atttimer = 10;
-    private ArrayList <Entity> list;
+    private ArrayList<Entity> list;
 
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
@@ -50,45 +44,22 @@ public class Player extends Mob {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
         }
-        SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
-        for (int i = 0; i < 4; i++) {
-            attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
-        }
-        SpriteSheet swordAttSpriteSheet = new SpriteSheet("res/sprites/sword_sheet_128.png", 64, 64);
-        for (int i = 0; i < 4; i++) {
-            swordAnimations[i] = loadAnimation(swordAttSpriteSheet, 0, 5, i);
-        }
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
-        if (attacking) {
-            g.drawAnimation(attackAnimation[direction], x - 32, y - 60);
-        } else {
-            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
-        }
+        g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
     }
 
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (atttimer < 500) {
-            atttimer += delta;
-        } else {
-            attacking = false;
-            for (int i = 0; i < attackAnimation.length; i++) {
-                attackAnimation[i].restart();
-            }
-        }
-
-        if (moving && !attacking) {
+        if (moving) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
-            } else {
-
             }
         }
     }
@@ -127,28 +98,6 @@ public class Player extends Mob {
 
     public void setDirection(int direction) {
         this.direction = direction;
-    }
-
-    public void attack() throws SlickException {
-        System.out.println(direction);
-        attacking = true;
-        atttimer = 0;
-        Particle swordSwing = new Particle();
-        switch (direction){
-            case 0:
-                swordSwing = new SwordSwingParticle(direction, x, y-64, 500);
-                break;
-            case 1:
-                swordSwing = new SwordSwingParticle(direction, x-50, y-50, 500);
-                break;
-            case 2:
-                swordSwing = new SwordSwingParticle(direction, x-30, y-10, 500);
-                break;
-            case 3:
-                swordSwing = new SwordSwingParticle(direction, x+10, y-30, 500);
-                break;
-        }
-        list.add(swordSwing);
     }
 
     public boolean getMoving() {
