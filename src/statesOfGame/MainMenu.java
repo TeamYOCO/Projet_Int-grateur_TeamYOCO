@@ -8,6 +8,8 @@ package statesOfGame;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -23,9 +25,17 @@ public class MainMenu extends BasicGameState {
     private final int newGameX = 400,newGameY = 50;
     private final int settingsX = 200, settingsY = 50;
     private final int creditsX = 200, creditsY = 50;
+    private final String menuTheme = "102-menu-selection.WAV";
+    private final String overworldTheme = "006-link-s-house.WAV";
+    Music menuMusic,overworldMusic;
 
-    public MainMenu(int stateID) {
+    public MainMenu(int stateID) throws SlickException {
         MainMenu.stateID = stateID;
+        menuMusic = new Music(menuTheme);
+        overworldMusic = new Music(overworldTheme);
+        menuMusic.play();
+        
+        
     }
 
     @Override
@@ -61,6 +71,8 @@ public class MainMenu extends BasicGameState {
         
         if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
             if(input.isMouseButtonDown(0)){
+                menuMusic.stop();
+                overworldMusic.play();
                 sbg.enterState(OVERWORLD);
             }
         }

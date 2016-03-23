@@ -29,7 +29,6 @@ public class Overworld extends BasicGameState {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private boolean running = false;
-    private final String mainTheme = "006-link-s-house.WAV";
     
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -47,8 +46,6 @@ public class Overworld extends BasicGameState {
         this.player.init();
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
-        Music mainMusic = new Music(mainTheme);
-        mainMusic.play();
     }
     
     @Override
