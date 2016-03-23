@@ -25,8 +25,8 @@ public class MainMenu extends BasicGameState {
     private final int newGameX = 400,newGameY = 50;
     private final int settingsX = 200, settingsY = 50;
     private final int creditsX = 200, creditsY = 50;
-    private final String menuTheme = "102-menu-selection.WAV";
-    private final String overworldTheme = "006-link-s-house.WAV";
+    private final String menuTheme = "res/musics/102-menu-selection.WAV";
+    private final String overworldTheme = "res/musics/006-link-s-house.WAV";
     Music menuMusic,overworldMusic;
 
     public MainMenu(int stateID) throws SlickException {
