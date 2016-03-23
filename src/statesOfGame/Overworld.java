@@ -47,8 +47,8 @@ public class Overworld extends BasicGameState {
         this.player.init();
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
-        Music music = new Music(mainTheme);
-        music.play();
+        Music mainMusic = new Music(mainTheme);
+        mainMusic.play();
     }
     
     @Override
