@@ -15,6 +15,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import statesOfGame.CombatScreen;
+import statesOfGame.InventoryMenu;
 
 public class Game extends StateBasedGame {
 
@@ -22,10 +24,7 @@ public class Game extends StateBasedGame {
     public static final int MAINMENU = 0;
     public static final int OVERWORLD = 1;
     public static final int INVENTORY = 2;
-    public static final int SKILLTREE = 3;
-    public static final int MAP = 4;
-    public static final int MENU = 5;
-    public static final int COMBATSCREEN = 6;
+    public static final int COMBATSCREEN = 3;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
 
@@ -34,13 +33,17 @@ public class Game extends StateBasedGame {
         super(name);
         this.addState(new MainMenu(MAINMENU));
         this.addState(new Overworld(OVERWORLD));
+        this.addState(new InventoryMenu(INVENTORY));
+        this.addState(new CombatScreen(COMBATSCREEN));
+        
     }
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
-        this.enterState(MAINMENU);
+        this.getState(INVENTORY).init(gc, this);
+        this.getState(COMBATSCREEN).init(gc, this);
     }
 
     // Boucle main
