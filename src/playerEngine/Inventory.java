@@ -5,7 +5,6 @@
  */
 package playerEngine;
 
-import items.Consumable;
 import items.Equipment;
 import java.util.ArrayList;
 
