@@ -10,7 +10,7 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  *
- * @author 1455367
+ * @author Seb
  */
 public abstract class BattleEntity {
     

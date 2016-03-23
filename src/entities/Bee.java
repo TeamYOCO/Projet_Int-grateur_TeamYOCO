@@ -12,7 +12,7 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  *
- * @author 1485246
+ * @author Olivier
  */
 public class Bee extends Mob {
 

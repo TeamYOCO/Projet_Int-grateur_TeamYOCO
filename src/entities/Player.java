@@ -15,7 +15,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 /**
- *
+ * Classe qui contient l'affichage et le déplacement du joueur dans le overworld
  * @author Seb
  */
 public class Player extends Mob {
@@ -92,6 +92,7 @@ public class Player extends Mob {
         return futurY;
     }
 
+    // Les méthodes suivantes sont des getters/setters
     public int getDirection() {
         return direction;
     }

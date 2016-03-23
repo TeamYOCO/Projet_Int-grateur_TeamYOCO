@@ -12,8 +12,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
- *
- * @author 1455367
+ * Contient 
+ * @author Tomas
  */
 public class MiniMap{
 
