@@ -8,8 +8,6 @@ package statesOfGame;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -50,7 +48,6 @@ public class MainMenu extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
         
         g.drawRect(WIDTH/2-playX/2, HEIGHT/3-playY/2, playX, playY);
         g.drawString("Continuer",WIDTH/2-35, HEIGHT/3-10);//10 : depends on the string lenght

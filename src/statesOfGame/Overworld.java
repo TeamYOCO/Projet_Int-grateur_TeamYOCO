@@ -5,6 +5,7 @@
  */
 package statesOfGame;
 
+import ca.qc.bdeb.info204.Game;
 import entities.Entity;
 import entities.Player;
 import gameEngine.Camera;
@@ -19,7 +20,7 @@ import org.newdawn.slick.state.*;
  * @author 1455367
  */
 public class Overworld extends BasicGameState {
-    
+
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
@@ -29,16 +30,16 @@ public class Overworld extends BasicGameState {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private boolean running = false;
-    
+
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
     }
-    
+
     @Override
     public int getID() {
         return stateID;
     }
-    
+
     @Override
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
         this.container = container;
@@ -47,7 +48,7 @@ public class Overworld extends BasicGameState {
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
     }
-    
+
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
@@ -58,9 +59,11 @@ public class Overworld extends BasicGameState {
         }
         this.map.renderForeground();
     }
-    
+
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        Input input = gc.getInput();
+
         this.player.update(delta);
         for (Entity entity : list) {
             entity.update(delta);
@@ -74,8 +77,12 @@ public class Overworld extends BasicGameState {
         listRemove.clear();
         this.cam.update(container);
         updateTrigger();
+
+        if (input.isKeyPressed(23)) {
+            sbg.enterState(Game.INVENTORY);
+        }
     }
-    
+
     private void updateTrigger() throws SlickException {
         for (int objectID = 0; objectID < this.map.getTiledMap().getObjectCount(0); objectID++) {
             if (isInTrigger(objectID)) {
@@ -85,14 +92,14 @@ public class Overworld extends BasicGameState {
             }
         }
     }
-    
+
     private boolean isInTrigger(int id) {
         return player.getX() > this.map.getTiledMap().getObjectX(0, id)
                 && player.getX() < this.map.getTiledMap().getObjectX(0, id) + this.map.getTiledMap().getObjectWidth(0, id)
                 && player.getY() > this.map.getTiledMap().getObjectY(0, id)
                 && player.getY() < this.map.getTiledMap().getObjectY(0, id) + this.map.getTiledMap().getObjectHeight(0, id);
     }
-    
+
     private void changeMap(int objectID) throws SlickException {
         player.setX(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destX", Float.toString(player.getX()))));
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));

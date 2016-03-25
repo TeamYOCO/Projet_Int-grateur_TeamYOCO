@@ -5,8 +5,11 @@
  */
 package statesOfGame;
 
+import ca.qc.bdeb.info204.Game;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -17,10 +20,11 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class InventoryMenu extends BasicGameState {
 
-    private int stateID;
+    private static int stateID;
+    private Image inventoryPic;
 
-    public InventoryMenu(int stateID) {
-        this.stateID = stateID;
+    public InventoryMenu(int stateID) throws SlickException {
+        InventoryMenu.stateID = stateID;
     }
 
     @Override
@@ -30,14 +34,22 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        inventoryPic = new Image("res/pictures/inventory1.png");
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        inventoryPic.draw(0,0);
+        
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        Input input = gc.getInput();
+        
+        if(input.isKeyPressed(23)){
+            sbg.enterState(Game.OVERWORLD);
+        }
     }
 
 }
