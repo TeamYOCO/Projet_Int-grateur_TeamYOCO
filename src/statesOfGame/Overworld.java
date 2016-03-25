@@ -30,6 +30,7 @@ public class Overworld extends BasicGameState {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private boolean running = false;
+    private static Image screenShot;
 
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -47,6 +48,7 @@ public class Overworld extends BasicGameState {
         this.player.init();
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
+        screenShot = new Image(container.getWidth(),container.getHeight());
     }
 
     @Override
@@ -62,7 +64,7 @@ public class Overworld extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-        Input input = gc.getInput();
+        Input input = container.getInput();
 
         this.player.update(delta);
         for (Entity entity : list) {
@@ -78,7 +80,8 @@ public class Overworld extends BasicGameState {
         this.cam.update(container);
         updateTrigger();
 
-        if (input.isKeyPressed(23)) {
+        if (input.isKeyPressed(23)) { // touche 23 = 'i'
+            container.getGraphics().copyArea(screenShot, 0, 0);
             sbg.enterState(Game.INVENTORY);
         }
     }
@@ -107,5 +110,9 @@ public class Overworld extends BasicGameState {
         if (!"undefined".equals(newMap)) {
             this.map.changeMap(newMap);
         }
+    }
+    
+    public static Image getScreenShot(){
+        return screenShot;
     }
 }

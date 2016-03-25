@@ -34,11 +34,12 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        inventoryPic = new Image("res/pictures/inventory1.png");
+        inventoryPic = new Image("res/pictures/inventory.png");
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        Overworld.getScreenShot().draw(0,0);
         inventoryPic.draw(0,0);
         
     }
