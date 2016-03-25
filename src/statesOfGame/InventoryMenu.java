@@ -34,7 +34,7 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        inventoryPic = new Image("res/pictures/inventory.png");
+        inventoryPic = new Image("res/pictures/inventory1.png");
     }
 
     @Override
