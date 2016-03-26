@@ -17,6 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import statesOfGame.CombatScreen;
 import statesOfGame.InventoryMenu;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import static org.lwjgl.opengl.GL11.*;
 
 public class Game extends StateBasedGame {
 
@@ -53,7 +57,7 @@ public class Game extends StateBasedGame {
         try {
             appGc = new AppGameContainer(new Game(gameName));
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
-//            appGc.setShowFPS(false);
+            appGc.setShowFPS(false);
             appGc.start();
         } catch (SlickException ex) {
             ex.printStackTrace();

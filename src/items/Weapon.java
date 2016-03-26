@@ -5,6 +5,7 @@
  */
 package items;
 
+import java.awt.Rectangle;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -40,8 +41,12 @@ public class Weapon extends Equipment{
     public void init() throws SlickException {
         this.x = 564;
         this.y = 154;
-        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
-        this.animation = loadAnimation(moveSpriteSheet, 0, 1, 0);
+        try{
+            SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
+            this.animation = loadAnimation(moveSpriteSheet, 0, 1, 0);
+        } catch (RuntimeException e){System.out.println("RuntimeException");}
+        
+        this.hitBox = new Rectangle(100,100);
     }
 
     @Override

@@ -5,10 +5,16 @@
  */
 package maps;
 
+import items.Equipment;
+import items.Weapon;
+import java.util.ArrayList;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
@@ -19,6 +25,7 @@ public class MiniMap{
 
     private TiledMap tiledMap;
     private Music backgroundSong;
+    private ArrayList<Weapon> listEquipment = new ArrayList();
 
     public MiniMap() {
     }
@@ -42,6 +49,24 @@ public class MiniMap{
     public void renderForeground() {
         tiledMap.render(0, 0,5);
         tiledMap.render(0, 0,6);
+    }
+    
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+        if(!listEquipment.isEmpty()){
+            for (int i = 0; i < listEquipment.size(); i++) {
+                listEquipment.get(i).render(g);
+            }
+        }
+    }
+    
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        
+        listEquipment.add(new Weapon(this));
+        
+        for (Equipment equipment : listEquipment) {
+            equipment.init();
+        }
+        
     }
 
     public boolean isCollision(float x, float y) {

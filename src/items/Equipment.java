@@ -5,6 +5,7 @@
  */
 package items;
 
+import java.awt.Rectangle;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -19,6 +20,7 @@ public abstract class Equipment {
     
     protected float x,y;
     protected MiniMap map;
+    protected Rectangle hitBox;
     
     public abstract void update(int delta);
 
@@ -34,5 +36,15 @@ public abstract class Equipment {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
         }
         return animation;
+    }
+    
+    public boolean isCollision(Rectangle rectObjet){
+        boolean collision = false;
+        if(hitBox.getBounds().intersects(rectObjet)) collision = true;
+        return collision;
+    }
+    
+    public Rectangle getHitBox() {
+        return hitBox;
     }
 }

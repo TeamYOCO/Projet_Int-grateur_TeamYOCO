@@ -10,6 +10,7 @@ import entities.Entity;
 import entities.Player;
 import gameEngine.Camera;
 import gameEngine.PlayerController;
+import items.Equipment;
 import items.Weapon;
 import java.util.ArrayList;
 import maps.MiniMap;
@@ -32,9 +33,6 @@ public class Overworld extends BasicGameState {
     private Camera cam = new Camera(player, map);
     private boolean running = false;
     private static Image screenShot;
-    private Weapon sword = new Weapon(map);
-    private Graphics gr;
-    private static InventoryMenu inventory;
 
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -53,7 +51,6 @@ public class Overworld extends BasicGameState {
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(),container.getHeight());
-        this.sword.init();
     }
 
     @Override
@@ -65,8 +62,7 @@ public class Overworld extends BasicGameState {
             entity.render(g);
         }
         this.map.renderForeground();
-        this.sword.render(g);
-        this.gr = g;
+        
     }
 
     @Override
@@ -91,6 +87,7 @@ public class Overworld extends BasicGameState {
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }
+        
     }
 
     private void updateTrigger() throws SlickException {

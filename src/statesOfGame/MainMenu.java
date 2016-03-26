@@ -25,6 +25,7 @@ public class MainMenu extends BasicGameState {
     private final int creditsX = 200, creditsY = 50;
     private final String menuTheme = "res/musics/102-menu-selection.WAV";
     private final String overworldTheme = "res/musics/006-link-s-house.WAV";
+    private Image background;
     Music menuMusic,overworldMusic;
 
     public MainMenu(int stateID) throws SlickException {
@@ -43,12 +44,15 @@ public class MainMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        background = new Image("res/pictures/tree_sun.png");
         
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
+        background.draw(0,0);
+        g.setColor(Color.white);
         g.drawRect(WIDTH/2-playX/2, HEIGHT/3-playY/2, playX, playY);
         g.drawString("Continuer",WIDTH/2-35, HEIGHT/3-10);//10 : depends on the string lenght
         g.drawRect(WIDTH/2-newGameX/2,  HEIGHT/3+playY/2+10, newGameX, newGameY);

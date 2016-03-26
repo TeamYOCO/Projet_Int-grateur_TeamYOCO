@@ -46,9 +46,7 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        Input input = gc.getInput();
-        
-        if(input.isKeyPressed(23)){
+        if(gc.getInput().isKeyPressed(23)){
             sbg.enterState(Game.OVERWORLD);
         }
     }
