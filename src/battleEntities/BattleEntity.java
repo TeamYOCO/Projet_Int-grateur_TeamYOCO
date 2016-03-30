@@ -7,8 +7,10 @@ package battleEntities;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import shionn.slick.animation.PathAnimation;
 
 /**
  *
@@ -16,7 +18,8 @@ import org.newdawn.slick.SpriteSheet;
  */
 public abstract class BattleEntity {
     
-    protected Animation waitAnimation;
+    protected PathAnimation waitAnimation;
+    protected Image image;
     
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();

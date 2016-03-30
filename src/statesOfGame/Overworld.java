@@ -31,7 +31,7 @@ public class Overworld extends BasicGameState {
     private Camera cam = new Camera(player, map);
     private boolean running = false;
     private static Image screenShot;
-    private static Music overworldMusic;
+    private Music overworldMusic;
     private final String overworldTheme = "res/musics/006-link-s-house.WAV";
 
     public Overworld(int stateID) {
@@ -42,7 +42,11 @@ public class Overworld extends BasicGameState {
     public int getID() {
         return stateID;
     }
-
+    
+    public void enterState(){
+        overworldMusic.play();
+    }
+    
     @Override
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
         this.container = container;
@@ -121,7 +125,7 @@ public class Overworld extends BasicGameState {
         return screenShot;
     }
     
-    public static Music getMusic(){
+    public Music getMusic(){
         return overworldMusic;
     }
 }

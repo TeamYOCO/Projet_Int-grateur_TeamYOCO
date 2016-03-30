@@ -70,7 +70,6 @@ public class MainMenu extends BasicGameState {
             if(input.isMouseButtonDown(0)){
                 menuMusic.stop();
                 sbg.enterState(OVERWORLD);
-                Overworld.getMusic().play();
             }
         }
         

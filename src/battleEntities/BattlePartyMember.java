@@ -5,9 +5,12 @@
  */
 package battleEntities;
 
+import gameEngine.PathAnimation;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import partyMember.PartyMember;
 
 /**
  *
@@ -15,10 +18,13 @@ import org.newdawn.slick.SlickException;
  */
 public class BattlePartyMember extends BattleEntity{
     
-    private Animation attackAnimation;
-    private Animation spellAnimation;
+    private PathAnimation attackAnimation;
+    private PathAnimation spellAnimation;
+    private PartyMember activeCharacter;
+    
 
     @Override
     public void render(Graphics g) throws SlickException {
+        
     }
 }
