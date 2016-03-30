@@ -10,8 +10,6 @@ import entities.Entity;
 import entities.Player;
 import gameEngine.Camera;
 import gameEngine.PlayerController;
-import items.Equipment;
-import items.Weapon;
 import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.*;
@@ -64,7 +62,7 @@ public class Overworld extends BasicGameState {
         for (Entity entity : list) {
             entity.render(g);
         }
-        this.map.renderForeground(g);
+        this.map.renderForeground();
         
     }
 

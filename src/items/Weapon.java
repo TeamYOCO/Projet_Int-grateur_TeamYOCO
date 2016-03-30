@@ -45,12 +45,10 @@ public class Weapon extends Equipment {
         this.animation = loadAnimation(moveSpriteSheet, 0, 1, 0);
 
         this.hitBox = new Rectangle(100, 100);
-        System.out.println("init weapon");
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
-        System.out.println("render weapon");
     }
 }

@@ -32,18 +32,8 @@ public class MiniMap {
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
-        this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
-        listMap.add(tiledMap);
+        this.changeMap("res/maps/map_1-1.tmx");
 
-        try {
-            if (this.getTiledMap() == listMap.get(1)) {
-                listEquipment.add(new Weapon(this));
-            }
-        } catch (IndexOutOfBoundsException e) {}
-
-        for (Equipment equipment : listEquipment) {
-            equipment.init();
-        }
     }
 
     public void renderBackground(Graphics g) throws SlickException {
@@ -51,19 +41,28 @@ public class MiniMap {
         tiledMap.render(0, 0, 2);
         tiledMap.render(0, 0, 3);
         tiledMap.render(0, 0, 4);
-        for (Equipment equipment : listEquipment) {
-            equipment.render(g);
+
+        try {
+            if (tiledMap == listMap.get(1)) {
+                listEquipment.add(new Weapon(this));
+
+                for (Equipment equipment : listEquipment) {
+                    equipment.init();
+                    equipment.render(g);
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
         }
+
     }
 
 // Affiche le foreground de la map
-    public void renderForeground(Graphics g) {
+    public void renderForeground() {
         tiledMap.render(0, 0, 5);
         tiledMap.render(0, 0, 6);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-
     }
 
     public boolean isCollision(float x, float y) {
@@ -114,5 +113,6 @@ public class MiniMap {
 
     public void changeMap(String file) throws SlickException {
         this.tiledMap = new TiledMap(file);
+        TiledMap tm = this.tiledMap;
     }
 }
