@@ -32,7 +32,7 @@ public class MiniMap {
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
-        this.changeMap("res/maps/map_1-1.tmx");
+        this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
 
     }
 
@@ -41,19 +41,6 @@ public class MiniMap {
         tiledMap.render(0, 0, 2);
         tiledMap.render(0, 0, 3);
         tiledMap.render(0, 0, 4);
-
-        try {
-            if (tiledMap == listMap.get(1)) {
-                listEquipment.add(new Weapon(this));
-
-                for (Equipment equipment : listEquipment) {
-                    equipment.init();
-                    equipment.render(g);
-                }
-            }
-        } catch (IndexOutOfBoundsException e) {
-        }
-
     }
 
 // Affiche le foreground de la map
