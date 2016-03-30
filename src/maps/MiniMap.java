@@ -113,6 +113,5 @@ public class MiniMap {
 
     public void changeMap(String file) throws SlickException {
         this.tiledMap = new TiledMap(file);
-        TiledMap tm = this.tiledMap;
     }
 }
