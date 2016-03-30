@@ -71,11 +71,11 @@
    <property name="destX" value="2208"/>
    <property name="destY" value="416"/>
   </properties>
-  <object id="40" x="289" y="1441" width="29" height="30">
+  <object id="40" type="tp" x="289" y="1441" width="29" height="30">
    <properties>
-    <property name="destMap" value=""/>
-    <property name="destX" value=""/>
-    <property name="destY" value=""/>
+    <property name="destMap" value="res/maps/cavern_1.tmx"/>
+    <property name="destX" value="832"/>
+    <property name="destY" value="800"/>
    </properties>
   </object>
   <object id="41" type="tp" x="737" y="1584" width="94" height="18">
@@ -86,13 +86,6 @@
    </properties>
   </object>
   <object id="42" x="1585" y="1026" width="14" height="93">
-   <properties>
-    <property name="destMap" value="map_4"/>
-    <property name="destX" value=""/>
-    <property name="destY" value=""/>
-   </properties>
-  </object>
-  <object id="43" x="1583" y="193" width="15" height="125">
    <properties>
     <property name="destMap" value="map_4"/>
     <property name="destX" value=""/>
