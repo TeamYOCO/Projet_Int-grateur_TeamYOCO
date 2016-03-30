@@ -33,6 +33,8 @@ public class Overworld extends BasicGameState {
     private Camera cam = new Camera(player, map);
     private boolean running = false;
     private static Image screenShot;
+    private static Music overworldMusic;
+    private final String overworldTheme = "res/musics/006-link-s-house.WAV";
 
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -51,17 +53,18 @@ public class Overworld extends BasicGameState {
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(),container.getHeight());
+        overworldMusic = new Music(overworldTheme);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
-        this.map.renderBackground();
+        this.map.renderBackground(g);
         this.player.render(g);
         for (Entity entity : list) {
             entity.render(g);
         }
-        this.map.renderForeground();
+        this.map.renderForeground(g);
         
     }
 
@@ -118,5 +121,9 @@ public class Overworld extends BasicGameState {
     
     public static Image getScreenShot(){
         return screenShot;
+    }
+    
+    public static Music getMusic(){
+        return overworldMusic;
     }
 }

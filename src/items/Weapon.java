@@ -16,8 +16,8 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author 1455367
  */
-public class Weapon extends Equipment{
-    
+public class Weapon extends Equipment {
+
     private int hpMax;
     private int mpMax;
     private int attack;
@@ -41,16 +41,16 @@ public class Weapon extends Equipment{
     public void init() throws SlickException {
         this.x = 564;
         this.y = 154;
-        try{
-            SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
-            this.animation = loadAnimation(moveSpriteSheet, 0, 1, 0);
-        } catch (RuntimeException e){System.out.println("RuntimeException");}
-        
-        this.hitBox = new Rectangle(100,100);
+        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
+        this.animation = loadAnimation(moveSpriteSheet, 0, 1, 0);
+
+        this.hitBox = new Rectangle(100, 100);
+        System.out.println("init weapon");
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
+        System.out.println("render weapon");
     }
 }
