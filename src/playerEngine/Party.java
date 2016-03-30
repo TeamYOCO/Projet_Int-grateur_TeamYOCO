@@ -5,6 +5,8 @@
  */
 package playerEngine;
 
+import partyMember.PartyMember;
+
 /**
  *
  * @author 1455367
