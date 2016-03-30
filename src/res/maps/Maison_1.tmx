@@ -78,7 +78,7 @@
    H4sIAAAAAAAAC2NgGAWjYBSMgpEL1BgH2gVDFwAA5AEqykAGAAA=
   </data>
  </layer>
- <objectgroup name="tp">
+ <objectgroup name="tp" width="100" height="100">
   <object id="14" type="tp" x="287" y="622" width="68" height="14">
    <properties>
     <property name="destMap" value="res/maps/map_1-1.tmx"/>
