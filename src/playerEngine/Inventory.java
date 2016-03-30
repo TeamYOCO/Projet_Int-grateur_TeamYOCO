@@ -5,10 +5,14 @@
  */
 package playerEngine;
 
+import items.Equipment;
+import java.util.ArrayList;
+
 /**
  *
  * @author 1455367
  */
 public class Inventory {
-
+    private ArrayList<Equipment> equipments;
+    
 }

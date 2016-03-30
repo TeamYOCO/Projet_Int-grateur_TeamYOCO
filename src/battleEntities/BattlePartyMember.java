@@ -6,6 +6,8 @@
 package battleEntities;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
 /**
  *
@@ -15,4 +17,8 @@ public class BattlePartyMember extends BattleEntity{
     
     private Animation attackAnimation;
     private Animation spellAnimation;
+
+    @Override
+    public void render(Graphics g) throws SlickException {
+    }
 }

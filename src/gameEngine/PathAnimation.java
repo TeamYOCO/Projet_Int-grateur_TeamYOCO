@@ -6,7 +6,7 @@
 package gameEngine;
 
 /**
- *
+ * Work in progress
  * @author 1455367
  */
 public class PathAnimation {

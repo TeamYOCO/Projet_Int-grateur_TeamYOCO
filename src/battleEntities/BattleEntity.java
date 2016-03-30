@@ -6,11 +6,13 @@
 package battleEntities;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 /**
  *
- * @author 1455367
+ * @author Seb
  */
 public abstract class BattleEntity {
     
@@ -23,4 +25,7 @@ public abstract class BattleEntity {
         }
         return animation;
     }
+    
+    // Méthode qui permet de dessiner l'élément
+    public abstract void render(Graphics g) throws SlickException;
 }

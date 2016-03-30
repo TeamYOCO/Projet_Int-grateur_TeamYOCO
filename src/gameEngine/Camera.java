@@ -11,8 +11,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 /**
- *
- * @author Seb
+ * Cette classes contient toutes les méthodes qui claculent la position de la caméra
+ * @authors Seb and Tomas
  */
 public class Camera {
 

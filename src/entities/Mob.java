@@ -8,7 +8,7 @@ package entities;
 import org.newdawn.slick.Animation;
 
 /**
- *
+ * Classe qui contient tous les éléments représentant un monstre, npc ou joueur
  * @author Seb
  */
 public abstract class Mob extends Entity {
@@ -18,7 +18,5 @@ public abstract class Mob extends Entity {
     protected int direction;
     protected boolean moving;
 
-    public Mob() {
-    }
 
 }

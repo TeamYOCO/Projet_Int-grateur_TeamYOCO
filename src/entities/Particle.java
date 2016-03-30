@@ -11,7 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 /**
- *
+ * Méthode qui représent tous les autres éléments graphiques à dessiner dans le overworld
  * @author Seb
  */
 public class Particle extends Entity {

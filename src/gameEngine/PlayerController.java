@@ -1,12 +1,13 @@
 package gameEngine;
 
 import entities.Player;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.KeyListener;
-import org.newdawn.slick.SlickException;
 
+/*
+* Cette classe gère le controle du joueur dans le overworld
+* @author Seb
+*/
 public class PlayerController implements KeyListener {
 
     // Variables de la classe
