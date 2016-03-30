@@ -6,11 +6,12 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -22,7 +23,11 @@ public class InventoryMenu extends BasicGameState {
 
     private static int stateID;
     private Image inventoryPic;
-
+    private SpriteSheet ssFriend1,ssFriend2,ssSoldier;
+    Animation anim1 = new Animation();
+    Animation anim2 = new Animation();
+    Animation animSoldier = new Animation();
+    
     public InventoryMenu(int stateID) throws SlickException {
         InventoryMenu.stateID = stateID;
     }
@@ -35,12 +40,21 @@ public class InventoryMenu extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         inventoryPic = new Image("res/pictures/inventory1.png");
+        ssFriend1 = new SpriteSheet("res/sprites/hairfemale.png",32,32);
+        ssFriend2 = new SpriteSheet("res/sprites/hairmale.png",32,32);
+        ssSoldier = new SpriteSheet("res/sprites/soldier.png",64,63);
+        anim1.addFrame(ssFriend1.getSprite(0,0), 100);
+        anim2.addFrame(ssFriend2.getSprite(0,0), 100);
+        animSoldier.addFrame(ssSoldier.getSprite(0,2), 100);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0,0);
         inventoryPic.draw(0,0);
+        g.drawAnimation(animSoldier, 195, 128);
+        g.drawAnimation(anim1, 206, 208);
+        g.drawAnimation(anim2, 206, 258);
         
     }
 
