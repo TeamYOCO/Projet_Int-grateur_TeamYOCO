@@ -5,22 +5,25 @@
  */
 package playerEngine;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 1455367
  */
-class PartyMember {
+abstract class PartyMember {
     
-    private int hpMax;
-    private int hp;
-    private int mpMax;
-    private int mp;
-    private int attack;
-    private int speed;
-    private int specialAttack;
-    private int defence;
-    private int specialDefence;
-    private int expNeeded;
-    private int exp;
+    protected int hpMax;
+    protected int hp;
+    protected int mpMax;
+    protected int mp;
+    protected int attack;
+    protected int speed;
+    protected int specialAttack;
+    protected int defence;
+    protected int specialDefence;
+    protected int expNeeded;
+    protected int exp;
+    protected ArrayList skillSet;
     
 }
