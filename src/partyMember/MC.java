@@ -6,6 +6,8 @@
 package partyMember;
 
 import java.util.ArrayList;
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
 
 /**
  *
@@ -13,10 +15,11 @@ import java.util.ArrayList;
  */
 public class MC extends PartyMember {
 
-    public MC(int hpMax, int hp, int mpMax, int mp, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, ArrayList skillSet) {
-        super(hpMax, hp, mpMax, mp, attack, speed, specialAttack, defence, specialDefence, expNeeded, exp, skillSet);
-        
+    public MC(int hpMax, int hp, int mpMax, int mp, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, ArrayList skillSet, Image anim) {
+        super(hpMax, hp, mpMax, mp, attack, speed, specialAttack, defence, specialDefence, expNeeded, exp, skillSet, anim);
     }
+
+   
 
    
 }

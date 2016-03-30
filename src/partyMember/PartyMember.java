@@ -6,6 +6,7 @@
 package partyMember;
 
 import java.util.ArrayList;
+import org.newdawn.slick.Image;
 
 /**
  *
@@ -25,8 +26,9 @@ public abstract class PartyMember {
     protected int expNeeded;
     protected int exp;
     protected ArrayList skillSet;
+    protected Image anim;
 
-    public PartyMember(int hpMax, int hp, int mpMax, int mp, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, ArrayList skillSet) {
+    public PartyMember(int hpMax, int hp, int mpMax, int mp, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, ArrayList skillSet, Image anim) {
         this.hpMax = hpMax;
         this.hp = hp;
         this.mpMax = mpMax;
@@ -39,7 +41,10 @@ public abstract class PartyMember {
         this.expNeeded = expNeeded;
         this.exp = exp;
         this.skillSet = skillSet;
+        this.anim = anim;
     }
+
+    
     
     
 }
