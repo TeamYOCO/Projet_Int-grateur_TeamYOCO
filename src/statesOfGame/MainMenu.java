@@ -24,17 +24,11 @@ public class MainMenu extends BasicGameState {
     private final int settingsX = 200, settingsY = 50;
     private final int creditsX = 200, creditsY = 50;
     private final String menuTheme = "res/musics/102-menu-selection.WAV";
-    private final String overworldTheme = "res/musics/006-link-s-house.WAV";
     private Image background;
-    Music menuMusic,overworldMusic;
+    private Music menuMusic;
 
     public MainMenu(int stateID) throws SlickException {
         MainMenu.stateID = stateID;
-        menuMusic = new Music(menuTheme);
-        overworldMusic = new Music(overworldTheme);
-        menuMusic.play();
-        
-        
     }
 
     @Override
@@ -45,6 +39,8 @@ public class MainMenu extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("res/pictures/tree_sun.png");
+        menuMusic = new Music(menuTheme);
+        menuMusic.play();
         
     }
 
@@ -73,8 +69,8 @@ public class MainMenu extends BasicGameState {
         if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
             if(input.isMouseButtonDown(0)){
                 menuMusic.stop();
-                overworldMusic.play();
                 sbg.enterState(OVERWORLD);
+                Overworld.getMusic().play();
             }
         }
         

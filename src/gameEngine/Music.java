@@ -6,7 +6,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Music {
-    //code issu de http://stackoverflow.com/questions/9470148/how-do-you-play-a-long-audioclip
     //déclaration de variables
     private Clip clip;
 
