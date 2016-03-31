@@ -11,6 +11,7 @@ import static ca.qc.bdeb.info204.Game.WIDTH;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -18,6 +19,7 @@ import org.newdawn.slick.state.*;
  */
 public class MainMenu extends BasicGameState {
 
+    private PlayerGameManager manager;
     private static int stateID;
     private final int playX = 400,playY = 200;
     private final int newGameX = 400,newGameY = 50;
@@ -27,8 +29,9 @@ public class MainMenu extends BasicGameState {
     private Image background;
     private Music menuMusic;
 
-    public MainMenu(int stateID) throws SlickException {
+    public MainMenu(int stateID, PlayerGameManager manager) throws SlickException {
         MainMenu.stateID = stateID;
+        this.manager = manager;
     }
 
     @Override

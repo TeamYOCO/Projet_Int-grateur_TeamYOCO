@@ -6,9 +6,7 @@
 package battleEntities;
 
 import gameEngine.PathAnimation;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import partyMember.PartyMember;
 

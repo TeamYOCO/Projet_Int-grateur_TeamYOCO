@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -21,6 +22,7 @@ import org.newdawn.slick.state.*;
  */
 public class Overworld extends BasicGameState {
 
+    private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
@@ -34,8 +36,9 @@ public class Overworld extends BasicGameState {
     private Music overworldMusic;
     private final String overworldTheme = "res/musics/006-link-s-house.WAV";
 
-    public Overworld(int stateID) {
+    public Overworld(int stateID, PlayerGameManager manager) {
         Overworld.stateID = stateID;
+        this.manager = manager;
     }
 
     @Override

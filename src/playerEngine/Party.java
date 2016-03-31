@@ -5,7 +5,8 @@
  */
 package playerEngine;
 
-import partyMember.PartyMember;
+import org.newdawn.slick.SlickException;
+import partyMember.*;
 
 /**
  *
@@ -14,6 +15,9 @@ import partyMember.PartyMember;
 public class Party {
     
     private PartyMember [] party = new PartyMember[3];
-    
+
+    public Party() throws SlickException {
+        party[0] = new MC();
+    }
     
 }
