@@ -65,7 +65,7 @@ public class MainMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         
-        if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
+        if((mouseX>(WIDTH/2-newGameX/2) && mouseX<WIDTH/2+newGameX/2) && (mouseY>2*HEIGHT/3-playY/2-10-newGameY && mouseY<2*HEIGHT/3-playY/2-10)){
             if(input.isMouseButtonDown(0)){
                 sbg.enterState(OVERWORLD);
             }
