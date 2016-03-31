@@ -5,43 +5,51 @@
  */
 package maps;
 
+import items.Equipment;
+import items.Weapon;
+import java.util.ArrayList;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
- * Contient 
+ * Contient
+ *
  * @author Tomas
  */
-public class MiniMap{
+public class MiniMap {
 
     private TiledMap tiledMap;
-    private Music backgroundSong;
+    private ArrayList<TiledMap> listMap = new ArrayList();
+    private ArrayList<Weapon> listEquipment = new ArrayList();
 
     public MiniMap() {
     }
 
-
-
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
+
     }
 
-
-    public void renderBackground() {
-        tiledMap.render(0, 0,1);
-        tiledMap.render(0, 0,2);
-        tiledMap.render(0, 0,3);
-        tiledMap.render(0, 0,4);
+    public void renderBackground(Graphics g) throws SlickException {
+        tiledMap.render(0, 0, 1);
+        tiledMap.render(0, 0, 2);
+        tiledMap.render(0, 0, 3);
+        tiledMap.render(0, 0, 4);
     }
 
-    // Affiche le foreground de la map
+// Affiche le foreground de la map
     public void renderForeground() {
-        tiledMap.render(0, 0,5);
-        tiledMap.render(0, 0,6);
+        tiledMap.render(0, 0, 5);
+        tiledMap.render(0, 0, 6);
+    }
+
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
     }
 
     public boolean isCollision(float x, float y) {
@@ -55,13 +63,13 @@ public class MiniMap{
             collision = color.getAlpha() > 0;
         }
         return collision;
-        
+
     }
 
     public TiledMap getTiledMap() {
         return tiledMap;
     }
-    
+
     public int getObjectCount() {
         return this.tiledMap.getObjectCount(0);
     }
