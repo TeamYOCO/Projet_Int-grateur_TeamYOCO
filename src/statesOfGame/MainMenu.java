@@ -40,7 +40,6 @@ public class MainMenu extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("res/pictures/tree_sun.png");
         menuMusic = new Music(menuTheme);
-        menuMusic.play();
         
     }
 
@@ -68,12 +67,20 @@ public class MainMenu extends BasicGameState {
         
         if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
             if(input.isMouseButtonDown(0)){
-                menuMusic.stop();
                 sbg.enterState(OVERWORLD);
             }
         }
-        
-        
+    }
+    
+    @Override
+    public void enter(GameContainer gc, StateBasedGame sbg) {
+        menuMusic.play();
+        menuMusic.loop();
+    }
+    
+    @Override
+    public void leave(GameContainer gc, StateBasedGame sbg){
+        menuMusic.stop();
     }
 
 }
