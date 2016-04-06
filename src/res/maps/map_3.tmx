@@ -95,7 +95,7 @@
   </object>
   <object id="32" type="tp" x="3" y="133" width="10" height="86">
    <properties>
-    <property name="destMap" value="res/maps/City_1"/>
+    <property name="destMap" value="res/maps/City_1.tmx"/>
     <property name="destX" value="1568"/>
     <property name="destY" value="832"/>
    </properties>

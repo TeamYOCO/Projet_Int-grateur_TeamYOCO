@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="7">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
  </tileset>
@@ -56,4 +56,48 @@
    H4sIAAAAAAAAC+3YoQ0AIAxE0e6DZSX2XwFVjaBJIXlPnzj9IwAASKN412UW7wAAAIA7p5bwemtIp5agNUC91X0AAOAzG7d7PksQJwAA
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="1586" y="770" width="12" height="96">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="64"/>
+    <property name="destY" value="192"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="702" y="0" width="98" height="12">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="3" type="tp" x="1218" y="627" width="30" height="28">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="4" type="tp" x="415" y="629" width="31" height="26">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="5" type="tp" x="222" y="1237" width="36" height="25">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="6" type="tp" x="1280" y="1233" width="31" height="30">
+   <properties>
+    <property name="destMap" value="res/maps/Maison_4.tmx"/>
+    <property name="destX" value="432"/>
+    <property name="destY" value="640"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
