@@ -17,7 +17,6 @@ public class Party {
     private PartyMember [] party = new PartyMember[3];
 
     public Party() throws SlickException {
-        party[0] = new MC();
     }
     
 }
