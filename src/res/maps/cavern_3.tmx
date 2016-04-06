@@ -61,8 +61,8 @@
   <object id="2" type="tp" x="972" y="1265" width="73" height="16">
    <properties>
     <property name="destMap" value="res/maps/map_3.tmx"/>
-    <property name="destX" value="1056"/>
-    <property name="destY" value="1184"/>
+    <property name="destX" value="1040"/>
+    <property name="destY" value="848"/>
    </properties>
   </object>
  </objectgroup>
