@@ -21,8 +21,14 @@ public class BattlePartyMember extends BattleEntity{
     private PartyMember activeCharacter;
     
 
+    public BattlePartyMember(PartyMember activeCharacter, float x, float y) {
+        this.activeCharacter = activeCharacter;
+        this.x = x;
+        this.y = y;
+    }
+    
     @Override
     public void render(Graphics g) throws SlickException {
-        
+        g.drawImage(activeCharacter.getAnim(), x, y);
     }
 }

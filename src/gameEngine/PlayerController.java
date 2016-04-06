@@ -1,6 +1,6 @@
 package gameEngine;
 
-import entities.Player;
+import entities.OverworldPlayer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.KeyListener;
 
@@ -11,10 +11,10 @@ import org.newdawn.slick.KeyListener;
 public class PlayerController implements KeyListener {
 
     // Variables de la classe
-    private Player player;
+    private OverworldPlayer player;
 
     // Constructeur
-    public PlayerController(Player player) {
+    public PlayerController(OverworldPlayer player) {
         this.player = player;
     }
 

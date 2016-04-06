@@ -5,21 +5,24 @@
  */
 package statesOfGame;
 
-import battleEntities.BattleEntity;
 import battleEntities.BattleMob;
 import battleEntities.BattlePartyMember;
+import static ca.qc.bdeb.info204.Game.HEIGHT;
+import static ca.qc.bdeb.info204.Game.WIDTH;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import partyMember.PartyMember;
 import playerEngine.PlayerGameManager;
 
 /**
  *
  * @author 1455367
  */
-public class CombatScreen extends BasicGameState{
+public class CombatScreen extends BasicGameState {
+
     private static int stateID;
-    private BattleMob [] mobList;
-    private BattlePartyMember [] partyList;
+    private BattleMob[] mobList;
+    private BattlePartyMember[] partyList;
     private Image backgroundImage;
     private PlayerGameManager manager;
 
@@ -27,16 +30,25 @@ public class CombatScreen extends BasicGameState{
         CombatScreen.stateID = stateID;
         this.manager = manager;
     }
-    
+
     @Override
-    public int getID() {
+    public int getID() { 
         return stateID;
     }
-    
-    
+
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        
+        partyList = new BattlePartyMember[3];
+    }
+
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        loadParty();
+    }
+
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+
     }
 
     @Override
@@ -53,5 +65,12 @@ public class CombatScreen extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
     }
-    
+
+    private void loadParty() {
+        for (int i = 0; i < manager.getPartyClass().getParty().length; i++) {
+            if (manager.getPartyClass().isNotNull(i)) {
+                this.partyList[0] = new BattlePartyMember(manager.getPartyClass().getParty()[0], WIDTH * (3 / 4), HEIGHT * ((2 * i) / 7));
+            }
+        }
+    }
 }

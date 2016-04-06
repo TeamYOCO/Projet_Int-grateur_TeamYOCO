@@ -14,12 +14,12 @@ import org.newdawn.slick.SlickException;
  * Méthode qui représent tous les autres éléments graphiques à dessiner dans le overworld
  * @author Seb
  */
-public class Particle extends Entity {
+public class OverworldParticle extends OverworldEntity {
 
     protected Animation animation = new Animation();
     protected int lifeSpam, speedX, speedY, direction;
 
-    public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Rectangle hitBox) {
+    public OverworldParticle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Rectangle hitBox) {
         this.animation = animation;
         this.lifeSpam = lifeSpam;
         this.speedX = speedX;
@@ -30,7 +30,7 @@ public class Particle extends Entity {
         this.hitBox = hitBox;
     }
 
-    public Particle() {
+    public OverworldParticle() {
     }
     
 

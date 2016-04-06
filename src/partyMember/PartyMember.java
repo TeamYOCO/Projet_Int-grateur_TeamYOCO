@@ -13,7 +13,7 @@ import org.newdawn.slick.Image;
  * @author 1455367
  */
 public abstract class PartyMember {
-    
+
     protected int hpMax;
     protected int hp;
     protected int mpMax;
@@ -29,11 +29,11 @@ public abstract class PartyMember {
     protected ArrayList skillSet;
     protected Image anim;
 
-    public PartyMember(int hpMax, int hp, int mpMax, int mp, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, ArrayList skillSet, Image anim, int level) {
+    public PartyMember(int hpMax, int mpMax, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, int level, Image anim) {
         this.hpMax = hpMax;
-        this.hp = hp;
+        this.hp = hpMax;
         this.mpMax = mpMax;
-        this.mp = mp;
+        this.mp = mpMax;
         this.attack = attack;
         this.speed = speed;
         this.specialAttack = specialAttack;
@@ -41,24 +41,79 @@ public abstract class PartyMember {
         this.specialDefence = specialDefence;
         this.expNeeded = expNeeded;
         this.exp = exp;
-        this.skillSet = skillSet;
-        this.anim = anim;
         this.level = level;
+        this.anim = anim;
     }
-    
-    public void gainExp(int expGained){
+
+    public PartyMember() {
+    }
+
+    public void gainExp(int expGained) {
         exp += expGained;
-        if (exp >= expNeeded){
+        if (exp >= expNeeded) {
             exp -= expNeeded;
-            expNeeded = (int)((float)expNeeded *1.5);
-            level ++;
+            expNeeded = (int) ((float) expNeeded * 1.5);
+            level++;
             levelUp();
         }
     }
-    
+
     public abstract void levelUp();
 
-    
-    
+    public Image getAnim() {
+        return anim;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getHpMax() {
+        return hpMax;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public int getExpNeeded() {
+        return expNeeded;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getMp() {
+        return mp;
+    }
+
+    public int getMpMax() {
+        return mpMax;
+    }
+
+    public ArrayList getSkillSet() {
+        return skillSet;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getSpecialDefence() {
+        return specialDefence;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
     
 }

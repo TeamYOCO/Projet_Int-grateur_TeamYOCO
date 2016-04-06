@@ -20,6 +20,7 @@ public abstract class BattleEntity {
     
     protected PathAnimation waitAnimation;
     protected Image image;
+    protected float x, y;
     
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();

@@ -14,9 +14,23 @@ import partyMember.*;
  */
 public class Party {
     
-    private PartyMember [] party = new PartyMember[3];
+    private PartyMember [] party;
+    
 
     public Party() throws SlickException {
+        party = new PartyMember[3];
     }
+
+    public PartyMember[] getParty() {
+        return party;
+    }
+    
+    public boolean isNotNull(int index){
+        if (party[index] == null)
+            return false;
+        else
+            return true;
+    }
+
     
 }

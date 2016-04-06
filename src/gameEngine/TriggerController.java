@@ -1,6 +1,6 @@
 package gameEngine;
 
-import entities.Player;
+import entities.OverworldPlayer;
 import maps.MiniMap;
 import org.newdawn.slick.SlickException;
 
@@ -11,9 +11,9 @@ import org.newdawn.slick.SlickException;
 public class TriggerController {
 
 	private MiniMap map;
-	private Player player;
+	private OverworldPlayer player;
 
-	public TriggerController(MiniMap map, Player player) {
+	public TriggerController(MiniMap map, OverworldPlayer player) {
 		this.map = map;
 		this.player = player;
 	}

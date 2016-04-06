@@ -6,11 +6,12 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
-import entities.Entity;
-import entities.Player;
+import entities.OverworldEntity;
+import entities.OverworldPlayer;
 import gameEngine.Camera;
 import gameEngine.PlayerController;
 import java.util.ArrayList;
+import java.util.Random;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -22,13 +23,14 @@ import playerEngine.PlayerGameManager;
  */
 public class Overworld extends BasicGameState {
 
+    private Random rnd = new Random();
     private PlayerGameManager manager;
-    private ArrayList<Entity> list = new ArrayList();
-    private ArrayList<Entity> listRemove = new ArrayList();
+    private ArrayList<OverworldEntity> list = new ArrayList();
+    private ArrayList<OverworldEntity> listRemove = new ArrayList();
     private static int stateID;
     private GameContainer container;
     private MiniMap map = new MiniMap();
-    private Player player = new Player(map, list);
+    private OverworldPlayer player = new OverworldPlayer(map, list);
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private boolean running = false, firstTime;
@@ -63,7 +65,7 @@ public class Overworld extends BasicGameState {
         this.cam.place(container, g);
         this.map.renderBackground(g);
         this.player.render(g);
-        for (Entity entity : list) {
+        for (OverworldEntity entity : list) {
             entity.render(g);
         }
         this.map.renderForeground();
@@ -73,15 +75,15 @@ public class Overworld extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
-
+        detectFight();
         this.player.update(delta);
-        for (Entity entity : list) {
+        for (OverworldEntity entity : list) {
             entity.update(delta);
             if (entity.isDead()) {
                 listRemove.add(entity);
             }
         }
-        for (Entity entity : listRemove) {
+        for (OverworldEntity entity : listRemove) {
             list.remove(entity);
         }
         listRemove.clear();
@@ -135,5 +137,11 @@ public class Overworld extends BasicGameState {
     
     public void setMusic(String musicPath){
         overworldTheme = musicPath;
+    }
+    
+    public void detectFight(){
+        
+        if (player.getMoving() && rnd.nextInt(500)==1)
+            System.out.println("Encounter");
     }
 }

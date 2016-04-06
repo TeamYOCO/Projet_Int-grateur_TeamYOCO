@@ -11,6 +11,12 @@ import static ca.qc.bdeb.info204.Game.WIDTH;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.BlobbyTransition;
+import org.newdawn.slick.state.transition.CombinedTransition;
+import org.newdawn.slick.state.transition.EmptyTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.state.transition.HorizontalSplitTransition;
+import org.newdawn.slick.state.transition.RotateTransition;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -70,7 +76,7 @@ public class MainMenu extends BasicGameState {
         
         if((mouseX>(WIDTH/2-newGameX/2) && mouseX<WIDTH/2+newGameX/2) && (mouseY>2*HEIGHT/3-playY/2-10-newGameY && mouseY<2*HEIGHT/3-playY/2-10)){
             if(input.isMouseButtonDown(0)){
-                sbg.enterState(OVERWORLD);
+                sbg.enterState(OVERWORLD, new FadeOutTransition(Color.yellow), new EmptyTransition());
             }
         }
     }
