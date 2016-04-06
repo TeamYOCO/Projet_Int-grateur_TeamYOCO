@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="3">
  <tileset firstgid="1" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/dirt2.png" width="96" height="192"/>
  </tileset>
@@ -17,7 +17,7 @@
  </tileset>
  <layer name="collision" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+   H4sIAAAAAAAAC+2W2wqDMBQE8/9vKViVtqLtj/YEFELrbc82oQ87MPiSQyYBISGcJ2b+I/HjW5rOfJhXwACuX0T3SQ5mX+boX3j26ZxzHtTHoT4O9XGoj0N9HOrj8PZFwN45l8+W7Es28+ylUh/ybhxWGs/OTs4+5Fz5fTcHa38B2jcW6tii5v/rIfU9zRbwXrkPpeZ9q49DfRzq41Afh/o41MehPg5PH/pePHpH3nbWvMw38yJq3gAZAAA=
   </data>
  </layer>
  <layer name="Tile Layer 7" width="40" height="40">
@@ -50,4 +50,20 @@
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="386" y="58" width="27" height="17">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="224"/>
+    <property name="destY" value="640"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="972" y="1265" width="73" height="16">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="1056"/>
+    <property name="destY" value="1184"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

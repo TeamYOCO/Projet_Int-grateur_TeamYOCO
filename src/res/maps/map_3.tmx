@@ -46,19 +46,19 @@
    H4sIAAAAAAAAC43WS3LbMBAEUKpsxwtuQNrJCRL7/jeMWEWV208NJQuWJOIzQE9/NJZlGeezXp8tnv18tnNsje8780a8G/HuNr7GfmvUzNor8zbqDPbyTIN1I9at8XtjXu6Tawd1d8bG0u/v+sRyjfGsKxZi7r1zvOGfc3K9dV4vy/JyfZ6uz9v1+Ty/H++OsefL19ydPbPP9mKGw7p879Vgftawf86TNxtrE6/ERj7kOY/vbycGz+fzFJ+/zs8/J0Yr55lpYJQ6gzVy2T6mFmZaTX40DTV9Dd63OxyfP8Hg/cTh+P4R3BnsmfrJOzkne6IfrGW8aVMfSC64p3g0Pg729Qy3d++hoQOLY/zlxOdY/3G5x1Wsm694p9ardkf73T7tjxzT07al8y85l5w+8Pgd/Lj5yufla/z18h17fUAvV1PtkVveRe9MfPUxfScxsKaY6te3NU8nFj9Oftz48nli8+vSOdA8zjzLd96h8WLW30c+lnjpN55Vj3PNeLBXw1VvHIzrhe3/hZyd1VUH9rpxLO8if/W9PJc4pz+tzGu1raH/p77FunFeXtiz2f+JmQ6a9868pOGf/PM/gLneNJffzVm9uJ0ne9t0pCZnNZse5JDabpnT+CHfB/u0fGz52bxEjORc1m/ZNfNP72dP254z7ukR+pLz9+X+XrP8a1q0Zy2n9CJr7Mxt/zMal/Thpiv9fFZXnus/9kOMXKNW8n7qyz7Ki5ZVbS89MTmhTpuP6yPewwxomMgLOdnG7KFade3gERc5O8tQedue5lueyTPMMqrVabkv1/WDhlfDxLxsupWf3lNNmlft/vIk6zQOmA/OV4stv7cyd2MPubxN9sh39rr1stVpZ20e9iijm9/Ibe/atJ29fpRvasFx+yA2rc9mrhoWH7lnXe9m7xrf9fqZZpufW79lq/ppnPHMTfdtn8Y7z9E0nDXVtrk4896W/dZunuunPqNHmlErNeRKaniWLY1Ds1x3vVmTPdMPG872pGWN3rOzR+Ixy2Hf68lqrd258VW92fOWmc0/5UvzNTlkZtgD79h8tGljW+7v3zzAnqibltXW8+zuJa+9Q+Lp/q4RdzFrvBT/1k/zSv03P1TvalYdN5ybZhtPWoaYvXp98z1x0tf0rhzTx8VEzzNnPLf9+V/faR5gPu6sF2PPqW7bfcw1e9E8Qf81s2f8blqZ+deY1Gh50uq0u7XcECN1+CjT1Yl+b5Y1b1GnjRN5nrZn81P533Cf+WreT4zFRK9qNbz3WO7P0DLKO5ujK2vtvRlmvb3MUdftHG0s99Er/Q+Q82b5087UsmM2X5/RHxv+clQfnPVqYz/ft341rjRe5Dn8/Bev1GfrgznQxvQC79X4Zm8eaTH5ezvrXyMlPzXQIAAA
   </data>
  </layer>
- <layer name="Tile Layer 5" width="70" height="30">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAvgy8hIPy0CAAAA==
-  </data>
- </layer>
  <layer name="road" width="70" height="30">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+2Zy0rDQBiF/7yIXYqgrYr3ghIXSXaK24rbglvdK+gb6BvoG+gDOoE58DtmJpl7UzxwmFyqyX/mm0vpkoiWa+xJQbQh3R5PhWfyeMKuo30RfhV+oPX2I9npTWTyLvxE6+1ny1zAy79+C7xsU1rvBKzh0NCvR459Dl5mlNa7A9/vwFCX6Z6vwMs+pfEmdeei9qtrP4dS6vllSna85BJ46dNpoOxsczHNHSadeL5vCl74O3blYjtmuvpoaL91fa7r+UN54Tr2yHEs4wi8XFFYX2ueNySXmOvMUIGXBYX1reZ5yGWL0u+ZXJw6l7E4Vi7qXLRH6fZKIZyKl7HoTPTnPOH8MhZhPYqdi+v+LKZM616s9eiG3NdyVTkyjcWLLVO++/ZWIfOLxYsvUyaWfPbbJvHvAzl5sZmfbOWbXU5eTD4f6Au/8rVaVV5K4Ua6lK5lW8nj1peOdfMxY/o+naP2O9L/3oP6K3bMc2rkNddc+pSTl3vS/95TMiMTtGClvTenOOMqJy9lj/m4aehvVrXSttdD8ZOTF9QIFpAFzivlvGZW7+H/cH582FkFXngGnAmVEeSBeabW/D0+A3Y+RH2fhX2bkxdeD59T+XyCTGrNucqNOqa+RH3fhX3b8vIDQd315NAgAAA=
   </data>
  </layer>
+ <layer name="Tile Layer 5" width="70" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3UMQuCUBSG4YurUJll/8qczbmc09n86R6RQOSeqeEDex9493M/xBAAAAAAAMAvSuvuVAnvUquth1MjvEuNXeKe1supFd6l9rY6p154l9pgfZxG3VnYkWMSwmlVlqgv0vrucbDyVZc/3+W82YNdFld7f8ouUbFvhl3YxcMucfM/pth0Y5ddmwCC/WIM0CAAAA==
+  </data>
+ </layer>
  <layer name="Tile Layer 6" width="70" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UMQqAMBAEwDxUrMVabLXxAf5YBYsQJGUSyQwsHFyzXHEhAAAAAAAAlDXULtConu8yZnZTsRbtmaP5SHZLySKNWe9sb85ofrLXq1Vdzz8kx12+/eEuFwpWKH/QIAAA
+   H4sIAAAAAAAAC+3ZMQqAMAyF4R5UnKVzcbVLD9AbW8GhiHZwedH8HwQCXR4ZSiAh/NuiDmBUUgcwKqsDAAAAAAAAPCjqAEZVdQAAr03qAEZ5nss8ePN874ldf90HPN971lbbWbXrj8q6WHKe/5AR5nLvC3PZAc828yzQIAAA
   </data>
  </layer>
  <layer name="Tile Layer 7" width="70" height="30">
@@ -68,11 +68,17 @@
  </layer>
  <layer name="foreground" width="70" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2YSw6CMBCGC3Fn4lvc6Y3UNXGtrtW1kqgHMHoHxFNaIiS1Thto5eE4X/KlDRQy/Iw1gTHcrKsuoKbsDK8bO+8jNgLD67DmQRBE9dD+AjNxKBsI7P/TplC/EARRBlPuTOG8wrqqJOL6yQidW5RbTq3whbmczz/nsuSuFOq+70A9hokNd5t4Fuaxpt93MLDnHhIvwjw2SNZg7w2iWNouYx3Brvu5Ru6xCDhWV7LUKa5J82hx+4IDIBfVvX4pn6z0pDyy5oItB5khf/6mQS4ynubcw6rC4lG9Y6hn0lyw9EXDfZkHXS5YyfK+8+Siu5/ut2TD0WHs5OQfbYn3GE9yZNAvqlxs9pdvPWORQL1yFwwFVcdCQNW6eLzyTG4WuTwBj+fQ7NAgAAA=
+   H4sIAAAAAAAAC+3VTQqAIBCG4ZlLtMzD1g3qDnpMizYGIxgxaPE+MAyIC/3wRwRoN+u940IeALzwvtiCko2Ff9rGeQEAAAAA4Hum3gsAfsLrLi0qsurzPgqPXEbbY6tUVCyqNhaNqs07+3Zksr/IJQMXrVHH0CAAAA==
   </data>
  </layer>
  <objectgroup name="tp" width="100" height="100">
-  <object id="29" x="193" y="577" width="29" height="39"/>
+  <object id="29" type="tp" x="193" y="577" width="29" height="39">
+   <properties>
+    <property name="destMap" value="res/maps/cavern_3.tmx"/>
+    <property name="destX" value="416"/>
+    <property name="destY" value="96"/>
+   </properties>
+  </object>
   <object id="30" type="tp" x="1025" y="804" width="28" height="36">
    <properties>
     <property name="destMap" value="res/maps/cavern_3.tmx"/>
