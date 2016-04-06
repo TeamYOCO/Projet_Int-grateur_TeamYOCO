@@ -5,25 +5,28 @@
  */
 package gameEngine;
 
+import battleEntities.BattleEntity;
+import org.newdawn.slick.util.pathfinding.*;
+
 /**
  * Work in progress
+ *
  * @author 1455367
  */
 public class PathAnimation {
-    
-    private int startX;
-    private int startY;
-    private int endX;
-    private int endY;
-    private int speed;
 
-    public PathAnimation(int startX, int startY, int endX, int endY, int speed) {
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
-        this.speed = speed;
+    private AStarPathFinder pathfinder = new AStarPathFinder(null, 1000, true);
+    private Path path;
+    private int sx, sy, tx, ty;
+    private BattleEntity taget;
+
+    public PathAnimation(int sx, int sy, int tx, int ty, BattleEntity taget) {
+        this.sx = sx;
+        this.sy = sy;
+        this.tx = tx;
+        this.ty = ty;
+        this.taget = taget;
+        this.path = pathfinder.findPath(null, sx, sy, tx, ty);
     }
-    
-    
+
 }

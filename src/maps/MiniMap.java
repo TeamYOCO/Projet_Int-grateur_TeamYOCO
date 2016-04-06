@@ -22,7 +22,8 @@ import org.newdawn.slick.tiled.TiledMap;
  * @author Tomas
  */
 public class MiniMap {
-
+    
+    private String fileName;
     private TiledMap tiledMap;
     private ArrayList<TiledMap> listMap = new ArrayList();
     private ArrayList<Weapon> listEquipment = new ArrayList();
@@ -33,9 +34,9 @@ public class MiniMap {
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
-
     }
 
+    
     public void renderBackground(Graphics g) throws SlickException {
         tiledMap.render(0, 0, 1);
         tiledMap.render(0, 0, 2);
@@ -43,7 +44,7 @@ public class MiniMap {
         tiledMap.render(0, 0, 4);
     }
 
-// Affiche le foreground de la map
+    // Affiche le foreground de la map
     public void renderForeground() {
         tiledMap.render(0, 0, 5);
         tiledMap.render(0, 0, 6);

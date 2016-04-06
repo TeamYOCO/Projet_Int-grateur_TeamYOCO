@@ -14,6 +14,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -21,6 +22,9 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class InventoryMenu extends BasicGameState {
 
+    private PlayerGameManager manager;
+    
+    
     private static int stateID;
     private Image inventoryPic;
     private SpriteSheet ssFriend1,ssFriend2,ssSoldier;
@@ -28,8 +32,9 @@ public class InventoryMenu extends BasicGameState {
     Animation anim2 = new Animation();
     Animation animSoldier = new Animation();
     
-    public InventoryMenu(int stateID) throws SlickException {
+    public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         InventoryMenu.stateID = stateID;
+        this.manager = manager;
     }
 
     @Override

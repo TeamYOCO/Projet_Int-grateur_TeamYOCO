@@ -10,6 +10,7 @@ import battleEntities.BattleMob;
 import battleEntities.BattlePartyMember;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -20,9 +21,11 @@ public class CombatScreen extends BasicGameState{
     private BattleMob [] mobList;
     private BattlePartyMember [] partyList;
     private Image backgroundImage;
+    private PlayerGameManager manager;
 
-    public CombatScreen(int stateID) {
+    public CombatScreen(int stateID, PlayerGameManager manager) {
         CombatScreen.stateID = stateID;
+        this.manager = manager;
     }
     
     @Override
@@ -30,10 +33,6 @@ public class CombatScreen extends BasicGameState{
         return stateID;
     }
     
-    private void fightStart(BattlePartyMember [] partyList, BattleMob [] mobList){
-        this.mobList = mobList;
-        this.partyList = partyList;
-    }
     
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {

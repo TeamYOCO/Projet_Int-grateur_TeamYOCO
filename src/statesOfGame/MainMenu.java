@@ -11,6 +11,7 @@ import static ca.qc.bdeb.info204.Game.WIDTH;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -18,6 +19,7 @@ import org.newdawn.slick.state.*;
  */
 public class MainMenu extends BasicGameState {
 
+    private PlayerGameManager manager;
     private static int stateID;
     private final int playX = 400,playY = 200;
     private final int newGameX = 400,newGameY = 50;
@@ -27,8 +29,9 @@ public class MainMenu extends BasicGameState {
     private Image background;
     private Music menuMusic;
 
-    public MainMenu(int stateID) throws SlickException {
+    public MainMenu(int stateID, PlayerGameManager manager) throws SlickException {
         MainMenu.stateID = stateID;
+        this.manager = manager;
     }
 
     @Override
@@ -40,7 +43,6 @@ public class MainMenu extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("res/pictures/tree_sun.png");
         menuMusic = new Music(menuTheme);
-        menuMusic.play();
         
     }
 
@@ -66,15 +68,22 @@ public class MainMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         
-        if((mouseX>(WIDTH/2-playX/2) && mouseX<WIDTH/2+playX/2) && (mouseY>2*HEIGHT/3-playY/2 && mouseY<2*HEIGHT/3+playY/2)){
+        if((mouseX>(WIDTH/2-newGameX/2) && mouseX<WIDTH/2+newGameX/2) && (mouseY>2*HEIGHT/3-playY/2-10-newGameY && mouseY<2*HEIGHT/3-playY/2-10)){
             if(input.isMouseButtonDown(0)){
-                menuMusic.stop();
                 sbg.enterState(OVERWORLD);
-                Overworld.getMusic().play();
             }
         }
-        
-        
+    }
+    
+    @Override
+    public void enter(GameContainer gc, StateBasedGame sbg) {
+        menuMusic.play();
+        menuMusic.loop();
+    }
+    
+    @Override
+    public void leave(GameContainer gc, StateBasedGame sbg){
+        menuMusic.stop();
     }
 
 }

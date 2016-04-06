@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -21,6 +22,7 @@ import org.newdawn.slick.state.*;
  */
 public class Overworld extends BasicGameState {
 
+    private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
@@ -29,13 +31,14 @@ public class Overworld extends BasicGameState {
     private Player player = new Player(map, list);
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
-    private boolean running = false;
+    private boolean running = false, firstTime;
     private static Image screenShot;
-    private static Music overworldMusic;
+    private Music overworldMusic;
     private final String overworldTheme = "res/musics/006-link-s-house.WAV";
 
-    public Overworld(int stateID) {
+    public Overworld(int stateID, PlayerGameManager manager) {
         Overworld.stateID = stateID;
+        this.manager = manager;
     }
 
     @Override
@@ -50,8 +53,9 @@ public class Overworld extends BasicGameState {
         this.player.init();
         this.controller.setInput(container.getInput());
         container.getInput().addKeyListener(controller);
-        screenShot = new Image(container.getWidth(),container.getHeight());
+        screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
+        firstTime = true;
     }
 
     @Override
@@ -63,7 +67,7 @@ public class Overworld extends BasicGameState {
             entity.render(g);
         }
         this.map.renderForeground();
-        
+
     }
 
     @Override
@@ -88,7 +92,15 @@ public class Overworld extends BasicGameState {
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }
-        
+    }
+
+    @Override
+    public void enter(GameContainer gc, StateBasedGame sbg) {
+        if (firstTime) {
+            overworldMusic.play();
+            overworldMusic.loop();
+            firstTime = false;
+        }
     }
 
     private void updateTrigger() throws SlickException {
@@ -116,12 +128,8 @@ public class Overworld extends BasicGameState {
             this.map.changeMap(newMap);
         }
     }
-    
-    public static Image getScreenShot(){
+
+    public static Image getScreenShot() {
         return screenShot;
-    }
-    
-    public static Music getMusic(){
-        return overworldMusic;
     }
 }

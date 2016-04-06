@@ -15,26 +15,28 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import playerEngine.PlayerGameManager;
 import statesOfGame.CombatScreen;
 import statesOfGame.InventoryMenu;
 
 public class Game extends StateBasedGame {
 
-    public static final String gameName = "Projet intégrateur V1.0";
+    public static final String GAMENAME = "Projet intégrateur V1.0";
     public static final int MAINMENU = 0;
     public static final int OVERWORLD = 1;
     public static final int INVENTORY = 2;
     public static final int COMBATSCREEN = 3;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
+    public static PlayerGameManager manager;
 
     //C'est ic la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
-        this.addState(new MainMenu(MAINMENU));
-        this.addState(new Overworld(OVERWORLD));
-        this.addState(new InventoryMenu(INVENTORY));
-        this.addState(new CombatScreen(COMBATSCREEN));
+        this.addState(new MainMenu(MAINMENU, manager));
+        this.addState(new Overworld(OVERWORLD, manager));
+        this.addState(new InventoryMenu(INVENTORY, manager));
+        this.addState(new CombatScreen(COMBATSCREEN, manager));
         
     }
 
@@ -51,7 +53,7 @@ public class Game extends StateBasedGame {
         loadNatives(Game.class);
         AppGameContainer appGc;
         try {
-            appGc = new AppGameContainer(new Game(gameName));
+            appGc = new AppGameContainer(new Game(GAMENAME));
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
             appGc.setShowFPS(false);
             appGc.start();
