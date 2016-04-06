@@ -5,7 +5,6 @@
  */
 package maps;
 
-import items.Equipment;
 import items.Weapon;
 import java.util.ArrayList;
 import org.newdawn.slick.Color;
@@ -51,6 +50,10 @@ public class MiniMap {
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+    }
+    
+    public void enter(GameContainer gc, StateBasedGame sbg){
+        System.out.println("yo");
     }
 
     public boolean isCollision(float x, float y) {

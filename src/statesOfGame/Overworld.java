@@ -34,7 +34,7 @@ public class Overworld extends BasicGameState {
     private boolean running = false, firstTime;
     private static Image screenShot;
     private Music overworldMusic;
-    private final String overworldTheme = "res/musics/006-link-s-house.WAV";
+    private String overworldTheme = "res/musics/006-link-s-house.WAV";
 
     public Overworld(int stateID, PlayerGameManager manager) {
         Overworld.stateID = stateID;
@@ -131,5 +131,9 @@ public class Overworld extends BasicGameState {
 
     public static Image getScreenShot() {
         return screenShot;
+    }
+    
+    public void setMusic(String musicPath){
+        overworldTheme = musicPath;
     }
 }
