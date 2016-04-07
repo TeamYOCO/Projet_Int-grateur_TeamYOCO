@@ -75,7 +75,7 @@ public class MainMenu extends BasicGameState {
         if ((mouseX > (WIDTH / 2 - newGameX / 2) && mouseX < WIDTH / 2 + newGameX / 2) && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
-                sbg.enterState(OVERWORLD, new FadeOutTransition(Color.yellow), new EmptyTransition());
+                sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }
         }
 

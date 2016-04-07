@@ -46,21 +46,30 @@ public class InventoryMenu extends BasicGameState {
         int compt = 0;
         inventoryPic = new Image("res/pictures/inventory.png");
         SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
-        for (int j = 0; j < 16; j++) {
-            for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < 16; i++) {
                 itemIcons[compt] = loadAnimation(moveSpriteSheet, i, (i+1), j);
                 compt += 1;
             }
         }
-        listItemFound.add(itemIcons[15]);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0,0);
         inventoryPic.draw(0,0);
-        for (Animation anim : listItemFound) {
-            anim.draw(200, 350);
+        int y = 350, x=200;
+        for (int i=0; i < listItemFound.size(); i++) {
+            if(i%16 == 0){
+                x = 200;
+            } else {
+                x = 200+(40*((i-(i/16)*16)));
+            }
+            
+            if(i%16==0 && i!=0){
+                y = 350+((i/16)*50);
+            }
+            listItemFound.get(i).draw(x,y);
         }
         
     }

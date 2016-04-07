@@ -5,7 +5,6 @@
  */
 package statesOfGame;
 
-import static ca.qc.bdeb.info204.Game.CREDITS;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.MAINMENU;
 import static ca.qc.bdeb.info204.Game.WIDTH;

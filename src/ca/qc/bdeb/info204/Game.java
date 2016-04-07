@@ -28,7 +28,7 @@ public class Game extends StateBasedGame {
     public static final int HEIGHT = 704;
     public static PlayerGameManager manager;
 
-    //C'est ic la classe main du jeu
+    //C'est ici la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
         this.addState(new MainMenu(MAINMENU, manager));
