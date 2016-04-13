@@ -15,6 +15,7 @@ import java.util.Random;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -90,6 +91,10 @@ public class Overworld extends BasicGameState {
         this.cam.update(container);
         updateTrigger();
 
+        if (!player.getMoving() && rnd.nextInt(5000) == 0){
+            sbg.enterState(Game.COMBATSCREEN, new FadeOutTransition(), new FadeOutTransition());
+        }
+        
         if (input.isKeyPressed(23)) { // touche 23 = 'i'
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);

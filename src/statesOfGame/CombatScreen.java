@@ -11,7 +11,6 @@ import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import partyMember.PartyMember;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -20,6 +19,8 @@ import playerEngine.PlayerGameManager;
  */
 public class CombatScreen extends BasicGameState {
 
+    public enum BattlePhase {SELECTING, FIGHTING};
+    
     private static int stateID;
     private BattleMob[] mobList;
     private BattlePartyMember[] partyList;
@@ -53,13 +54,13 @@ public class CombatScreen extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawImage(backgroundImage, 0, 0);
-        for (int i = 0; i < mobList.length; i++) {
-            mobList[i].render(g);
-        }
-        for (int i = 0; i < partyList.length; i++) {
-            partyList[i].render(g);
-        }
+//        g.drawImage(backgroundImage, 0, 0);
+//        for (int i = 0; i < mobList.length; i++) {
+//            mobList[i].render(g);
+//        }
+//        for (int i = 0; i < partyList.length; i++) {
+//            partyList[i].render(g);
+//        }
     }
 
     @Override
