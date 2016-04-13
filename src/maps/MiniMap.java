@@ -5,7 +5,6 @@
  */
 package maps;
 
-import items.Weapon;
 import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -25,7 +24,6 @@ public class MiniMap {
     private String fileName;
     private TiledMap tiledMap;
     private ArrayList<TiledMap> listMap = new ArrayList();
-    private ArrayList<Weapon> listEquipment = new ArrayList();
 
     public MiniMap() {
     }

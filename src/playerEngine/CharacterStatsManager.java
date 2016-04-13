@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package partyMember;
+package playerEngine;
 
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
@@ -12,8 +12,7 @@ import org.newdawn.slick.Image;
  *
  * @author 1455367
  */
-public abstract class PartyMember {
-
+public class CharacterStatsManager {
     protected int hpMax;
     protected int hp;
     protected int mpMax;
@@ -29,7 +28,7 @@ public abstract class PartyMember {
     protected ArrayList skillSet;
     protected Image anim;
 
-    public PartyMember(int hpMax, int mpMax, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, int level, Image anim) {
+    public CharacterStatsManager(int hpMax, int mpMax, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, int level, Image anim) {
         this.hpMax = hpMax;
         this.hp = hpMax;
         this.mpMax = mpMax;
@@ -44,10 +43,7 @@ public abstract class PartyMember {
         this.level = level;
         this.anim = anim;
     }
-
-    public PartyMember() {
-    }
-
+    
     public void gainExp(int expGained) {
         exp += expGained;
         if (exp >= expNeeded) {
@@ -58,7 +54,9 @@ public abstract class PartyMember {
         }
     }
 
-    public abstract void levelUp();
+    public void levelUp(){
+        
+    }
 
     public Image getAnim() {
         return anim;
@@ -171,6 +169,4 @@ public abstract class PartyMember {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-    
-    
 }
