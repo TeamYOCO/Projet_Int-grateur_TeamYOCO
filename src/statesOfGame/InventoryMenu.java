@@ -27,7 +27,7 @@ public class InventoryMenu extends BasicGameState {
     private static int stateID;
     private Image inventoryPic;
     private Animation itemIcons[];
-    private ArrayList<Animation> listItemFound;
+    private ArrayList<Animation> listItemFound, listItemPlayer, listItemFriend1, listItemFriend2;
     
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         this.itemIcons = new Animation[144];
