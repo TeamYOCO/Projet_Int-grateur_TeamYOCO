@@ -44,6 +44,9 @@ public class OverworldPlayer extends OverworldMob {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
         }
+//        for (int i = 0; i < moveAnimations.length; i++) {
+//            moveAnimations[i].setSpeed(5);
+//        }
     }
 
     @Override
