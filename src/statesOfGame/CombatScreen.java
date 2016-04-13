@@ -68,10 +68,14 @@ public class CombatScreen extends BasicGameState {
     }
 
     private void loadParty() {
+        try{
         for (int i = 0; i < manager.getPartyClass().getParty().length; i++) {
             if (manager.getPartyClass().isNotNull(i)) {
                 this.partyList[0] = new BattlePartyMember(manager.getPartyClass().getParty()[0], WIDTH * (3 / 4), HEIGHT * ((2 * i) / 7));
             }
+        }
+        } catch (NullPointerException e){
+            
         }
     }
 }

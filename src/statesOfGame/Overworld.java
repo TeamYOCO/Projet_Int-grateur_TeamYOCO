@@ -139,14 +139,15 @@ public class Overworld extends BasicGameState {
     public static Image getScreenShot() {
         return screenShot;
     }
-    
-    public void setMusic(String musicPath){
+
+    public void setMusic(String musicPath) {
         overworldTheme = musicPath;
     }
-    
-    public void detectFight(){
-        
-        if (player.getMoving() && rnd.nextInt(500)==1)
+
+    public void detectFight() {
+
+        if (player.getMoving() && rnd.nextInt(500) == 1) {
             System.out.println("Encounter");
+        }
     }
 }
