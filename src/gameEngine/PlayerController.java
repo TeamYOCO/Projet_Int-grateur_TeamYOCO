@@ -44,22 +44,18 @@ public class PlayerController implements KeyListener {
             case Input.KEY_UP:
                 this.player.setDirection(0);
                 this.player.setMoving(true);
-                System.out.println("up");
                 break;
             case Input.KEY_LEFT:
                 this.player.setDirection(1);
                 this.player.setMoving(true);
-                System.out.println("left");
                 break;
             case Input.KEY_DOWN:
                 this.player.setDirection(2);
                 this.player.setMoving(true);
-                System.out.println("down");
                 break;
             case Input.KEY_RIGHT:
                 this.player.setDirection(3);
                 this.player.setMoving(true);
-                System.out.println("right");
                 break;
             case Input.KEY_D:
                 this.player.attack();

@@ -7,7 +7,6 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import java.util.ArrayList;
-import java.util.Arrays;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -29,10 +28,9 @@ public class InventoryMenu extends BasicGameState {
     private static int stateID;
     private Image inventoryPic;
     private Animation itemIcons[];
-    private ArrayList<Animation> listItemFound, listItemPlayer;
+    private ArrayList<iItem> listItemFound, listItemPlayer;
     private ArrayList<int[]> listItemFoundLocation;
     private boolean playerSelected = false;
-    int[] itemLocation = new int[2];
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         this.itemIcons = new Animation[144];
@@ -60,7 +58,7 @@ public class InventoryMenu extends BasicGameState {
             }
         }
         for (int i = 0; i < 32; i++) {
-            listItemFound.add(itemIcons[i]);
+            listItemFound.add(new iItem(0, 0, itemIcons[i]));
         }
     }
 
@@ -79,21 +77,18 @@ public class InventoryMenu extends BasicGameState {
             if (i % 16 == 0 && i != 0) {
                 y = 350 + ((i / 16) * 50);
             }
-            listItemFound.get(i).draw(x, y);
-            itemLocation[0] = x;
-            itemLocation[1] = y;
-            if (listItemFoundLocation.size() < listItemFound.size()) {
-                listItemFoundLocation.add(itemLocation);
-            } else {
-                listItemFoundLocation.set(i, itemLocation);
-            }
-                
+            listItemFound.get(i).getIcon().draw(x, y);
+            listItemFound.get(i).setX(x);
+            listItemFound.get(i).setY(y);
         }
 
-        for (int i = 0; i < 6; i++) {
-            x = 415 + (40 * i);
+        for (int i = 0; i < listItemPlayer.size(); i++) {
+            x = 432 + (40 * i);
+            y = 155;
             try {
-                listItemPlayer.get(i).draw(x, 150);
+                listItemPlayer.get(i).getIcon().draw(x, y);
+                listItemPlayer.get(i).setX(x);
+                listItemPlayer.get(i).setY(y);
             } catch (IndexOutOfBoundsException e) {
             }
         }
@@ -109,28 +104,54 @@ public class InventoryMenu extends BasicGameState {
             sbg.enterState(Game.OVERWORLD);
         }
 
-        try {
+        if (gc.getInput().isMousePressed(0)) {
             for (int j = 0; j < listItemFound.size(); j++) {
-//            System.out.println(j + "     " + Arrays.toString(listItemFoundLocation.get(j)));
-                if ((mouseX > listItemFoundLocation.get(j)[0] && mouseX < listItemFoundLocation.get(j)[0] + 40) && (mouseY > (704 - listItemFoundLocation.get(j)[1]) && mouseY < (704 - listItemFoundLocation.get(j)[1] - 50))) {
-                    System.out.println("sup");
-                    if (gc.getInput().isMousePressed(0)) {
-                        listItemPlayer.add(listItemFound.remove(i));
-                    }
+                if ((mouseX > listItemFound.get(j).getX() && mouseX < listItemFound.get(j).getX() + 40) && (mouseY < (700 - listItemFound.get(j).getY()) && mouseY > (700 - listItemFound.get(j).getY() - 50))) {
+                    if(listItemPlayer.size() < 10) listItemPlayer.add(listItemFound.remove(j));
                 }
             }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("wtf");
         }
-        
+
     }
-    
+
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
         for (int x = startX; x < endX; x++) {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
         }
         return animation;
+    }
+
+    private class iItem {
+
+        private int x, y;
+        Animation itemIcon;
+
+        private iItem(int x, int y, Animation itemIcon) {
+            this.x = x;
+            this.y = y;
+            this.itemIcon = itemIcon;
+        }
+
+        private int getX() {
+            return x;
+        }
+
+        private int getY() {
+            return y;
+        }
+
+        private Animation getIcon() {
+            return itemIcon;
+        }
+
+        private void setX(int x) {
+            this.x = x;
+        }
+
+        private void setY(int y) {
+            this.y = y;
+        }
     }
 
 }
