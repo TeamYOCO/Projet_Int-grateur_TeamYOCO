@@ -5,7 +5,7 @@
  */
 package gameEngine;
 
-import entities.OverworldPlayer;
+import entities.Player;
 import maps.MiniMap;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -17,12 +17,12 @@ import org.newdawn.slick.Graphics;
 public class Camera {
 
     // Variables de la classe
-    private OverworldPlayer player;
+    private Player player;
     private MiniMap map;
     private float xCamera, yCamera;
 
     // constructeur de la classe
-    public Camera(OverworldPlayer player, MiniMap map) {
+    public Camera(Player player, MiniMap map) {
         this.player = player;
         this.map = map;
         this.xCamera = player.getX();

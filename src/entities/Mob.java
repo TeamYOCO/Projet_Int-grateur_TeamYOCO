@@ -11,7 +11,7 @@ import org.newdawn.slick.Animation;
  * Classe qui contient tous les éléments représentant un monstre, npc ou joueur
  * @author Seb
  */
-public abstract class OverworldMob extends OverworldEntity {
+public abstract class Mob extends Entity {
 
     protected Animation[] moveAnimations;
     protected int hitpoints;

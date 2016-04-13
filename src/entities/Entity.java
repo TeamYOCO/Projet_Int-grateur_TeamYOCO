@@ -15,7 +15,7 @@ import org.newdawn.slick.SpriteSheet;
  * Classe mère de tous les éléments graphiques du overworld
  * @author Seb
  */
-public abstract class OverworldEntity {
+public abstract class Entity {
 
     protected Rectangle hitBox;
     protected float x, y;

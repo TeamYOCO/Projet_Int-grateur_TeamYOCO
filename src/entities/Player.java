@@ -18,15 +18,15 @@ import org.newdawn.slick.SpriteSheet;
  * Classe qui contient l'affichage et le déplacement du joueur dans le overworld
  * @author Seb
  */
-public class OverworldPlayer extends OverworldMob {
+public class Player extends Mob {
     
     private int direction = 2;
     private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
-    private ArrayList<OverworldEntity> list;
+    private ArrayList<Entity> list;
 
-    public OverworldPlayer(MiniMap map, ArrayList<OverworldEntity> list) {
+    public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
         this.list = list;
     }
