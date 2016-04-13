@@ -16,19 +16,34 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author 1455367
  */
-public abstract class Equipment {
-    
-    protected float x,y;
+public class Equipment {
+
+    protected int hpMax;
+    protected int mpMax;
+    protected int attack;
+    protected int speed;
+    protected int specialAttack;
+    protected int defence;
+    protected int specialDefence;
+    protected String name;
+    protected Animation animation;
+    protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
-    
-    public abstract void update(int delta);
+
+    public void update(int delta) {
+
+    }
 
     // Méthode init de la classe
-    public abstract void init() throws SlickException;
+    public void init() throws SlickException {
+
+    }
 
     // Méthode qui permet de dessiner l'élément
-    public abstract void render(Graphics g) throws SlickException;
+    public void render(Graphics g) throws SlickException {
+
+    }
 
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
@@ -37,13 +52,15 @@ public abstract class Equipment {
         }
         return animation;
     }
-    
-    public boolean isCollision(Rectangle rectObjet){
+
+    public boolean isCollision(Rectangle rectObjet) {
         boolean collision = false;
-        if(hitBox.getBounds().intersects(rectObjet)) collision = true;
+        if (hitBox.getBounds().intersects(rectObjet)) {
+            collision = true;
+        }
         return collision;
     }
-    
+
     public Rectangle getHitBox() {
         return hitBox;
     }

@@ -6,8 +6,6 @@
 package playerEngine;
 
 import org.newdawn.slick.SlickException;
-import partyMember.MainCharacter;
-import partyMember.PartyMember;
 
 /**
  *
@@ -15,18 +13,12 @@ import partyMember.PartyMember;
  */
 public class PlayerGameManager {
     
-    private Party party;
     private Inventory inventory;
+    private CharacterStatsManager stats;
 
     public PlayerGameManager() throws SlickException {
-        party = new Party();
-        PartyMember mn = new MainCharacter();
-        party.getParty()[0] = mn;
     }
 
-    public Party getPartyClass() {
-        return party;
-    }
 
     public Inventory getInventoryClass() {
         return inventory;

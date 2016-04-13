@@ -15,8 +15,6 @@ import java.util.Random;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.state.transition.EmptyTransition;
-import org.newdawn.slick.state.transition.RotateTransition;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -29,6 +27,7 @@ public class Overworld extends BasicGameState {
     private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
+    private ArrayList<Entity> listAdd = new ArrayList();
     private static int stateID;
     private GameContainer container;
     private MiniMap map = new MiniMap();

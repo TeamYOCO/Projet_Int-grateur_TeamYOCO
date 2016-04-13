@@ -16,15 +16,18 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  * Classe qui contient l'affichage et le déplacement du joueur dans le overworld
+ *
  * @author Seb
  */
 public class Player extends Mob {
-    
-    private int direction = 2;
+
+    private int direction = 2, attackCounter = 0, attackDriection;
     private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
     private ArrayList<Entity> list;
+    private boolean attacking = false;
+    private Animation[] attackAnimation;
 
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
@@ -34,15 +37,18 @@ public class Player extends Mob {
     @Override
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
+        this.attackAnimation = new Animation[4];
         this.x = 620;
         this.y = 430;
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);
         SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/male_walkcycle.png", 64, 64);
+        SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
+            this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
         }
 //        for (int i = 0; i < moveAnimations.length; i++) {
 //            moveAnimations[i].setSpeed(5);
@@ -53,16 +59,25 @@ public class Player extends Mob {
     public void render(Graphics g) throws SlickException {
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
-        g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
+        if (attacking) {
+            g.drawAnimation(attackAnimation[attackDriection], x - 32, y - 60);
+        } else {
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
+        }
     }
 
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (moving) {
+        if (moving && !attacking) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
+            }
+        } else if (attacking) {
+            attackCounter--;
+            if (attackCounter == 0) {
+                attacking = false;
             }
         }
     }
@@ -95,6 +110,17 @@ public class Player extends Mob {
         return futurY;
     }
 
+    public void attack() {
+        if (!attacking) {
+            attacking = true;
+            attackDriection = direction;
+            attackCounter = 50;
+            for (int i = 0; i < attackAnimation.length; i++) {
+                attackAnimation[i].restart();
+            }
+        }
+    }
+
     // Les méthodes suivantes sont des getters/setters
     public int getDirection() {
         return direction;
@@ -111,4 +137,9 @@ public class Player extends Mob {
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
+
+    public boolean isAttacking() {
+        return attacking;
+    }
+
 }
