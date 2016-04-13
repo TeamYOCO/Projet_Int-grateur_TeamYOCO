@@ -40,11 +40,13 @@ public class CombatScreen extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         partyList = new BattlePartyMember[3];
+        backgroundImage = new Image("res/maps/background forest.png");
     }
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         loadParty();
+        
     }
 
     @Override
@@ -54,7 +56,7 @@ public class CombatScreen extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-//        g.drawImage(backgroundImage, 0, 0);
+        g.drawImage(backgroundImage, 0, 0);
 //        for (int i = 0; i < mobList.length; i++) {
 //            mobList[i].render(g);
 //        }

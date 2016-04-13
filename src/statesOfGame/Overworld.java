@@ -15,7 +15,8 @@ import java.util.Random;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.state.transition.EmptyTransition;
+import org.newdawn.slick.state.transition.RotateTransition;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -76,7 +77,7 @@ public class Overworld extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
-        detectFight();
+        detectFight(sbg);
         this.player.update(delta);
         for (OverworldEntity entity : list) {
             entity.update(delta);
@@ -90,10 +91,6 @@ public class Overworld extends BasicGameState {
         listRemove.clear();
         this.cam.update(container);
         updateTrigger();
-
-        if (!player.getMoving() && rnd.nextInt(5000) == 0){
-            sbg.enterState(Game.COMBATSCREEN, new FadeOutTransition(), new FadeOutTransition());
-        }
         
         if (input.isKeyPressed(23)) { // touche 23 = 'i'
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
@@ -144,10 +141,9 @@ public class Overworld extends BasicGameState {
         overworldTheme = musicPath;
     }
 
-    public void detectFight() {
-
+    public void detectFight(StateBasedGame sbg) {
         if (player.getMoving() && rnd.nextInt(500) == 1) {
-            System.out.println("Encounter");
+            sbg.enterState(Game.COMBATSCREEN, new EmptyTransition(), new RotateTransition());
         }
     }
 }
