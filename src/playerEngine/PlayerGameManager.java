@@ -19,12 +19,9 @@ public class PlayerGameManager {
     private Inventory inventory;
 
     public PlayerGameManager() throws SlickException {
-        
         party = new Party();
-        PartyMember pe = new MainCharacter();
-        party.getParty()[0] = pe;
-        
-         
+        PartyMember mn = new MainCharacter();
+        party.getParty()[0] = mn;
     }
 
     public Party getPartyClass() {

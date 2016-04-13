@@ -5,6 +5,7 @@
  */
 package statesOfGame;
 
+import ca.qc.bdeb.info204.Game;
 import battleEntities.BattleMob;
 import battleEntities.BattlePartyMember;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
@@ -19,8 +20,11 @@ import playerEngine.PlayerGameManager;
  */
 public class CombatScreen extends BasicGameState {
 
-    public enum BattlePhase {SELECTING, FIGHTING};
-    
+    public enum BattlePhase {
+
+        SELECTING, FIGHTING
+    };
+
     private static int stateID;
     private BattleMob[] mobList;
     private BattlePartyMember[] partyList;
@@ -33,7 +37,7 @@ public class CombatScreen extends BasicGameState {
     }
 
     @Override
-    public int getID() { 
+    public int getID() {
         return stateID;
     }
 
@@ -46,7 +50,7 @@ public class CombatScreen extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         loadParty();
-        
+
     }
 
     @Override
@@ -59,7 +63,7 @@ public class CombatScreen extends BasicGameState {
         g.drawImage(backgroundImage, 0, 0);
 //        for (int i = 0; i < mobList.length; i++) {
 //            mobList[i].render(g);
-//        }
+////        }
 //        for (int i = 0; i < partyList.length; i++) {
 //            partyList[i].render(g);
 //        }
@@ -70,14 +74,22 @@ public class CombatScreen extends BasicGameState {
     }
 
     private void loadParty() {
-        try{
-        for (int i = 0; i < manager.getPartyClass().getParty().length; i++) {
-            if (manager.getPartyClass().isNotNull(i)) {
-                this.partyList[0] = new BattlePartyMember(manager.getPartyClass().getParty()[0], WIDTH * (3 / 4), HEIGHT * ((2 * i) / 7));
+        try {
+            for (int i = 0; i < manager.getPartyClass().getParty().length; i++) {
+                if (manager.getPartyClass().isNotNull(i)) {
+                    this.partyList[0] = new BattlePartyMember(manager.getPartyClass().getParty()[0], WIDTH * (3 / 4), HEIGHT * ((2 * i) / 7));
+                    System.out.println(partyList[i]);
+                }
             }
-        }
-        } catch (NullPointerException e){
-            
+        } catch (NullPointerException e) {
+
         }
     }
+
+    @Override
+    public void keyReleased(int key, char c) {
+        
+    }
+    
+    
 }

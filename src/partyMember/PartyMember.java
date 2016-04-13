@@ -115,5 +115,62 @@ public abstract class PartyMember {
     public int getSpeed() {
         return speed;
     }
+
+    public void setAnim(Image anim) {
+        this.anim = anim;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public void setExpNeeded(int expNeeded) {
+        this.expNeeded = expNeeded;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setHpMax(int hpMax) {
+        this.hpMax = hpMax;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setMp(int mp) {
+        this.mp = mp;
+    }
+
+    public void setMpMax(int mpMax) {
+        this.mpMax = mpMax;
+    }
+
+    public void setSkillSet(ArrayList skillSet) {
+        this.skillSet = skillSet;
+    }
+
+    public void setSpecialAttack(int specialAttack) {
+        this.specialAttack = specialAttack;
+    }
+
+    public void setSpecialDefence(int specialDefence) {
+        this.specialDefence = specialDefence;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    
     
 }

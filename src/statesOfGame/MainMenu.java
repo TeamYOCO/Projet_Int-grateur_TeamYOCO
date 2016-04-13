@@ -47,7 +47,7 @@ public class MainMenu extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("res/pictures/tree_sun.png");
         menuMusic = new Music(menuTheme);
-
+        manager = new PlayerGameManager();
     }
 
     @Override
