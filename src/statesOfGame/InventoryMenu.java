@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import items.Equipment;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
@@ -28,7 +29,7 @@ public class InventoryMenu extends BasicGameState {
     private static int stateID;
     private Image inventoryPic;
     private Animation itemIcons[];
-    private ArrayList<iItem> listItemFound, listItemPlayer;
+    private ArrayList<Equipment> listItemFound, listItemPlayer;
     private ArrayList<int[]> listItemFoundLocation;
     private boolean playerSelected = false;
 
@@ -49,7 +50,7 @@ public class InventoryMenu extends BasicGameState {
         listItemFoundLocation = new ArrayList();
         listItemPlayer = new ArrayList();
         int compt = 0;
-        inventoryPic = new Image("res/pictures/inventory.png");
+        inventoryPic = new Image("res/pictures/inventory1player.png");
         SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
         for (int j = 0; j < 9; j++) {
             for (int i = 0; i < 16; i++) {
@@ -58,7 +59,7 @@ public class InventoryMenu extends BasicGameState {
             }
         }
         for (int i = 0; i < 32; i++) {
-            listItemFound.add(new iItem(0, 0, itemIcons[i]));
+            listItemFound.add(new Equipment(0, 0, itemIcons[i]));
         }
     }
 
@@ -77,20 +78,21 @@ public class InventoryMenu extends BasicGameState {
             if (i % 16 == 0 && i != 0) {
                 y = 350 + ((i / 16) * 50);
             }
-            listItemFound.get(i).getIcon().draw(x, y);
-            listItemFound.get(i).setX(x);
-            listItemFound.get(i).setY(y);
+            listItemFound.get(i).setInventoryX(x);
+            listItemFound.get(i).setInventoryY(y);
+            listItemFound.get(i).getIcon().draw(listItemFound.get(i).getInventoryX(), listItemFound.get(i).getInventoryY());
+
         }
 
         for (int i = 0; i < listItemPlayer.size(); i++) {
-            x = 432 + (40 * i);
-            y = 155;
-            try {
-                listItemPlayer.get(i).getIcon().draw(x, y);
-                listItemPlayer.get(i).setX(x);
-                listItemPlayer.get(i).setY(y);
-            } catch (IndexOutOfBoundsException e) {
-            }
+//            x = 432 + (40 * i);
+//            y = 155;
+//            try {
+            listItemPlayer.get(i).getIcon().draw(listItemPlayer.get(i).getInventoryX(), listItemPlayer.get(i).getInventoryY());
+//                listItemPlayer.get(i).setInventoryX(x);
+//                listItemPlayer.get(i).setInventoryY(y);
+//            } catch (IndexOutOfBoundsException e) {
+//            }
         }
 
     }
@@ -99,6 +101,7 @@ public class InventoryMenu extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
+        int x, y;
 
         if (gc.getInput().isKeyPressed(23)) {
             sbg.enterState(Game.OVERWORLD);
@@ -106,12 +109,46 @@ public class InventoryMenu extends BasicGameState {
 
         if (gc.getInput().isMousePressed(0)) {
             for (int j = 0; j < listItemFound.size(); j++) {
-                if ((mouseX > listItemFound.get(j).getX() && mouseX < listItemFound.get(j).getX() + 40) && (mouseY < (700 - listItemFound.get(j).getY()) && mouseY > (700 - listItemFound.get(j).getY() - 50))) {
-                    if(listItemPlayer.size() < 10) listItemPlayer.add(listItemFound.remove(j));
+                if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40) && (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) {
+                    if (listItemPlayer.size() < 10) {
+                        listItemPlayer.add(listItemFound.remove(j));
+                    }
+                }
+            }
+            for (int j = 0; j < listItemPlayer.size(); j++) {
+                x = 432 + (40 * j);
+                y = 155;
+                try {
+                    listItemPlayer.get(j).setInventoryX(x);
+                    listItemPlayer.get(j).setInventoryY(y);
+                } catch (IndexOutOfBoundsException e) {
+                }
+            }
+
+            for (int j = 0; j < listItemPlayer.size(); j++) {
+                if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40) && (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) {
+                    listItemFound.add(listItemPlayer.remove(j));
+                    for (int k = j; k < listItemPlayer.size(); k++) {
+                        listItemPlayer.get(k).setInventoryX(listItemPlayer.get(k).getInventoryX()-40);
+                    }
                 }
             }
         }
 
+//            for (int k = 0; k < listItemFound.size(); k++) {
+//                if (k % 16 == 0) {
+//                    x = 200;
+//                } else {
+//                    x = 200 + (40 * ((k - (k / 16) * 16)));
+//                }
+//
+//                if (k % 16 == 0 && k != 0) {
+//                    y = 350 + ((k / 16) * 50);
+//                } else {
+//                    y = 350;
+//                }
+//                listItemFound.get(k).setInventoryX(x);
+//                listItemFound.get(k).setInventoryY(y);
     }
 
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
@@ -120,38 +157,6 @@ public class InventoryMenu extends BasicGameState {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
         }
         return animation;
-    }
-
-    private class iItem {
-
-        private int x, y;
-        Animation itemIcon;
-
-        private iItem(int x, int y, Animation itemIcon) {
-            this.x = x;
-            this.y = y;
-            this.itemIcon = itemIcon;
-        }
-
-        private int getX() {
-            return x;
-        }
-
-        private int getY() {
-            return y;
-        }
-
-        private Animation getIcon() {
-            return itemIcon;
-        }
-
-        private void setX(int x) {
-            this.x = x;
-        }
-
-        private void setY(int y) {
-            this.y = y;
-        }
     }
 
 }

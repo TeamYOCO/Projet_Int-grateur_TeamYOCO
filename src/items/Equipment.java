@@ -18,6 +18,7 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Equipment {
 
+    protected int inventoryX, inventoryY;
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -30,6 +31,13 @@ public class Equipment {
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
+    protected Animation itemIcon;
+
+    public Equipment(int inventoryX, int inventoryY, Animation itemIcon) {
+        this.inventoryX = inventoryX;
+        this.inventoryY = inventoryY;
+        this.itemIcon = itemIcon;
+    }
 
     public void update(int delta) {
 
@@ -63,5 +71,25 @@ public class Equipment {
 
     public Rectangle getHitBox() {
         return hitBox;
+    }
+
+    public int getInventoryX() {
+        return inventoryX;
+    }
+
+    public int getInventoryY() {
+        return inventoryY;
+    }
+
+    public Animation getIcon() {
+        return itemIcon;
+    }
+
+    public void setInventoryX(int x) {
+        this.inventoryX = x;
+    }
+
+    public void setInventoryY(int y) {
+        this.inventoryY = y;
     }
 }
