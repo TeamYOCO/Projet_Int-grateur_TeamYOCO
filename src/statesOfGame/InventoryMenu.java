@@ -81,18 +81,13 @@ public class InventoryMenu extends BasicGameState {
             listItemFound.get(i).setInventoryX(x);
             listItemFound.get(i).setInventoryY(y);
             listItemFound.get(i).getIcon().draw(listItemFound.get(i).getInventoryX(), listItemFound.get(i).getInventoryY());
+            if(listItemFound.get(i).getIsAbove()){
+                g.drawString("working", 450, 250);
+            }
 
         }
-
-        for (int i = 0; i < listItemPlayer.size(); i++) {
-//            x = 432 + (40 * i);
-//            y = 155;
-//            try {
-            listItemPlayer.get(i).getIcon().draw(listItemPlayer.get(i).getInventoryX(), listItemPlayer.get(i).getInventoryY());
-//                listItemPlayer.get(i).setInventoryX(x);
-//                listItemPlayer.get(i).setInventoryY(y);
-//            } catch (IndexOutOfBoundsException e) {
-//            }
+        for (Equipment playerItem : listItemPlayer) {
+            playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
         }
 
     }
@@ -107,48 +102,45 @@ public class InventoryMenu extends BasicGameState {
             sbg.enterState(Game.OVERWORLD);
         }
 
-        if (gc.getInput().isMousePressed(0)) {
-            for (int j = 0; j < listItemFound.size(); j++) {
-                if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40) && (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) {
+        for (int j = 0; j < listItemFound.size(); j++) {
+            if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40) &&
+                (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) {
+                if (gc.getInput().isMousePressed(0)) {
                     if (listItemPlayer.size() < 10) {
                         listItemPlayer.add(listItemFound.remove(j));
+                        listItemFound.get(j).setIsAbove(false);
                     }
+                } else {
+                    listItemFound.get(j).setIsAbove(true);
                 }
             }
-            for (int j = 0; j < listItemPlayer.size(); j++) {
-                x = 432 + (40 * j);
-                y = 155;
-                try {
-                    listItemPlayer.get(j).setInventoryX(x);
-                    listItemPlayer.get(j).setInventoryY(y);
-                } catch (IndexOutOfBoundsException e) {
-                }
-            }
-
-            for (int j = 0; j < listItemPlayer.size(); j++) {
-                if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40) && (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) {
-                    listItemFound.add(listItemPlayer.remove(j));
-                    for (int k = j; k < listItemPlayer.size(); k++) {
-                        listItemPlayer.get(k).setInventoryX(listItemPlayer.get(k).getInventoryX()-40);
-                    }
-                }
+            listItemFound.get(j).setIsAbove(false);
+        }
+        for (int j = 0; j < listItemPlayer.size(); j++) {
+            x = 432 + (40 * j);
+            y = 155;
+            try {
+                listItemPlayer.get(j).setInventoryX(x);
+                listItemPlayer.get(j).setInventoryY(y);
+            } catch (IndexOutOfBoundsException e) {
             }
         }
 
-//            for (int k = 0; k < listItemFound.size(); k++) {
-//                if (k % 16 == 0) {
-//                    x = 200;
-//                } else {
-//                    x = 200 + (40 * ((k - (k / 16) * 16)));
-//                }
-//
-//                if (k % 16 == 0 && k != 0) {
-//                    y = 350 + ((k / 16) * 50);
-//                } else {
-//                    y = 350;
-//                }
-//                listItemFound.get(k).setInventoryX(x);
-//                listItemFound.get(k).setInventoryY(y);
+        for (int j = 0; j < listItemPlayer.size(); j++) {
+            if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40) &&
+                (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) {
+                if (gc.getInput().isMousePressed(0)) {
+                    listItemFound.add(listItemPlayer.remove(j));
+                    for (int k = j; k < listItemPlayer.size(); k++) {
+                        listItemPlayer.get(k).setInventoryX(listItemPlayer.get(k).getInventoryX() - 40);
+                    }
+                    listItemPlayer.get(j).setIsAbove(false);
+                } else {
+                    listItemPlayer.get(j).setIsAbove(true);
+                }
+            }
+            listItemPlayer.get(j).setIsAbove(false);
+        }
     }
 
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {

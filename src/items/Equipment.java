@@ -32,11 +32,13 @@ public class Equipment {
     protected MiniMap map;
     protected Rectangle hitBox;
     protected Animation itemIcon;
+    private boolean isAbove;
 
     public Equipment(int inventoryX, int inventoryY, Animation itemIcon) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.itemIcon = itemIcon;
+        this.isAbove = false;
     }
 
     public void update(int delta) {
@@ -84,6 +86,10 @@ public class Equipment {
     public Animation getIcon() {
         return itemIcon;
     }
+    
+    public boolean getIsAbove(){
+        return isAbove;
+    }
 
     public void setInventoryX(int x) {
         this.inventoryX = x;
@@ -91,5 +97,9 @@ public class Equipment {
 
     public void setInventoryY(int y) {
         this.inventoryY = y;
+    }
+    
+    public void setIsAbove(boolean isAbove){
+        this.isAbove = isAbove;
     }
 }
