@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import playerEngine.PlayerGameManager;
 import statesOfGame.Credits;
 import statesOfGame.InventoryMenu;
-import statesOfGame.ResLoadState;
 
 public class Game extends StateBasedGame {
 
