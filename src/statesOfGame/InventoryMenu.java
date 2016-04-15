@@ -32,6 +32,8 @@ public class InventoryMenu extends BasicGameState {
     private ArrayList<Equipment> listItemFound, listItemPlayer;
     private ArrayList<int[]> listItemFoundLocation;
     private boolean playerSelected = false;
+    private int lastPosition = -1;
+    private final int MAX_LIST_JOUEUR = 10;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         this.itemIcons = new Animation[144];
@@ -81,13 +83,16 @@ public class InventoryMenu extends BasicGameState {
             listItemFound.get(i).setInventoryX(x);
             listItemFound.get(i).setInventoryY(y);
             listItemFound.get(i).getIcon().draw(listItemFound.get(i).getInventoryX(), listItemFound.get(i).getInventoryY());
-            if(listItemFound.get(i).getIsAbove()){
-                g.drawString("working", 450, 250);
+            if (listItemFound.get(i).getIsAbove()) {
+                g.drawString("working", 450 + (10 * i), 250);
             }
-
         }
+        
         for (Equipment playerItem : listItemPlayer) {
             playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
+            if (playerItem.getIsAbove()) {
+                g.drawString("working", 450, 250);
+            }
         }
 
     }
@@ -103,20 +108,27 @@ public class InventoryMenu extends BasicGameState {
         }
 
         for (int j = 0; j < listItemFound.size(); j++) {
-            if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40) &&
-                (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) {
-                if (gc.getInput().isMousePressed(0)) {
-                    if (listItemPlayer.size() < 10) {
-                        listItemPlayer.add(listItemFound.remove(j));
+            if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40)
+                    && (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+                try{
+                listItemFound.get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e){
+                }
+                lastPosition = j;
+                if (gc.getInput().isMousePressed(0)) {  //si l'item est clique -> false
+                    if (listItemPlayer.size() < MAX_LIST_JOUEUR) {
                         listItemFound.get(j).setIsAbove(false);
+                        listItemPlayer.add(listItemFound.remove(j));
                     }
                 } else {
-                    listItemFound.get(j).setIsAbove(true);
+                    listItemFound.get(j).setIsAbove(true); //si l'item n'est pas clique -> true
                 }
+            } else {
+                listItemFound.get(j).setIsAbove(false); //met tous les items non-selectionne a false
             }
-            listItemFound.get(j).setIsAbove(false);
         }
-        for (int j = 0; j < listItemPlayer.size(); j++) {
+        for (int j = 0; j < listItemPlayer.size(); j++) { //changer la position des objets qui viennent d'etre deplace
             x = 432 + (40 * j);
             y = 155;
             try {
@@ -127,19 +139,26 @@ public class InventoryMenu extends BasicGameState {
         }
 
         for (int j = 0; j < listItemPlayer.size(); j++) {
-            if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40) &&
-                (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) {
-                if (gc.getInput().isMousePressed(0)) {
+            if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40)
+                 && (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+                try{
+                listItemPlayer.get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e){
+                }
+                lastPosition = j;
+                if (gc.getInput().isMousePressed(0)) { //si l'item est clique -> false
+                    listItemPlayer.get(j).setIsAbove(false);
                     listItemFound.add(listItemPlayer.remove(j));
                     for (int k = j; k < listItemPlayer.size(); k++) {
                         listItemPlayer.get(k).setInventoryX(listItemPlayer.get(k).getInventoryX() - 40);
                     }
-                    listItemPlayer.get(j).setIsAbove(false);
-                } else {
-                    listItemPlayer.get(j).setIsAbove(true);
+                }  else {
+                    listItemPlayer.get(j).setIsAbove(true);  //si l'item n'est pas clique -> true
                 }
+            } else {
+                listItemPlayer.get(j).setIsAbove(false); //met tous les items non-selectionne a false
             }
-            listItemPlayer.get(j).setIsAbove(false);
         }
     }
 
