@@ -34,11 +34,12 @@ public class Equipment {
     protected Animation itemIcon;
     private boolean isAbove;
 
-    public Equipment(int inventoryX, int inventoryY, Animation itemIcon) {
+    public Equipment(int inventoryX, int inventoryY, Animation itemIcon,String name) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.itemIcon = itemIcon;
         this.isAbove = false;
+        this.name = name;
     }
 
     public void update(int delta) {
@@ -89,6 +90,10 @@ public class Equipment {
     
     public boolean getIsAbove(){
         return isAbove;
+    }
+    
+    public String getName(){
+        return name;
     }
 
     public void setInventoryX(int x) {

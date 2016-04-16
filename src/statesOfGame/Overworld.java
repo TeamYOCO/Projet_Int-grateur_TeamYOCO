@@ -90,7 +90,7 @@ public class Overworld extends BasicGameState {
         this.cam.update(container);
         updateTrigger();
         
-        if (input.isKeyPressed(23)) { // touche 23 = 'i'
+        if (input.isKeyPressed(23) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'i' ou en clickant sur le bouton droit de la souris
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }

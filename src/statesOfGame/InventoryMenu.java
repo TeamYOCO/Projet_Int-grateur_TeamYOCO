@@ -10,6 +10,7 @@ import items.Equipment;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -25,20 +26,22 @@ import playerEngine.PlayerGameManager;
  */
 public class InventoryMenu extends BasicGameState {
 
-    private PlayerGameManager manager;
+    private final PlayerGameManager manager;
     private static int stateID;
     private Image inventoryPic;
-    private Animation itemIcons[];
+    private final Animation itemIcons[];
+    private String itemName[];
+    private String itemDescription[];
+    private final ArrayList<int[]> listStats;
     private ArrayList<Equipment> listItemFound, listItemPlayer;
-    private ArrayList<int[]> listItemFoundLocation;
-    private boolean playerSelected = false;
     private int lastPosition = -1;
-    private final int MAX_LIST_JOUEUR = 10,SPRITE_SHEET_HEIGHT = 11, SPRITE_SHEET_WIDTH = 5;
+    private final int MAX_LIST_JOUEUR = 10,SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
-        this.itemIcons = new Animation[144];
+        this.itemIcons = new Animation[65];
         InventoryMenu.stateID = stateID;
         this.manager = manager;
+        listStats = new ArrayList();
     }
 
     @Override
@@ -49,7 +52,6 @@ public class InventoryMenu extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         listItemFound = new ArrayList();
-        listItemFoundLocation = new ArrayList();
         listItemPlayer = new ArrayList();
         int compt = 0;
         inventoryPic = new Image("res/pictures/inventory1player.png");
@@ -60,8 +62,23 @@ public class InventoryMenu extends BasicGameState {
                 compt += 1;
             }
         }
-        for (int i = 0; i < 32; i++) {
-            listItemFound.add(new Equipment(0, 0, itemIcons[i]));
+        this.itemName = new String[]{"Casque Antique","Casque Metallique","Casque d'Argent","Casque Emeraude","Casque Royal",
+            "Armure Antique","Armure Metallique","Armure d'Argent","Armure Emeraude","Armure Royale",
+            "Jambieres Antiques", "Jambieres Metalliques","Jambieres d'Argent","Jambieres Emeraudes","Jambieres Royales",
+            "Bottes Antiques","Bottes Metalliques","Bottes d'Argent","Bottes Emeraudes","Bottes Royales",
+            "Bouclier Serpent","Bouclier de bois","Bouclier legendaire","Bouclier simple","Jesus",
+            "Epee de bois","Epee rudimentaire","Epee metallique","Epee d'argent","Epee Royale",
+            "Banane","Epee legendaire","Epee de glace","Epee rose","Epee extraterrestre",
+            "Hache de bois","Hache rudimentaire","Hache metallique","Hache d'argent","Hache Royale",
+            "Hache lourde","Hache legere","Hache de feu","Hache sinistre","Hache artisanale",
+            "Baton clair","Baton offensif","Tri-dent magique","Baton etrangleur","Large baton",
+            "Baton clair","Baton metallique","Baton jaune","Cane de Noel","Baton precieux",
+            "Arc simple","Arc elegant","Arc lourd","Arc sombre","Arc clair",
+            "Arc infernal","Arc de feu","Arc angelique","Arc metallique","Arc artisanal"};
+        this.itemDescription = new String[]{"1", "2"};
+        
+        for (int i = 0; i < 65; i++) {
+            listItemFound.add(new Equipment(0, 0, itemIcons[i], itemName[i]));
         }
     }
 
@@ -69,6 +86,7 @@ public class InventoryMenu extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
         inventoryPic.draw(0, 0);
+        g.setColor(Color.black);
         int y = 350, x = 200;
         for (int i = 0; i < listItemFound.size(); i++) {
             if (i % 16 == 0) {
@@ -78,23 +96,25 @@ public class InventoryMenu extends BasicGameState {
             }
 
             if (i % 16 == 0 && i != 0) {
-                y = 350 + ((i / 16) * 50);
+                y = 350 + ((i / 16) * 44);
             }
             listItemFound.get(i).setInventoryX(x);
             listItemFound.get(i).setInventoryY(y);
             listItemFound.get(i).getIcon().draw(listItemFound.get(i).getInventoryX(), listItemFound.get(i).getInventoryY());
             
             if (listItemFound.get(i).getIsAbove()) {
-                g.drawString("working", 450 + (10 * i), 250);
+                g.drawString(listItemFound.get(i).getName(), 415, 200);
             }
         }
         
         for (Equipment playerItem : listItemPlayer) {
             playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
             if (playerItem.getIsAbove()) {
-                g.drawString("working", 450, 250);
+                g.drawString(playerItem.getName(), 415, 200);
             }
         }
+        
+        
 
     }
 
@@ -104,7 +124,7 @@ public class InventoryMenu extends BasicGameState {
         int mouseY = Mouse.getY();
         int x, y;
 
-        if (gc.getInput().isKeyPressed(23)) {
+        if (gc.getInput().isKeyPressed(23) || ((mouseX<163 || mouseX>863 || mouseY>580 || mouseY<119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
             sbg.enterState(Game.OVERWORLD);
         }
 
@@ -130,7 +150,7 @@ public class InventoryMenu extends BasicGameState {
             }
         }
         for (int j = 0; j < listItemPlayer.size(); j++) { //changer la position des objets qui viennent d'etre deplace
-            x = 432 + (40 * j);
+            x = 430 + (40 * j);
             y = 155;
             try {
                 listItemPlayer.get(j).setInventoryX(x);
