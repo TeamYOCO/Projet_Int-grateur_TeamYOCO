@@ -33,7 +33,7 @@ public class InventoryMenu extends BasicGameState {
     private ArrayList<int[]> listItemFoundLocation;
     private boolean playerSelected = false;
     private int lastPosition = -1;
-    private final int MAX_LIST_JOUEUR = 10,SPRITE_SHEET_HEIGHT = 8, SPRITE_SHEET_WIDTH = 12;
+    private final int MAX_LIST_JOUEUR = 10,SPRITE_SHEET_HEIGHT = 11, SPRITE_SHEET_WIDTH = 5;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         this.itemIcons = new Animation[144];
@@ -53,7 +53,7 @@ public class InventoryMenu extends BasicGameState {
         listItemPlayer = new ArrayList();
         int compt = 0;
         inventoryPic = new Image("res/pictures/inventory1player.png");
-        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/weapons.png", 32, 32);
+        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/new_items.png", 32, 32);
         for (int j = 0; j < SPRITE_SHEET_HEIGHT; j++) {
             for (int i = 0; i < SPRITE_SHEET_WIDTH; i++) {
                 itemIcons[compt] = loadAnimation(moveSpriteSheet, i, (i + 1), j);
