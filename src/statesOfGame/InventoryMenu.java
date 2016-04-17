@@ -7,7 +7,6 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import items.Equipment;
-import java.awt.Font;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
@@ -35,7 +34,8 @@ public class InventoryMenu extends BasicGameState {
     private String itemName[];
     private String itemDescription[];
     private final ArrayList<int[]> listStats;
-    private ArrayList<Equipment> listItemFound, listItemPlayer;
+    private ArrayList<Equipment> listItemFound;
+    private static ArrayList<Equipment> listItemPlayer;
     private int lastPosition = -1;
     private final int MAX_LIST_JOUEUR = 10, SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     private UnicodeFont ufont;
@@ -151,7 +151,7 @@ public class InventoryMenu extends BasicGameState {
             "",
             ""};
         
-        listStats.add(new int[]{144,144,144,144});
+        listStats.add(new int[]{944,944,944,944});
         listStats.add(new int[]{1,1,1,1});
         listStats.add(new int[]{1,1,1,1});
         listStats.add(new int[]{1,1,1,1});
@@ -246,10 +246,10 @@ public class InventoryMenu extends BasicGameState {
             if (listItemFound.get(i).getIsAbove()) {
                 g.drawString(listItemFound.get(i).getName(), 415, 200);
                 g.drawString(listItemFound.get(i).getDescription(), 435, 220);
-                g.drawString("HP-" + listItemFound.get(i).getHpMax(), 400, 300);
-                g.drawString("Attack-" + listItemFound.get(i).getAttack(), 490, 300);
-                g.drawString("Defense-" + listItemFound.get(i).getDefence(), 615, 300);
-                g.drawString("Speed-" + listItemFound.get(i).getSpeed(), 750, 300);
+                g.drawString("Vie-" + listItemFound.get(i).getHpMax(), 405, 310);
+                g.drawString("Attack-" + listItemFound.get(i).getAttack(), 490, 310);
+                g.drawString("Defense-" + listItemFound.get(i).getDefence(), 610, 310);
+                g.drawString("Vitesse-" + listItemFound.get(i).getSpeed(), 735, 310);
             }
         }
 
@@ -258,8 +258,10 @@ public class InventoryMenu extends BasicGameState {
             if (playerItem.getIsAbove()) {
                 g.drawString(playerItem.getName(), 415, 200);
                 g.drawString(playerItem.getDescription(), 435, 220);
-                g.drawString("HP : " + playerItem.getHpMax() + "   Attack : " + playerItem.getAttack() + 
-                        "   Defense : " + playerItem.getDefence() + "   Speed : " + playerItem.getSpeed(), 415, 300);
+                g.drawString("Vie-" + playerItem.getHpMax(), 405, 310);
+                g.drawString("Attack-" + playerItem.getAttack(), 490, 310);
+                g.drawString("Defense-" + playerItem.getDefence(), 615, 310);
+                g.drawString("Vitesse-" + playerItem.getSpeed(), 735, 310);
             }
         }
 
@@ -336,6 +338,10 @@ public class InventoryMenu extends BasicGameState {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
         }
         return animation;
+    }
+    
+    public static ArrayList<Equipment> getListItemPlayer(){
+        return listItemPlayer;
     }
 
 }

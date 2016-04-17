@@ -1,6 +1,5 @@
 package ca.qc.bdeb.info204;
 
-import gameEngine.ResManager;
 import statesOfGame.MainMenu;
 import statesOfGame.Overworld;
 import org.newdawn.slick.*;
