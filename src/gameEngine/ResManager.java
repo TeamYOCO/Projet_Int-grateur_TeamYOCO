@@ -6,7 +6,6 @@
 package gameEngine;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;

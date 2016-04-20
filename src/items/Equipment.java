@@ -5,10 +5,12 @@
  */
 package items;
 
+import java.awt.Frame;
 import java.awt.Rectangle;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -31,10 +33,10 @@ public class Equipment {
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
-    protected Animation itemIcon;
+    protected Image itemIcon;
     private boolean isAbove;
 
-    public Equipment(int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats) {
+    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.itemIcon = itemIcon;
@@ -92,7 +94,7 @@ public class Equipment {
         return inventoryY;
     }
 
-    public Animation getIcon() {
+    public Image getIcon() {
         return itemIcon;
     }
     

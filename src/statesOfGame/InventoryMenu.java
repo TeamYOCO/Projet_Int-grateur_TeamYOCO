@@ -34,16 +34,12 @@ public class InventoryMenu extends BasicGameState {
     private final PlayerGameManager manager;
     private static int stateID;
     private Image inventoryPic;
-    private final Animation itemIcons[];
-    private String itemName[];
-    private String itemDescription[];
     private final ArrayList<int[]> listStats;
     private int lastPosition = -1;
     private final int MAX_LIST_JOUEUR = 10, SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     private UnicodeFont ufont;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
-        this.itemIcons = new Animation[65];
         InventoryMenu.stateID = stateID;
         this.manager = manager;
         listStats = new ArrayList();
@@ -58,13 +54,7 @@ public class InventoryMenu extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         int compt = 0;
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
-        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
-        for (int j = 0; j < SPRITE_SHEET_HEIGHT; j++) {
-            for (int i = 0; i < SPRITE_SHEET_WIDTH; i++) {
-                itemIcons[compt] = loadAnimation(moveSpriteSheet, i, (i + 1), j);
-                compt += 1;
-            }
-        }
+        
 //  creer la police de caractère
 //        Font font = new Font("Serif", Font.BOLD, 15);
 //        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
@@ -72,139 +62,7 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
 
-        
-        this.itemDescription = new String[]{
-/*Casque Antique*/            "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",
-/*Casque Metallique*/         "Casque en métal moderne. Procure une bonne \nOffre une bonne augmentation de la vie maximale",
-/*Casque d'Argent*/           "A appartenu a un général emerite. Offre une \ntrès bonne augmentation de la vie maximale",
-/*Casque Emeraude*/           "Casque forgé par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nla vie maximale",
-/*Casque Royal*/              "Casque dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Augmentation vitale maximale",
-/*Armure Antique*/            "Armure ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nProcure une protection minimale contre les \nattaques physiques",
-/*Armure Metallique*/         "Armure en métal moderne. Procure une bonne \nprotection contre les attaques physiques",
-/*Armure d'Argent*/           "A appartenu a un général emerite. Procure une \ntres bonne protection contre les attaques \nphysiques",
-/*Armure Emeraude*/           "Armure forgée par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nsa résistance contre les attaques physiques",
-/*Armure Royale*/             "Armure dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Protection maximale",
-/*Jambieres Antiques*/        "Jambieres ayant appartenu à un soldat mort \ndurant sa premiere bataille il y a plusieurs siecles.  \nProcure une protection minimale contre les \nattaques physiques",
-/*Jambieres Metalliques*/     "",
-/*Jambieres d'Argent*/            "",
-/*Jambieres Emeraudes*/            "",
-/*Jambieres Royales*/            "",
-/*Bottes Antiques*/            "",
-/*Bottes Metalliques*/            "",
-/*Bottes d'Argent*/            "",
-/*Bottes Emeraudes*/            "",
-/*Bottes Royales*/            "",
-/*Bouclier Serpent*/            "",
-/*Bouclier de bois*/            "",
-/*Bouclier legendaire*/            "",
-/*Bouclier simple*/            "",
-/*Jesus*/            "",
-/*Epee de bois*/            "",
-/*Epee rudimentaire*/            "",
-/*Epee metallique*/            "",
-/*Epee d'argent*/            "",
-/*Epee Royale*/            "",
-/*Banane*/            "",
-/*Epee legendaire*/            "",
-/*Epee de glace*/            "",
-/*Epee rose*/            "",
-/*Epee extraterrestre*/            "",
-/*Hache de bois*/            "",
-/*Hache rudimentaire*/            "",
-/*Hache metallique*/            "",
-/*Hache d'argent*/            "",
-/*Hache Royale*/            "",
-/*Hache lourde*/            "",
-/*Hache legere*/            "",
-/*Hache de feu*/            "",
-/*Hache sinistre*/            "",
-/*Hache artisanale*/            "",
-/*Sceptre clair*/            "",
-/*Sceptre offensif*/            "",
-/*Tri-dent magique*/            "",
-/*Sceptre etrangleur*/            "",
-/*Large Sceptre*/            "",
-/*Sceptre clair 2.0*/            "",
-/*Sceptre metallique*/            "",
-/*Sceptre jaune*/            "",
-/*Cane de Noel*/            "",
-/*Sceptre precieux*/            "",
-/*Arc simple*/            "",
-/*Arc elegant*/            "",
-/*Arc lourd*/            "",
-/*Arc sombre*/            "",
-/*Arc clair*/            "",
-/*Arc infernal*/            "",
-/*Arc de feu*/            "",
-/*Arc angelique*/            "",
-/*Arc metallique*/            "",
-/*Arc artisanal*/            ""};
-        
-/*Casque Antique*/         listStats.add(new int[]{944,944,944,944,944,944});
-/*Casque Metallique*/      listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque Emeraude*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque Royal*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Antique*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Metallique*/      listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Emeraude*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Royale*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Antiques*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Metalliques*/  listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres d'Argent*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Emeraudes*/    listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Royales*/      listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Antiques*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Metalliques*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Emeraudes*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Royales*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Bouclier Serpent*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Bouclier de bois*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee rudimentaire*/      listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee metallique*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee d'argent*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee Royale*/            listStats.add(new int[]{1,1,1,1,1,1});
-/*Banane*/                 listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee legendaire*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee de glace*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee rose*/              listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee extraterrestre*/    listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache de bois*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache rudimentaire*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache metallique*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache d'argent*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache Royale*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache lourde*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache legere*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache de feu*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache sinistre*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Hache artisanale*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre clair*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre offensif*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Tri-dent magique*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre etrangleur*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Large Sceptre*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre clair 2.0*/      listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre metallique*/     listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre jaune*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Cane de Noel*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Sceptre precieux*/       listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc simple*/             listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc elegant*/            listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc lourd*/              listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc sombre*/             listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc clair*/              listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc infernal*/           listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc de feu*/             listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc angelique*/          listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc metallique*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Arc artisanal*/          listStats.add(new int[]{1,1,1,1,1,1});
-
-        for (int i = 0; i < 65; i++) {
-            manager.getInventory().getListItemFound().add(new Equipment(0, 0, itemIcons[i], itemName[i], itemDescription[i],listStats.get(i)));
-        }
+        manager.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get("Casque Antique"));
     }
 
     @Override
