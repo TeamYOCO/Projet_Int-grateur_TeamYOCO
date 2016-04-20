@@ -7,6 +7,7 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import gameEngine.ResManager;
+import gameEngine.EquipmentList;
 import items.Equipment;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -65,25 +66,13 @@ public class InventoryMenu extends BasicGameState {
             }
         }
 //  creer la police de caractère
-        Font font = new Font("Serif", Font.BOLD, 15);
-        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
-        ufont.addAsciiGlyphs();
-        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
-        ufont.loadGlyphs();
+//        Font font = new Font("Serif", Font.BOLD, 15);
+//        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
+//        ufont.addAsciiGlyphs();
+//        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
+//        ufont.loadGlyphs();
 
-        this.itemName = new String[]{"Casque Antique", "Casque Metallique", "Casque d'Argent", "Casque Emeraude", "Casque Royal",
-            "Armure Antique", "Armure Metallique", "Armure d'Argent", "Armure Emeraude", "Armure Royale",
-            "Jambieres Antiques", "Jambieres Metalliques", "Jambieres d'Argent", "Jambieres Emeraudes", "Jambieres Royales",
-            "Bottes Antiques", "Bottes Metalliques", "Bottes d'Argent", "Bottes Emeraudes", "Bottes Royales",
-            "Bouclier Serpent", "Bouclier de bois", "Bouclier legendaire", "Bouclier simple", "Jesus",
-            "Epee de bois", "Epee rudimentaire", "Epee metallique", "Epee d'argent", "Epee Royale",
-            "Banane", "Epee legendaire", "Epee de glace", "Epee rose", "Epee extraterrestre",
-            "Hache de bois", "Hache rudimentaire", "Hache metallique", "Hache d'argent", "Hache Royale",
-            "Hache lourde", "Hache legere", "Hache de feu", "Hache sinistre", "Hache artisanale",
-            "Sceptre clair", "Sceptre offensif", "Tri-dent magique", "Sceptre etrangleur", "Large Sceptre",
-            "Sceptre clair 2.0", "Sceptre metallique", "Sceptre jaune", "Cane de Noel", "Sceptre precieux",
-            "Arc simple", "Arc elegant", "Arc lourd", "Arc sombre", "Arc clair",
-            "Arc infernal", "Arc de feu", "Arc angelique", "Arc metallique", "Arc artisanal"};
+        
         this.itemDescription = new String[]{
 /*Casque Antique*/            "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",
 /*Casque Metallique*/         "Casque en métal moderne. Procure une bonne \nOffre une bonne augmentation de la vie maximale",
@@ -152,70 +141,66 @@ public class InventoryMenu extends BasicGameState {
 /*Arc artisanal*/            ""};
         
 /*Casque Antique*/         listStats.add(new int[]{944,944,944,944,944,944});
-/*Casque Metallique*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque d'Argent*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque Emeraude*/         listStats.add(new int[]{1,1,1,1,1,1});
-/*Casque Royal*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Antique*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Metallique*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Casque Metallique*/      listStats.add(new int[]{1,1,1,1,1,1});
+/*Casque d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Casque Emeraude*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Casque Royal*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Armure Antique*/         listStats.add(new int[]{1,1,1,1,1,1});
+/*Armure Metallique*/      listStats.add(new int[]{1,1,1,1,1,1});
 /*Armure d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
 /*Armure Emeraude*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Armure Royale*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Antiques*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Metalliques*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Emeraudes*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Jambieres Royales*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Armure Royale*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Jambieres Antiques*/     listStats.add(new int[]{1,1,1,1,1,1});
+/*Jambieres Metalliques*/  listStats.add(new int[]{1,1,1,1,1,1});
+/*Jambieres d'Argent*/     listStats.add(new int[]{1,1,1,1,1,1});
+/*Jambieres Emeraudes*/    listStats.add(new int[]{1,1,1,1,1,1});
+/*Jambieres Royales*/      listStats.add(new int[]{1,1,1,1,1,1});
 /*Bottes Antiques*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Metalliques*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Bottes Metalliques*/     listStats.add(new int[]{1,1,1,1,1,1});
 /*Bottes d'Argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Emeraudes*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bottes Royales*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bouclier Serpent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Bouclier de bois*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee rudimentaire*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Bottes Emeraudes*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Bottes Royales*/         listStats.add(new int[]{1,1,1,1,1,1});
+/*Bouclier Serpent*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Bouclier de bois*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee rudimentaire*/      listStats.add(new int[]{1,1,1,1,1,1});
 /*Epee metallique*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee d'argent*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee Royale*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Banane*/        listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee d'argent*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee Royale*/            listStats.add(new int[]{1,1,1,1,1,1});
+/*Banane*/                 listStats.add(new int[]{1,1,1,1,1,1});
 /*Epee legendaire*/        listStats.add(new int[]{1,1,1,1,1,1});
-/*Epee de glace*/        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
-        listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee de glace*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee rose*/              listStats.add(new int[]{1,1,1,1,1,1});
+/*Epee extraterrestre*/    listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache de bois*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache rudimentaire*/     listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache metallique*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache d'argent*/         listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache Royale*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache lourde*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache legere*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache de feu*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache sinistre*/         listStats.add(new int[]{1,1,1,1,1,1});
+/*Hache artisanale*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre clair*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre offensif*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Tri-dent magique*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre etrangleur*/     listStats.add(new int[]{1,1,1,1,1,1});
+/*Large Sceptre*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre clair 2.0*/      listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre metallique*/     listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre jaune*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Cane de Noel*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Sceptre precieux*/       listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc simple*/             listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc elegant*/            listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc lourd*/              listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc sombre*/             listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc clair*/              listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc infernal*/           listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc de feu*/             listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc angelique*/          listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc metallique*/         listStats.add(new int[]{1,1,1,1,1,1});
+/*Arc artisanal*/          listStats.add(new int[]{1,1,1,1,1,1});
 
         for (int i = 0; i < 65; i++) {
             manager.getInventory().getListItemFound().add(new Equipment(0, 0, itemIcons[i], itemName[i], itemDescription[i],listStats.get(i)));
@@ -228,8 +213,8 @@ public class InventoryMenu extends BasicGameState {
         inventoryPic.draw(0, 0);
         g.setColor(Color.black);
 //        g.setFont(ufont);
-        int y = 350, x = 200;
-        for (int i = 0; i < manager.getInventory().getListItemFound().size(); i++) {
+        int y = 350, x = 200, i=0;
+        for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             if (i % 16 == 0) {
                 x = 200;
             } else {
@@ -239,20 +224,21 @@ public class InventoryMenu extends BasicGameState {
             if (i % 16 == 0 && i != 0) {
                 y = 350 + ((i / 16) * 44);
             }
-            manager.getInventory().getListItemFound().get(i).setInventoryX(x);
-            manager.getInventory().getListItemFound().get(i).setInventoryY(y);
-            manager.getInventory().getListItemFound().get(i).getIcon().draw(manager.getInventory().getListItemFound().get(i).getInventoryX(), manager.getInventory().getListItemFound().get(i).getInventoryY());
+            itemFound.setInventoryX(x);
+            itemFound.setInventoryY(y);
+            itemFound.getIcon().draw(itemFound.getInventoryX(), itemFound.getInventoryY());
 
             if (manager.getInventory().getListItemFound().get(i).getIsAbove()) {
-                g.drawString(manager.getInventory().getListItemFound().get(i).getName(), 415, 200);
-                g.drawString(manager.getInventory().getListItemFound().get(i).getDescription(), 435, 220);
-                g.drawString("Vie-" + manager.getInventory().getListItemFound().get(i).getHpMax(), 405, 310);
-                g.drawString("Att-" + manager.getInventory().getListItemFound().get(i).getAttack(), 480, 310);
-                g.drawString("Def-" + manager.getInventory().getListItemFound().get(i).getDefence(), 555, 310);
-                g.drawString("SpA-" + manager.getInventory().getListItemFound().get(i).getSpecialAttack(), 630, 310);
-                g.drawString("SpD-" + manager.getInventory().getListItemFound().get(i).getSpecialDefence(), 705, 310);
-                g.drawString("Vit-" + manager.getInventory().getListItemFound().get(i).getSpeed(), 780, 310);
+                g.drawString(itemFound.getName(), 415, 200);
+                g.drawString(itemFound.getDescription(), 435, 220);
+                g.drawString("Vie-" + itemFound.getHpMax(), 405, 310);
+                g.drawString("Att-" + itemFound.getAttack(), 480, 310);
+                g.drawString("Def-" + itemFound.getDefence(), 555, 310);
+                g.drawString("SpA-" + itemFound.getSpecialAttack(), 630, 310);
+                g.drawString("SpD-" + itemFound.getSpecialDefence(), 705, 310);
+                g.drawString("Vit-" + itemFound.getSpeed(), 780, 310);
             }
+            i++;
         }
 
         for (Equipment playerItem : manager.getInventory().getListItemPlayer()) {
