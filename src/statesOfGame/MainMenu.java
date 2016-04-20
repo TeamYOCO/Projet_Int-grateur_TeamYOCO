@@ -50,6 +50,7 @@ public class MainMenu extends BasicGameState {
         menuMusic = new Music(menuTheme);
         manager = new PlayerGameManager();
         ResManager resManager = ResManager.getInstance();
+        
     }
 
     @Override

@@ -9,6 +9,6 @@ package entities;
  *
  * @author 1455367
  */
-public class SwordSwing {
+public class SwordSwing extends Particle{
     
 }
