@@ -1,5 +1,6 @@
 package ca.qc.bdeb.info204;
 
+import gameEngine.EquipmentList;
 import statesOfGame.MainMenu;
 import statesOfGame.Overworld;
 import org.newdawn.slick.*;
@@ -41,10 +42,6 @@ public class Game extends StateBasedGame {
         this.addState(new Overworld(OVERWORLD, manager));
         this.addState(new InventoryMenu(INVENTORY, manager));
         this.addState(new Credits(CREDITS, manager));
-        this.getState(MAINMENU).init(gc, this);
-        this.getState(OVERWORLD).init(gc, this);
-        this.getState(INVENTORY).init(gc, this);
-        this.getState(CREDITS).init(gc, this);
     }
 
     // Boucle main

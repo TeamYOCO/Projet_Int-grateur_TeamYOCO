@@ -44,9 +44,12 @@ public class Equipment {
         this.hpMax = stats[0];
         this.attack = stats[1];
         this.defence = stats[2];
-        this.speed = stats[3];
+        this.specialAttack = stats[3];
+        this.specialDefence = stats[4];
+        this.speed = stats[5];
     }
 
+    
     public void update(int delta) {
 
     }
@@ -112,13 +115,21 @@ public class Equipment {
     public int getAttack() {
         return attack;
     }
+    
+    public int getDefence() {
+        return defence;
+    }
+    
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getSpecialDefence() {
+        return specialDefence;
+    }
 
     public int getSpeed() {
         return speed;
-    }
-
-    public int getDefence() {
-        return defence;
     }
 
     public void setInventoryX(int x) {

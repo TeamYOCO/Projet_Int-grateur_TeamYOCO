@@ -10,6 +10,7 @@ import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.ResManager;
+import gameEngine.EquipmentList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -50,7 +51,7 @@ public class MainMenu extends BasicGameState {
         menuMusic = new Music(menuTheme);
         manager = new PlayerGameManager();
         ResManager resManager = ResManager.getInstance();
-        
+        EquipmentList strManager = EquipmentList.getInstance();
     }
 
     @Override
