@@ -9,6 +9,7 @@ import static ca.qc.bdeb.info204.Game.CREDITS;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
+import gameEngine.ResManager;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -48,6 +49,7 @@ public class MainMenu extends BasicGameState {
         background = new Image("res/pictures/tree_sun.png");
         menuMusic = new Music(menuTheme);
         manager = new PlayerGameManager();
+        ResManager resManager = new ResManager();
     }
 
     @Override

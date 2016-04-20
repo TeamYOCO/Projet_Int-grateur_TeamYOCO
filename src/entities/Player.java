@@ -5,6 +5,7 @@
  */
 package entities;
 
+import gameEngine.ResManager;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import maps.MiniMap;
@@ -43,7 +44,7 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);
-        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/male_walkcycle.png", 64, 64);
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("src/res/sprites/male_walkcycle.png");
         SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
