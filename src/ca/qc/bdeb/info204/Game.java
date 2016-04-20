@@ -30,21 +30,17 @@ public class Game extends StateBasedGame {
     //C'est ici la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
-        this.addState(new MainMenu(MAINMENU, manager));
-        this.addState(new Overworld(OVERWORLD, manager));
-        this.addState(new InventoryMenu(INVENTORY, manager));
-        this.addState(new Credits(CREDITS, manager));
-//        this.addState(new ResLoadState(RESLOAD));
+        manager = new PlayerGameManager();
+
         
     }
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-//        this.getState(RESLOAD).init(gc, this);
-        this.getState(MAINMENU).init(gc, this);
-        this.getState(OVERWORLD).init(gc, this);
-        this.getState(INVENTORY).init(gc, this);
-        this.getState(CREDITS).init(gc, this);
+        this.addState(new MainMenu(MAINMENU, manager));
+        this.addState(new Overworld(OVERWORLD, manager));
+        this.addState(new InventoryMenu(INVENTORY, manager));
+        this.addState(new Credits(CREDITS, manager));
     }
 
     // Boucle main

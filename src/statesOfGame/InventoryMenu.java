@@ -7,6 +7,7 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import items.Equipment;
+import java.awt.Font;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
@@ -17,6 +18,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import playerEngine.PlayerGameManager;
@@ -34,8 +36,6 @@ public class InventoryMenu extends BasicGameState {
     private String itemName[];
     private String itemDescription[];
     private final ArrayList<int[]> listStats;
-    private ArrayList<Equipment> listItemFound;
-    private static ArrayList<Equipment> listItemPlayer;
     private int lastPosition = -1;
     private final int MAX_LIST_JOUEUR = 10, SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     private UnicodeFont ufont;
@@ -54,8 +54,6 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        listItemFound = new ArrayList();
-        listItemPlayer = new ArrayList();
         int compt = 0;
         inventoryPic = new Image("res/pictures/inventory1player.png");
         SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/new_items.png", 32, 32);
@@ -66,11 +64,11 @@ public class InventoryMenu extends BasicGameState {
             }
         }
 //  creer la police de caractère
-//        Font font = new Font("Serif", Font.BOLD, 15);
-//        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
-//        ufont.addAsciiGlyphs();
-//        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
-//        ufont.loadGlyphs();
+        Font font = new Font("Serif", Font.BOLD, 15);
+        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
+        ufont.addAsciiGlyphs();
+        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
+        ufont.loadGlyphs();
 
         this.itemName = new String[]{"Casque Antique", "Casque Metallique", "Casque d'Argent", "Casque Emeraude", "Casque Royal",
             "Armure Antique", "Armure Metallique", "Armure d'Argent", "Armure Emeraude", "Armure Royale",
@@ -85,9 +83,9 @@ public class InventoryMenu extends BasicGameState {
             "Baton clair", "Baton metallique", "Baton jaune", "Cane de Noel", "Baton precieux",
             "Arc simple", "Arc elegant", "Arc lourd", "Arc sombre", "Arc clair",
             "Arc infernal", "Arc de feu", "Arc angelique", "Arc metallique", "Arc artisanal"};
-        this.itemDescription = new String[]{"Procure une protection minimale \ncontre les attaques directes",
-            "",
-            "",
+        this.itemDescription = new String[]{"Casque appartenant à un soldat mort durant sa premiere bataille.  Procure une protection minimale contre les attaques directes",
+            "Casque en métalProcure une bonne protection contre les attaques directes",
+            "Casque ",
             "",
             "",
             "",
@@ -151,74 +149,74 @@ public class InventoryMenu extends BasicGameState {
             "",
             ""};
         
-        listStats.add(new int[]{944,944,944,944});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
-        listStats.add(new int[]{1,1,1,1});
+        listStats.add(new int[]{944,944,944,1,1,944});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
 
-        for (int i = 0; i < 65; i++) {
-            listItemFound.add(new Equipment(0, 0, itemIcons[i], itemName[i], itemDescription[i],listStats.get(i)));
+        for (int i = 0; i < 32; i++) {
+            manager.getInventory().getListItemFound().add(new Equipment(0, 0, itemIcons[i], itemName[i], itemDescription[i],listStats.get(i)));
         }
     }
 
@@ -229,7 +227,7 @@ public class InventoryMenu extends BasicGameState {
         g.setColor(Color.black);
 //        g.setFont(ufont);
         int y = 350, x = 200;
-        for (int i = 0; i < listItemFound.size(); i++) {
+        for (int i = 0; i < manager.getInventory().getListItemFound().size(); i++) {
             if (i % 16 == 0) {
                 x = 200;
             } else {
@@ -239,21 +237,21 @@ public class InventoryMenu extends BasicGameState {
             if (i % 16 == 0 && i != 0) {
                 y = 350 + ((i / 16) * 44);
             }
-            listItemFound.get(i).setInventoryX(x);
-            listItemFound.get(i).setInventoryY(y);
-            listItemFound.get(i).getIcon().draw(listItemFound.get(i).getInventoryX(), listItemFound.get(i).getInventoryY());
+            manager.getInventory().getListItemFound().get(i).setInventoryX(x);
+            manager.getInventory().getListItemFound().get(i).setInventoryY(y);
+            manager.getInventory().getListItemFound().get(i).getIcon().draw(manager.getInventory().getListItemFound().get(i).getInventoryX(), manager.getInventory().getListItemFound().get(i).getInventoryY());
 
-            if (listItemFound.get(i).getIsAbove()) {
-                g.drawString(listItemFound.get(i).getName(), 415, 200);
-                g.drawString(listItemFound.get(i).getDescription(), 435, 220);
-                g.drawString("Vie-" + listItemFound.get(i).getHpMax(), 405, 310);
-                g.drawString("Attack-" + listItemFound.get(i).getAttack(), 490, 310);
-                g.drawString("Defense-" + listItemFound.get(i).getDefence(), 610, 310);
-                g.drawString("Vitesse-" + listItemFound.get(i).getSpeed(), 735, 310);
+            if (manager.getInventory().getListItemFound().get(i).getIsAbove()) {
+                g.drawString(manager.getInventory().getListItemFound().get(i).getName(), 415, 200);
+                g.drawString(manager.getInventory().getListItemFound().get(i).getDescription(), 435, 220);
+                g.drawString("Vie-" + manager.getInventory().getListItemFound().get(i).getHpMax(), 405, 310);
+                g.drawString("Attack-" + manager.getInventory().getListItemFound().get(i).getAttack(), 490, 310);
+                g.drawString("Defense-" + manager.getInventory().getListItemFound().get(i).getDefence(), 610, 310);
+                g.drawString("Vitesse-" + manager.getInventory().getListItemFound().get(i).getSpeed(), 735, 310);
             }
         }
 
-        for (Equipment playerItem : listItemPlayer) {
+        for (Equipment playerItem : manager.getInventory().getListItemPlayer()) {
             playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
             if (playerItem.getIsAbove()) {
                 g.drawString(playerItem.getName(), 415, 200);
@@ -277,57 +275,57 @@ public class InventoryMenu extends BasicGameState {
             sbg.enterState(Game.OVERWORLD);
         }
 
-        for (int j = 0; j < listItemFound.size(); j++) {
-            if ((mouseX > listItemFound.get(j).getInventoryX() && mouseX < listItemFound.get(j).getInventoryX() + 40)
-                    && (mouseY < (700 - listItemFound.get(j).getInventoryY()) && mouseY > (700 - listItemFound.get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+        for (int j = 0; j < manager.getInventory().getListItemFound().size(); j++) {
+            if ((mouseX > manager.getInventory().getListItemFound().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemFound().get(j).getInventoryX() + 40)
+                    && (mouseY < (700 - manager.getInventory().getListItemFound().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemFound().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
                 try {
-                    listItemFound.get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                    manager.getInventory().getListItemFound().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
                 } catch (ArrayIndexOutOfBoundsException e) {
                 } catch (IndexOutOfBoundsException e) {
                 }
                 lastPosition = j;
                 if (gc.getInput().isMousePressed(0)) {  //si l'item est clique -> false
-                    if (listItemPlayer.size() < MAX_LIST_JOUEUR) {
-                        listItemFound.get(j).setIsAbove(false);
-                        listItemPlayer.add(listItemFound.remove(j));
+                    if (manager.getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) {
+                        manager.getInventory().getListItemFound().get(j).setIsAbove(false);
+                        manager.getInventory().getListItemPlayer().add(manager.getInventory().getListItemFound().remove(j));
                     }
                 } else {
-                    listItemFound.get(j).setIsAbove(true); //si l'item n'est pas clique -> true
+                    manager.getInventory().getListItemFound().get(j).setIsAbove(true); //si l'item n'est pas clique -> true
                 }
             } else {
-                listItemFound.get(j).setIsAbove(false); //met tous les items non-selectionne a false
+                manager.getInventory().getListItemFound().get(j).setIsAbove(false); //met tous les items non-selectionne a false
             }
         }
-        for (int j = 0; j < listItemPlayer.size(); j++) { //changer la position des objets qui viennent d'etre deplace
+        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) { //changer la position des objets qui viennent d'etre deplace
             x = 430 + (40 * j);
             y = 155;
             try {
-                listItemPlayer.get(j).setInventoryX(x);
-                listItemPlayer.get(j).setInventoryY(y);
+                manager.getInventory().getListItemPlayer().get(j).setInventoryX(x);
+                manager.getInventory().getListItemPlayer().get(j).setInventoryY(y);
             } catch (IndexOutOfBoundsException e) {
             }
         }
 
-        for (int j = 0; j < listItemPlayer.size(); j++) {
-            if ((mouseX > listItemPlayer.get(j).getInventoryX() && mouseX < listItemPlayer.get(j).getInventoryX() + 40)
-                    && (mouseY < (700 - listItemPlayer.get(j).getInventoryY()) && mouseY > (700 - listItemPlayer.get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) {
+            if ((mouseX > manager.getInventory().getListItemPlayer().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemPlayer().get(j).getInventoryX() + 40)
+                    && (mouseY < (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
                 try {
-                    listItemPlayer.get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                    manager.getInventory().getListItemPlayer().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
                 } catch (ArrayIndexOutOfBoundsException e) {
                 } catch (IndexOutOfBoundsException e) {
                 }
                 lastPosition = j;
                 if (gc.getInput().isMousePressed(0)) { //si l'item est clique -> false
-                    listItemPlayer.get(j).setIsAbove(false);
-                    listItemFound.add(listItemPlayer.remove(j));
-                    for (int k = j; k < listItemPlayer.size(); k++) {
-                        listItemPlayer.get(k).setInventoryX(listItemPlayer.get(k).getInventoryX() - 40);
+                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(false);
+                    manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().remove(j));
+                    for (int k = j; k < manager.getInventory().getListItemPlayer().size(); k++) {
+                        manager.getInventory().getListItemPlayer().get(k).setInventoryX(manager.getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
                     }
                 } else {
-                    listItemPlayer.get(j).setIsAbove(true);  //si l'item n'est pas clique -> true
+                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(true);  //si l'item n'est pas clique -> true
                 }
             } else {
-                listItemPlayer.get(j).setIsAbove(false); //met tous les items non-selectionne a false
+                manager.getInventory().getListItemPlayer().get(j).setIsAbove(false); //met tous les items non-selectionne a false
             }
         }
     }
@@ -338,10 +336,6 @@ public class InventoryMenu extends BasicGameState {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
         }
         return animation;
-    }
-    
-    public static ArrayList<Equipment> getListItemPlayer(){
-        return listItemPlayer;
     }
 
 }

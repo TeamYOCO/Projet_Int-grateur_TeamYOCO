@@ -35,12 +35,6 @@ public class Player extends Mob {
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
         this.list = list;
-        for (Equipment item : InventoryMenu.getListItemPlayer()) {
-            hp+=item.getHpMax();
-            attack+=item.getAttack();
-            defense += item.getDefence();
-            speed += item.getSpeed();
-        }
     }
 
     @Override

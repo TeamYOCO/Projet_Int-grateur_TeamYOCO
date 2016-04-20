@@ -17,10 +17,11 @@ public class PlayerGameManager {
     private CharacterStatsManager stats;
 
     public PlayerGameManager() throws SlickException {
+        inventory = new Inventory();
     }
 
 
-    public Inventory getInventoryClass() {
+    public Inventory getInventory() {
         return inventory;
     }
 }
