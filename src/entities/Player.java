@@ -47,8 +47,8 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);
-        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("src/res/sprites/male_walkcycle.png");
-        SpriteSheet attackSpriteSheet = new SpriteSheet("res/sprites/male_slash.png", 64, 64);
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("male_walkcycle");
+        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("male_slash");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);

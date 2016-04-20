@@ -7,6 +7,8 @@ package gameEngine;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -17,9 +19,10 @@ import org.newdawn.slick.SpriteSheet;
 public class ResManager {
 
     private static ResManager instance = null;
-    private static ArrayList<IndexSpriteSheet> sprites;
+    private HashMap<String,SpriteSheet> sprites;
+    private HashMap<String,Image> images;
 
-    public ResManager() throws SlickException {
+    private ResManager() throws SlickException {
         loadRes();
     }
 
@@ -31,31 +34,42 @@ public class ResManager {
     }
 
     private void loadRes() throws SlickException {
-        sprites = new ArrayList();
-        File folder = new File("src\\res\\sprites");
-        File[] listOfFile = folder.listFiles();
-        for (int i = 0; i < listOfFile.length; i++) {
-            System.out.println(listOfFile[i].getPath());
-            sprites.add(new IndexSpriteSheet(listOfFile[i].getPath()));
+        sprites = new HashMap();
+        images = new HashMap();
+        File folderSprites64 = new File("src\\res\\sprites\\sprites64");
+        File[] listOfFile64 = folderSprites64.listFiles();
+        for (int i = 0; i < listOfFile64.length; i++) {
+            String path = listOfFile64[i].getPath();
+            String name = listOfFile64[i].getName();
+            name = name.substring(0, name.lastIndexOf('.'));
+            sprites.put(name, new SpriteSheet(path, 64, 64));
+            System.out.println(name);
+        }
+        File folderSprites32 = new File("src\\res\\sprites\\sprites32");
+        File[] listOfFile32 = folderSprites32.listFiles();
+        for (int i = 0; i < listOfFile32.length; i++) {
+            String path = listOfFile32[i].getPath();
+            String name = listOfFile32[i].getName();
+            name = name.substring(0, name.lastIndexOf('.'));
+            sprites.put(name, new SpriteSheet(path, 32, 32));
+            System.out.println(name);
+        }
+        File folderPictures = new File("src\\res\\pictures");
+        File [] listOfFilesPictures = folderPictures.listFiles();
+        for (int i = 0; i < listOfFilesPictures.length; i++) {
+            String path = listOfFilesPictures[i].getPath();
+            String name = listOfFilesPictures[i].getName();
+            name = name.substring(0, name.lastIndexOf('.'));
+            images.put(name, new Image(path));
+            System.out.println(name);
         }
     }
     
     public SpriteSheet getSpriteSheet(String filePath){
-        SpriteSheet sheet = null;
-        for (int i = 0; i < sprites.size(); i++) {
-            if (filePath.equals(sprites.get(i).file))
-                System.out.println("ok");
-                sheet = sprites.get(i).sheet;
-        }
-        return sheet;
+        return sprites.get(filePath);
     }
     
-    private class IndexSpriteSheet{
-        String file;
-        SpriteSheet sheet;
-        public IndexSpriteSheet(String file) throws SlickException {
-            this.file = file;
-            this.sheet = new SpriteSheet(file, 64, 64);
-        }
+    public Image getImage(String name){
+        return images.get(name);
     }
 }

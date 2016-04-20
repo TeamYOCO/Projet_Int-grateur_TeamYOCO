@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import gameEngine.ResManager;
 import items.Equipment;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public class InventoryMenu extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         int compt = 0;
-        inventoryPic = new Image("res/pictures/inventory1player.png");
-        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/new_items.png", 32, 32);
+        inventoryPic = ResManager.getInstance().getImage("inventory1player");
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
         for (int j = 0; j < SPRITE_SHEET_HEIGHT; j++) {
             for (int i = 0; i < SPRITE_SHEET_WIDTH; i++) {
                 itemIcons[compt] = loadAnimation(moveSpriteSheet, i, (i + 1), j);
