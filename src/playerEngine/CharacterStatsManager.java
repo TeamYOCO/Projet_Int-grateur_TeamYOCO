@@ -15,8 +15,6 @@ import org.newdawn.slick.Image;
 public class CharacterStatsManager {
     protected int hpMax;
     protected int hp;
-    protected int mpMax;
-    protected int mp;
     protected int attack;
     protected int speed;
     protected int specialAttack;
@@ -28,16 +26,13 @@ public class CharacterStatsManager {
     protected ArrayList skillSet;
     protected Image anim;
 
-    public CharacterStatsManager(int hpMax, int mpMax, int attack, int speed, int specialAttack, int defence, int specialDefence, int expNeeded, int exp, int level, Image anim) {
-        this.hpMax = hpMax;
-        this.hp = hpMax;
-        this.mpMax = mpMax;
-        this.mp = mpMax;
-        this.attack = attack;
-        this.speed = speed;
-        this.specialAttack = specialAttack;
-        this.defence = defence;
-        this.specialDefence = specialDefence;
+    public CharacterStatsManager(int[]stats, int expNeeded, int exp, int level, Image anim) {
+        this.hpMax = stats[0];
+        this.attack = stats[1];
+        this.defence = stats[2];
+        this.specialAttack = stats[3];
+        this.specialDefence = stats[4];
+        this.speed = stats[5];
         this.expNeeded = expNeeded;
         this.exp = exp;
         this.level = level;
@@ -90,14 +85,6 @@ public class CharacterStatsManager {
         return level;
     }
 
-    public int getMp() {
-        return mp;
-    }
-
-    public int getMpMax() {
-        return mpMax;
-    }
-
     public ArrayList getSkillSet() {
         return skillSet;
     }
@@ -144,14 +131,6 @@ public class CharacterStatsManager {
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public void setMp(int mp) {
-        this.mp = mp;
-    }
-
-    public void setMpMax(int mpMax) {
-        this.mpMax = mpMax;
     }
 
     public void setSkillSet(ArrayList skillSet) {

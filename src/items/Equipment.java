@@ -18,6 +18,7 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Equipment {
 
+    protected int inventoryX, inventoryY;
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -25,11 +26,26 @@ public class Equipment {
     protected int specialAttack;
     protected int defence;
     protected int specialDefence;
-    protected String name;
+    protected String name,description;
     protected Animation animation;
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
+    protected Animation itemIcon;
+    private boolean isAbove;
+
+    public Equipment(int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats) {
+        this.inventoryX = inventoryX;
+        this.inventoryY = inventoryY;
+        this.itemIcon = itemIcon;
+        this.isAbove = false;
+        this.name = name;
+        this.description = description;
+        this.hpMax = stats[0];
+        this.attack = stats[1];
+        this.defence = stats[2];
+        this.speed = stats[3];
+    }
 
     public void update(int delta) {
 
@@ -63,5 +79,57 @@ public class Equipment {
 
     public Rectangle getHitBox() {
         return hitBox;
+    }
+
+    public int getInventoryX() {
+        return inventoryX;
+    }
+
+    public int getInventoryY() {
+        return inventoryY;
+    }
+
+    public Animation getIcon() {
+        return itemIcon;
+    }
+    
+    public boolean getIsAbove(){
+        return isAbove;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+    
+    public int getHpMax() {
+        return hpMax;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setInventoryX(int x) {
+        this.inventoryX = x;
+    }
+
+    public void setInventoryY(int y) {
+        this.inventoryY = y;
+    }
+    
+    public void setIsAbove(boolean isAbove){
+        this.isAbove = isAbove;
     }
 }

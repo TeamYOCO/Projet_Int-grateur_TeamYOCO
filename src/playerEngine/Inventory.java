@@ -13,12 +13,21 @@ import java.util.ArrayList;
  * @author 1455367
  */
 public class Inventory {
-    private ArrayList<Equipment> equipments;
+    private final ArrayList<Equipment> listItemFound,listItemPlayer;
     private int money;
 
     public Inventory() {
-        equipments = new ArrayList();
+        listItemFound = new ArrayList();
+        listItemPlayer = new ArrayList();
         money = 0;
+    }
+    
+    public ArrayList<Equipment> getListItemFound(){
+        return listItemFound;
+    }
+    
+    public ArrayList<Equipment> getListItemPlayer(){
+        return listItemPlayer;
     }
     
     

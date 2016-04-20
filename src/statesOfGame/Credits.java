@@ -48,7 +48,7 @@ public class Credits extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         background.draw(0,0);
         g.setColor(Color.white);
-        g.drawString("Guenette, Hassaoui, Nantel", WIDTH/2, HEIGHT/2);
+        g.drawString("Guenette, Hassaoui, Nantel\nMention spéciale : ta mère", WIDTH/2, HEIGHT/2);
         g.drawString("< Retour", 15, HEIGHT-25);
         
     }

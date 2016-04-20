@@ -6,14 +6,19 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import items.Equipment;
+import java.awt.Font;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import playerEngine.PlayerGameManager;
@@ -24,19 +29,22 @@ import playerEngine.PlayerGameManager;
  */
 public class InventoryMenu extends BasicGameState {
 
-    private PlayerGameManager manager;
+    private final PlayerGameManager manager;
     private static int stateID;
     private Image inventoryPic;
-    private Animation itemIcons[];
-    private ArrayList<Animation> listItemFound, listItemPlayer, listItemFriend1, listItemFriend2;
-    private ArrayList<int[]> listItemFoundLocation;
-    private boolean firstClick = true, playerSelected = false, friend1Selected = false, friend2Selected = false;
-    int[] itemLocation = new int[2];
+    private final Animation itemIcons[];
+    private String itemName[];
+    private String itemDescription[];
+    private final ArrayList<int[]> listStats;
+    private int lastPosition = -1;
+    private final int MAX_LIST_JOUEUR = 10, SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
+    private UnicodeFont ufont;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
-        this.itemIcons = new Animation[144];
+        this.itemIcons = new Animation[65];
         InventoryMenu.stateID = stateID;
         this.manager = manager;
+        listStats = new ArrayList();
     }
 
     @Override
@@ -46,32 +54,180 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        listItemFound = new ArrayList();
-        listItemFoundLocation = new ArrayList();
-        listItemPlayer = new ArrayList();
-        listItemFriend1 = new ArrayList();
-        listItemFriend2 = new ArrayList();
         int compt = 0;
-        inventoryPic = new Image("res/pictures/inventory.png");
-        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/items1_0.png", 32, 32);
-        for (int j = 0; j < 9; j++) {
-            for (int i = 0; i < 16; i++) {
+        inventoryPic = new Image("res/pictures/inventory1player.png");
+        SpriteSheet moveSpriteSheet = new SpriteSheet("res/sprites/new_items.png", 32, 32);
+        for (int j = 0; j < SPRITE_SHEET_HEIGHT; j++) {
+            for (int i = 0; i < SPRITE_SHEET_WIDTH; i++) {
                 itemIcons[compt] = loadAnimation(moveSpriteSheet, i, (i + 1), j);
                 compt += 1;
             }
         }
+//  creer la police de caractère
+        Font font = new Font("Serif", Font.BOLD, 15);
+        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
+        ufont.addAsciiGlyphs();
+        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
+        ufont.loadGlyphs();
+
+        this.itemName = new String[]{"Casque Antique", "Casque Metallique", "Casque d'Argent", "Casque Emeraude", "Casque Royal",
+            "Armure Antique", "Armure Metallique", "Armure d'Argent", "Armure Emeraude", "Armure Royale",
+            "Jambieres Antiques", "Jambieres Metalliques", "Jambieres d'Argent", "Jambieres Emeraudes", "Jambieres Royales",
+            "Bottes Antiques", "Bottes Metalliques", "Bottes d'Argent", "Bottes Emeraudes", "Bottes Royales",
+            "Bouclier Serpent", "Bouclier de bois", "Bouclier legendaire", "Bouclier simple", "Jesus",
+            "Epee de bois", "Epee rudimentaire", "Epee metallique", "Epee d'argent", "Epee Royale",
+            "Banane", "Epee legendaire", "Epee de glace", "Epee rose", "Epee extraterrestre",
+            "Hache de bois", "Hache rudimentaire", "Hache metallique", "Hache d'argent", "Hache Royale",
+            "Hache lourde", "Hache legere", "Hache de feu", "Hache sinistre", "Hache artisanale",
+            "Baton clair", "Baton offensif", "Tri-dent magique", "Baton etrangleur", "Large baton",
+            "Baton clair", "Baton metallique", "Baton jaune", "Cane de Noel", "Baton precieux",
+            "Arc simple", "Arc elegant", "Arc lourd", "Arc sombre", "Arc clair",
+            "Arc infernal", "Arc de feu", "Arc angelique", "Arc metallique", "Arc artisanal"};
+        this.itemDescription = new String[]{"Casque appartenant à un soldat mort durant sa premiere bataille.  Procure une protection minimale contre les attaques directes",
+            "Casque en métalProcure une bonne protection contre les attaques directes",
+            "Casque ",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""};
+        
+        listStats.add(new int[]{944,944,944,1,1,944});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+        listStats.add(new int[]{1,1,1,1,1,1});
+
         for (int i = 0; i < 32; i++) {
-            listItemFound.add(itemIcons[i]);
+            manager.getInventory().getListItemFound().add(new Equipment(0, 0, itemIcons[i], itemName[i], itemDescription[i],listStats.get(i)));
         }
     }
 
     @Override
-    @SuppressWarnings("empty-statement")
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
         inventoryPic.draw(0, 0);
+        g.setColor(Color.black);
+//        g.setFont(ufont);
         int y = 350, x = 200;
-        for (int i = 0; i < listItemFound.size(); i++) {
+        for (int i = 0; i < manager.getInventory().getListItemFound().size(); i++) {
             if (i % 16 == 0) {
                 x = 200;
             } else {
@@ -79,34 +235,32 @@ public class InventoryMenu extends BasicGameState {
             }
 
             if (i % 16 == 0 && i != 0) {
-                y = 350 + ((i / 16) * 50);
+                y = 350 + ((i / 16) * 44);
             }
-            listItemFound.get(i).draw(x, y);
-            itemLocation[0] = x;
-            itemLocation[1] = y;
-            listItemFoundLocation.add(0,itemLocation);
-            System.out.println(listItemFoundLocation.size());
+            manager.getInventory().getListItemFound().get(i).setInventoryX(x);
+            manager.getInventory().getListItemFound().get(i).setInventoryY(y);
+            manager.getInventory().getListItemFound().get(i).getIcon().draw(manager.getInventory().getListItemFound().get(i).getInventoryX(), manager.getInventory().getListItemFound().get(i).getInventoryY());
+
+            if (manager.getInventory().getListItemFound().get(i).getIsAbove()) {
+                g.drawString(manager.getInventory().getListItemFound().get(i).getName(), 415, 200);
+                g.drawString(manager.getInventory().getListItemFound().get(i).getDescription(), 435, 220);
+                g.drawString("Vie-" + manager.getInventory().getListItemFound().get(i).getHpMax(), 405, 310);
+                g.drawString("Attack-" + manager.getInventory().getListItemFound().get(i).getAttack(), 490, 310);
+                g.drawString("Defense-" + manager.getInventory().getListItemFound().get(i).getDefence(), 610, 310);
+                g.drawString("Vitesse-" + manager.getInventory().getListItemFound().get(i).getSpeed(), 735, 310);
+            }
         }
 
-        for (int i = 0; i < 6; i++) {
-            x = 415 + (40 * i);
-            try {
-                listItemPlayer.get(i).draw(x, 150);
-            } catch (IndexOutOfBoundsException e) {}
-            try {
-                listItemFriend1.get(i).draw(x, 225);
-            } catch (IndexOutOfBoundsException e) {}
-            try {
-                listItemFriend2.get(i).draw(x, 300);
-            } catch (IndexOutOfBoundsException e) {}
-        }
-        
-        if (playerSelected) {
-            g.drawRect(368, 148, 40, 45);
-        } else if (friend1Selected){
-            g.drawRect(368, 213, 40, 45);
-        } else if (friend2Selected){
-            g.drawRect(368, 278, 40, 45);
+        for (Equipment playerItem : manager.getInventory().getListItemPlayer()) {
+            playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
+            if (playerItem.getIsAbove()) {
+                g.drawString(playerItem.getName(), 415, 200);
+                g.drawString(playerItem.getDescription(), 435, 220);
+                g.drawString("Vie-" + playerItem.getHpMax(), 405, 310);
+                g.drawString("Attack-" + playerItem.getAttack(), 490, 310);
+                g.drawString("Defense-" + playerItem.getDefence(), 615, 310);
+                g.drawString("Vitesse-" + playerItem.getSpeed(), 735, 310);
+            }
         }
 
     }
@@ -115,57 +269,65 @@ public class InventoryMenu extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
+        int x, y;
 
-        if (gc.getInput().isKeyPressed(23)) {
+        if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
             sbg.enterState(Game.OVERWORLD);
         }
 
-        if ((mouseX < 408) && (mouseX > 368) && (mouseY > 511 && mouseY < 556) && (gc.getInput().isMousePressed(0))) {
-            if (!playerSelected) {
-                playerSelected = true;
-                friend1Selected = false;
-                friend2Selected = false;
-            } else if (playerSelected) {
-                playerSelected = false;
-            }
-        }
-        
-        if ((mouseX < 408) && (mouseX > 368) && (mouseY > 451 && mouseY < 496) && (gc.getInput().isMousePressed(0))) {
-            if (!friend1Selected) {
-                playerSelected = false;
-                friend1Selected = true;
-                friend2Selected = false;
-                firstClick = false;
-            } else if (friend1Selected) {
-                friend1Selected = false;
-            }
-        }
-        
-        if ((mouseX < 408) && (mouseX > 368) && (mouseY > 376 && mouseY < 421) && (gc.getInput().isMousePressed(0))) {
-            if (!friend2Selected) {
-                playerSelected = false;
-                friend1Selected = false;
-                friend2Selected = true;
-            } else if (friend2Selected) {
-                friend2Selected = false;
-            }
-        }
-
-        if (playerSelected || friend1Selected || friend2Selected) {
-            for (int j = 0; j < listItemFound.size(); j++) {
-                if ((mouseX > listItemFoundLocation.get(i)[0] && mouseX < listItemFoundLocation.get(i)[0] + 40) && (mouseY > (704 - listItemFoundLocation.get(i)[1]) && mouseY < (704 - listItemFoundLocation.get(i)[1] - 50))) {
-                    if (gc.getInput().isMousePressed(0)) {
-                        if(playerSelected) listItemPlayer.add(listItemFound.remove(i));
-                        else if(friend1Selected) listItemFriend1.add(listItemFound.remove(i));
-                        else listItemFriend2.add(listItemFound.remove(i));
-                    }
+        for (int j = 0; j < manager.getInventory().getListItemFound().size(); j++) {
+            if ((mouseX > manager.getInventory().getListItemFound().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemFound().get(j).getInventoryX() + 40)
+                    && (mouseY < (700 - manager.getInventory().getListItemFound().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemFound().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+                try {
+                    manager.getInventory().getListItemFound().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e) {
+                } catch (IndexOutOfBoundsException e) {
                 }
+                lastPosition = j;
+                if (gc.getInput().isMousePressed(0)) {  //si l'item est clique -> false
+                    if (manager.getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) {
+                        manager.getInventory().getListItemFound().get(j).setIsAbove(false);
+                        manager.getInventory().getListItemPlayer().add(manager.getInventory().getListItemFound().remove(j));
+                    }
+                } else {
+                    manager.getInventory().getListItemFound().get(j).setIsAbove(true); //si l'item n'est pas clique -> true
+                }
+            } else {
+                manager.getInventory().getListItemFound().get(j).setIsAbove(false); //met tous les items non-selectionne a false
             }
         }
-    }
+        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) { //changer la position des objets qui viennent d'etre deplace
+            x = 430 + (40 * j);
+            y = 155;
+            try {
+                manager.getInventory().getListItemPlayer().get(j).setInventoryX(x);
+                manager.getInventory().getListItemPlayer().get(j).setInventoryY(y);
+            } catch (IndexOutOfBoundsException e) {
+            }
+        }
 
-    private void addItems(ArrayList<Animation> list) {
-
+        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) {
+            if ((mouseX > manager.getInventory().getListItemPlayer().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemPlayer().get(j).getInventoryX() + 40)
+                    && (mouseY < (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
+                try {
+                    manager.getInventory().getListItemPlayer().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e) {
+                } catch (IndexOutOfBoundsException e) {
+                }
+                lastPosition = j;
+                if (gc.getInput().isMousePressed(0)) { //si l'item est clique -> false
+                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(false);
+                    manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().remove(j));
+                    for (int k = j; k < manager.getInventory().getListItemPlayer().size(); k++) {
+                        manager.getInventory().getListItemPlayer().get(k).setInventoryX(manager.getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
+                    }
+                } else {
+                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(true);  //si l'item n'est pas clique -> true
+                }
+            } else {
+                manager.getInventory().getListItemPlayer().get(j).setIsAbove(false); //met tous les items non-selectionne a false
+            }
+        }
     }
 
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {

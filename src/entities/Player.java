@@ -6,6 +6,7 @@
 package entities;
 
 import gameEngine.ResManager;
+import items.Equipment;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import maps.MiniMap;
@@ -14,6 +15,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import statesOfGame.InventoryMenu;
 
 /**
  * Classe qui contient l'affichage et le déplacement du joueur dans le overworld
@@ -26,6 +28,7 @@ public class Player extends Mob {
     private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
+    private int hp=0,attack=0,defense=0;
     private ArrayList<Entity> list;
     private boolean attacking = false;
     private Animation[] attackAnimation;

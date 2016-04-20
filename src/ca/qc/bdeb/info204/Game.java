@@ -1,6 +1,5 @@
 package ca.qc.bdeb.info204;
 
-import gameEngine.ResManager;
 import statesOfGame.MainMenu;
 import statesOfGame.Overworld;
 import org.newdawn.slick.*;
@@ -31,15 +30,17 @@ public class Game extends StateBasedGame {
     //C'est ici la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
-        this.addState(new MainMenu(MAINMENU, manager));
-        this.addState(new Overworld(OVERWORLD, manager));
-        this.addState(new InventoryMenu(INVENTORY, manager));
-        this.addState(new Credits(CREDITS, manager));
+        manager = new PlayerGameManager();
+
         
     }
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
+        this.addState(new MainMenu(MAINMENU, manager));
+        this.addState(new Overworld(OVERWORLD, manager));
+        this.addState(new InventoryMenu(INVENTORY, manager));
+        this.addState(new Credits(CREDITS, manager));
         this.getState(MAINMENU).init(gc, this);
         this.getState(OVERWORLD).init(gc, this);
         this.getState(INVENTORY).init(gc, this);
