@@ -18,11 +18,12 @@ import org.newdawn.slick.SpriteSheet;
 public class EquipmentList {
     
     private static EquipmentList instance = null;
-    private HashMap<String,Equipment> listEquipment;
+    private final HashMap<String,Equipment> listEquipment;
     private final int SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     
     private EquipmentList() throws SlickException{
         listEquipment = new HashMap();
+        loadStrings();
     }
     
     public static EquipmentList getInstance() throws SlickException {
@@ -38,8 +39,8 @@ public class EquipmentList {
 
         SpriteSheet spriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
         Animation animation = new Animation();
-        for (int i = 0; i < SPRITE_SHEET_HEIGHT; i++) {
-            for (int j = 0; j < SPRITE_SHEET_WIDTH; j++) {
+        for (int i = 0; i < SPRITE_SHEET_WIDTH; i++) {
+            for (int j = 0; j < SPRITE_SHEET_HEIGHT; j++) {
                 animation.addFrame(spriteSheet.getSprite(i, j), 100);
             }
             

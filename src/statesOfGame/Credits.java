@@ -8,6 +8,7 @@ package statesOfGame;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.MAINMENU;
 import static ca.qc.bdeb.info204.Game.WIDTH;
+import gameEngine.ResManager;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -41,7 +42,7 @@ public class Credits extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = new Image("res/pictures/tree_sun.png");
+        background = ResManager.getInstance().getImage("treesun");
     }
 
     @Override
