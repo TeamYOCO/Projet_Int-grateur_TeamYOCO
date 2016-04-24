@@ -38,11 +38,10 @@ public class ResManager {
         sprites = new HashMap();
         images = new HashMap();
         File folderSprites64;
-        
-        if (System.getProperty("os.name").contains("Windows")) {
-            folderSprites64 = new File("src\\res\\sprites\\sprites64");
-        } else {
+        if (System.getProperty("os.name").contains("Mac")) {
             folderSprites64 = new File("src/res/sprites/sprites64");
+        } else {
+            folderSprites64 = new File("src\\res\\sprites\\sprites64");
         }
         File[] listOfFile64 = folderSprites64.listFiles();
         for (int i = 0; i < listOfFile64.length; i++) {
@@ -53,10 +52,10 @@ public class ResManager {
         }
         
         File folderSprites32;
-        if (System.getProperty("os.name").contains("Windows")) {
-            folderSprites32 = new File("src\\res\\sprites\\sprites32");
-        } else {
+        if (System.getProperty("os.name").contains("Mac")) {
             folderSprites32 = new File("src/res/sprites/sprites32");
+        } else {
+            folderSprites32 = new File("src\\res\\sprites\\sprites32");
         }
         File[] listOfFile32 = folderSprites32.listFiles();
         for (int i = 0; i < listOfFile32.length; i++) {
@@ -68,10 +67,7 @@ public class ResManager {
         
         File folderPictures;
         File[] listOfFilesPictures;
-        if (System.getProperty("os.name").contains("Windows")) {
-            folderPictures = new File("src\\res\\pictures");
-            listOfFilesPictures = folderPictures.listFiles();
-        } else {
+        if (System.getProperty("os.name").contains("Mac")) {
             folderPictures = new File("src/res/pictures");
             listOfFilesPictures = folderPictures.listFiles(new FilenameFilter() {
                 @Override
@@ -79,6 +75,10 @@ public class ResManager {
                     return !name.equals(".DS_Store");
                 }
             });
+        } else {
+            folderPictures = new File("src\\res\\pictures");
+            listOfFilesPictures = folderPictures.listFiles();
+            
         }
         for (int i = 0; i < listOfFilesPictures.length; i++) {
             String path = listOfFilesPictures[i].getPath();
