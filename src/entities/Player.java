@@ -9,6 +9,8 @@ import gameEngine.ResManager;
 import items.Equipment;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -52,7 +54,6 @@ public class Player extends Mob {
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
-//        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_slash");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
@@ -133,7 +134,7 @@ public class Player extends Mob {
         return futurY;
     }
 
-    public void attack() {
+    public void attack() throws SlickException {
         if (!attacking) {
             attacking = true;
             attackDirection = direction;
@@ -142,6 +143,28 @@ public class Player extends Mob {
                 attackAnimation[i].restart();
                 swordAnimation[i].restart();
             }
+            SwordSwing swordSwing = null;
+            float sx = 0, sy = 0;
+            switch (attackDirection) {
+                case 0:
+                    sx = x - 64;
+                    sy = y - 92;
+                    break;
+                case 1:
+                    sx = x - 64;
+                    sy = y - 87;
+                    break;
+                case 2:
+                    sx = x - 64;
+                    sy = y - 87;
+                    break;
+                case 3:
+                    sx = x - 64;
+                    sy = y - 83;
+                    break;
+            }
+            swordSwing = new SwordSwing(sx, sy, attackDirection, 500);
+            list.add(swordSwing);
         }
     }
 

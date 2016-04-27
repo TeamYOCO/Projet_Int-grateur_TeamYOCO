@@ -1,8 +1,11 @@
 package gameEngine;
 
 import entities.Player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.KeyListener;
+import org.newdawn.slick.SlickException;
 
 /*
  * Cette classe gère le controle du joueur dans le overworld
@@ -57,8 +60,12 @@ public class PlayerController implements KeyListener {
                 this.player.setDirection(3);
                 this.player.setMoving(true);
                 break;
-            case Input.KEY_D:
-                this.player.attack();
+            case Input.KEY_D: {
+                try {
+                    this.player.attack();
+                } catch (SlickException ex) {
+                }
+            }
         }
     }
 

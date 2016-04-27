@@ -98,7 +98,7 @@ public class CharacterStatsManager {
             case 2 : return "Defense- ";
             case 3 : return "Special Attaque- ";
             case 4 : return "Special Defense- ";
-            case 5 : return "Vie- ";
+            case 5 : return "Speed- ";
             default : return "Noob";
         }
     }
