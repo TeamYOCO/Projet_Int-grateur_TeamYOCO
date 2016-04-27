@@ -23,6 +23,7 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import playerEngine.CharacterStatsManager;
 import playerEngine.PlayerGameManager;
 
 /**
@@ -32,17 +33,19 @@ import playerEngine.PlayerGameManager;
 public class InventoryMenu extends BasicGameState {
 
     private final PlayerGameManager manager;
+//    private final CharacterStatsManager playerManager;
     private static int stateID;
     private Image inventoryPic;
     private final ArrayList<int[]> listStats;
     private int lastPosition = -1;
-    private final int MAX_LIST_JOUEUR = 10, SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
+    private final int MAX_LIST_JOUEUR = 10;
     private UnicodeFont ufont;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         InventoryMenu.stateID = stateID;
         this.manager = manager;
         listStats = new ArrayList();
+//        playerManager = new CharacterStatsManager();
     }
 
     @Override
@@ -52,13 +55,13 @@ public class InventoryMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        int compt = 0;
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
         
 //  creer la police de caractère
 //        Font font = new Font("Serif", Font.BOLD, 15);
 //        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
 //        ufont.addAsciiGlyphs();
+//        ufont.addGlyphs(400, 600);
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
 
