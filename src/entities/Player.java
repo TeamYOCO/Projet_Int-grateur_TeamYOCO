@@ -47,8 +47,8 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);
-        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("male_walkcycle");
-        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("male_slash");
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
+        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
@@ -79,8 +79,8 @@ public class Player extends Mob {
                 this.y = futurY(delta);
             }
         } else if (attacking) {
-            attackCounter--;
-            if (attackCounter == 0) {
+            attackCounter -= delta;
+            if (attackCounter <= 0) {
                 attacking = false;
             }
         }
@@ -118,7 +118,7 @@ public class Player extends Mob {
         if (!attacking) {
             attacking = true;
             attackDriection = direction;
-            attackCounter = 50;
+            attackCounter = 500;
             for (int i = 0; i < attackAnimation.length; i++) {
                 attackAnimation[i].restart();
             }

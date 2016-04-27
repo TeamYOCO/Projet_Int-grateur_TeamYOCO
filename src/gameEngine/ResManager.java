@@ -47,10 +47,13 @@ public class ResManager {
         for (int i = 0; i < listOfFile64.length; i++) {
             String path = listOfFile64[i].getPath();
             String name = listOfFile64[i].getName();
+            String extention = name.substring(name.lastIndexOf('.'), name.length());
             name = name.substring(0, name.lastIndexOf('.'));
-            sprites.put(name, new SpriteSheet(path, 64, 64));
+            if (extention.equals(".png")) {
+                sprites.put(name, new SpriteSheet(path, 64, 64));
+            }
         }
-        
+
         File folderSprites32;
         if (System.getProperty("os.name").contains("Mac")) {
             folderSprites32 = new File("src/res/sprites/sprites32");
@@ -61,10 +64,13 @@ public class ResManager {
         for (int i = 0; i < listOfFile32.length; i++) {
             String path = listOfFile32[i].getPath();
             String name = listOfFile32[i].getName();
+            String extention = name.substring(name.lastIndexOf('.'), name.length());
             name = name.substring(0, name.lastIndexOf('.'));
-            sprites.put(name, new SpriteSheet(path, 32, 32));
+            if (extention.equals(".png")) {
+                sprites.put(name, new SpriteSheet(path, 32, 32));
+            }
         }
-        
+
         File folderPictures;
         File[] listOfFilesPictures;
         if (System.getProperty("os.name").contains("Mac")) {
@@ -78,14 +84,17 @@ public class ResManager {
         } else {
             folderPictures = new File("src\\res\\pictures");
             listOfFilesPictures = folderPictures.listFiles();
-            
+
         }
         for (int i = 0; i < listOfFilesPictures.length; i++) {
             String path = listOfFilesPictures[i].getPath();
             String name = listOfFilesPictures[i].getName();
-            name = name.substring(0,name.lastIndexOf('.'));
-            images.put(name, new Image(path));
-            
+            String extention = name.substring(name.lastIndexOf('.'), name.length());
+            name = name.substring(0, name.lastIndexOf('.'));
+            if (extention.equals(".png")) {
+                images.put(name, new Image(path));
+            }
+
         }
     }
 
