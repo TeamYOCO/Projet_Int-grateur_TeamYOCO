@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="3">
+ <tileset firstgid="1" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="127" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="145" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="170" name="hole" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/hole.png" width="96" height="192"/>
+ </tileset>
+ <layer name="collision" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2W2wqDMBQE8/9vKViVtqLtj/YEFELrbc82oQ87MPiSQyYBISGcJ2b+I/HjW5rOfJhXwACuX0T3SQ5mX+boX3j26ZxzHtTHoT4O9XGoj0N9HOrj8PZFwN45l8+W7Es28+ylUh/ybhxWGs/OTs4+5Fz5fTcHa38B2jcW6tii5v/rIfU9zRbwXrkPpeZ9q49DfRzq41Afh/o41MehPg5PH/pePHpH3nbWvMw38yJq3gAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC7XWQW6FQAwDUPazGbgD979iW6lI1vsOXXUx+nwYkkzs2KzjOK7vtb7X+bt+rvfv/TOeP78r9l+x73nvWSueXxH/ud7EX+T6WXes3LMjxj4+a9plz8Vzz7K4n7F3yb+p7z/XFXmz39ad95/6drmfmCc2z76r7NvHZ+9bfmuUD7n/Lnl8x/vyKDH1N2t943Fe5zs3e+W478o/+Zx7PI9nXtyXu898XDzPuBOWWWPWMJ3BnrazyMunvla/fMkeqBk5g2KY77Y5Vdcuct1lT+ZZ5HEG1bn1kr/xsmE89U8NaLNxcS2G6sQq+xum+ZvY3OW+fJKziUXiscit1mYctSdrsH9Ny8Uh++G+k/hZv/zwWp20x8m/pu+N7xm31SmXnGExlaN5Xr2neaO4Omf21HmQj/r0G/Y5H87IWXK175CmW5OOt3nzGyGxS/99mwnfaxzTo9V7vUZ+imHOb4vbfKn5/2Zfw9xzNj+zh+ZvZ5i+CdqcJDca9zxb44F8cRbUTuO2s6l5rZ6m0c6M9+WYvqV+5H71zl40frTvgOaF4mhf9Dj10/6qsWKQtbZc4i52+krzisYJ+ShvWz/URbWn8cVZV0f+8gO5aH9O4ma85I69bnnzmfU3/xZva7Qu50Fv+0tv9SJ1wLWPzz46fzlnaqUa2uqScy2+Wjr1oumenLKfrf/O3qRN02+bAz3jOnod5hLTiad+PyRf28w2zRKr5ruLGGI38d995tTzmsfrCc0Lne3We/VRnJNv9kK+qBGeUf9v3xri3GI0LWoaI5fM2erX48RzHZ/9aVyV3+2bQm5M+jV5eztnxm9erjZ7Ln1A3jWMs3avs3dqnHg0nVHb1JWGv9rXfLJxIvsy+Wybzylf40HWPHlB42HjlrORPZcn8i371f43XRJ/Z0lft5+NA85XrsZlud64oBZO3poz0eLY+4xvn97O6UxNutu4bl49YNLaNvPyqXmSs2FNydWTGHJevWl1+mzyO2N7zinvs+cLKTwEjAAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XuwqDQBSE4fMQXspgbEMkqSQhVjbmnVLGG+SdHXtX2BzRszADfyfysVisuYhcjHZGBSqNdkVPVBvtgTKxu5PQpxl9utGnG3260acbfbqF4Luh+9EQx2bfC1VHQxybfQ16K97RbWRZWgjfn9b32wLiWAjnl6LIo3hn38ezPc+bPvroo48++uijz5Lvi1pZ/z/4x+d7X3TVowGNK88kaALQWqeZABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+1Vu04DMRC8f4j4AIpATWghtEDPB4QaqBPyBZfCvk/ORvJKo9Fa+LIWEWJHGlm2b+3xvm4YAn8BNw7bJBxhPDGX+VQ4GqPu58IR5gnWRqc+1ZPh7kzruIY6lamypjYeffhey5foJ53j9/ot76M/vf7DO/X9fD9qxriif/UteObk1GedZ+Ug6s2V/cmwT059HA+rBvBOzn/WyPXi1adn8FjLwWSMmJ+ZzvLWh1WzVo6rTuwbuIb+S0O//OP+YvU0zC/OUau+OB5efRg77l2sF/skzq066ZF/HDfUgjGyeiT60sqRXvmHb7bih/8I9iHGlmtfxx76rNpjn2JtsJ8xR3Ctx/8XY1zrvbX8t/zHNX6uvmvhXSNvhUvh2wwb5cqh77GR98JN0fg+w+7EtUPfSyOfhJ/CL9DYavt6pr45eBB+kMbDL9zbimfhVrgTfgv3l5UTCAQCgUAgEAj8G1yVcfHDd0c585exABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OQQnAMBAAwajpuwIioL8IqH8fkXCQSzhaZv4L29q/jOqBwLvYXVsv9vOX4y/HX44/gHPu6oFArx4IPNUDAADAp038Zq7TABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="386" y="58" width="27" height="17">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="224"/>
+    <property name="destY" value="640"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="972" y="1265" width="73" height="16">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="1040"/>
+    <property name="destY" value="848"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
