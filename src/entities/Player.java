@@ -18,20 +18,21 @@ import org.newdawn.slick.SpriteSheet;
 import statesOfGame.InventoryMenu;
 
 /**
- * Classe qui contient l'affichage et le déplacement du joueur dans le overworld
+ * 
  *
- * @author Seb
+ * @author Seb 
  */
 public class Player extends Mob {
 
-    private int direction = 2, attackCounter = 0, attackDriection;
+    private int direction = 2, attackCounter = 0, attackDirection;
     private float speed = 0.2f;
     private boolean moving;
     private MiniMap map;
-    private int hp=0,attack=0,defense=0;
+    private int hp = 0, attack = 0, defense = 0;
     private ArrayList<Entity> list;
     private boolean attacking = false;
     private Animation[] attackAnimation;
+    private Animation[] swordAnimation;
 
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
@@ -42,6 +43,7 @@ public class Player extends Mob {
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
+        this.swordAnimation = new Animation[4];
         this.x = 620;
         this.y = 430;
         moving = false;
@@ -49,10 +51,12 @@ public class Player extends Mob {
         this.hitBox = new Rectangle(32, 32);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
+        SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
+            this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
         }
 //        for (int i = 0; i < moveAnimations.length; i++) {
 //            moveAnimations[i].setSpeed(5);
@@ -64,7 +68,15 @@ public class Player extends Mob {
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
         if (attacking) {
-            g.drawAnimation(attackAnimation[attackDriection], x - 32, y - 60);
+            System.out.println(attackDirection);
+            if (attackDirection == 0) {
+                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
+                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
+            } else {
+                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
+                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
+            }
+
         } else {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
         }
@@ -117,10 +129,11 @@ public class Player extends Mob {
     public void attack() {
         if (!attacking) {
             attacking = true;
-            attackDriection = direction;
+            attackDirection = direction;
             attackCounter = 500;
             for (int i = 0; i < attackAnimation.length; i++) {
                 attackAnimation[i].restart();
+                swordAnimation[i].restart();
             }
         }
     }
