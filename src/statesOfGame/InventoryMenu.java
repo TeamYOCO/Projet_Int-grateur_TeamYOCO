@@ -56,7 +56,7 @@ public class InventoryMenu extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
-        
+
 //  creer la police de caractère
 //        Font font = new Font("Serif", Font.BOLD, 15);
 //        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
@@ -64,7 +64,6 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.addGlyphs(400, 600);
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
-
         manager.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get("Casque Antique"));
     }
 
@@ -74,11 +73,11 @@ public class InventoryMenu extends BasicGameState {
         inventoryPic.draw(0, 0);
         g.setColor(Color.black);
 //        g.setFont(ufont);
-        int y = 350, x = 200, i=0;
-        
-            for (int j = 0; j < 6; j++) {
-                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155+(j*28));
-            }
+        int y = 350, x = 200, i = 0;
+
+        for (int j = 0; j < 6; j++) {
+            g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 28));
+        }
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             if (i % 16 == 0) {
                 x = 200;
