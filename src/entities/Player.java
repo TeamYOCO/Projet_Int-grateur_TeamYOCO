@@ -50,8 +50,9 @@ public class Player extends Mob {
         this.hitpoints = 100;
         this.hitBox = new Rectangle(32, 32);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
-        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
+//        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
+        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_slash");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
@@ -70,11 +71,11 @@ public class Player extends Mob {
         if (attacking) {
             System.out.println(attackDirection);
             if (attackDirection == 0) {
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
+//                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
                 g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
             } else {
                 g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
+//                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 85);
             }
 
         } else {
