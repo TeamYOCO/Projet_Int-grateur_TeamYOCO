@@ -21,6 +21,7 @@ import org.newdawn.slick.SpriteSheet;
 public class Equipment {
 
     protected int inventoryX, inventoryY;
+    protected int stats[] = new int[6];
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -49,6 +50,12 @@ public class Equipment {
         this.specialAttack = stats[3];
         this.specialDefence = stats[4];
         this.speed = stats[5];
+        this.stats[0] = stats[0];
+        this.stats[1] = stats[1];
+        this.stats[2] = stats[2];
+        this.stats[3] = stats[3];
+        this.stats[4] = stats[4];
+        this.stats[5] = stats[5];
     }
 
     
@@ -84,6 +91,10 @@ public class Equipment {
 
     public Rectangle getHitBox() {
         return hitBox;
+    }
+    
+    public int[] getStats(){
+        return stats;
     }
 
     public int getInventoryX() {

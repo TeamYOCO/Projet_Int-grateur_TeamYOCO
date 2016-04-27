@@ -33,7 +33,7 @@ import playerEngine.PlayerGameManager;
 public class InventoryMenu extends BasicGameState {
 
     private final PlayerGameManager manager;
-//    private final CharacterStatsManager playerManager;
+    private final CharacterStatsManager statsManager;
     private static int stateID;
     private Image inventoryPic;
     private final ArrayList<int[]> listStats;
@@ -45,7 +45,7 @@ public class InventoryMenu extends BasicGameState {
         InventoryMenu.stateID = stateID;
         this.manager = manager;
         listStats = new ArrayList();
-//        playerManager = new CharacterStatsManager();
+        statsManager = CharacterStatsManager.getInstance();
     }
 
     @Override
@@ -75,6 +75,10 @@ public class InventoryMenu extends BasicGameState {
         g.setColor(Color.black);
 //        g.setFont(ufont);
         int y = 350, x = 200, i=0;
+        
+            for (int j = 0; j < 6; j++) {
+                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155+(j*28));
+            }
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             if (i % 16 == 0) {
                 x = 200;
@@ -140,7 +144,11 @@ public class InventoryMenu extends BasicGameState {
                 if (gc.getInput().isMousePressed(0)) {  //si l'item est clique -> false
                     if (manager.getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) {
                         manager.getInventory().getListItemFound().get(j).setIsAbove(false);
-                        manager.getInventory().getListItemPlayer().add(manager.getInventory().getListItemFound().remove(j));
+                        manager.getInventory().getListItemPlayer().add(manager.getInventory().getListItemFound().get(j));
+                        for (int k = 0; k < 6; k++) {
+                            statsManager.getStats()[k] += manager.getInventory().getListItemFound().get(j).getStats()[k];
+                        }
+                        manager.getInventory().getListItemFound().remove(j);
                     }
                 } else {
                     manager.getInventory().getListItemFound().get(j).setIsAbove(true); //si l'item n'est pas clique -> true
@@ -170,7 +178,11 @@ public class InventoryMenu extends BasicGameState {
                 lastPosition = j;
                 if (gc.getInput().isMousePressed(0)) { //si l'item est clique -> false
                     manager.getInventory().getListItemPlayer().get(j).setIsAbove(false);
-                    manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().remove(j));
+                    manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().get(j));
+                    for (int k = 0; k < 6; k++) {
+                        statsManager.getStats()[k] -= manager.getInventory().getListItemPlayer().get(j).getStats()[k];
+                    }
+                    manager.getInventory().getListItemPlayer().remove(j);
                     for (int k = j; k < manager.getInventory().getListItemPlayer().size(); k++) {
                         manager.getInventory().getListItemPlayer().get(k).setInventoryX(manager.getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
                     }

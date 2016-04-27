@@ -47,7 +47,7 @@ public class EquipmentList {
         }
         
         listEquipment.put("Casque Antique",new Equipment(0,0,animation.getImage(0),"Casque Antique",
-                "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",new int[]{1,1,1,1,1,1}));
+                "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",new int[]{420,420,420,420,420,420}));
         listEquipment.put("Casque Metallique",new Equipment(0,0,animation.getImage(1),"Casque Metallique",
                 "Casque en métal moderne. Procure une bonne \nOffre une bonne augmentation de la vie maximale",new int[]{1,1,1,1,1,1}));
         listEquipment.put("Casque d'Argent",new Equipment(0,0,animation.getImage(2),"Casque d'Argent",
