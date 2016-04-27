@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="house_7" tilewidth="32" tileheight="32" tilecount="63" columns="9">
+  <image source="../tiles/house_7.png" width="288" height="224"/>
+ </tileset>
+ <tileset firstgid="100" name="signs" tilewidth="32" tileheight="32" tilecount="6" columns="3">
+  <image source="../tiles/signs.png" width="96" height="64"/>
+ </tileset>
+ <tileset firstgid="106" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="124" name="house" tilewidth="32" tileheight="32" tilecount="63" columns="9">
+  <image source="../tiles/house.png" width="288" height="224"/>
+ </tileset>
+ <tileset firstgid="187" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <layer name="collision" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YQQ6AIAxEUe5/JS7nyo2hUGCwCv8lRmNMYUzRaEoAAABny4LtC2bnQQ6tqBzqXo3MYZ3fIcdozegcpV4azWH158rnbjb2z+MZpTzK+tYY6ndSbQwAAAD4/f1fw035TRR5H9Q5Vo+rrndSjloPvZWj1cfeHN5rZ7XWYc867a2xWmkOAABgbxcrU4bSECcAAA==
+  </data>
+ </layer>
+ <layer name="Background" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC4WWy47cMBADdddF0v9/bBIgBohSUXMwZsdjt/rF4s4xxvl7rf/XwfXd33HNuM/fV/z+xdjxfSL2Lr+vOGuPO4e8d+Jzxnvf98zl+z7jsth5P5/dcVb2jHmcceeZeWU+E+ccvJc9yPy/e5lDxsheHsRmPhPPTcTOHnK2E39nXplD5s2+sGdtXrkrGZ+/53OZF/eRzzMee9l2eOG77TVj53nWE9tt9jXjph6YH59ljayJOso6yIl8njuxxl07c8x9sXypV9tN9iXnydk29ti5jMP47HFq1piXZ7acyQnTfGqd7NtyVuZj3Kael5zFT5uvcXwhZrLH2GYcajVxZuw968g6bebUu/GXeZPBnBXjGOfJ1pfPcUbsyWuHm/4asznTF3eoSZsV95Ncye82Z9OHMZ39ypkyXvae+2vnGAMbQ3/tPvXIi/FtH6hlY6lp2f4veGnYPO3FGvoVNcqdbd7JZ4ydzJF5MW7z6+an5HnWZHw1NlP/r7qNqS9OthoyP+67sYwz23j+FxOYD/XKmeecTC82X+qOM9pyn7FYv8W398luu7gf5uOmMzLGekXPpj+yDu5J6+PGO6aZllvzGM697ZwxvfkUmdZqNh80/z3jztPYb/fb3JecY2eYrqlb85fsy0I89tT4SQaaxumRL4bs4bNiD3MWxv4lfxtf1rhnQ20wJ8bmnrZ9Ne1wJ3jxXdaycbb5hr1r/0u8/CdrJ9tfHDXPMg+kxrhf3BXbueQAdfDiFHeYZ5MxeX7zZ55lmjD+kzemQc6L9+m53EfbYWMM9zOfNe+wePy7cYrcILvMT0zvrx21XbL8yXTGIIean5AB7LHtcGMqNc6aOf/WO/bCuJVzbRyjvhmf3G+9bb6S9/I380bqmPtjPKdHGDvIZmNvzpSMMb9p+0weN/7PcddpnmY7SbZT14z5mscePkOeZ35nDLDZ8exWd/Oyl6ZtFvx/ZUosy5MsMt1zbxbOsHNsz1J3zX+z19Ru0/GRs17e13Ji78gJ077pl/mZp85xz2iNu56cM5lCbZOpzQutp6kj0x51aFxpO2w7avPOvpi2uCemQ9bH3jUPILPIaett2xvyLus0zVp+7DN5wL0z7jb/Mc/a8jt7TM0Z12y/8136BGfe+kV2mqewJ/Ru6pU7k/GbLxhf2xw4L+6O+dSWs42drR723JjNXTDW02c4K+ONMa1pzpjC59e4a6WuMlb7ZD+5023O1EW+2z7pNWQwWUZm5Tvm+xux2z6SodZn7i+5zL2l13DO1PFEXOtt7lvzj6yzeVXTqM1lIp7psfnbL69tLM+etv1seTefNZ2wTvYmd8CYyd40n+TM2h4wR847v7P/9IvMwzy49bntPj2J+288YX/IIjLJfJXeR83zHZt//mZezN+oSaub9dNHjePGDeqaO0NNmz/ucc+CnmiM5tmcgc2TPsP3G8ONPfm3sZT8Np0ZI1irMYl7Zz0ip4zT/+7/ARjVlBgQJwAA
+  </data>
+ </layer>
+ <layer name="Road2" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2XuwrCQBBF8zMqNmqndmInPgqff6GF2mk6tVM/2SukCDLZV5bdRO6BAwsLM3fKmySEEEIIIYQQInOB1xKm4SOL3OC9hI/wkUVi3dGAzQJbDvOe8KUxUfy9He/owG6BPceZMejDQWY79/46jJjLlSM8wTN3cIdHDtmOfc13EEIIIf/ICM7gXOMCjuNENGICN3CrcQenkTKasIQrQ9eed6u6pkqph9rMcumxKlRdU6XUQ21m+e6x+a5po9RDpVm//bWOPTZElwmRgXf4w0eGKnTLKmQghBDffAAZRZIEECcAAA==
+  </data>
+ </layer>
+ <layer name="Road1" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2XyUrEQBCG6yEU9+3gBoPLYcYFHI961PdR8aLiRb2JtzB6cT2Iy+v5SyLpid1OqjvpKbA++JghMx36SwikiOphHE7AyZrOHwvtkIV2yEI7ZKEdstAOWfTquIYJvIV3TDvwpr6td9GrI8l8gs8FPwyLv33byYxBmY57+FDwFb5T2vAJ3yz/eSQ5Ha6GhPJ79ELpfl0tMfB5zhP63Rfz2tvw6bDdo5jX3oZPxwE8tHhU8d6asA234LZxzIZPxwk8tXjms9k/aMAduAB3jWM2JHe04B5chfvGMRs+HRfwMvPY+H7lsdeqCH0vOa9wLyH8l/erfjECRxkOU9oxxFzna1l+rq9UyzIFpxkOZucfYK7ztS6kPh9ctEMW2iEL7ZCFdsii3x1NyufXTeqeX10zrI3Qjlk4ZzjPXN8g9/zqmmFthHYswWXDFeb6FrnnV9cMayO0Yw2uw8Xsc8PzPKH0+/moCu2oBu78GnOuHWN0SJ5fOfeWO7/GdIbRoShKzhc9xO+WECcAAA==
+  </data>
+ </layer>
+ <layer name="Maison" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3X3woBURAG8PM4hAvCBYXcsC3yn5K8/1v4Ttnaxjm7ZZxM+n71lV2zp5lzN84REREREdG/mCErZC2yQeaKcweJ66UMOSFnkQuSK85tJ66X9sghkqPiXNmXvG/5rJ0jlaF49n1OkBEyde99y3qrfN8LpIEsnd37r+Pve4t0kZ1Le/+9hGcTERER/VL2SmhPC8XvbrnT7T0pFHOE9rRH4F2xu2nmaCm+jfEzhPa0G3JF7oH//O6mmaOv+DYmNkPx3vccm8Wicem3nO0YqbOoI57L+21VnTVy9yvvt1V1dZofd/Qd5f1Ww8L+aqEHIiIi654uFKq/ECcAAA==
+  </data>
+ </layer>
+ <layer name="Foreground" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OwQnAIAAEMMcp+CuOJO4/Qj+lE0hPJZkgpQAAACer6cAkLR3gVz0dAAAAgAVc6cBrpAN87nQAADbwAHZB8DIQJwAA
+  </data>
+ </layer>
+ <layer name="Foreground 2" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YoQ0AIAxE0e6DZSX2XwFVjaBJIXlPnzj9IwAASKN412UW7wAAAIA7p5bwemtIp5agNUC91X0AAOAzG7d7PksQJwAA
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="1586" y="770" width="12" height="96">
+   <properties>
+    <property name="destMap" value="res/maps/map_3.tmx"/>
+    <property name="destX" value="64"/>
+    <property name="destY" value="192"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="702" y="0" width="98" height="12">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="3" type="tp" x="1218" y="627" width="30" height="28">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="4" type="tp" x="415" y="629" width="31" height="26">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="5" type="tp" x="222" y="1237" width="36" height="25">
+   <properties>
+    <property name="destMap" value=""/>
+    <property name="destX" value=""/>
+    <property name="destY" value=""/>
+   </properties>
+  </object>
+  <object id="6" type="tp" x="1280" y="1233" width="31" height="30">
+   <properties>
+    <property name="destMap" value="res/maps/Maison_4.tmx"/>
+    <property name="destX" value="432"/>
+    <property name="destY" value="640"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
