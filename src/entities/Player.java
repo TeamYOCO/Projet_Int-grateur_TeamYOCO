@@ -48,9 +48,12 @@ public class Player extends Mob {
         this.swordAnimation = new Animation[4];
         this.x = 620;
         this.y = 430;
+        this.xOff = -16;
+        this.yOff = -50;
         moving = false;
         this.hitpoints = 100;
-        this.hitBox = new Rectangle(32, 32);
+        this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
+        System.out.println(hitBox);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
@@ -70,21 +73,7 @@ public class Player extends Mob {
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
         if (attacking) {
-            System.out.println(attackDirection);
-            if (attackDirection == 0) {
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 92);
-                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-            } else if (attackDirection == 1) {
-                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 87);
-            } else if (attackDirection == 2) {
-                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 87);
-            } else {
-                g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-                g.drawAnimation(swordAnimation[attackDirection], x - 64, y - 83);
-            }
-
+            g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
         } else {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
         }
@@ -104,6 +93,7 @@ public class Player extends Mob {
                 attacking = false;
             }
         }
+        hitBox.setPos(x + xOff, y + yOff);
     }
 
     // Teste la position pour se déplacer en X
