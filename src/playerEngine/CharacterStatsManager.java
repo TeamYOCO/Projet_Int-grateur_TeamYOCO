@@ -38,12 +38,12 @@ public class CharacterStatsManager {
 //        specialAttack = 0;
 //        defence = 0;
 //        specialDefence = 0;
-        stats[0] = 0;
-        stats[1] = 0;
-        stats[2] = 0;
-        stats[3] = 0;
-        stats[4] = 0;
-        stats[5] = 0;
+        stats[0] = 10;
+        stats[1] = 10;
+        stats[2] = 10;
+        stats[3] = 10;
+        stats[4] = 10;
+        stats[5] = 10;
         
         this.expNeeded = 0;
         this.exp = 0;
