@@ -31,7 +31,7 @@ public class Equipment {
     protected int specialAttack;
     protected int defence;
     protected int specialDefence;
-    protected String name,description;
+    protected String name, description;
     protected Animation animation;
     protected float x, y;
     protected MiniMap map;
@@ -40,7 +40,26 @@ public class Equipment {
     private boolean isAbove;
     private ArrayList<Particle> particle;
 
-
+    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
+        this.inventoryX = inventoryX;
+        this.inventoryY = inventoryY;
+        this.itemIcon = itemIcon;
+        this.isAbove = false;
+        this.name = name;
+        this.description = description;
+        this.hpMax = stats[0];
+        this.attack = stats[1];
+        this.defence = stats[2];
+        this.specialAttack = stats[3];
+        this.specialDefence = stats[4];
+        this.speed = stats[5];
+        this.stats[0] = stats[0];
+        this.stats[1] = stats[1];
+        this.stats[2] = stats[2];
+        this.stats[3] = stats[3];
+        this.stats[4] = stats[4];
+        this.stats[5] = stats[5];
+    }
     
     public void update(int delta) {
 
@@ -75,8 +94,8 @@ public class Equipment {
     public Rectangle getHitBox() {
         return hitBox;
     }
-    
-    public int[] getStats(){
+
+    public int[] getStats() {
         return stats;
     }
 
@@ -91,19 +110,19 @@ public class Equipment {
     public Image getIcon() {
         return itemIcon;
     }
-    
-    public boolean getIsAbove(){
+
+    public boolean getIsAbove() {
         return isAbove;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
+
     public int getHpMax() {
         return hpMax;
     }
@@ -111,11 +130,11 @@ public class Equipment {
     public int getAttack() {
         return attack;
     }
-    
+
     public int getDefence() {
         return defence;
     }
-    
+
     public int getSpecialAttack() {
         return specialAttack;
     }
@@ -135,8 +154,8 @@ public class Equipment {
     public void setInventoryY(int y) {
         this.inventoryY = y;
     }
-    
-    public void setIsAbove(boolean isAbove){
+
+    public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
     }
 }
