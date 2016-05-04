@@ -40,47 +40,6 @@ public class Equipment {
     private boolean isAbove;
     private ArrayList<Particle> particle;
 
-    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
-        this.inventoryX = inventoryX;
-        this.inventoryY = inventoryY;
-        this.itemIcon = itemIcon;
-        this.isAbove = false;
-        this.name = name;
-        this.description = description;
-        this.hpMax = stats[0];
-        this.attack = stats[1];
-        this.defence = stats[2];
-        this.specialAttack = stats[3];
-        this.specialDefence = stats[4];
-        this.speed = stats[5];
-        this.stats[0] = stats[0];
-        this.stats[1] = stats[1];
-        this.stats[2] = stats[2];
-        this.stats[3] = stats[3];
-        this.stats[4] = stats[4];
-        this.stats[5] = stats[5];
-    }
-    
-    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
-        this.inventoryX = inventoryX;
-        this.inventoryY = inventoryY;
-        this.itemIcon = itemIcon;
-        this.isAbove = false;
-        this.name = name;
-        this.description = description;
-        this.hpMax = stats[0];
-        this.attack = stats[1];
-        this.defence = stats[2];
-        this.specialAttack = stats[3];
-        this.specialDefence = stats[4];
-        this.speed = stats[5];
-        this.stats[0] = stats[0];
-        this.stats[1] = stats[1];
-        this.stats[2] = stats[2];
-        this.stats[3] = stats[3];
-        this.stats[4] = stats[4];
-        this.stats[5] = stats[5];
-    }
 
     
     public void update(int delta) {
