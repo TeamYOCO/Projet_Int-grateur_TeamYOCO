@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
  <tileset firstgid="1" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
   <image source="../tiles/city_inside.png" width="768" height="512"/>
  </tileset>
@@ -21,24 +21,66 @@
  <tileset firstgid="685" name="inside red" tilewidth="32" tileheight="32" tilecount="100" columns="10">
   <image source="../tiles/inside red.png" width="320" height="320"/>
  </tileset>
+ <tileset firstgid="785" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
+  <image source="../tiles/cabinets.png" width="192" height="416"/>
+ </tileset>
+ <tileset firstgid="863" name="barrel" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="../tiles/barrel.png" width="128" height="64"/>
+ </tileset>
+ <layer name="collision" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WU0QqAIAxFxf8sSA0Kqv9/bFGjJYqbqS9euC86PU7nlJJp0EpN+js26ntcYqno2hL8P87hz2AHtuBFvzmF5IT8mBzh4hlS8Tn5x7gb2IB3Rvz6xKIvSWvFMXLMiU+doUduqL658y25luEa3BJ9UPq+pdQDF9++NdeQumydL/KRS++glkzgno3gD+QIeZRxeP+d2xvonpw+4jNOwYmzymAJAAA=
+  </data>
+ </layer>
  <layer name="Tile Layer 2" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxbycjAsHIUj+JRPIpH8SgexaN4FFMNAwA+iY6A
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC1vLxMCwjs54PRBvB+IddMY7gfggEB+iMz4MxCsZR/EoHj543QCl6R0DZO+h0Tw8ikfxKCYRAwD9gvMNYAkAAA==
   </data>
  </layer>
  <layer name="Tile Layer 1" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztw7ENACAMA8GI/VchlEBJWAxP4YY/6XqLSPOhU5f51qNlfhUAAPzjAaEyQWU=
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC9vIxEB3sAFo58YRaG87kN0BxJ1E6OlmxMTk2jsfyF4AxAtJNwIMPIHYiwx7twPZO4B4J5n2JgJxEhn20huM2ks6aCdDPzXsnTRA9pIDRu0dtZdW9u4G4nhmBoYEZvrZuwto51EgTgbamQLEiUCcRAf7jwDtPI8UzqlAO9PoYO85oJ0AvcITrWAJAAA=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYCAezGBkYOiGYkYmBgYmIP4JZP8C4o9A/ImRBMPItJee9s9AMo+Q/bSyl5D9tLYXlxtGwSgYBaNgFIyC4Qz2MkIwuQAAvgUXiw==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgwARPGbEIAsEGJgYGRiDuZoTQTED8E8j+BcQfgfgTDn3EgudA/a/QMMzeHkaIvTBMTftf4vFvD1Sum4D95IA3OPS9AIoLMqOK4bKfmuAZ0FxxZkxxdLu7KYxndAAKZ1ks9tIagOzdSEQYBlDZbbsGyN4jA2TvOaCduwfAXhDwYSaMI2lgbxAzcXgUDAyIB4Z9wgCEfzLQzhRmiP30BDD7kulsb/IAhDPMPlA4JwJxEgX272WEYGJACpI9qUB2GhADAOqAV5FgCQAA
   </data>
  </layer>
  <layer name="Tile Layer 4" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYCANSDMxMMgAsTAQizCRqJkC0M0IwfS2H2Yvve1Ht5de9uOyF93+UTAKRsEoGAWjYBTgBgDOjQzE
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIB5sYGJg2AjEMkAsDMQiTCRopgDA7O1mZGCQpqP9yPbCMD3sh9krxAy0B4hFmOljP8xeCaB9kkAsBbXXEyjnxYBqPy3slQPaJw/ECswQ8UQgTqKuVVjtpTcYLvauY0LgJ0jmPmVClVsPxLuJsHcmkW7bwYTA75D0vGdCldsJxEeBeDoWc5HFlhBp7yEmBP6BpOcnE6rcYSA+PwDxOwpGwSgYXAAAYdkycGAJAAA=
   </data>
  </layer>
+ <layer name="Tile Layer 6" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 8" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="1" type="tp" x="409" y="2" width="142" height="9">
+   <properties>
+    <property name="destMap" value="res/maps/Maison_2-2.tmx"/>
+    <property name="destX" value="352"/>
+    <property name="destY" value="128"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="449" y="631" width="61" height="8">
+   <properties>
+    <property name="destMap" value="res/maps/City_1.tmx"/>
+    <property name="destX" value="1264"/>
+    <property name="destY" value="704"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

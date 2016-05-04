@@ -70,7 +70,7 @@
    H4sIAAAAAAAAC+3QMQoAMAgDQD/vv7sLrlbhbknGkAgAAAAAAAAAgP2y6cy6/v31/eyVJfnjAR2SnUIQJwAA
   </data>
  </layer>
- <objectgroup name="tp" width="100" height="100">
+ <objectgroup name="tp">
   <properties>
    <property name="destMap" value="map_3"/>
    <property name="destX" value="2208"/>
@@ -92,9 +92,9 @@
   </object>
   <object id="42" x="1585" y="1026" width="14" height="93">
    <properties>
-    <property name="destMap" value="map_4"/>
-    <property name="destX" value=""/>
-    <property name="destY" value=""/>
+    <property name="destMap" value="res/maps/map_4.tmx"/>
+    <property name="destX" value="32"/>
+    <property name="destY" value="320"/>
    </properties>
   </object>
   <object id="44" x="769" y="2" width="63" height="14">

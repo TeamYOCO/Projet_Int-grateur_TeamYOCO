@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="2">
+ <tileset firstgid="1" name="castlefloors" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/castlefloors.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="101" name="castlewalls" tilewidth="32" tileheight="32" tilecount="180" columns="12">
+  <image source="../tiles/castlewalls.png" width="384" height="480"/>
+ </tileset>
+ <tileset firstgid="281" name="castle_outside" tilewidth="32" tileheight="32" tilecount="187" columns="17">
+  <image source="../tiles/castle_outside.png" width="544" height="352"/>
+ </tileset>
+ <tileset firstgid="468" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="493" name="victoria" tilewidth="32" tileheight="32" tilecount="55" columns="11">
+  <image source="../tiles/victoria.png" width="352" height="160"/>
+ </tileset>
+ <tileset firstgid="548" name="castlefloors_outside" tilewidth="32" tileheight="32" tilecount="20" columns="4">
+  <image source="../tiles/castlefloors_outside.png" width="128" height="160"/>
+ </tileset>
+ <tileset firstgid="568" name="cementstair" tilewidth="32" tileheight="32" tilecount="20" columns="5">
+  <image source="../tiles/cementstair.png" width="160" height="128"/>
+ </tileset>
+ <tileset firstgid="588" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/city_inside.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="972" name="castle_lightsources" tilewidth="32" tileheight="32" tilecount="20" columns="5">
+  <image source="../tiles/castle_lightsources.png" width="160" height="128"/>
+ </tileset>
+ <layer name="collisions" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3PMQrAIBAAwfP/37OJrwkpBAlC5PaKFLsgWOg5RkT0FnHB1VvNnHXebN1n661mzjpvtyfz/uyrTh9LH0sfSx9LH0sfSx9LH0sfSx9LH0sfSx9LH0sfSx9LHyvrG4m/ZO68feNw7c7uPF93Tt55ugHbiJ2aABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwDoPFA6x9vPY6CvaSqqqqqqqqPDk1bc/wAGQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3QsQ3CQBBE0ZNjcAjug4DcmVOgExfgAiiAouyiuGA3ueCC/T7JluZLk66edk4pbXnTwbbmzTb5uO8d2LNy/xG86St9kV6V+5/gTa/0jd2xtsf/vEve1dbDW96evlve3TbAW558LPlY8rHkY8nHko8lH0s+lnws+VjyseRjyceSj3UW32IjtfC562sjtfC562cjtfC56w8RjoezABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YsQmAMBCF4XhZIL3DOYZjOJoWWugaOoCBIMRgceYFFXwfpBBOLsVfxZgyGgnnK9bq/N1KOLEtmXlSer9Owom9eT8iutZbYwZbbq600e+cFHu1c6XNfuei2Kud+xv2h2F/GPaHYX8Y9odhfxj2h2F/GPaHYX8Y9odhfxj2l8/J/f7cg+/6dcaunH8OOz3aEzUAGQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="1" type="tp" x="546" y="1267" width="124" height="15">
+   <properties>
+    <property name="destMap" value="res/map/Castle_1.tmx"/>
+    <property name="destX" value="640"/>
+    <property name="destY" value="512"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -29,7 +29,7 @@
  </tileset>
  <layer name="collision" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGNyAkcqYE4nNgEST4h4Y4MBiHjnmoJtHLTBqHgJgSwuDyTxywKh5w9M8diTz0NMXO1Yd+M1ihNLYzCOn3ELGADIcy+NABgAA
+   H4sIAAAAAAAAC2NgGNyAkcqYE4nNgEST4h4Y4MBiHjnmoJtHLTBqHgJgSwuDyTxywKh5w9M8diTz0NMXO1Yd+M1ihNLo5iHLIWMGLGLsSOqRMQC83gf2QAYAAA==
   </data>
  </layer>
  <layer name="Tile Layer 1" width="20" height="20">

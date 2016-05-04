@@ -24,46 +24,46 @@
  <tileset firstgid="585" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
   <image source="../tiles/cabinets.png" width="192" height="416"/>
  </tileset>
- <layer name="Tile Layer 4" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFlUiYlnaAQB0e3EYlO/CBhlE7Ru2gkR2VFGJi7GgkyeWkA1raUU8HO+roYAcM0NqOejrYUUdFO2Dxi5yeYTS17EA2F5sdAGZ2Iow=
+ <layer name="collision" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWVSJiWdoBAHR7cRiU78IGGUTtG7aCRHZUUYmLsaCTJ5aQDWtpRTwc76uhgBwzQ2o56OthRR0U7YPGLnJ5hNMiOLqgaYjEDFrFKJLoSTawbiAH2HBaS0AcAAA==
   </data>
  </layer>
  <layer name="Tile Layer 1" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJwTZWBgEKMhFgdieSBWoCFWBGJNINaiIdYGYttRPIpH8SgexaN4kGIANzBupg==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxNlYGAQoyEWB2J5IFagIVYEYk0g1qIh1gZi21E8ikfxKB7Fo3iQYgCMLktw0AcAAA==
   </data>
  </layer>
  <layer name="Tile Layer 3" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJzdktkKwjAURGNcEUR/q1aoFWoFN9xw+w0fim/+sSPMheQtmCagA4cZ5tIOlCoVXolWKgVjMqFLl7BLjSx30RJ5BdZgA7ba7jKQgymZ0aXL2OVGlnvFnR18Dw7gCE7a7gpQgjlZ0KUr2JVGlrtsnOEXcAU3cNd256PK8/k6N4Yk5IaPXDdGJOSGj1w3Hvp7Xo4bT+3Hv6sfYWMQYSOWfu17yS/cBC3mRo3v/6hD74Iec9u4vwHqaS38
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC92S2QrCMBREY1wRRH+rVqgVagU33HD7DR+Kb/6xI8yF5C2YJqADhxnm0g6UKhVeiVYqBWMyoUuXsEuNLHfREnkF1mADttruMpCDKZnRpcvY5UaWe8WdHXwPDuAITtruClCCOVnQpSvYlUaWu2yc4RdwBTdw13bno8rz+To3hiTkho9cN0Yk5IaPXDce+ntejhtP7ce/qx9hYxBhI5Z+7XvJL9wELeZGje//qEPvgh5z27i/ASLSukLQBwAA
   </data>
  </layer>
  <layer name="Tile Layer 2" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJyTZKAtkABiyVE7Ru0YtYOgHVvpYMcBItQfQuNvJtEOWoFRO0amHco0tkMJiHVpbIcOEJuTqCeQRPVmQAwAosIHiA==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC5NkoC2QAGLJUTtG7Ri1g6AdW+lgxwEi1B9C428m0Q5agVE7RqYdyjS2QwmIdWlshw4Qm5OoJ5BE9WZADADpBGdq0AcAAA==
   </data>
  </layer>
  <layer name="Tile Layer 5" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
   </data>
  </layer>
  <layer name="Tile Layer 6" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
   </data>
  </layer>
  <layer name="Tile Layer 7" width="25" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="100" height="100">
   <object id="1" type="tp" x="385" y="635" width="29" height="5">
    <properties>
     <property name="destMap" value="res/maps/City_1.tmx"/>
-    <property name="destX" value="1312"/>
+    <property name="destX" value="256"/>
     <property name="destY" value="1312"/>
    </properties>
   </object>
