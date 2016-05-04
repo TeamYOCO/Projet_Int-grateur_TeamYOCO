@@ -47,10 +47,6 @@ public class Particle extends Entity {
     }
 
     @Override
-    public void init() throws SlickException {
-    }
-
-    @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
     }

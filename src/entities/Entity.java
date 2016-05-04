@@ -27,8 +27,6 @@ public abstract class Entity {
         return hitBox;
     }
 
-    // Méthode init de la classe
-    public abstract void init() throws SlickException;
 
     // Méthode qui permet de dessiner l'élément
     public abstract void render(Graphics g) throws SlickException;

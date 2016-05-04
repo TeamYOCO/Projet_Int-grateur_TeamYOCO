@@ -25,8 +25,8 @@ public class Hud {
     private static final int BAR_HEIGHT = 16;
 
     private static final Color LIFE_COLOR = new Color(255, 0, 0);
-    private static final Color MANA_COLOR = new Color(0, 0, 255);
-    private static final Color XP_COLOR = new Color(0, 255, 0);
+    private static final Color MANA_COLOR = new Color(0, 255, 0);
+    private static final Color XP_COLOR = Color.yellow;
 
     private Image playerbars;
 
@@ -41,7 +41,7 @@ public class Hud {
         g.setColor(MANA_COLOR);
         g.fillRect(BAR_X, MANA_BAR_Y, BAR_WIDTH, BAR_HEIGHT);
         g.setColor(XP_COLOR);
-        g.fillRect(BAR_X, XP_BAR_Y, BAR_WIDTH, BAR_HEIGHT);
+        g.fillRect(BAR_X, XP_BAR_Y, ((float)CharacterStatsManager.getInstance().getExp()/CharacterStatsManager.getInstance().getExpNeeded())*BAR_WIDTH, BAR_HEIGHT);
         g.drawImage(playerbars, P_BAR_X, P_BAR_Y);
         g.setColor(Color.black);
         g.drawString(""+CharacterStatsManager.getInstance().getHp(), 100, LIFE_BAR_Y);

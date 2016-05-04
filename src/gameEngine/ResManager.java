@@ -71,6 +71,23 @@ public class ResManager {
             }
         }
         
+        File folderSprites192;
+        if (System.getProperty("os.name").contains("Mac")) {
+            folderSprites192 = new File("src/res/sprites/sprites192");
+        } else {
+            folderSprites192 = new File("src\\res\\sprites\\sprites192");
+        }
+        File[] listOfFile192 = folderSprites192.listFiles();
+        for (int i = 0; i < listOfFile192.length; i++) {
+            String path = listOfFile192[i].getPath();
+            String name = listOfFile192[i].getName();
+            String extention = name.substring(name.lastIndexOf('.'), name.length());
+            name = name.substring(0, name.lastIndexOf('.'));
+            if (extention.equals(".png")) {
+                sprites.put(name, new SpriteSheet(path, 192, 192));
+            }
+        }
+        
         File folderSprites32;
         if (System.getProperty("os.name").contains("Mac")) {
             folderSprites32 = new File("src/res/sprites/sprites32");

@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import entities.Bee;
 import entities.Entity;
 import entities.Player;
 import gameEngine.Camera;
@@ -28,7 +29,6 @@ public class Overworld extends BasicGameState {
     private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
-    private ArrayList<Entity> listAdd = new ArrayList();
     private static int stateID;
     private GameContainer container;
     private MiniMap map = new MiniMap();
@@ -62,6 +62,7 @@ public class Overworld extends BasicGameState {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
+        this.list.add(new Bee(false, 725, 178)); //725.6064 178.80164
     }
 
     @Override
@@ -132,6 +133,8 @@ public class Overworld extends BasicGameState {
         if (!"undefined".equals(newMap)) {
             this.map.changeMap(newMap);
         }
+        this.list.clear();
+        this.listRemove.clear();
     }
 
     public static Image getScreenShot() {

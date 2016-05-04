@@ -6,11 +6,7 @@
 package entities;
 
 import gameEngine.ResManager;
-import items.Equipment;
-import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -18,7 +14,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import playerEngine.CharacterStatsManager;
-import statesOfGame.InventoryMenu;
 
 /**
  *
@@ -42,7 +37,6 @@ public class Player extends Mob {
         this.list = list;
     }
 
-    @Override
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
@@ -54,7 +48,6 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
-        System.out.println(hitBox);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
