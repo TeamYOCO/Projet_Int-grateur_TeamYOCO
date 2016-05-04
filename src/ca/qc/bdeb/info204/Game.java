@@ -22,7 +22,7 @@ import statesOfGame.InventoryMenu;
 public class Game extends StateBasedGame {
 
     public static final String GAMENAME = "Projet intégrateur V1.0";
-    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, RESLOAD = 4;
+    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
     public static PlayerGameManager manager;
@@ -32,7 +32,6 @@ public class Game extends StateBasedGame {
         super(name);
         manager = new PlayerGameManager();
 
-        
     }
 
     @Override
@@ -50,8 +49,7 @@ public class Game extends StateBasedGame {
         try {
             appGc = new AppGameContainer(new Game(GAMENAME));
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
-//            appGc.setShowFPS(false);
-            appGc.setTargetFrameRate(99);
+            appGc.setShowFPS(false);
             appGc.start();
         } catch (SlickException ex) {
             ex.printStackTrace();

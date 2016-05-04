@@ -28,6 +28,10 @@ public class MiniMap {
     public MiniMap() {
     }
 
+    public MiniMap(String fileName) {
+        this.fileName = fileName;
+    }
+
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");

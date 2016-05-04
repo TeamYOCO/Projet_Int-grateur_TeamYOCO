@@ -5,10 +5,14 @@
  */
 package items;
 
+import entities.Particle;
+import java.awt.Frame;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -19,6 +23,7 @@ import org.newdawn.slick.SpriteSheet;
 public class Equipment {
 
     protected int inventoryX, inventoryY;
+    protected int stats[] = new int[6];
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -26,15 +31,16 @@ public class Equipment {
     protected int specialAttack;
     protected int defence;
     protected int specialDefence;
-    protected String name,description;
+    protected String name, description;
     protected Animation animation;
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
-    protected Animation itemIcon;
+    protected Image itemIcon;
     private boolean isAbove;
+    private ArrayList<Particle> particle;
 
-    public Equipment(int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats) {
+    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.itemIcon = itemIcon;
@@ -44,9 +50,17 @@ public class Equipment {
         this.hpMax = stats[0];
         this.attack = stats[1];
         this.defence = stats[2];
-        this.speed = stats[3];
+        this.specialAttack = stats[3];
+        this.specialDefence = stats[4];
+        this.speed = stats[5];
+        this.stats[0] = stats[0];
+        this.stats[1] = stats[1];
+        this.stats[2] = stats[2];
+        this.stats[3] = stats[3];
+        this.stats[4] = stats[4];
+        this.stats[5] = stats[5];
     }
-
+    
     public void update(int delta) {
 
     }
@@ -81,6 +95,10 @@ public class Equipment {
         return hitBox;
     }
 
+    public int[] getStats() {
+        return stats;
+    }
+
     public int getInventoryX() {
         return inventoryX;
     }
@@ -89,22 +107,22 @@ public class Equipment {
         return inventoryY;
     }
 
-    public Animation getIcon() {
+    public Image getIcon() {
         return itemIcon;
     }
-    
-    public boolean getIsAbove(){
+
+    public boolean getIsAbove() {
         return isAbove;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
+
     public int getHpMax() {
         return hpMax;
     }
@@ -113,12 +131,20 @@ public class Equipment {
         return attack;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
     public int getDefence() {
         return defence;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public int getSpecialDefence() {
+        return specialDefence;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     public void setInventoryX(int x) {
@@ -128,8 +154,8 @@ public class Equipment {
     public void setInventoryY(int y) {
         this.inventoryY = y;
     }
-    
-    public void setIsAbove(boolean isAbove){
+
+    public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
     }
 }

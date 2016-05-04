@@ -17,18 +17,16 @@ import org.newdawn.slick.SpriteSheet;
  */
 public abstract class Entity {
 
-    protected Rectangle hitBox;
-    protected float x, y;
+    protected Box hitBox;
+    protected float x, y, xOff, yOff;
     protected boolean dead = false;
 
     public abstract void update(int delta);
 
-    public Rectangle getHitBox() {
+    public Box getHitBox() {
         return hitBox;
     }
 
-    // Méthode init de la classe
-    public abstract void init() throws SlickException;
 
     // Méthode qui permet de dessiner l'élément
     public abstract void render(Graphics g) throws SlickException;
@@ -53,10 +51,6 @@ public abstract class Entity {
 
     public boolean isDead() {
         return dead;
-    }
-
-    public Rectangle getHitbox() {
-        return this.hitBox;
     }
     
     // Méthode qui permet de load une animation à partir d'un spritesheet
