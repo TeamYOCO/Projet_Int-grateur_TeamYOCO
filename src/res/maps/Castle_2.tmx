@@ -27,7 +27,7 @@
  <tileset firstgid="972" name="castle_lightsources" tilewidth="32" tileheight="32" tilecount="20" columns="5">
   <image source="../tiles/castle_lightsources.png" width="160" height="128"/>
  </tileset>
- <layer name="collisions" width="40" height="40">
+ <layer name="collision" width="40" height="40">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3PMQrAIBAAwfP/37OJrwkpBAlC5PaKFLsgWOg5RkT0FnHB1VvNnHXebN1n661mzjpvtyfz/uyrTh9LH0sfSx9LH0sfSx9LH0sfSx9LH0sfSx9LH0sfSx9LHyvrG4m/ZO68feNw7c7uPF93Tt55ugHbiJ2aABkAAA==
   </data>
@@ -67,10 +67,10 @@
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="Object Layer 1" width="20" height="20">
   <object id="1" type="tp" x="546" y="1267" width="124" height="15">
    <properties>
-    <property name="destMap" value="res/map/Castle_1.tmx"/>
+    <property name="destMap" value="res/maps/Castle_1.tmx"/>
     <property name="destX" value="640"/>
     <property name="destY" value="512"/>
    </properties>

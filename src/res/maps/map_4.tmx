@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="3">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="4">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
  </tileset>
@@ -21,9 +21,9 @@
  <tileset firstgid="444" name="youngwheat" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/youngwheat.png" width="96" height="192"/>
  </tileset>
- <layer name="collisions" width="40" height="40">
+ <layer name="collision" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2Y3QrDIAyF2/d/jN6MXY0+4ZAhCyGJPznGXPRAYcN4/Bar0R3HX9f5e16Nh8d8ziNEV8c4Usw7gK/mbiS+KoqvN47/ljtovkfzRzlX5lPKiUdIPiRXFZrvUS5F7DeWWu9EhvVh9VmxvyB9MuRP618+3+A6MsKoxUm1BJVHz9nA8kHyrRCCD712qXbx9fQr7Rn50O+fd2+xtJuv5Zlh/VrznIHP0i6+3nh6b5qtdZ67x0i/2Vwi5pZ7IGsx4n7Ezy+Sb6b8SW07+SzvDPPbM8bsmXUlH+K/rqj8VT1840LwIRmRd+MVfNSbK+P80rE8+dPqqBRjtWkeRd59WhtP4qLfNQ/uP8r3BZDPxm4AGQAA
+   H4sIAAAAAAAAC+2YUQoDIQxEd+9/jP0p/So94SJFGkISjY4xlA4stBjj67ga7XF8dZ2f59F4eMzrPEJ0dYwjxTwD+Kp3nviqKL7eOP5b3kHz7fWPcq70U/JkRkg+JFcVmg+tiPXyy9rtX+udyLA+rD4r9hdkngz+af3L51pPUHXEw6jFSbUE5ePM2cDKg+RbIQQfeu1S7eLr6VfaM/Kh37/ZvcXSbr5Wzgzr15rnDHyWdvH1xtN702itm7l7ePqNeomYW54DWYsR9yN+fpHyZvJPatvJZ+XOML89Y4yeWVfyIf7rivKv6s/nF4IPyYi8G6/go7m5Ms4vHWvGP62OSjFWm5ajaHaf1saTuOh3LQfP7+W7Abq/ntAAGQAA
   </data>
  </layer>
  <layer name="Tile Layer 1" width="40" height="40">
@@ -61,12 +61,19 @@
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1">
+ <objectgroup name="Object Layer 1" width="100" height="100">
   <object id="1" type="tp" x="0" y="256" width="11" height="93">
    <properties>
     <property name="destMap" value="res/maps/map_2.tmx"/>
     <property name="destX" value="1568"/>
     <property name="destY" value="1088"/>
+   </properties>
+  </object>
+  <object id="3" type="tp" x="688" y="259" width="14" height="28">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_1.tmx"/>
+    <property name="destX" value="32"/>
+    <property name="destY" value="672"/>
    </properties>
   </object>
  </objectgroup>

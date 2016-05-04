@@ -24,7 +24,7 @@ import statesOfGame.InventoryMenu;
 public class Player extends Mob {
 
     private int direction = 2, attackCounter = 0, attackDriection;
-    private float speed = 0.2f;
+    private float speed = 0.8f;
     private boolean moving;
     private MiniMap map;
     private int hp=0,attack=0,defense=0;

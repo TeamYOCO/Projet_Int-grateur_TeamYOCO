@@ -54,12 +54,17 @@
    H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
   </data>
  </layer>
+ <layer name="Tile Layer 8" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
+  </data>
+ </layer>
  <layer name="Tile Layer 7" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="100" height="100">
+ <objectgroup name="Object Layer 1" width="20" height="20">
   <object id="1" type="tp" x="385" y="635" width="29" height="5">
    <properties>
     <property name="destMap" value="res/maps/City_1.tmx"/>

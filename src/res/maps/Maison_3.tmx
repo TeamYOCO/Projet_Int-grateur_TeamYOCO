@@ -62,8 +62,8 @@
    H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="100" height="100">
-  <object id="1" type="tp" x="289" y="632" width="29" height="7">
+ <objectgroup name="Object Layer 1" width="20" height="20">
+  <object id="1" type="tp" x="277" y="632" width="67" height="7">
    <properties>
     <property name="destMap" value="res/maps/City_1.tmx"/>
     <property name="destX" value="464"/>

@@ -70,7 +70,7 @@
    H4sIAAAAAAAAC2NgGAWjYBSMgpEDRJgYGESZ6G/HqL2j9g5Ve0cBeQAA/h8A02AJAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="100" height="100">
+ <objectgroup name="Object Layer 1" width="20" height="20">
   <object id="1" type="tp" x="385" y="101" width="27" height="55">
    <properties>
     <property name="destMap" value="res/maps/Maison_2.tmx"/>
