@@ -65,10 +65,4 @@ public class Box {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "x1: "+x1+" width: "+width+" y1: "+y1+" height: "+height;
-    }
-    
-    
 }

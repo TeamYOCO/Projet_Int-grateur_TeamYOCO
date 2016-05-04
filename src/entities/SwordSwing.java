@@ -33,7 +33,7 @@ public class SwordSwing extends Particle {
             case 2: xOff = 48; yOff = 82; break;
             case 3: xOff = 85; yOff = 45; break;
         }
-        this.hitBox = new Box(x+xOff, y+yOff, 32, 32);
+        this.hitBox = new Box(x+xOff, y+yOff, 0, 0);
         this.damage = CharacterStatsManager.getInstance().getStats()[1];
         this.animation = loadAnimation(anim, 1, 6, direction);
         this.lifeSpam = lifeSpam;
@@ -44,7 +44,12 @@ public class SwordSwing extends Particle {
         g.drawAnimation(animation, x, y);
         hitBox.render(g);
     }
-    
-    
 
+    @Override
+    public void update(int delta) {
+        super.update(delta); 
+        if (lifeSpam <= 300){
+            this.hitBox = new Box(x+xOff, y+yOff, 32, 32);
+        }
+    }
 }

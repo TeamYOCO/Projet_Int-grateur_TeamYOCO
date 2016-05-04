@@ -47,25 +47,34 @@ public class EquipmentList {
         }
         
         listEquipment.put("Casque Antique",new Equipment(0,0,animation.getImage(0),"Casque Antique",
-                "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",new int[]{420,420,420,420,420,420}));
+                "Casque ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nOffre une petite augmentation de la vie \nmaximale",
+                new int[]{10,0,10,0,0,0}));
         listEquipment.put("Casque Metallique",new Equipment(0,0,animation.getImage(1),"Casque Metallique",
-                "Casque en métal moderne. Procure une bonne \nOffre une bonne augmentation de la vie maximale",new int[]{1,1,1,1,1,1}));
+                "Casque en métal moderne. Procure une bonne \nOffre une bonne augmentation de la vie maximale",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Casque d'Argent",new Equipment(0,0,animation.getImage(2),"Casque d'Argent",
-                "A appartenu a un général emerite. Offre une \ntrès bonne augmentation de la vie maximale",new int[]{1,1,1,1,1,1}));
+                "A appartenu a un général emerite. Offre une \ntrès bonne augmentation de la vie maximale",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Casque Emeraude",new Equipment(0,0,animation.getImage(3),"Casque Emeraude",
-                "Casque forgé par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nla vie maximale",new int[]{1,1,1,1,1,1}));
+                "Casque forgé par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nla vie maximale",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Casque Royal",new Equipment(0,0,animation.getImage(4),"Casque Royal",
-                "Casque dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Augmentation vitale maximale",new int[]{1,1,1,1,1,1}));
+                "Casque dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Augmentation vitale maximale",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Armure Antique",new Equipment(0,0,animation.getImage(5),"Armure Antique",
                 "Armure ayant appartenu à un soldat mort durant \nsa premiere bataille il y a plusieurs siecles.  \nProcure une protection minimale contre les \nattaques physiques",new int[]{1,1,1,1,1,1}));
         listEquipment.put("Armure Metallique",new Equipment(0,0,animation.getImage(6),"Armure Metallique",
-                "Armure en métal moderne. Procure une bonne \nprotection contre les attaques physiques",new int[]{1,1,1,1,1,1}));
+                "Armure en métal moderne. Procure une bonne \nprotection contre les attaques physiques",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Armure d'Argent",new Equipment(0,0,animation.getImage(7),"Armure d'Argent",
-                "A appartenu a un général emerite. Procure une \ntres bonne protection contre les attaques \nphysiques",new int[]{1,1,1,1,1,1}));
+                "A appartenu a un général emerite. Procure une \ntres bonne protection contre les attaques \nphysiques",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Armure Emeraude",new Equipment(0,0,animation.getImage(8),"Armure Emeraude",
-                "Armure forgée par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nsa résistance contre les attaques physiques",new int[]{1,1,1,1,1,1}));
+                "Armure forgée par les plus grands forgerons du \npays, il est incruster d'emeraude, augmentant \nsa résistance contre les attaques physiques",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Armure Royale",new Equipment(0,0,animation.getImage(9),"Armure Royale",
-                "Armure dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Protection maximale",new int[]{1,1,1,1,1,1}));
+                "Armure dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Protection maximale",
+                new int[]{1,1,1,1,1,1}));
         listEquipment.put("Jambieres Antiques",new Equipment(0,0,animation.getImage(10),"Jambieres Antiques",
                 "Jambieres ayant appartenu à un soldat mort \ndurant sa premiere bataille il y a plusieurs siecles.  \nProcure une protection minimale contre les \nattaques physiques",new int[]{1,1,1,1,1,1}));
         listEquipment.put("Jambieres Metalliques",new Equipment(0,0,animation.getImage(11),"Jambieres Metalliques",

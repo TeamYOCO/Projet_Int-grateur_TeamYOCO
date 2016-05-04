@@ -17,6 +17,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import playerEngine.CharacterStatsManager;
 import statesOfGame.InventoryMenu;
 
 /**
@@ -27,7 +28,7 @@ import statesOfGame.InventoryMenu;
 public class Player extends Mob {
 
     private int direction = 2, attackCounter = 0, attackDirection;
-    private float speed = 0.2f;
+    private float speed = 0.25f;
     private boolean moving;
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
@@ -63,13 +64,15 @@ public class Player extends Mob {
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
             this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
         }
-//        for (int i = 0; i < moveAnimations.length; i++) {
-//            moveAnimations[i].setSpeed(5);
-//        }
+        
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
+        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
+        for (int i = 0; i < moveAnimations.length; i++) {
+            moveAnimations[i].setSpeed(speed*4);
+        }
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
         if (attacking) {

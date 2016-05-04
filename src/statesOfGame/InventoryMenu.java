@@ -65,7 +65,7 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
 
-        manager.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get("Casque Antique"));
+        manager.addItem("Casque Antique");
     }
 
     @Override
@@ -128,7 +128,7 @@ public class InventoryMenu extends BasicGameState {
         int mouseY = Mouse.getY();
         int x, y;
 
-        if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
+        if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
             sbg.enterState(Game.OVERWORLD);
         }
 
@@ -148,6 +148,7 @@ public class InventoryMenu extends BasicGameState {
                         for (int k = 0; k < 6; k++) {
                             statsManager.getStats()[k] += manager.getInventory().getListItemFound().get(j).getStats()[k];
                         }
+                        statsManager.setHp(statsManager.getHp() + manager.getInventory().getListItemFound().get(j).getStats()[0]);
                         manager.getInventory().getListItemFound().remove(j);
                     }
                 } else {
@@ -181,6 +182,10 @@ public class InventoryMenu extends BasicGameState {
                     manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().get(j));
                     for (int k = 0; k < 6; k++) {
                         statsManager.getStats()[k] -= manager.getInventory().getListItemPlayer().get(j).getStats()[k];
+                    }
+                    statsManager.setHp(statsManager.getHp() - manager.getInventory().getListItemFound().get(j).getStats()[0]);
+                    if (statsManager.getHp() <= 0){
+                        statsManager.setHp(1);
                     }
                     manager.getInventory().getListItemPlayer().remove(j);
                     for (int k = j; k < manager.getInventory().getListItemPlayer().size(); k++) {
