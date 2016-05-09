@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="5">
+ <tileset firstgid="1" name="cavern_ruins" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/cavern_ruins.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="385" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="403" name="hole" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/hole.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="421" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="446" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="554" name="lava" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/lava.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="572" name="lavarock" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/lavarock.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="590" name="water" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/water.png" width="96" height="192"/>
+ </tileset>
+ <layer name="collision" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2a207DMAyGu/d/Dm4Y0zY0yusNxCpZJj47SbPll3rF4viLnRC7XZapKVnXw7K8Jz2fh940sk6JPn4ItjxrS62hZIsa5+E9/4w5Pp4LGC/xeuaibEq2vOOgNs5vMGYF3M/Gy/G8Hf4eLse+BuI9o7hibbxH5rkk8q6C/SivlKsbL6fMfJbs1+S9PnK15f6V7Nfi3Vg1vnE5eC78DZ+NkjJ5b4ozyBILPL9nLGWLs1dac+4coOJgjQX2sRVvSzuc7cnrtxW198q81LnlrZdq8Vr8zLgHahlq8fbQ5P2vzcebYQ9ItnqpxIvrdLxXInHW3CUsdw2rSr5767hWiuTIiLxrINYj8kJZY13yXdpjnjt4LXG+lmK/p1hlqxT7WrzRnnlGnxzylvqYmaL2FVerwjzc013dOheU9n4zGi/VF6JqBJi/J+J31hxvySvNjwX9wWu1nbNWn0fhpcZFeCO1pzfHqLhpea05HjkzPX5K0qz/Lw/XI9asE1avfaG5C0o96pF410K+YEm83L6kej69zz3POZZdE3Jqyat5Z2LVnnlrqDevVH9G+jcl9ea1zGdV6X+ttUYaiXe0ugPPZ9Xkjc3/yrzaHk6kjrWqJm/Wd0TcfFZNXruegdfSP4V31xvYjyPxZtiMfjeV/S4f+obVkjfST/H6htWS99Xy+Vl4te/uI/WJ17cWNrM0efWKfJPa6/33nmNRQ3uNxR3/l92OQDgAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC43WS47kSAwE0db5tcnQiQcDVAHsV0ZVL4T8SMmIIN3N83P9+fMZ1/11PV+f/3894/75un/G+/n8/O77uefr/awxr4c6T9Q84/N3rYfXm+dm3TNqnuX1vv4+g32Z+3Iv87fuZX53s9ZNrYc6J9Y+V5/1+/0n1jjUcB4f6pzr5x6c+3P91MEdNexr9fq5/j7D4bsTdWsGpZ1Nr6U3+2nv5mdnqzafWFOtOvdtBnqnzuT+7Ld72fY2+6/vZx9qr/MqT2x+dX1neq6f/VO7hzX09zyXPS/dljfm2aun2/w3hng+65bO/L09n9r68Jxrnrgvf/R8+X7uzfWrf+f6u0/FpNL41I+X3igePHGpp5rR3Is92jiwMcV+O0d5Xj3zs7V81fP+pvpQ2p3PzLkWx2r90snmk/K2c5jnmBrZGOQZ61xzT9Vj51t7tg/OsJ6XUc77idrTN/pajRYbn6XONq877le2ysDNp/pn+6373XKisqjOL7tl+FbjiXUqW+acTzxbvHVm1nH/pR9zT7+fqCnniufusZ73XG++VIPuU/afZR37UBm38b60LNPMkeKQs3R2U+Nbnpq5flf5UPnr/M3w0oF83WZYrFEL6t/z15nMWBlg7TdtWddsqcwyu607fyOLa15bpmzakIs1l8p1621+Kia8cWKe8219Z6U3Zh25W3k7nyvdqvViqj11Lvpo3qu15EuxrzTpevagMs6e1prz+TmPYpAc2OqbPZ5B7sjxO+7L+/LMvTxbOlI/m36L1Z7NHJh1nKeM3pjydhb1Vueo/wpbTtT/hy2DKnvtm96pHCiumMP1P6Verb/tYWqq8vY39ppT+m6eqbziecr/ckZtOIOasXos31i/vKgWSx/lr42BlXv6vjJQDxaj5Gdxsrg/zynDZu+Lv/ps04e89Yzz7OaIvnrLDeelFrf76rfmOH/vpZdKC7VG8avqq53Ne8UY2VH7sc/2RbZMzxSL55y2udofs6/2VvedQ72f/lZLc77ysbj18Dq/r3O+1d9mWcwuP7qXN14VoyvrzKXKhckA69aZKjdrlpW5xZGNhV7qs+7rGZk2Z1d9m3PfdKMO1ZP7M3/1iDMxH8wl38vzeRY1OPdQXp313/hcXN0ycGOl+pK39laO1mz1VeXq9JBzq+yfHqo+3jxjvjyxhjXsf+m6GKyGiwvy0WxXE5u3S7vF48qb0pRaqYyXIeUbezRrzT5Xrh9qTn3qu+qN2ivfVLaXDqxRHPbspbnStR6qXCq2ONdi+Vy/PFdMkwvVj00Dmwdr9nrTXt48Wz3Q/5smZUzpwt7Yy43D6ln+/muGFlv1xNv/idK4Zyt9bTVlXjHAWenJ6n35rTJP/XlO+1szkKGe443N5Ystg4olldH2qDTvXmWDerAHlUcbH7ez/At7zKrZe9m43Z97Li3N/cvsw2Wfbl6LPZWVbzkis5xT8VWtyohin5xw7nrSOetVuSxDK0Ps/cY+dWt/is2bl81XZ2Ut9eh81Jd60JtvOtz8o9YqX4vTb/6dvd28Uvl6Xz/7UP7Xk+UnM2KbZc3xzYtzbbNRXupr68uZt4xSJzJt09TbevJs84Mas+fqcmpPP1ROzb6paXsjp0484/zVqxyateYsi5nVa/dwc31enq0+FGOsa3+Kbeq/zlKc/yzry0ezyz2cWNvfuAd7IxfMQTVuvfoP4VoySm1X3m3nLy6WHjctzH2YQ/q0WKCOphYqf5yZrJjs23LPOVTu62m9PHson9zrppfKLc8kZw7PVx82nTsfe2kuy0Fn6zrOSj6+zVK9OM8ts57r9z5uPXV2peN5r2rJNuvMPZkxJ553rnLQ/tZc5wwrPzZOv9UpDsmP2V+5au+cY+3BPd+8P6zlvmTN7JU9Unfm5r2s5XxkqdqaPdg09Vt+1b3ig3qxX7KvmKb+a1bz/OUlOSVnS4eyozxWs/Z7a8s9Z1OMqPltHJcJ5o2cK/0UB8zI0pta8poeKMZaq/qkdzy7DKg9bQw0y9Tytjf9UTlnbstifTHnUjp9qF2+r2cqB9TA2/8b56Wm9UgxtTKrGFLZbTaVNisv/gOlrCdBQDgAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3aWwrCMBQE0LQLE9+iXyK+dWO+dVUuwAW4BW/AQglJW4XSZDIHBj8KwvQmgUKUopA8k2pB8UqqpWndVKmeJf30t/95J9XSlKxnRzK0pP19HjpXT83WO3QDxzzNbuazf9a4D8y+Lrb3MQq8bxHznYzldwLaF3X/2sR0XqGez62I+mr67DFDRERERERE/prLd9uiJEugb7uVdFmXZAPUdytddpZMQfu65Oc+A17fmaJ1jjjv2PoW7WtzfaOucc01d8SZa+yL3de1r/egfYmI6hLDPbw8n+/h1cHHe3hEhOkg58pRcorkfDlLz4vkGknfm/S8Sx6R9CUiIjwfA7GJtUA4AAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2auVLEMAyGOR6A5+eGF+Eqd1lKYCm5SqDbFqfwjCdjS/51JPZMPKMyjj5Liv3LWe/v7a0N7CnYi5FtjHzytLdgH0a2FaztTriGXJxKz30H+zWyL8HaHh7I1pCLU+m5x2BWY8Xw5tb26EC2hlycSs9Z8j4zOfYqeFdpDQe/j4OdBDvNzEs9ZzXemRz7NOY9C3Ye7GIm3h8mx/6MeS+DXQW7non3Jsx1S9idIe8DM/8UvNz3SvIubs7S/Avv9LxUDpZq4b5jXur9kmclvLk1p74D1DcJicVcvFPO0yMvd4ZC9ZIXL+IndQ7kzlCIXvLkRfykzoHcGQrRS568iJ8W58BahuhjzD9Nz8Byr7HiHev0WCsx/2pqoCfesU6PtRLzr6YGeuId6/RxrWjquOYsgZw1LHi5GFjv71PmSI+8aY6gse6RVxPrnO9cjdWcwbU989o9j/I1F3uvWGl75po9j4q9F6+2Z67Z83K8UTNK9KFHXY1HTkug5zpPzWjNm9MSaI5Pycv1JrmR0xJojltpT2mOTZ3jVtpTmmNT57iV9pTm2DjH0bMRmuOl9eXuHCR3BFPEexhUXZbu/lCfPXpu0kHVZenuby7emN8afUfVZannMxevZZyRsfAuvJ68nP7U1HeLvJ7xz+21qEbqibelO6/eedMeDvVPnkbHtsSb9nCof/I0OrYl3rSHQ/2Tp9GxLfHW+qXZD6x4kf5pqjsGfbIB/WqBF+mfprpj0Cdb0C+0tyL5p5PjRfqnqe4Y9Emsx1petLci+aeT40193YHzr0BetLcivctPfaN4h71EMmctr6afgg6Pf9pQ3ha+VwsvPmft3b1Gn7TE62ULr943zX8kXneMPcTCw1qNxT8nbhVwQDgAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SzQqCQBgF0MkeJyhLK3/e/5naNsIniLSJEmE4By7ILEYv15QAvldXKV0jt2rfb3kdtrt77nnJGXL6nPPOvY8bvrfJd4/Rc0obGaP33lv/Ux27jovOc9chnu8F9W0W/Zbb9nF2yukK69uvdm1j29K6TprVvzsUuuvskTs9P6TErgAAAAAAAAAAAAAAv3gDGWanjkA4AAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="1602" y="104" width="25" height="19">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_1.tmx"/>
+    <property name="destX" value="1600"/>
+    <property name="destY" value="224"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="1447" y="1607" width="83" height="81">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_3.tmx"/>
+    <property name="destX" value="1504"/>
+    <property name="destY" value="1728"/>
+   </properties>
+  </object>
+  <object id="3" type="tp" x="98" y="1480" width="27" height="20">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_1.tmx"/>
+    <property name="destX" value="128"/>
+    <property name="destY" value="1536"/>
+   </properties>
+  </object>
+  <object id="4" type="tp" x="171" y="166" width="79" height="76">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_3.tmx"/>
+    <property name="destX" value="224"/>
+    <property name="destY" value="288"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

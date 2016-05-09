@@ -90,11 +90,11 @@
     <property name="destY" value="100"/>
    </properties>
   </object>
-  <object id="42" x="1585" y="1026" width="14" height="93">
+  <object id="42" type="tp" x="1585" y="1026" width="14" height="93">
    <properties>
-    <property name="destMap" value="map_4"/>
-    <property name="destX" value=""/>
-    <property name="destY" value=""/>
+    <property name="destMap" value="res/maps/map_4.tmx"/>
+    <property name="destX" value="32"/>
+    <property name="destY" value="320"/>
    </properties>
   </object>
   <object id="44" x="769" y="2" width="63" height="14">

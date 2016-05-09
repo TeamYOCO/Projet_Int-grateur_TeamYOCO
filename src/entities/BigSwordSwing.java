@@ -6,8 +6,6 @@
 package entities;
 
 import gameEngine.ResManager;
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -17,12 +15,11 @@ import playerEngine.CharacterStatsManager;
  *
  * @author 1455367
  */
-public class SwordSwing extends Particle {
-    
+public class BigSwordSwing extends Particle{
     private int damage;
 
-    public SwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
-        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
+    public BigSwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
+        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("longsword_male");
         this.x = x;
         this.y = y;
         this.xOff = 0;

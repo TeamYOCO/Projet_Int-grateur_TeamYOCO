@@ -38,7 +38,7 @@
  </tileset>
  <layer name="collision" width="70" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2ZSQ7DIAxFI67RTQd1UIf7X69CEQIhhwbs4OL8JyE22fjlxxCYJrscXPuwzqWyxuDEz0cXZ2vjxfACIvBBAy808EKD/kKTeoGbSO4FbmaQF5rg4uRkx21wx1vlpHbfvRcserkKfB8WvZwL/91r6x3dC9Vf4IXuufDy20t4ptbLe/C1nPLyTM5zPJzznRL/nCnNPW4pU9pZkvKSr+3curSzxPUSfHwa+/MSo3tZWrv27sX36Eejlzxjkl65SPQXKjNr6srPfOBl5t5pP9CCppdemdC6g033gTXvu4eXEc8hOffpvd77Fxo40QTQIAAA
+   H4sIAAAAAAAAC+2ZWwrDIBBFg9voT9rSpvSx/+0FCYNWJkadQau9B8SfIJmTGzVmmsblZMrb6FwzayQntp+N60drL4EX4IAPHnjhgRcezC88vhe4cYRe4GYDeeEhF2ej2+6dO6ac5O6Tj9AerxXwwuPXcVN4P0b0col8d6fW27sXrl54cesRvHxz5IWuyfXy7nwt57w8vfMci+R8J8YvZ4rzUotYplpnSctLuLZL62qdJakX8vEpnJ/36N3L3tr1717sHP0o9BJmTNOrFI35hctMynjhmQ+8bCyV9gMltPRSKxOSf7CSe/T3gTnPu4YX6Tlkyr5du0n+p+c+91JWk09iZNAgAAA=
   </data>
  </layer>
  <layer name="background" width="70" height="30">

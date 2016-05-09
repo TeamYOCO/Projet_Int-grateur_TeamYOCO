@@ -6,18 +6,14 @@
 package entities;
 
 import gameEngine.ResManager;
-import items.Equipment;
-import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import statesOfGame.InventoryMenu;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -27,7 +23,7 @@ import statesOfGame.InventoryMenu;
 public class Player extends Mob {
 
     private int direction = 2, attackCounter = 0, attackDirection;
-    private float speed = 0.2f;
+    private float speed = 0.25f;
     private boolean moving;
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
@@ -41,7 +37,6 @@ public class Player extends Mob {
         this.list = list;
     }
 
-    @Override
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
@@ -53,7 +48,6 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
-        System.out.println(hitBox);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
@@ -63,13 +57,15 @@ public class Player extends Mob {
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
             this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
         }
-//        for (int i = 0; i < moveAnimations.length; i++) {
-//            moveAnimations[i].setSpeed(5);
-//        }
+        
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
+        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
+        for (int i = 0; i < moveAnimations.length; i++) {
+            moveAnimations[i].setSpeed(speed*4);
+        }
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
         if (attacking) {

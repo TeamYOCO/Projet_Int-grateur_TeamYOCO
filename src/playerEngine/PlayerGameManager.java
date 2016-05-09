@@ -5,6 +5,7 @@
  */
 package playerEngine;
 
+import gameEngine.EquipmentList;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -20,6 +21,9 @@ public class PlayerGameManager {
         inventory = new Inventory();
     }
 
+    public void addItem(String newItem) throws SlickException{
+        this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
+    }
 
     public Inventory getInventory() {
         return inventory;

@@ -29,7 +29,7 @@
  </tileset>
  <layer name="collision" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGNyAkcqYE4nNgEST4h4Y4MBiHjnmoJtHLTBqHgJgSwuDyTxywKh5w9M8diTz0NMXO1Yd+M1ihNLYzCOn3ELGADIcy+NABgAA
+   H4sIAAAAAAAAC2NgGNyAkcqYE4nNgEST4h4Y4MBiHjnmoJtHLTBqHgJgSwuDyTxywKh5w9M8diTz0NMXO1Yd+M1ihNLo5iHLIWMGLGLsSOqRMQC83gf2QAYAAA==
   </data>
  </layer>
  <layer name="Tile Layer 1" width="20" height="20">
@@ -62,8 +62,8 @@
    H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="100" height="100">
-  <object id="1" type="tp" x="289" y="632" width="29" height="7">
+ <objectgroup name="Object Layer 1" width="20" height="20">
+  <object id="1" type="tp" x="277" y="632" width="67" height="7">
    <properties>
     <property name="destMap" value="res/maps/City_1.tmx"/>
     <property name="destX" value="464"/>

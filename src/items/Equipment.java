@@ -5,8 +5,10 @@
  */
 package items;
 
+import entities.Particle;
 import java.awt.Frame;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -29,13 +31,14 @@ public class Equipment {
     protected int specialAttack;
     protected int defence;
     protected int specialDefence;
-    protected String name,description;
+    protected String name, description;
     protected Animation animation;
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
     protected Image itemIcon;
     private boolean isAbove;
+    private ArrayList<Particle> particle;
 
     public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
         this.inventoryX = inventoryX;
@@ -57,7 +60,6 @@ public class Equipment {
         this.stats[4] = stats[4];
         this.stats[5] = stats[5];
     }
-
     
     public void update(int delta) {
 
@@ -92,8 +94,8 @@ public class Equipment {
     public Rectangle getHitBox() {
         return hitBox;
     }
-    
-    public int[] getStats(){
+
+    public int[] getStats() {
         return stats;
     }
 
@@ -108,19 +110,19 @@ public class Equipment {
     public Image getIcon() {
         return itemIcon;
     }
-    
-    public boolean getIsAbove(){
+
+    public boolean getIsAbove() {
         return isAbove;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
+
     public int getHpMax() {
         return hpMax;
     }
@@ -128,11 +130,11 @@ public class Equipment {
     public int getAttack() {
         return attack;
     }
-    
+
     public int getDefence() {
         return defence;
     }
-    
+
     public int getSpecialAttack() {
         return specialAttack;
     }
@@ -152,8 +154,8 @@ public class Equipment {
     public void setInventoryY(int y) {
         this.inventoryY = y;
     }
-    
-    public void setIsAbove(boolean isAbove){
+
+    public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
     }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+ <tileset firstgid="1" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
+  <image source="../tiles/cabinets.png" width="192" height="416"/>
+ </tileset>
+ <tileset firstgid="79" name="barrel" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="../tiles/barrel.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="87" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/city_inside.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="471" name="country" tilewidth="32" tileheight="32" tilecount="20" columns="5">
+  <image source="../tiles/country.png" width="160" height="128"/>
+ </tileset>
+ <tileset firstgid="491" name="inside red" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/inside red.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="591" name="stairs" tilewidth="32" tileheight="32" tilecount="112" columns="8">
+  <image source="../tiles/stairs.png" width="256" height="448"/>
+ </tileset>
+ <tileset firstgid="703" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="728" name="stairs-2" tilewidth="32" tileheight="32" tilecount="112" columns="8">
+  <image source="../tiles/stairs-2.png" width="256" height="448"/>
+ </tileset>
+ <tileset firstgid="840" name="inside" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/inside.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="940" name="victoria" tilewidth="32" tileheight="32" tilecount="55" columns="11">
+  <image source="../tiles/victoria.png" width="352" height="160"/>
+ </tileset>
+ <layer name="collision" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WUwQqAIBBExf//py5q1/yjEhrosK2ztiDhwF7kNa+0CmGtbHHO7NF2n8XIvz2fxZsvtk7weqVM9Hq8E6M9K3lbR76HPRvJizX0SoEHvMZavVrgkbw9v6fXki/eUd4rf/J67jPzDYHRvGwP+ETwifCyPY0/Hv8NZqpwjbTW6zgBZVWaCWAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC3vNyMDwZgDwVyD+NgD4PxAzMNEfC5OAXzNCMCl6RvHAYlickYIpMQeUh95C8xGpGJu9xOoF5aHv0HxEKsZmL7F6QXmIcRDE8ygePDgCmCwioTiKAbcYtXEH0NxOKO5iwC02ikcxAMrkgf1gCQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWDDTxjYmB4zkR/e98B7Xw/APaORPCOERjWjITFRu2lDPwAmv9zBPl31N5Re2kBsOUjbGLUBkzA+oiZibAYtQEP0HxeJsJihAAASGj+mmAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWDEQgzk6fPH4gDgDgQiINI1CsFtFOaTHuDgTgEiEOBOIw8I4YtuAnEt2hsxw0s8fYRiD/hkScEmIAYpI2FRH3cjAwMPIyk6ZkPxAugbA4g5gRiLjQ1t6BmrgE6ai3UP3sJ+OsdUM97PG7ZDsQ7oGw+IOYHYgEo/zpQ3w0gvg/Vvx1o1w6ofSfIzCfEgDtA++4iufkQ0K7DUPsu0tDeh0A7H5EYbyMVYEtXhNLaYLP3PBFpCabmB9D8n2h2wMRIMQcEbhGhHqaGCVgIMTOhysHESDGHVMADNJ+XibAYIQAADQcgaGAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 8" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMgpEDRJgYGESZ6G/HqL2j9g5Ve0cBeQAA/h8A02AJAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="20" height="20">
+  <object id="1" type="tp" x="385" y="101" width="27" height="55">
+   <properties>
+    <property name="destMap" value="res/maps/Maison_2.tmx"/>
+    <property name="destX" value="544"/>
+    <property name="destY" value="64"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

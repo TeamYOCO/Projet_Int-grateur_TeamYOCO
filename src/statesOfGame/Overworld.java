@@ -6,9 +6,11 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import entities.Bee;
 import entities.Entity;
 import entities.Player;
 import gameEngine.Camera;
+import gameEngine.Hud;
 import gameEngine.PlayerController;
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,13 +29,13 @@ public class Overworld extends BasicGameState {
     private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
-    private ArrayList<Entity> listAdd = new ArrayList();
     private static int stateID;
     private GameContainer container;
     private MiniMap map = new MiniMap();
     private Player player = new Player(map, list);
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
+    private Hud hud = new Hud();
     private boolean running = false, firstTime;
     private static Image screenShot;
     private Music overworldMusic;
@@ -55,10 +57,12 @@ public class Overworld extends BasicGameState {
         this.map.init();
         this.player.init();
         this.controller.setInput(container.getInput());
+        this.hud.init();
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
+        this.list.add(new Bee(false, 725, 178)); //725.6064 178.80164
     }
 
     @Override
@@ -70,7 +74,7 @@ public class Overworld extends BasicGameState {
             entity.render(g);
         }
         this.map.renderForeground();
-
+        this.hud.render(g);
     }
 
     @Override
@@ -89,8 +93,8 @@ public class Overworld extends BasicGameState {
         listRemove.clear();
         this.cam.update(container);
         updateTrigger();
-        
-        if (input.isKeyPressed(23) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'i' ou en clickant sur le bouton droit de la souris
+
+        if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'i' ou en clickant sur le bouton droit de la souris
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }
@@ -129,6 +133,8 @@ public class Overworld extends BasicGameState {
         if (!"undefined".equals(newMap)) {
             this.map.changeMap(newMap);
         }
+        this.list.clear();
+        this.listRemove.clear();
     }
 
     public static Image getScreenShot() {
