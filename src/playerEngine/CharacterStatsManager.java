@@ -19,7 +19,7 @@ import org.newdawn.slick.SlickException;
 public class CharacterStatsManager {
 
     private static CharacterStatsManager instance = null;
-    protected int[] stats = new int[6];
+    protected int[] stats = new int[7];
     protected int hp;
     protected int expNeeded;
     protected int exp;
@@ -28,19 +28,6 @@ public class CharacterStatsManager {
     protected Image anim;
 
     private CharacterStatsManager() {
-        hp = 0;
-//        hpMax = 0;
-//        attack = 0;
-//        speed = 0;
-//        specialAttack = 0;
-//        defence = 0;
-//        specialDefence = 0;
-        stats[0] = 10;
-        stats[1] = 10;
-        stats[2] = 10;
-        stats[3] = 10;
-        stats[4] = 10;
-        stats[5] = 10;
         
         hp = 100;
         stats[0] = 100;
@@ -49,6 +36,7 @@ public class CharacterStatsManager {
         stats[3] = 10;
         stats[4] = 10;
         stats[5] = 10;
+        stats[6] = 10;
 
         this.expNeeded = 0;
         this.exp = 0;
@@ -110,6 +98,8 @@ public class CharacterStatsManager {
                 return "Special Defense- ";
             case 5:
                 return "Speed- ";
+            case 6 : 
+                return "Energie- ";
             default:
                 return "Noob";
         }

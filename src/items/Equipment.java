@@ -23,7 +23,7 @@ import org.newdawn.slick.SpriteSheet;
 public class Equipment {
 
     protected int inventoryX, inventoryY;
-    protected int stats[] = new int[6];
+    protected int stats[] = new int[7];
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -39,26 +39,23 @@ public class Equipment {
     protected Image itemIcon;
     private boolean isAbove;
     private ArrayList<Particle> particle;
+    private EquipmentType equipmentType;
 
-    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats) {
+    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats, EquipmentType equipmentType) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.itemIcon = itemIcon;
         this.isAbove = false;
         this.name = name;
         this.description = description;
-        this.hpMax = stats[0];
-        this.attack = stats[1];
-        this.defence = stats[2];
-        this.specialAttack = stats[3];
-        this.specialDefence = stats[4];
-        this.speed = stats[5];
         this.stats[0] = stats[0];
         this.stats[1] = stats[1];
         this.stats[2] = stats[2];
         this.stats[3] = stats[3];
         this.stats[4] = stats[4];
         this.stats[5] = stats[5];
+        this.stats[6] = stats[6];
+        this.equipmentType = equipmentType;
     }
     
     public void update(int delta) {
@@ -122,29 +119,22 @@ public class Equipment {
     public String getDescription() {
         return description;
     }
-
-    public int getHpMax() {
-        return hpMax;
+    
+    public String getStatName(int stat){
+        switch(stat){
+            case 0 : return "Vie-";
+            case 1 : return "Att-";
+            case 2 : return "Def-";
+            case 3 : return "SpA-";
+            case 4 : return "SpD-";
+            case 5 : return "Vit-";
+            case 6 : return "Eng-";
+            default : return "wut";
+        }
     }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public int getSpecialAttack() {
-        return specialAttack;
-    }
-
-    public int getSpecialDefence() {
-        return specialDefence;
-    }
-
-    public int getSpeed() {
-        return speed;
+    
+    public EquipmentType getType(){
+        return equipmentType;
     }
 
     public void setInventoryX(int x) {

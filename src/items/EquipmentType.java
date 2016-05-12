@@ -10,5 +10,5 @@ package items;
  * @author 1455367
  */
 public enum EquipmentType {
-    SWORD, BOW, 
+    SWORD, BOW, SPELL_TOME, SHIELD, HELMET, SPEAR, ARMOR, PADS, BOOTS
 }

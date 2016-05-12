@@ -40,12 +40,14 @@ public class InventoryMenu extends BasicGameState {
     private int lastPosition = -1;
     private final int MAX_LIST_JOUEUR = 10;
     private UnicodeFont ufont;
+    ArrayList<Equipment> listItemDeleted;
 
     public InventoryMenu(int stateID, PlayerGameManager manager) throws SlickException {
         InventoryMenu.stateID = stateID;
         this.manager = manager;
         listStats = new ArrayList();
         statsManager = CharacterStatsManager.getInstance();
+        listItemDeleted = new ArrayList();
     }
 
     @Override
@@ -64,7 +66,21 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.addGlyphs(400, 600);
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
-        manager.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get("Casque Antique"));
+        
+        manager.addItem("Casque Antique");
+        manager.addItem("Casque Metallique");
+        manager.addItem("Armure d'Argent");
+        manager.addItem("Jambieres Royales");
+        manager.addItem("Bouclier legendaire");
+        manager.addItem("Jesus");
+        manager.addItem("Banane");
+        manager.addItem("Epee legendaire");
+        manager.addItem("Livre bleu");
+        manager.addItem("Livre mauve");
+        manager.addItem("Tri-dent");
+        manager.addItem("Arc de feu");
+        manager.addItem("Arc artisanal");
+        
     }
 
     @Override
@@ -75,8 +91,8 @@ public class InventoryMenu extends BasicGameState {
 //        g.setFont(ufont);
         int y = 350, x = 200, i = 0;
 
-        for (int j = 0; j < 6; j++) {
-            g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 28));
+        for (int j = 0; j < statsManager.getStats().length; j++) {
+            g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 23));
         }
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             if (i % 16 == 0) {
@@ -88,6 +104,7 @@ public class InventoryMenu extends BasicGameState {
             if (i % 16 == 0 && i != 0) {
                 y = 350 + ((i / 16) * 44);
             }
+            
             itemFound.setInventoryX(x);
             itemFound.setInventoryY(y);
             itemFound.getIcon().draw(itemFound.getInventoryX(), itemFound.getInventoryY());
@@ -95,12 +112,9 @@ public class InventoryMenu extends BasicGameState {
             if (manager.getInventory().getListItemFound().get(i).getIsAbove()) {
                 g.drawString(itemFound.getName(), 415, 200);
                 g.drawString(itemFound.getDescription(), 435, 220);
-                g.drawString("Vie-" + itemFound.getHpMax(), 405, 310);
-                g.drawString("Att-" + itemFound.getAttack(), 480, 310);
-                g.drawString("Def-" + itemFound.getDefence(), 555, 310);
-                g.drawString("SpA-" + itemFound.getSpecialAttack(), 630, 310);
-                g.drawString("SpD-" + itemFound.getSpecialDefence(), 705, 310);
-                g.drawString("Vit-" + itemFound.getSpeed(), 780, 310);
+                for (int j = 0; j < itemFound.getStats().length; j++) {
+                    g.drawString(itemFound.getStatName(j) + itemFound.getStats()[j], 405 + (65*j), 310);
+                }
             }
             i++;
         }
@@ -110,12 +124,9 @@ public class InventoryMenu extends BasicGameState {
             if (playerItem.getIsAbove()) {
                 g.drawString(playerItem.getName(), 415, 200);
                 g.drawString(playerItem.getDescription(), 435, 220);
-                g.drawString("Vie-" + playerItem.getHpMax(), 405, 310);
-                g.drawString("Att-" + playerItem.getAttack(), 480, 310);
-                g.drawString("Def-" + playerItem.getDefence(), 555, 310);
-                g.drawString("SpA-" + playerItem.getSpecialAttack(), 630, 310);
-                g.drawString("SpD-" + playerItem.getSpecialDefence(), 705, 310);
-                g.drawString("Vit-" + playerItem.getSpeed(), 780, 310);
+                for (int j = 0; j < playerItem.getStats().length; j++) {
+                    g.drawString(playerItem.getStatName(j) + playerItem.getStats()[j], 405 + (65*j), 310);
+                }
             }
         }
 
@@ -126,72 +137,104 @@ public class InventoryMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         int x, y;
+        boolean isSameType;
 
         if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
             sbg.enterState(Game.OVERWORLD);
         }
-
-        for (int j = 0; j < manager.getInventory().getListItemFound().size(); j++) {
-            if ((mouseX > manager.getInventory().getListItemFound().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemFound().get(j).getInventoryX() + 40)
-                    && (mouseY < (700 - manager.getInventory().getListItemFound().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemFound().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
-                try {
-                    manager.getInventory().getListItemFound().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
-                } catch (ArrayIndexOutOfBoundsException e) {
-                } catch (IndexOutOfBoundsException e) {
-                }
-                lastPosition = j;
-                if (gc.getInput().isMousePressed(0)) {  //si l'item est clique -> false
-                    if (manager.getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) {
-                        manager.getInventory().getListItemFound().get(j).setIsAbove(false);
-                        manager.getInventory().getListItemPlayer().add(manager.getInventory().getListItemFound().get(j));
-                        for (int k = 0; k < 6; k++) {
-                            statsManager.getStats()[k] += manager.getInventory().getListItemFound().get(j).getStats()[k];
-                        }
-                        manager.getInventory().getListItemFound().remove(j);
+        
+        //passe au travers de la boucle d'item trouve
+        for(Equipment itemFound : manager.getInventory().getListItemFound()){
+            isSameType = false;
+            //verifie si la souris est au dessus de l'item
+            if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
+                    && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 50))) { 
+                
+                if (gc.getInput().isMousePressed(0)) {  //si l'item est clique
+                    
+                    //s'il y a deja un objet du meme type
+                    for (Equipment itemPlayer : manager.getInventory().getListItemPlayer()) {
+                        System.out.println(itemFound.getType());
+                        System.out.println(itemPlayer.getType());
+                        if(itemFound.getType() == itemPlayer.getType()) isSameType = true;
                     }
+                    
+                    //impossible de rajouter des objet si la limite d'equipement est atteinte ou s'il y a deja un objet du meme type
+                    if ((manager.getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) && !isSameType) { 
+                        
+                        itemFound.setIsAbove(false); //la souris n'est plus au dessus de l'objet (puisqu'il change de place)
+                        manager.getInventory().getListItemPlayer().add(itemFound); // changer l'objet de liste
+                        
+                        //changer les stats du joueur
+                        for (int k = 0; k < itemFound.getStats().length; k++) {
+                            statsManager.getStats()[k] += itemFound.getStats()[k];
+                        }
+                        //ajouter la stat de vie de l'objet a la stat de vie courante du joueur
+                        statsManager.setHp(statsManager.getHp() + itemFound.getStats()[0]);
+                        listItemDeleted.add(itemFound);
+                    }
+                    
                 } else {
-                    manager.getInventory().getListItemFound().get(j).setIsAbove(true); //si l'item n'est pas clique -> true
+                     //si l'item n'est pas clique, mais que le curseur est par dessus
+                    itemFound.setIsAbove(true);
                 }
             } else {
-                manager.getInventory().getListItemFound().get(j).setIsAbove(false); //met tous les items non-selectionne a false
-            }
+                try{
+                    itemFound.setIsAbove(false); //met tous les items non-selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e) {} catch (IndexOutOfBoundsException e) {}            }
         }
-        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) { //changer la position des objets qui viennent d'etre deplace
+        
+        manager.getInventory().getListItemFound().removeAll(listItemDeleted);
+        listItemDeleted.clear();
+        
+         //passe a travers la liste d'objet equipe
+        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) {
+            //placer tous les items equipes a leur place
             x = 430 + (40 * j);
             y = 155;
             try {
                 manager.getInventory().getListItemPlayer().get(j).setInventoryX(x);
                 manager.getInventory().getListItemPlayer().get(j).setInventoryY(y);
-            } catch (IndexOutOfBoundsException e) {
-            }
+            } catch (IndexOutOfBoundsException e) {}
         }
 
-        for (int j = 0; j < manager.getInventory().getListItemPlayer().size(); j++) {
-            if ((mouseX > manager.getInventory().getListItemPlayer().get(j).getInventoryX() && mouseX < manager.getInventory().getListItemPlayer().get(j).getInventoryX() + 40)
-                    && (mouseY < (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY()) && mouseY > (700 - manager.getInventory().getListItemPlayer().get(j).getInventoryY() - 50))) { //verifie si la souris est au dessus de l'item
-                try {
-                    manager.getInventory().getListItemPlayer().get(lastPosition).setIsAbove(false); //set le dernier item selectionne a false
-                } catch (ArrayIndexOutOfBoundsException e) {
-                } catch (IndexOutOfBoundsException e) {
-                }
-                lastPosition = j;
-                if (gc.getInput().isMousePressed(0)) { //si l'item est clique -> false
-                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(false);
-                    manager.getInventory().getListItemFound().add(manager.getInventory().getListItemPlayer().get(j));
-                    for (int k = 0; k < 6; k++) {
-                        statsManager.getStats()[k] -= manager.getInventory().getListItemPlayer().get(j).getStats()[k];
+        for (Equipment itemPlayer : manager.getInventory().getListItemPlayer()) {
+            
+            //verifie si la souris est au dessus de l'item
+            if ((mouseX > itemPlayer.getInventoryX() && mouseX < itemPlayer.getInventoryX() + 40)
+                    && (mouseY < (700 - itemPlayer.getInventoryY()) && mouseY > (700 - itemPlayer.getInventoryY() - 50))) { 
+                
+                if (gc.getInput().isMousePressed(0)) { //si l'item est clique 
+                    itemPlayer.setIsAbove(false);//la sourie n'est plus au dessus de l'objet (puisqu'il change de place)
+                    manager.getInventory().getListItemFound().add(itemPlayer);// changer l'objet de liste
+                    
+                    //changer les stats du joueur
+                    for (int k = 0; k < statsManager.getStats().length; k++) {
+                        statsManager.getStats()[k] -= itemPlayer.getStats()[k];
                     }
-                    manager.getInventory().getListItemPlayer().remove(j);
-                    for (int k = j; k < manager.getInventory().getListItemPlayer().size(); k++) {
+                    //enlever la stat de vie de l'objet a la stat de vie courante du joueur
+                    statsManager.setHp(statsManager.getHp() - itemPlayer.getStats()[0]);
+                    
+                    //replacer les objets restants
+                    for (int k = manager.getInventory().getListItemPlayer().indexOf(itemPlayer); k < manager.getInventory().getListItemPlayer().size(); k++) {
                         manager.getInventory().getListItemPlayer().get(k).setInventoryX(manager.getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
                     }
+                    listItemDeleted.add(itemPlayer);
+                    
                 } else {
-                    manager.getInventory().getListItemPlayer().get(j).setIsAbove(true);  //si l'item n'est pas clique -> true
+                    
+                    itemPlayer.setIsAbove(true);  //si l'item n'est pas clique -> true
                 }
+                
             } else {
-                manager.getInventory().getListItemPlayer().get(j).setIsAbove(false); //met tous les items non-selectionne a false
+                try{
+                itemPlayer.setIsAbove(false); //met tous les items non-selectionne a false
+                } catch (ArrayIndexOutOfBoundsException e) {} catch (IndexOutOfBoundsException e) {}
             }
         }
+        
+        manager.getInventory().getListItemPlayer().removeAll(listItemDeleted);
+        listItemDeleted.clear();
     }
 
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
