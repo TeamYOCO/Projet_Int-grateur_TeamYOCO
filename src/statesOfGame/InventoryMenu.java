@@ -9,6 +9,7 @@ import ca.qc.bdeb.info204.Game;
 import gameEngine.ResManager;
 import gameEngine.EquipmentList;
 import items.Equipment;
+import items.EquipmentType;
 import java.awt.Font;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
@@ -139,7 +140,7 @@ public class InventoryMenu extends BasicGameState {
         int x, y;
         boolean isSameType;
 
-        if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
+        if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
             sbg.enterState(Game.OVERWORLD);
         }
         
@@ -156,7 +157,9 @@ public class InventoryMenu extends BasicGameState {
                     for (Equipment itemPlayer : manager.getInventory().getListItemPlayer()) {
                         System.out.println(itemFound.getType());
                         System.out.println(itemPlayer.getType());
-                        if(itemFound.getType() == itemPlayer.getType()) isSameType = true;
+                        if(itemFound.getType() == itemPlayer.getType() || 
+                                ((itemFound.getType() == EquipmentType.BOW || itemFound.getType() == EquipmentType.SWORD || itemFound.getType() == EquipmentType.SPEAR) 
+                                && (itemPlayer.getType() == EquipmentType.BOW || itemPlayer.getType() == EquipmentType.SWORD || itemPlayer.getType() == EquipmentType.SPEAR))) isSameType = true;
                     }
                     
                     //impossible de rajouter des objet si la limite d'equipement est atteinte ou s'il y a deja un objet du meme type

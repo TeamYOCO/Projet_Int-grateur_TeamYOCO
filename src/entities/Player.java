@@ -28,7 +28,7 @@ public class Player extends Mob {
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
     private ArrayList<Entity> list;
-    private boolean attacking = false;
+    private boolean attacking = false, shooting = false;
     private Animation[] attackAnimation;
     private Animation[] swordAnimation;
 
@@ -51,6 +51,7 @@ public class Player extends Mob {
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
+//        SpriteSheet bowSpriteSheet = ResManager.getInstance().getSpriteSheet(filePath); 
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
