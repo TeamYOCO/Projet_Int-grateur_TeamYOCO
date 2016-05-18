@@ -6,8 +6,10 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import entities.BadEntity;
 import entities.Bee;
 import entities.Entity;
+import entities.Mob;
 import entities.Player;
 import gameEngine.Camera;
 import gameEngine.Hud;
@@ -18,6 +20,7 @@ import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import playerEngine.PlayerGameManager;
+import entities.FriendlyEntity;
 
 /**
  *
@@ -62,7 +65,7 @@ public class Overworld extends BasicGameState {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
-        this.list.add(new Bee(false, 725, 178)); //725.6064 178.80164
+        this.list.add(new Bee(true, 725, 178, player, map)); //725.6064 178.80164
     }
 
     @Override
@@ -83,6 +86,14 @@ public class Overworld extends BasicGameState {
         this.player.update(delta);
         for (Entity entity : list) {
             entity.update(delta);
+            for(Entity entity2 : list){
+                if (entity != entity2 && entity instanceof BadEntity 
+                        && entity2 instanceof FriendlyEntity 
+                        && entity.getHitBox().collision(entity2.getHitBox())
+                        && ((BadEntity)entity).isHitable()){
+                    ((BadEntity)entity).takeHit(((FriendlyEntity)entity2).getDamage(), ((FriendlyEntity)entity2).getDirection());
+                }
+            }
             if (entity.isDead()) {
                 listRemove.add(entity);
             }

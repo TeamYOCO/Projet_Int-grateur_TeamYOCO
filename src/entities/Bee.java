@@ -6,8 +6,10 @@
 package entities;
 
 import gameEngine.ResManager;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -17,19 +19,26 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author 1485246
  */
-public class Bee extends Mob {
+public class Bee extends Mob implements BadEntity {
 
-    private final float speed = 0.2f;
+    private float speed = 0.1f;
     private int comptDirection = 1;
+    private MiniMap map;
+    private Player player;
 
-    public Bee(boolean moving, int x, int y) {
+    public Bee(boolean moving, int x, int y, Player player, MiniMap map) {
         this.moving = moving;
         direction = 0;
         moving = false;
         moveAnimations = new Animation[4];
         this.x = x;
         this.y = y;
-        this.hitBox = new Box(x, y, 32, 32);
+        this.map = map;
+        this.xOff = -16;
+        this.yOff = -32;
+        this.player = player;
+        this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
+        this.hitpoints = 50;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
@@ -37,23 +46,38 @@ public class Bee extends Mob {
         }
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 3, i);
-            System.out.println(i+ " "+moveAnimations[i]);
+            System.out.println(i + " " + moveAnimations[i]);
         }
     }
 
     @Override
     public void update(int delta) {
-        if (moving) {
-            this.x = futurX(delta);
-            this.y = futurY(delta);
+        if (moving && knockbackTimer <= 0) {
+            int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
+            if (this.x < player.getX() && relativeX > relativeY) {
+                this.direction = 3;
+            } else if (this.x > player.getX() && relativeX > relativeY) {
+                this.direction = 1;
+            } else if (this.y < player.getY() && relativeY > relativeX) {
+                this.direction = 2;
+            } else if (this.y > player.getY() && relativeY > relativeX) {
+                this.direction = 0;
+            }
+            if (!map.isCollision(futurX(delta), futurY(delta))) {
+                this.x = futurX(delta);
+                this.y = futurY(delta);
+            }
+            hitBox.setPos(x + xOff, y + yOff);
+        } else if (knockbackTimer > 0) {
+            speed = 4*speed;
+            if (!map.isCollision(futurX(delta), futurY(delta))) {
+                this.x = futurX(-delta);
+                this.y = futurY(-delta);
+            }
+            speed = speed/4;
+            knockbackTimer -= delta;
+            hitBox.setPos(x + xOff, y + yOff);
         }
-        hitBox.setPos(x, y);
-    }
-
-    @Override
-    public void render(Graphics g) throws SlickException {
-        g.drawAnimation(moveAnimations[direction], x, y);
-        hitBox.render(g);
     }
 
     // Teste la position pour se déplacer en X
@@ -62,17 +86,9 @@ public class Bee extends Mob {
         switch (this.direction) {
             case 1:
                 futurX = this.x - speed * delta;
-                comptDirection += 1;
-                if (comptDirection % 10 == 0) {
-                    this.direction = 2;
-                }
                 break;
             case 3:
                 futurX = this.x + speed * delta;
-                comptDirection += 1;
-                if (comptDirection % 10 == 0) {
-                    this.direction = 0;
-                }
                 break;
         }
         return futurX;
@@ -84,20 +100,21 @@ public class Bee extends Mob {
         switch (this.direction) {
             case 0:
                 futurY = this.y - speed * delta;
-                comptDirection += 1;
-                if (comptDirection % 10 == 0) {
-                    this.direction = 1;
-                }
                 break;
             case 2:
                 futurY = this.y + speed * delta;
-                comptDirection += 1;
-                if (comptDirection % 10 == 0) {
-                    this.direction = 3;
-                }
                 break;
         }
         return futurY;
     }
 
+    @Override
+    public void render(Graphics g) throws SlickException {
+        g.drawAnimation(moveAnimations[direction], x - 16, y - 32);
+//        hitBox.render(g);
+    }
+
+
+    
+    
 }

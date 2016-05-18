@@ -17,7 +17,7 @@ import playerEngine.CharacterStatsManager;
  *
  * @author 1455367
  */
-public class SwordSwing extends Particle {
+public class SwordSwing extends Particle implements FriendlyEntity{
     
     private int damage;
 
@@ -42,14 +42,24 @@ public class SwordSwing extends Particle {
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
-        hitBox.render(g);
+//        hitBox.render(g);
     }
 
     @Override
     public void update(int delta) {
         super.update(delta); 
-        if (lifeSpam <= 300){
+        if (lifeSpam <= 400){
             this.hitBox = new Box(x+xOff, y+yOff, 32, 32);
         }
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public int getDirection() {
+        return direction;
     }
 }
