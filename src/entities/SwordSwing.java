@@ -27,6 +27,7 @@ public class SwordSwing extends Particle implements FriendlyEntity{
         this.y = y;
         this.xOff = 0;
         this.yOff = 0;
+        this.direction = direction;
         switch(direction){
             case 0: xOff = 48; yOff = 27; break;
             case 1: xOff = 11; yOff = 50; break;

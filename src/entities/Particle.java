@@ -11,13 +11,14 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 /**
- * Méthode qui représent tous les autres éléments graphiques à dessiner dans le overworld
+ * 
  * @author Seb
  */
 public class Particle extends Entity {
 
     protected Animation animation = new Animation();
-    protected int lifeSpam, speedX, speedY, direction;
+    protected int lifeSpam,  direction;
+    protected float speedX, speedY;
 
     public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Box hitBox) {
         this.animation = animation;

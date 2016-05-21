@@ -15,7 +15,7 @@ public abstract class Mob extends Entity {
 
     protected Animation[] moveAnimations;
     protected int hitpoints;
-    protected int direction;
+    protected int direction = 2;
     protected boolean moving;
     protected int damage;
     protected float knockbackTimer = 0;
@@ -34,15 +34,18 @@ public abstract class Mob extends Entity {
             case 2: this.direction = 0; break;
             case 3: this.direction = 1; break;
         }
-        System.out.println(direction);
         hitpoints -= damage;
         if (hitpoints <= 0){
             this.dead = true;
         }
-        this.knockbackTimer = 100;
+        this.knockbackTimer = 200;
     }
 
     public int getDamage() {
-        return 0;
+        return damage;
+    }
+    
+    public int getDirection(){
+        return direction;
     }
 }

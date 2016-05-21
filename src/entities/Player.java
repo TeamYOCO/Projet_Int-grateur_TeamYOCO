@@ -7,6 +7,8 @@ package entities;
 
 import gameEngine.ResManager;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -58,39 +60,51 @@ public class Player extends Mob {
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
             this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
         }
-        
+
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
         speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
         for (int i = 0; i < moveAnimations.length; i++) {
-            moveAnimations[i].setSpeed(speed*4);
+            moveAnimations[i].setSpeed(speed * 4);
         }
         g.setColor(new Color(0, 0, 0, .5f));
         g.fillOval(x - 16, y - 8, 32, 16);
-        if (attacking) {
+        if (attacking && isHitable()) {
             g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-        } else {
+        } else if (isHitable()){
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
+        } else if (!isHitable()){
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60, Color.red);
         }
     }
 
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (moving && !attacking) {
+        if (moving && !attacking && knockbackTimer <= 0) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
             }
-        } else if (attacking) {
+        } else if (attacking && knockbackTimer <= 0) {
             attackCounter -= delta;
             if (attackCounter <= 0) {
                 attacking = false;
             }
+        } else if (knockbackTimer > 0) {
+            float tempSpeed = speed;
+            speed = 0.5f;
+            if (!map.isCollision(futurX(delta), futurY(delta))) {
+                this.x = futurX(-delta);
+                this.y = futurY(-delta);
+            }
+            speed = tempSpeed;
+            knockbackTimer -= delta;
         }
         hitBox.setPos(x + xOff, y + yOff);
+
     }
 
     // Teste la position pour se déplacer en X
@@ -122,7 +136,7 @@ public class Player extends Mob {
     }
 
     public void attack() throws SlickException {
-        if (!attacking) {
+        if (!attacking && isHitable()) {
             attacking = true;
             attackDirection = direction;
             attackCounter = 500;
@@ -176,5 +190,15 @@ public class Player extends Mob {
         return attacking;
     }
 
+    @Override
+    public void takeHit(int damage, int hitDirection) {
+        super.takeHit(damage, hitDirection);
+        try {
+            CharacterStatsManager.getInstance().takeDamage(damage);
+            System.out.println("il take "+damage);
+        } catch (SlickException ex) {
+        }
+    }
+    
     
 }

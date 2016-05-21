@@ -8,6 +8,7 @@ package statesOfGame;
 import ca.qc.bdeb.info204.Game;
 import entities.BadEntity;
 import entities.Bee;
+import entities.DamageMarker;
 import entities.Entity;
 import entities.Mob;
 import entities.Player;
@@ -92,7 +93,14 @@ public class Overworld extends BasicGameState {
                         && entity.getHitBox().collision(entity2.getHitBox())
                         && ((BadEntity)entity).isHitable()){
                     ((BadEntity)entity).takeHit(((FriendlyEntity)entity2).getDamage(), ((FriendlyEntity)entity2).getDirection());
+//                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
                 }
+            }
+            if (entity instanceof BadEntity
+                    && ((BadEntity)entity).isHitable() && player.isHitable()
+                    && player.getHitBox().collision(entity.getHitBox())){
+                player.takeHit(((BadEntity)entity).getDamage(), ((BadEntity)entity).getDirection());
+                System.out.println("il take "+((BadEntity)entity).getDamage());
             }
             if (entity.isDead()) {
                 listRemove.add(entity);

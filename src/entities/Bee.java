@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -22,14 +23,13 @@ import org.newdawn.slick.SpriteSheet;
 public class Bee extends Mob implements BadEntity {
 
     private float speed = 0.1f;
-    private int comptDirection = 1;
     private MiniMap map;
     private Player player;
+    private int aggroRange = 200;
+    private boolean aggro = false;
 
     public Bee(boolean moving, int x, int y, Player player, MiniMap map) {
-        this.moving = moving;
-        direction = 0;
-        moving = false;
+        this.moving = false;
         moveAnimations = new Animation[4];
         this.x = x;
         this.y = y;
@@ -39,6 +39,7 @@ public class Bee extends Mob implements BadEntity {
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
         this.hitpoints = 50;
+        this.damage = 5;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
@@ -52,32 +53,36 @@ public class Bee extends Mob implements BadEntity {
 
     @Override
     public void update(int delta) {
+        if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
+            moving = true;
+        }
         if (moving && knockbackTimer <= 0) {
-            int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
-            if (this.x < player.getX() && relativeX > relativeY) {
-                this.direction = 3;
-            } else if (this.x > player.getX() && relativeX > relativeY) {
-                this.direction = 1;
-            } else if (this.y < player.getY() && relativeY > relativeX) {
-                this.direction = 2;
-            } else if (this.y > player.getY() && relativeY > relativeX) {
-                this.direction = 0;
-            }
+                int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
+                if (this.x < player.getX() && relativeX > relativeY) {
+                    this.direction = 3;
+                } else if (this.x > player.getX() && relativeX > relativeY) {
+                    this.direction = 1;
+                } else if (this.y < player.getY() && relativeY > relativeX) {
+                    this.direction = 2;
+                } else if (this.y > player.getY() && relativeY > relativeX) {
+                    this.direction = 0;
+                }
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
             }
-            hitBox.setPos(x + xOff, y + yOff);
         } else if (knockbackTimer > 0) {
-            speed = 4*speed;
+            float tempSpeed = speed;
+            speed = 0.5f;
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(-delta);
                 this.y = futurY(-delta);
             }
-            speed = speed/4;
+            speed = tempSpeed;
             knockbackTimer -= delta;
-            hitBox.setPos(x + xOff, y + yOff);
+
         }
+        hitBox.setPos(x + xOff, y + yOff);
     }
 
     // Teste la position pour se déplacer en X
@@ -110,11 +115,11 @@ public class Bee extends Mob implements BadEntity {
 
     @Override
     public void render(Graphics g) throws SlickException {
-        g.drawAnimation(moveAnimations[direction], x - 16, y - 32);
-//        hitBox.render(g);
+        if (isHitable()) {
+            g.drawAnimation(moveAnimations[direction], x - 16, y - 32);
+        } else {
+            g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
+        }
     }
 
-
-    
-    
 }
