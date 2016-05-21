@@ -53,7 +53,6 @@ public class Player extends Mob {
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
         SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
-//        SpriteSheet bowSpriteSheet = ResManager.getInstance().getSpriteSheet(filePath); 
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
@@ -65,7 +64,7 @@ public class Player extends Mob {
 
     @Override
     public void render(Graphics g) throws SlickException {
-        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
+        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5] ;
         for (int i = 0; i < moveAnimations.length; i++) {
             moveAnimations[i].setSpeed(speed * 4);
         }
