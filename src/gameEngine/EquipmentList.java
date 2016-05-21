@@ -67,7 +67,7 @@ public class EquipmentList {
                 new int[]{0,0,10,0,0,0,0},EquipmentType.ARMOR));
         listEquipment.put("Armure Metallique",new Equipment(0,0,animation.getImage(6),"Armure Metallique",
                 "Armure en métal moderne. Procure une bonne \nprotection contre les attaques physiques",
-                new int[]{0,0,20,0,0,0},EquipmentType.ARMOR));
+                new int[]{0,0,20,0,0,0,0},EquipmentType.ARMOR));
         listEquipment.put("Armure d'Argent",new Equipment(0,0,animation.getImage(7),"Armure d'Argent",
                 "A appartenu a un général emerite. Procure une \ntres bonne protection contre les attaques \nphysiques",
                 new int[]{0,0,30,0,0,0,0},EquipmentType.ARMOR));
@@ -175,7 +175,7 @@ public class EquipmentList {
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME));
         listEquipment.put("Livre vert",new Equipment(0,0,animation.getImage(42),"Livre vert",
                 "",
-                new int[]{0,0,0,0,0,0,01},EquipmentType.SPELL_TOME));
+                new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME));
         listEquipment.put("Livre cyan",new Equipment(0,0,animation.getImage(43),"Livre cyan",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME));
