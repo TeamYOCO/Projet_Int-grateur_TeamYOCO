@@ -42,7 +42,7 @@ public class Player extends Mob {
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
-        this.swordAnimation = new Animation[4];
+//        this.swordAnimation = new Animation[4];
         this.x = 620;
         this.y = 430;
         this.xOff = -16;
@@ -52,12 +52,12 @@ public class Player extends Mob {
         this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
-        SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
+//        SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
-            this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
+//            this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
         }
 
     }
@@ -141,7 +141,7 @@ public class Player extends Mob {
             attackCounter = 500;
             for (int i = 0; i < attackAnimation.length; i++) {
                 attackAnimation[i].restart();
-                swordAnimation[i].restart();
+//                swordAnimation[i].restart();
             }
             SwordSwing swordSwing = null;
             float sx = 0, sy = 0;

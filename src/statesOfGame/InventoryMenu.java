@@ -78,7 +78,6 @@ public class InventoryMenu extends BasicGameState {
         manager.addItem("Epee legendaire");
         manager.addItem("Livre bleu");
         manager.addItem("Livre mauve");
-        manager.addItem("Tri-dent");
         manager.addItem("Arc de feu");
         manager.addItem("Arc artisanal");
 
@@ -128,8 +127,8 @@ public class InventoryMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
-        if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { 
+        //sortir du menu en pesant 'e', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
+        if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { 
             sbg.enterState(Game.OVERWORLD);
         }
 
@@ -137,6 +136,7 @@ public class InventoryMenu extends BasicGameState {
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             isSameType = false;
             //verifie si la souris est au dessus de l'item
+            System.out.println(itemFound);
             if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
                     && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 50))) {
 
