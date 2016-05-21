@@ -48,7 +48,13 @@ public class Equipment {
         this.isAbove = false;
         this.name = name;
         this.description = description;
-        this.stats = stats;
+        this.stats[0] = stats[0];
+        this.stats[1] = stats[1];
+        this.stats[2] = stats[2];
+        this.stats[3] = stats[3];
+        this.stats[4] = stats[4];
+        this.stats[5] = stats[5];
+        this.stats[6] = stats[6];
         this.equipmentType = equipmentType;
     }
     
