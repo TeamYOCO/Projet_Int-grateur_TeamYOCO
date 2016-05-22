@@ -61,13 +61,24 @@ public class PlayerController implements KeyListener {
                 this.player.setDirection(3);
                 this.player.setMoving(true);
                 break;
-            case Input.KEY_D: {
+            case Input.KEY_D:
                 try {
                     this.player.attack();
                 } catch (SlickException ex) {
                 }
-            }
-            break;
+                break;
+            case Input.KEY_S:
+                try {
+                    this.player.shoot();
+                } catch (SlickException ex) {
+                }
+                break;
+//            case Input.KEY_A:
+//                try {
+//                    this.player.cast();
+//                } catch (SlickException ex) {
+//                }
+//                break;
             case Input.KEY_1:
                 try {
                     CharacterStatsManager.getInstance().takeDamage(10);
@@ -81,7 +92,7 @@ public class PlayerController implements KeyListener {
                 }
                 break;
             case Input.KEY_3:
-                System.out.println(player.getX() + " "+player.getY());
+                System.out.println(player.getX() + " " + player.getY());
                 break;
         }
     }

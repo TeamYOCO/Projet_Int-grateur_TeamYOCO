@@ -30,9 +30,11 @@ public class Player extends Mob {
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
     private ArrayList<Entity> list;
-    private boolean attacking = false, shooting = false;
+    private boolean attacking = false, shooting = false, casting = false;
     private Animation[] attackAnimation;
-    private Animation[] swordAnimation;
+    private Animation[] bowShootAnimation;
+    private Animation[] bowAnimation;
+    private Animation[] castAnimations;
 
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
@@ -42,7 +44,8 @@ public class Player extends Mob {
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
-//        this.swordAnimation = new Animation[4];
+        this.bowShootAnimation = new Animation[4];
+        this.bowAnimation = new Animation[4];
         this.x = 620;
         this.y = 430;
         this.xOff = -16;
@@ -52,19 +55,23 @@ public class Player extends Mob {
         this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
-//        SpriteSheet swordSwingSheet = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
+        SpriteSheet bowShootSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_shoot");
+        SpriteSheet bowSpriteSheet = ResManager.getInstance().getSpriteSheet("recurvebow");
+        SpriteSheet castSheet = ResManager.getInstance().getSpriteSheet("main_character_cast");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
-//            this.swordAnimation[i] = loadAnimation(swordSwingSheet, 1, 6, i);
+            this.bowShootAnimation[i] = loadAnimation(bowShootSpriteSheet, 1, 13, i);
+            this.bowAnimation[i] = loadAnimation(bowSpriteSheet, 1, 13, i);
+//            this.castAnimations[i] = loadAnimation(castSheet, 1, 7, i);
         }
 
     }
 
     @Override
     public void render(Graphics g) throws SlickException {
-        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5] ;
+        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
         for (int i = 0; i < moveAnimations.length; i++) {
             moveAnimations[i].setSpeed(speed * 4);
         }
@@ -72,9 +79,14 @@ public class Player extends Mob {
         g.fillOval(x - 16, y - 8, 32, 16);
         if (attacking && isHitable()) {
             g.drawAnimation(attackAnimation[attackDirection], x - 32, y - 60);
-        } else if (isHitable()){
+        } else if (shooting && isHitable()) {
+            g.drawAnimation(bowShootAnimation[attackDirection], x - 32, y - 60);
+            g.drawAnimation(bowAnimation[attackDirection], x - 32, y - 60);
+        } else if (casting && isHitable()) {
+            g.drawAnimation(castAnimations[attackDirection], x - 32, y - 60);
+        } else if (isHitable()) {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60);
-        } else if (!isHitable()){
+        } else if (!isHitable()) {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 60, Color.red);
         }
     }
@@ -82,15 +94,17 @@ public class Player extends Mob {
     // Update la position du joueur
     @Override
     public void update(int delta) {
-        if (moving && !attacking && knockbackTimer <= 0) {
+        if (moving && !attacking && !shooting && !casting && knockbackTimer <= 0) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
             }
-        } else if (attacking && knockbackTimer <= 0) {
+        } else if (knockbackTimer <= 0) {
             attackCounter -= delta;
             if (attackCounter <= 0) {
                 attacking = false;
+                shooting = false;
+                casting = false;
             }
         } else if (knockbackTimer > 0) {
             float tempSpeed = speed;
@@ -135,13 +149,12 @@ public class Player extends Mob {
     }
 
     public void attack() throws SlickException {
-        if (!attacking && isHitable()) {
+        if (!attacking && !shooting && !casting && isHitable()) {
             attacking = true;
             attackDirection = direction;
             attackCounter = 500;
             for (int i = 0; i < attackAnimation.length; i++) {
                 attackAnimation[i].restart();
-//                swordAnimation[i].restart();
             }
             SwordSwing swordSwing = null;
             float sx = 0, sy = 0;
@@ -165,6 +178,43 @@ public class Player extends Mob {
             }
             swordSwing = new SwordSwing(sx, sy, attackDirection, 500);
             list.add(swordSwing);
+        }
+    }
+
+    public void shoot() throws SlickException {
+        if (!attacking && !shooting && !casting && isHitable()) {
+            shooting = true;
+            attackDirection = direction;
+            attackCounter = 1000;
+            for (int i = 0; i < bowShootAnimation.length; i++) {
+                bowShootAnimation[i].restart();
+                bowAnimation[i].restart();
+            }
+            Arrow arrow = null;
+            float sx = x, sy = y;
+            switch (direction) {
+                case 0:
+                case 1:
+                    sy = y - 20;
+                    break;
+                case 2:
+                case 3:
+                    sy = y - 20;
+                    break;
+            }
+            arrow = new Arrow(sx, sy, attackDirection, 4000, map);
+            list.add(arrow);
+        }
+    }
+
+    public void cast() throws SlickException {
+        if (!attacking && !shooting && !casting && isHitable()) {
+            casting = true;
+            attackDirection = direction;
+            attackCounter = 500;
+            for (int i = 0; i < castAnimations.length; i++) {
+                castAnimations[i].restart();
+            }
         }
     }
 
@@ -194,10 +244,9 @@ public class Player extends Mob {
         super.takeHit(damage, hitDirection);
         try {
             CharacterStatsManager.getInstance().takeDamage(damage);
-            System.out.println("il take "+damage);
+            System.out.println("il take " + damage);
         } catch (SlickException ex) {
         }
     }
-    
-    
+
 }
