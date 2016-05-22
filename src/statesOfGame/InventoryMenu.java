@@ -68,7 +68,7 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.addGlyphs(400, 600);
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
-        manager.addItem("Casque Antique");
+        manager.addItem("Bottes Royales");
         manager.addItem("Casque Metallique");
         manager.addItem("Armure d'Argent");
         manager.addItem("Jambieres Royales");
@@ -78,7 +78,6 @@ public class InventoryMenu extends BasicGameState {
         manager.addItem("Epee legendaire");
         manager.addItem("Livre bleu");
         manager.addItem("Livre mauve");
-        manager.addItem("Tri-dent");
         manager.addItem("Arc de feu");
         manager.addItem("Arc artisanal");
 
@@ -137,6 +136,7 @@ public class InventoryMenu extends BasicGameState {
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             isSameType = false;
             //verifie si la souris est au dessus de l'item
+            System.out.println(itemFound);
             if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
                     && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 50))) {
 

@@ -22,6 +22,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
+import items.Equipment;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class Overworld extends BasicGameState {
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
-    private static GameContainer container;
+    private GameContainer container;
     private MiniMap map = new MiniMap();
     private Player player = new Player(map, list);
     private PlayerController controller = new PlayerController(player);
@@ -176,7 +177,7 @@ public class Overworld extends BasicGameState {
     public void save(){
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
-            save.writeObject(container);
+            save.writeObject(manager.getInventory().getListItemFound());
             save.flush();
             save.close();
             
@@ -185,11 +186,12 @@ public class Overworld extends BasicGameState {
         }
     }
     
-    public static void load(){
+    public void load(){
         try {
             
             ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
-            container = (GameContainer) load.readObject();
+            ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
+            manager.getInventory().setListItemFound(list);
             load.close();
             
         } catch (IOException e) {

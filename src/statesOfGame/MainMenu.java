@@ -76,6 +76,7 @@ public class MainMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
+        //clisque sur le bouton "nouvelle partie"
         if ((mouseX > (WIDTH / 2 - newGameX / 2) && mouseX < WIDTH / 2 + newGameX / 2) 
                 && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
             if (input.isMouseButtonDown(0)) {
@@ -83,7 +84,8 @@ public class MainMenu extends BasicGameState {
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }
         }
-
+        
+        //clique sur le bouton "credits"
         if ((mouseX > WIDTH / 2 && mouseX < WIDTH / 2 + creditsX) 
                 && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10 - creditsY 
                 && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10)) {
@@ -93,6 +95,7 @@ public class MainMenu extends BasicGameState {
             }
         }
         
+        //clique sur le bouton "continuer"
         if((mouseX> (WIDTH / 2 - playX / 2) && mouseX < (WIDTH / 2 + playX / 2)) 
                 && (mouseY < (2*HEIGHT/3 + playY/2) && mouseY > 2*HEIGHT/3 - playY/2)){
             if(input.isMousePressed(0)){

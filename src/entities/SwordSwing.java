@@ -19,7 +19,8 @@ import playerEngine.CharacterStatsManager;
  */
 public class SwordSwing extends Particle implements FriendlyEntity{
     
-    private int damage;
+    private int damagePhysical;
+    private int damageSpecial;
 
     public SwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
         SpriteSheet anim = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
@@ -35,7 +36,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
             case 3: xOff = 85; yOff = 45; break;
         }
         this.hitBox = new Box(x+xOff, y+yOff, 0, 0);
-        this.damage = CharacterStatsManager.getInstance().getStats()[1];
+        this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
+        this.damagePhysical = CharacterStatsManager.getInstance().getStats()[3];
         this.animation = loadAnimation(anim, 1, 6, direction);
         this.lifeSpam = lifeSpam;
     }
@@ -56,7 +58,7 @@ public class SwordSwing extends Particle implements FriendlyEntity{
 
     @Override
     public int getDamage() {
-        return damage;
+        return damagePhysical;
     }
 
     @Override

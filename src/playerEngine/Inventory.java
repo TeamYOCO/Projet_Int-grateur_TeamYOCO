@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author 1455367
  */
 public class Inventory {
-    private final ArrayList<Equipment> listItemFound,listItemPlayer;
+    private ArrayList<Equipment> listItemFound,listItemPlayer;
     private int money;
 
     public Inventory() {
@@ -30,6 +30,13 @@ public class Inventory {
         return listItemPlayer;
     }
     
+    public void setListItemFound(ArrayList<Equipment> listItemFound){
+        this.listItemFound = listItemFound;
+    }
+    
+    public void setListItemPlayer(ArrayList<Equipment> listItemPlayer){
+        this.listItemPlayer = listItemPlayer;
+    }
     
     
 }
