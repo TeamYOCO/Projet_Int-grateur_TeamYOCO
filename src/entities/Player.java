@@ -195,7 +195,7 @@ public class Player extends Mob {
         super.takeHit(damage, hitDirection);
         try {
             CharacterStatsManager.getInstance().takeDamage(damage);
-            System.out.println("il take "+damage);
+//            System.out.println("il take "+damage);
         } catch (SlickException ex) {
         }
     }

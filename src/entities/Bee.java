@@ -47,7 +47,7 @@ public class Bee extends Mob implements BadEntity {
         }
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 3, i);
-            System.out.println(i + " " + moveAnimations[i]);
+//            System.out.println(i + " " + moveAnimations[i]);
         }
     }
 

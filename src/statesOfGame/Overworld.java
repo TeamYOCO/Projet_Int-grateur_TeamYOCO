@@ -22,6 +22,11 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -34,7 +39,7 @@ public class Overworld extends BasicGameState {
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
-    private GameContainer container;
+    private static GameContainer container;
     private MiniMap map = new MiniMap();
     private Player player = new Player(map, list);
     private PlayerController controller = new PlayerController(player);
@@ -113,9 +118,13 @@ public class Overworld extends BasicGameState {
         this.cam.update(container);
         updateTrigger();
 
-        if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'i' ou en clickant sur le bouton droit de la souris
+        if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'e' ou en clickant sur le bouton droit de la souris
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
+        }
+        
+        if(input.isKeyPressed(31)){
+            save();
         }
     }
 
@@ -162,6 +171,33 @@ public class Overworld extends BasicGameState {
 
     public void setMusic(String musicPath) {
         overworldTheme = musicPath;
+    }
+    
+    public void save(){
+        try {
+            ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
+            save.writeObject(container);
+            save.flush();
+            save.close();
+            
+        } catch (IOException ex) {
+            System.out.println("Erreur d'entrées-sorties");
+        }
+    }
+    
+    public static void load(){
+        try {
+            
+            ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
+            container = (GameContainer) load.readObject();
+            load.close();
+            
+        } catch (IOException e) {
+            System.out.println("Erreur de lecture du fichier");
+        } 
+        catch (ClassNotFoundException e) {
+            System.out.println("Fichier introuvable");
+        }
     }
 
 }

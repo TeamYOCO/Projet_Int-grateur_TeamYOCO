@@ -76,17 +76,27 @@ public class MainMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        if ((mouseX > (WIDTH / 2 - newGameX / 2) && mouseX < WIDTH / 2 + newGameX / 2) && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
+        if ((mouseX > (WIDTH / 2 - newGameX / 2) && mouseX < WIDTH / 2 + newGameX / 2) 
+                && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }
         }
 
-        if ((mouseX > WIDTH / 2 && mouseX < WIDTH / 2 + creditsX) && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10 - creditsY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10)) {
+        if ((mouseX > WIDTH / 2 && mouseX < WIDTH / 2 + creditsX) 
+                && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10 - creditsY 
+                && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10)) {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = false;
                 sbg.enterState(CREDITS);
+            }
+        }
+        
+        if((mouseX> (WIDTH / 2 - playX / 2) && mouseX < (WIDTH / 2 + playX / 2)) 
+                && (mouseY < (2*HEIGHT/3 + playY/2) && mouseY > 2*HEIGHT/3 - playY/2)){
+            if(input.isMousePressed(0)){
+                sbg.enterState(OVERWORLD);
             }
         }
     }

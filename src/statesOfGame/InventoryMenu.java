@@ -128,8 +128,8 @@ public class InventoryMenu extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        //sortir du menu en pesant 'i', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
-        if (gc.getInput().isKeyPressed(23) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { 
+        //sortir du menu en pesant 'e', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
+        if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { 
             sbg.enterState(Game.OVERWORLD);
         }
 
