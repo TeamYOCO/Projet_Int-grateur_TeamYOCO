@@ -7,6 +7,8 @@ package entities;
 
 import gameEngine.ResManager;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -28,7 +30,7 @@ public class Player extends Mob {
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
     private ArrayList<Entity> list;
-    private boolean attacking = false, shooting = false, casting = false;
+    private boolean attacking = false, shooting = false, casting = false, shot = true;
     private Animation[] attackAnimation;
     private Animation[] bowShootAnimation;
     private Animation[] bowAnimation;
@@ -44,6 +46,7 @@ public class Player extends Mob {
         this.attackAnimation = new Animation[4];
         this.bowShootAnimation = new Animation[4];
         this.bowAnimation = new Animation[4];
+        this.castAnimations = new Animation[4];
         this.setX(620);
         this.setY(430);
         this.xOff = -16;
@@ -62,7 +65,7 @@ public class Player extends Mob {
             this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
             this.bowShootAnimation[i] = loadAnimation(bowShootSpriteSheet, 1, 13, i);
             this.bowAnimation[i] = loadAnimation(bowSpriteSheet, 1, 13, i);
-//            this.castAnimations[i] = loadAnimation(castSheet, 1, 7, i);
+            this.castAnimations[i] = loadAnimation(castSheet, 1, 7, i);
         }
 
     }
@@ -89,37 +92,65 @@ public class Player extends Mob {
         }
     }
 
-    // Update la position du joueur
+    // Update la position et l'action du joueur
     @Override
     public void update(int delta) {
         this.setX(Player.getSaveX());
         this.setY(Player.getSaveY());
+        //  vérifie si le déplacement est possible et déplace le joueur si possible
         if (moving && !attacking && !shooting && !casting && knockbackTimer <= 0) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.setX(futurX(delta));
                 this.setY(futurY(delta));
-//                this.x = futurX(delta);
-//                this.y = futurY(delta);
             }
-        } else if (knockbackTimer <= 0) {
+        }
+        // calcule le temps restant au joueur durant sont attaque
+        else if (knockbackTimer <= 0) {
             attackCounter -= delta;
+            // Vérifie si le joueur est en train de décocher un flèche et la tire au bon momment 
+            if (shooting && attackCounter <= 500 && shot == false) {
+                shot = true;
+                Arrow arrow = null;
+                float sx = x, sy = y;
+                switch (direction) {
+                    case 0:
+                    case 1:
+                        sy = y - 20;
+                        break;
+                    case 2:
+                    case 3:
+                        sy = y - 20;
+                        break;
+                }
+                try {
+                    arrow = new Arrow(sx, sy, attackDirection, 4000, map);
+                } catch (SlickException ex) {
+                    Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                list.add(arrow);
+            }
+            // Si l'attaque du joueur est terminer permet au joueur de se déplacer à nouveau
             if (attackCounter <= 0) {
                 attacking = false;
                 shooting = false;
                 casting = false;
             }
-        } else if (knockbackTimer > 0) {
+        }
+        // Repousse le joueur si il vient de se faire frapper
+        else if (knockbackTimer > 0) {
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.setX(futurX(-delta));
                 this.setY(futurY(-delta));
-//                this.x = futurX(-delta);
-//                this.y = futurY(-delta);
+            } else{
+                this.setX(futurX(delta));
+                this.setY(futurY(delta));
             }
             speed = tempSpeed;
             knockbackTimer -= delta;
         }
+        // Update la hitbox du joueur
         hitBox.setPos(x + xOff, y + yOff);
 
     }
@@ -190,24 +221,11 @@ public class Player extends Mob {
             shooting = true;
             attackDirection = direction;
             attackCounter = 1000;
+            shot = false;
             for (int i = 0; i < bowShootAnimation.length; i++) {
                 bowShootAnimation[i].restart();
                 bowAnimation[i].restart();
             }
-            Arrow arrow = null;
-            float sx = x, sy = y;
-            switch (direction) {
-                case 0:
-                case 1:
-                    sy = y - 20;
-                    break;
-                case 2:
-                case 3:
-                    sy = y - 20;
-                    break;
-            }
-            arrow = new Arrow(sx, sy, attackDirection, 4000, map);
-            list.add(arrow);
         }
     }
 
@@ -248,9 +266,12 @@ public class Player extends Mob {
         super.takeHit(damage, hitDirection);
         try {
             CharacterStatsManager.getInstance().takeDamage(damage);
-//            System.out.println("il take "+damage);
         } catch (SlickException ex) {
         }
     }
 
+    public void test(){
+        System.out.println(map.isCollision(x, y));
+    }
+    
 }
