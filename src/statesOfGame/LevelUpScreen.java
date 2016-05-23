@@ -183,6 +183,9 @@ public class LevelUpScreen extends BasicGameState {
         
         //si le joueur clique sur "enregistrer", retourner dans le overworld
         if((mouseX > 552 && mouseX < 772) && (mouseY > 37 && mouseY < 87) && (input.isMousePressed(0))){
+            for (int j = 0; j < MAX_STATS; j++) {
+                CharacterStatsManager.getInstance().setStatsUpgrade(j, 0);
+            }
             sbg.enterState(Game.OVERWORLD);
         }
 

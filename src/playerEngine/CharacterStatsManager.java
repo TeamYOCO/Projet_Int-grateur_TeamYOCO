@@ -5,11 +5,7 @@
  */
 package playerEngine;
 
-import items.EquipmentList;
-import gameEngine.ResManager;
-import items.Equipment;
 import static items.Equipment.MAX_STATS;
-import java.io.Serializable;
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -106,6 +102,10 @@ public class CharacterStatsManager {
     
     public int[] getStatsUpgrade(){
         return statsUpgrade;
+    }
+    
+    public void setStatsUpgrade(int i, int change){
+        this.statsUpgrade[i] = change;
     }
     
     public void setStats(int index, int stat){

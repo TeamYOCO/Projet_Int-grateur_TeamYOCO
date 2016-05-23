@@ -53,6 +53,7 @@ public class DataManager {
             save.writeUTF(MiniMap.getFileName());
             save.writeFloat(Entity.getSaveX());
             save.writeFloat(Entity.getSaveY());
+            save.writeInt(CharacterStatsManager.getInstance().getLevel());
             save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemFound());
             save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemPlayer());
             save.flush();
@@ -72,6 +73,7 @@ public class DataManager {
             MiniMap.changeMap(load.readUTF());
             Player.setSaveX(load.readFloat());
             Player.setSaveY(load.readFloat());
+            CharacterStatsManager.getInstance().setLevel(load.readInt());
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
             manager.getInventory().setListItemFound(list);
             list = (ArrayList<Equipment>) load.readObject();
