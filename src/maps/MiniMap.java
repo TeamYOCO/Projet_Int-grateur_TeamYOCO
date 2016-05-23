@@ -102,9 +102,14 @@ public class MiniMap {
     public String getObjectProperty(int objectID, String propertyName, String def) {
         return this.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
+    
+    public String getMapProperty(String name){
+        return tiledMap.getMapProperty(name, "0");
+    }
 
     public static void changeMap(String file) throws SlickException {
         fileName = file;
-        tiledMap = new TiledMap(file);
+        tiledMap = new TiledMap(file);  
+        }
     }
-}
+

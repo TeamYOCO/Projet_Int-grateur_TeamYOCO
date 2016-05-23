@@ -5,7 +5,12 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.SlickException;
+import playerEngine.CharacterStatsManager;
 
 /**
  * Classe qui contient tous les éléments représentant un monstre, npc ou joueur
@@ -19,6 +24,8 @@ public abstract class Mob extends Entity {
     protected boolean moving;
     protected int damage;
     protected float knockbackTimer = 0;
+    protected int exp = 0;
+    protected ArrayList<Entity> list;
     
     public boolean isHitable(){
         if (knockbackTimer <= 0)
@@ -37,6 +44,11 @@ public abstract class Mob extends Entity {
         hitpoints -= damage;
         if (hitpoints <= 0){
             this.dead = true;
+            try {
+                this.die();
+            } catch (SlickException ex) {
+                Logger.getLogger(Mob.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.knockbackTimer = 200;
     }
@@ -47,5 +59,13 @@ public abstract class Mob extends Entity {
     
     public int getDirection(){
         return direction;
+    }
+    
+    public int getExp(){
+        return exp;
+    }
+    
+    public void die() throws SlickException{
+        CharacterStatsManager.getInstance().gainExp(exp);
     }
 }

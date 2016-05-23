@@ -6,6 +6,7 @@
 package entities;
 
 import gameEngine.ResManager;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,9 +29,10 @@ public class Bee extends Mob implements BadEntity {
     private int aggroRange = 200;
     private boolean aggro = false;
 
-    public Bee(boolean moving, int x, int y, Player player, MiniMap map) {
+    public Bee(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moving = false;
         moveAnimations = new Animation[4];
+        this.list = list;
         this.x = x;
         this.y = y;
         this.map = map;
@@ -48,7 +50,6 @@ public class Bee extends Mob implements BadEntity {
         }
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 3, i);
-//            System.out.println(i + " " + moveAnimations[i]);
         }
     }
 
@@ -75,7 +76,7 @@ public class Bee extends Mob implements BadEntity {
         } else if (knockbackTimer > 0) {
             float tempSpeed = speed;
             speed = 0.5f;
-            if (!map.isCollision(futurX(delta), futurY(delta))) {
+            if (!map.isCollision(futurX(-delta), futurY(-delta))) {
                 this.x = futurX(-delta);
                 this.y = futurY(-delta);
             }
@@ -121,6 +122,7 @@ public class Bee extends Mob implements BadEntity {
         } else {
             g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
         }
+        hitBox.render(g);
     }
 
 }
