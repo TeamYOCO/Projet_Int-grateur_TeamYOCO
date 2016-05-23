@@ -6,15 +6,12 @@
 package items;
 
 import entities.Particle;
-import java.awt.Frame;
 import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 

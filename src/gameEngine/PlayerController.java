@@ -73,12 +73,12 @@ public class PlayerController implements KeyListener {
                 } catch (SlickException ex) {
                 }
                 break;
-//            case Input.KEY_A:
-//                try {
-//                    this.player.cast();
-//                } catch (SlickException ex) {
-//                }
-//                break;
+            case Input.KEY_A:
+                try {
+                    this.player.cast();
+                } catch (SlickException ex) {
+                }
+                break;
             case Input.KEY_1:
                 try {
                     CharacterStatsManager.getInstance().takeDamage(10);
