@@ -31,7 +31,6 @@ public class ItemDrop extends Entity{
 
     @Override
     public void update(int delta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

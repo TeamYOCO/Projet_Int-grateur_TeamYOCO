@@ -140,13 +140,10 @@ public class Player extends Mob {
         else if (knockbackTimer > 0) {
             float tempSpeed = speed;
             speed = 0.5f;
-            if (!map.isCollision(futurX(delta), futurY(delta))) {
+            if (!map.isCollision(futurX(-delta), futurY(-delta))) {
                 this.setX(futurX(-delta));
                 this.setY(futurY(-delta));
-            } else{
-                this.setX(futurX(delta));
-                this.setY(futurY(delta));
-            }
+            } 
             speed = tempSpeed;
             knockbackTimer -= delta;
         }

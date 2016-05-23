@@ -76,7 +76,7 @@ public class Bee extends Mob implements BadEntity {
         } else if (knockbackTimer > 0) {
             float tempSpeed = speed;
             speed = 0.5f;
-            if (!map.isCollision(futurX(delta), futurY(delta))) {
+            if (!map.isCollision(futurX(-delta), futurY(-delta))) {
                 this.x = futurX(-delta);
                 this.y = futurY(-delta);
             }
