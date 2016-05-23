@@ -167,7 +167,26 @@ public class Overworld extends BasicGameState implements Serializable{
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));
         String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "destMap", "undefined");
         if (!"undefined".equals(newMap)) {
+            String oldMusic=this.overworldTheme;
             MiniMap.changeMap(newMap);
+            String[]temp;
+            temp = map.getMapProperty("ennemy").split(";");
+            String[] temp2;
+        for(int i=1;i<=Integer.parseInt(temp[0]);i++){
+            temp2=temp[i].split(",");
+            if(Integer.parseInt(temp2[0])==1){
+                this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            }else if(Integer.parseInt(temp2[0])==2){
+                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            }else if(Integer.parseInt(temp2[0])==3){
+                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            }else if(Integer.parseInt(temp2[0])==4){
+                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            }
+        }
+        if(!oldMusic.equals(map.getMapProperty("music"))){
+          this.setMusic(map.getMapProperty("music"));
+        }
         }
         this.list.clear();
         this.listRemove.clear();
