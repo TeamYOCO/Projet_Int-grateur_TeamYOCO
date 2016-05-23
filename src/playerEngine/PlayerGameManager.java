@@ -5,14 +5,15 @@
  */
 package playerEngine;
 
-import gameEngine.EquipmentList;
+import items.EquipmentList;
+import java.io.Serializable;
 import org.newdawn.slick.SlickException;
 
 /**
  *
  * @author Seb
  */
-public class PlayerGameManager {
+public class PlayerGameManager implements Serializable {
     
     private Inventory inventory;
     private CharacterStatsManager stats;

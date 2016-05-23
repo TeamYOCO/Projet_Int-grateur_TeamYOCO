@@ -23,7 +23,6 @@ public class MiniMap {
     
     private String fileName;
     private TiledMap tiledMap;
-    private ArrayList<TiledMap> listMap = new ArrayList();
 
     public MiniMap() {
     }

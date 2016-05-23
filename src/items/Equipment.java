@@ -8,7 +8,9 @@ package items;
 import entities.Particle;
 import java.awt.Frame;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -20,10 +22,11 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author 1455367
  */
-public class Equipment {
+public class Equipment implements Serializable{
 
     protected int inventoryX, inventoryY;
-    protected int stats[] = new int[7];
+    public static final int MAX_STATS = 7;
+    protected int stats[] = new int[MAX_STATS];
     protected int hpMax;
     protected int mpMax;
     protected int attack;
@@ -36,15 +39,13 @@ public class Equipment {
     protected float x, y;
     protected MiniMap map;
     protected Rectangle hitBox;
-    protected Image itemIcon;
     private boolean isAbove;
     private ArrayList<Particle> particle;
     private EquipmentType equipmentType;
 
-    public Equipment(int inventoryX, int inventoryY, Image itemIcon, String name, String description, int[] stats, EquipmentType equipmentType) {
+    public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
-        this.itemIcon = itemIcon;
         this.isAbove = false;
         this.name = name;
         this.description = description;
@@ -104,9 +105,6 @@ public class Equipment {
         return inventoryY;
     }
 
-    public Image getIcon() {
-        return itemIcon;
-    }
 
     public boolean getIsAbove() {
         return isAbove;

@@ -28,12 +28,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
  * @author 1455367
  */
-public class Overworld extends BasicGameState {
+public class Overworld extends BasicGameState implements Serializable{
 
     private Random rnd = new Random();
     private PlayerGameManager manager;
@@ -47,6 +49,7 @@ public class Overworld extends BasicGameState {
     private Camera cam = new Camera(player, map);
     private Hud hud = new Hud();
     private boolean running = false, firstTime;
+    private static boolean newGame;
     private static Image screenShot;
     private Music overworldMusic;
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
@@ -124,17 +127,22 @@ public class Overworld extends BasicGameState {
             sbg.enterState(Game.INVENTORY);
         }
         
-        if(input.isKeyPressed(31)){
+        //peser sur la touche 'p' pour save
+        if(input.isKeyPressed(25)){
             save();
         }
     }
 
     @Override
-    public void enter(GameContainer gc, StateBasedGame sbg) {
+    public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
         if (firstTime) {
             overworldMusic.play();
             overworldMusic.loop();
             firstTime = false;
+            
+            if(!newGame){
+                this.load();
+            }
         }
     }
 
@@ -174,30 +182,41 @@ public class Overworld extends BasicGameState {
         overworldTheme = musicPath;
     }
     
-    public void save(){
+    public static void setNewGame(boolean newG){
+        newGame = newG;
+    }
+    
+    public void save() throws SlickException{
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
-            save.writeObject(manager.getInventory().getListItemFound());
+            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemFound());
+            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemPlayer());
+            for (int i = 0; i < Equipment.MAX_STATS; i++) {
+                save.writeInt(CharacterStatsManager.getInstance().getStats()[i]);
+            }
+            save.writeInt(CharacterStatsManager.getInstance().getHp());
             save.flush();
             save.close();
-            
         } catch (IOException ex) {
             System.out.println("Erreur d'entrées-sorties");
         }
     }
     
-    public void load(){
+    public void load() throws SlickException{
         try {
-            
             ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
             manager.getInventory().setListItemFound(list);
+            list = (ArrayList<Equipment>) load.readObject();
+            manager.getInventory().setListItemPlayer(list);
+            for (int i = 0; i < Equipment.MAX_STATS; i++) {
+                CharacterStatsManager.getInstance().setStats(i, load.readInt());
+            }
+            CharacterStatsManager.getInstance().setHp(load.readInt());
             load.close();
-            
         } catch (IOException e) {
             System.out.println("Erreur de lecture du fichier");
-        } 
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Fichier introuvable");
         }
     }

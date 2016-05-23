@@ -6,13 +6,14 @@
 package playerEngine;
 
 import items.Equipment;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author 1455367
  */
-public class Inventory {
+public class Inventory implements Serializable{
     private ArrayList<Equipment> listItemFound,listItemPlayer;
     private int money;
 

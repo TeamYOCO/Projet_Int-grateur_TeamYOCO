@@ -7,10 +7,12 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import gameEngine.ResManager;
-import gameEngine.EquipmentList;
+import items.EquipmentList;
 import items.Equipment;
 import items.EquipmentType;
+import items.IconList;
 import java.awt.Font;
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
@@ -31,7 +33,7 @@ import playerEngine.PlayerGameManager;
  *
  * @author Hassaoui
  */
-public class InventoryMenu extends BasicGameState {
+public class InventoryMenu extends BasicGameState implements Serializable{
 
     private final PlayerGameManager manager;
     private final CharacterStatsManager statsManager;
@@ -68,18 +70,18 @@ public class InventoryMenu extends BasicGameState {
 //        ufont.addGlyphs(400, 600);
 //        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 //        ufont.loadGlyphs();
-        manager.addItem("Bottes Royales");
-        manager.addItem("Casque Metallique");
-        manager.addItem("Armure d'Argent");
-        manager.addItem("Jambieres Royales");
-        manager.addItem("Bouclier legendaire");
-        manager.addItem("Jesus");
-        manager.addItem("Banane");
-        manager.addItem("Epee legendaire");
-        manager.addItem("Livre bleu");
-        manager.addItem("Livre mauve");
-        manager.addItem("Arc de feu");
-        manager.addItem("Arc artisanal");
+//        manager.addItem("Bottes Royales");
+//        manager.addItem("Casque Metallique");
+//        manager.addItem("Armure d'Argent");
+//        manager.addItem("Jambieres Royales");
+//        manager.addItem("Bouclier legendaire");
+//        manager.addItem("Jesus");
+//        manager.addItem("Banane");
+//        manager.addItem("Epee legendaire");
+//        manager.addItem("Livre bleu");
+//        manager.addItem("Livre mauve");
+//        manager.addItem("Arc de feu");
+//        manager.addItem("Arc artisanal");
 
     }
 
@@ -97,7 +99,7 @@ public class InventoryMenu extends BasicGameState {
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
 
             placeItem(itemFound, i);
-            itemFound.getIcon().draw(itemFound.getInventoryX(), itemFound.getInventoryY());
+            IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(), itemFound.getInventoryY());
 
             if (manager.getInventory().getListItemFound().get(i).getIsAbove()) {
                 g.drawString(itemFound.getName(), 415, 200);
@@ -110,7 +112,7 @@ public class InventoryMenu extends BasicGameState {
         }
 
         for (Equipment playerItem : manager.getInventory().getListItemPlayer()) {
-            playerItem.getIcon().draw(playerItem.getInventoryX(), playerItem.getInventoryY());
+            IconList.getInstance().getListIcon().get(playerItem.getName()).draw(playerItem.getInventoryX(), playerItem.getInventoryY());
             if (playerItem.getIsAbove()) {
                 g.drawString(playerItem.getName(), 415, 200);
                 g.drawString(playerItem.getDescription(), 435, 220);
@@ -136,7 +138,6 @@ public class InventoryMenu extends BasicGameState {
         for (Equipment itemFound : manager.getInventory().getListItemFound()) {
             isSameType = false;
             //verifie si la souris est au dessus de l'item
-            System.out.println(itemFound);
             if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
                     && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 50))) {
 

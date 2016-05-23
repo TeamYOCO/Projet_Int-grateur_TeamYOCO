@@ -7,6 +7,7 @@ package gameEngine;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import org.newdawn.slick.Image;
@@ -17,7 +18,7 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author 1455367
  */
-public class ResManager {
+public class ResManager implements Serializable{
 
     private static ResManager instance = null;
     private HashMap<String, SpriteSheet> sprites;

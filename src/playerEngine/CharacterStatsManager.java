@@ -5,9 +5,10 @@
  */
 package playerEngine;
 
-import gameEngine.EquipmentList;
+import items.EquipmentList;
 import gameEngine.ResManager;
 import items.Equipment;
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -51,7 +52,7 @@ public class CharacterStatsManager {
         return instance;
     }
 
-    public void setStats(int expNeeded, int exp, int level, Image anim) {
+    public void setXPStats(int expNeeded, int exp, int level, Image anim) {
         this.expNeeded = expNeeded;
         this.exp = exp;
         this.level = level;
@@ -74,6 +75,10 @@ public class CharacterStatsManager {
 
     public int[] getStats() {
         return stats;
+    }
+    
+    public void setStats(int index, int stat){
+        stats[index] = stat;
     }
 
     public Image getAnim() {
