@@ -30,7 +30,7 @@ import java.io.Serializable;
  *
  * @author 1455367
  */
-public class Overworld extends BasicGameState implements Serializable{
+public class Overworld extends BasicGameState implements Serializable {
 
     private Random rnd = new Random();
     private PlayerGameManager manager;
@@ -47,6 +47,8 @@ public class Overworld extends BasicGameState implements Serializable{
     private static boolean newGame;
     private static Image screenShot;
     private Music overworldMusic;
+    private boolean mapChanger=false;
+    private String oldMusic="";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
 
     public Overworld(int stateID, PlayerGameManager manager) {
@@ -91,20 +93,20 @@ public class Overworld extends BasicGameState implements Serializable{
         this.player.update(delta);
         for (Entity entity : list) {
             entity.update(delta);
-            for(Entity entity2 : list){
-                if (entity != entity2 && entity instanceof BadEntity 
-                        && entity2 instanceof FriendlyEntity 
+            for (Entity entity2 : list) {
+                if (entity != entity2 && entity instanceof BadEntity
+                        && entity2 instanceof FriendlyEntity
                         && entity.getHitBox().collision(entity2.getHitBox())
-                        && ((BadEntity)entity).isHitable()){
-                    ((BadEntity)entity).takeHit(((FriendlyEntity)entity2).getDamage(), ((FriendlyEntity)entity2).getDirection());
+                        && ((BadEntity) entity).isHitable()) {
+                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamage(), ((FriendlyEntity) entity2).getDirection());
 //                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
                 }
             }
             if (entity instanceof BadEntity
-                    && ((BadEntity)entity).isHitable() && player.isHitable()
-                    && player.getHitBox().collision(entity.getHitBox())){
-                player.takeHit(((BadEntity)entity).getDamage(), ((BadEntity)entity).getDirection());
-                System.out.println("il take "+((BadEntity)entity).getDamage());
+                    && ((BadEntity) entity).isHitable() && player.isHitable()
+                    && player.getHitBox().collision(entity.getHitBox())) {
+                player.takeHit(((BadEntity) entity).getDamage(), ((BadEntity) entity).getDirection());
+                System.out.println("il take " + ((BadEntity) entity).getDamage());
             }
             if (entity.isDead()) {
                 listRemove.add(entity);
@@ -121,14 +123,35 @@ public class Overworld extends BasicGameState implements Serializable{
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }
-        
+        if(mapChanger){
+        String[] temp;
+            temp = map.getMapProperty("ennemy").split(";");
+            String[] temp2;
+            for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
+                temp2 = temp[i].split(",");
+                if (Integer.parseInt(temp2[0]) == 1) {
+                    this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                } else if (Integer.parseInt(temp2[0]) == 2) {
+                    this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                } else if (Integer.parseInt(temp2[0]) == 3) {
+                    this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                } else if (Integer.parseInt(temp2[0]) == 4) {
+                    this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                }
+            }
+            if (!oldMusic.equals(map.getMapProperty("music"))) {
+                this.setMusic(map.getMapProperty("music"));
+            }
+        mapChanger=false;
+        }
+
         //peser sur la touche 'p' pour save
-        if(input.isKeyPressed(25)){
+        if (input.isKeyPressed(25)) {
             DataManager.getInstance().save();
         }
-        
-        if (input.isMousePressed(0)){
-            System.out.println(input.getMouseX()+" "+input.getMouseY());
+
+        if (input.isMousePressed(0)) {
+            System.out.println(input.getMouseX() + " " + input.getMouseY());
         }
     }
 
@@ -138,8 +161,8 @@ public class Overworld extends BasicGameState implements Serializable{
             overworldMusic.play();
             overworldMusic.loop();
             firstTime = false;
-            
-            if(!newGame){
+
+            if (!newGame) {
                 DataManager.getInstance().load();
             }
         }
@@ -167,26 +190,9 @@ public class Overworld extends BasicGameState implements Serializable{
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));
         String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "destMap", "undefined");
         if (!"undefined".equals(newMap)) {
-            String oldMusic=this.overworldTheme;
+           oldMusic = this.overworldTheme;
             MiniMap.changeMap(newMap);
-            String[]temp;
-            temp = map.getMapProperty("ennemy").split(";");
-            String[] temp2;
-        for(int i=1;i<=Integer.parseInt(temp[0]);i++){
-            temp2=temp[i].split(",");
-            if(Integer.parseInt(temp2[0])==1){
-                this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-            }else if(Integer.parseInt(temp2[0])==2){
-                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-            }else if(Integer.parseInt(temp2[0])==3){
-                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-            }else if(Integer.parseInt(temp2[0])==4){
-                this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-            }
-        }
-        if(!oldMusic.equals(map.getMapProperty("music"))){
-          this.setMusic(map.getMapProperty("music"));
-        }
+            mapChanger=true;
         }
         this.list.clear();
         this.listRemove.clear();
@@ -199,11 +205,9 @@ public class Overworld extends BasicGameState implements Serializable{
     public void setMusic(String musicPath) {
         overworldTheme = musicPath;
     }
-    
-    public static void setNewGame(boolean newG){
+
+    public static void setNewGame(boolean newG) {
         newGame = newG;
     }
-    
-    
 
 }
