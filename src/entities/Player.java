@@ -102,8 +102,6 @@ public class Player extends Mob {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.setX(futurX(delta));
                 this.setY(futurY(delta));
-//                this.x = futurX(delta);
-//                this.y = futurY(delta);
             }
         }
         // calcule le temps restant au joueur durant sont attaque
@@ -145,8 +143,9 @@ public class Player extends Mob {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.setX(futurX(-delta));
                 this.setY(futurY(-delta));
-//                this.x = futurX(-delta);
-//                this.y = futurY(-delta);
+            } else{
+                this.setX(futurX(delta));
+                this.setY(futurY(delta));
             }
             speed = tempSpeed;
             knockbackTimer -= delta;
@@ -184,7 +183,6 @@ public class Player extends Mob {
         return futurY;
     }
 
-    // Met le personnage en mode d'attaque et r'ajoute l'épée dans le Overworld
     public void attack() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable()) {
             attacking = true;
@@ -218,7 +216,6 @@ public class Player extends Mob {
         }
     }
 
-    // Met le joueur en mode tir
     public void shoot() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable()) {
             shooting = true;
@@ -232,7 +229,6 @@ public class Player extends Mob {
         }
     }
 
-    // Met le joueur en mode lancer un sort
     public void cast() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable()) {
             casting = true;
@@ -245,6 +241,10 @@ public class Player extends Mob {
     }
 
     // Les méthodes suivantes sont des getters/setters
+    public int getDirection() {
+        return direction;
+    }
+
     public void setDirection(int direction) {
         this.direction = direction;
     }
@@ -261,7 +261,6 @@ public class Player extends Mob {
         return attacking;
     }
 
-    // Inflige des points de dégats au joueur
     @Override
     public void takeHit(int damage, int hitDirection) {
         super.takeHit(damage, hitDirection);
@@ -271,4 +270,8 @@ public class Player extends Mob {
         }
     }
 
+    public void test(){
+        System.out.println(map.isCollision(x, y));
+    }
+    
 }

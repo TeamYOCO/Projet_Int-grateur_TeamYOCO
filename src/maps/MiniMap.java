@@ -15,7 +15,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
- * Contient
  *
  * @author Tomas
  */

@@ -9,6 +9,7 @@ import static ca.qc.bdeb.info204.Game.CREDITS;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
+import gameEngine.DataManager;
 import gameEngine.ResManager;
 import items.EquipmentList;
 import maps.MiniMap;
@@ -34,7 +35,7 @@ public class MainMenu extends BasicGameState {
     private final String menuTheme = "res/musics/102-menu-selection.WAV";
     private Image background;
     private Music menuMusic;
-    private boolean stopMusic = true;
+    private boolean stopMusic = true, saveFileIsEmpty;
 
     public MainMenu(int stateID, PlayerGameManager manager) throws SlickException {
         MainMenu.stateID = stateID;
@@ -53,15 +54,25 @@ public class MainMenu extends BasicGameState {
         manager = new PlayerGameManager();
         ResManager resManager = ResManager.getInstance();
         EquipmentList strManager = EquipmentList.getInstance();
+        if(DataManager.getInstance().isEmpty()){
+            saveFileIsEmpty = true;
+        } else {
+            saveFileIsEmpty = false;
+        }
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
         background.draw(0, 0);
-        g.setColor(Color.white);
+        if(saveFileIsEmpty){
+            g.setColor(Color.darkGray);
+        } else {
+            g.setColor(Color.white);
+        }
         g.drawRect(WIDTH / 2 - playX / 2, HEIGHT / 3 - playY / 2, playX, playY);
         g.drawString("Continuer", WIDTH / 2 - 35, HEIGHT / 3 - 10);//10 : depends on the string lenght
+        g.setColor(Color.white);
         g.drawRect(WIDTH / 2 - newGameX / 2, HEIGHT / 3 + playY / 2 + 10, newGameX, newGameY);
         g.drawString("Nouvelle partie", WIDTH / 2 - 70, HEIGHT / 3 + playY / 2 + 10 + 15);//15 & 5 : depends on the string lenght
         g.drawRect(WIDTH / 2 - settingsX, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10, settingsX, settingsY);
@@ -99,7 +110,8 @@ public class MainMenu extends BasicGameState {
         
         //clique sur le bouton "continuer"
         if((mouseX> (WIDTH / 2 - playX / 2) && mouseX < (WIDTH / 2 + playX / 2)) 
-                && (mouseY < (2*HEIGHT/3 + playY/2) && mouseY > 2*HEIGHT/3 - playY/2)){
+                && (mouseY < (2*HEIGHT/3 + playY/2) && mouseY > 2*HEIGHT/3 - playY/2)
+                && !saveFileIsEmpty){
             if(input.isMousePressed(0)){
                 Overworld.setNewGame(false);
                 sbg.enterState(OVERWORLD);

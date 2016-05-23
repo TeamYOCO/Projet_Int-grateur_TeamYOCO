@@ -94,6 +94,8 @@ public class PlayerController implements KeyListener {
             case Input.KEY_3:
                 System.out.println(player.getX() + " " + player.getY());
                 break;
+            case Input.KEY_4:
+                this.player.test();
         }
     }
 
