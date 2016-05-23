@@ -86,13 +86,8 @@ public class DataManager {
     
     public boolean isEmpty(){
         boolean isEmpty = false;
-        int test = -1;
         try {
             ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
-            test = load.readInt();
-            if(test == -1){
-                isEmpty = true;
-            }
         } catch (IOException ex) {
             isEmpty = true;
         }
