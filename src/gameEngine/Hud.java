@@ -45,6 +45,8 @@ public class Hud {
         g.drawImage(playerbars, P_BAR_X, P_BAR_Y);
         g.setColor(Color.black);
         g.drawString(""+CharacterStatsManager.getInstance().getHp(), 100, LIFE_BAR_Y);
+        g.drawString(""+CharacterStatsManager.getInstance().getExp(), 100, XP_BAR_Y);
+        g.drawString("Level : "+CharacterStatsManager.getInstance().getLevel(), 27, 80);
     }
 
 }

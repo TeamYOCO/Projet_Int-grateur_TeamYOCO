@@ -7,31 +7,29 @@ package entities;
 
 import gameEngine.ResManager;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 /**
  *
- * @author 1485246
+ * @author The Ninetail
  */
-public class Bee extends Mob implements BadEntity {
+public class Slime extends Mob implements BadEntity {
 
-    private float speed = 0.1f;
+    private float speed = 0.05f;
     private MiniMap map;
     private Player player;
-    private int aggroRange = 200;
+    private int aggroRange = 400;
     private boolean aggro = false;
 
-    public Bee(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
+    public Slime(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
+        this.moveAnimations = new Animation[4];
         this.moving = false;
-        moveAnimations = new Animation[4];
         this.list = list;
         this.x = x;
         this.y = y;
@@ -39,13 +37,14 @@ public class Bee extends Mob implements BadEntity {
         this.xOff = -16;
         this.yOff = -32;
         this.player = player;
-        this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
-        this.hitpoints = 50;
+        this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
+        this.hitpoints = 150;
         this.damage = 5;
-        this.exp = 5;
+        this.exp = 15;
         SpriteSheet moveSpriteSheet = null;
         try {
-            moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
+            Image temp = ResManager.getInstance().getSpriteSheet("slime").getScaledCopy(2);
+            moveSpriteSheet = new  SpriteSheet(temp, 64, 64);
         } catch (SlickException ex) {
         }
         for (int i = 0; i < 4; i++) {
@@ -125,4 +124,5 @@ public class Bee extends Mob implements BadEntity {
         hitBox.render(g);
     }
 
+    
 }

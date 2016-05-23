@@ -20,4 +20,6 @@ public interface BadEntity {
     public boolean isHitable();
     
     public int getDirection();
+    
+    public int getExp();
 }

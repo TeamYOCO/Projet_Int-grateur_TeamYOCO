@@ -81,7 +81,7 @@ public class PlayerController implements KeyListener {
                 break;
             case Input.KEY_1:
                 try {
-                    CharacterStatsManager.getInstance().takeDamage(10);
+                    CharacterStatsManager.getInstance().gainExp(5);
                 } catch (SlickException ex) {
                 }
                 break;

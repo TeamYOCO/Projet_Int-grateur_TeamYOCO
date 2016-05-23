@@ -29,7 +29,7 @@ public class Player extends Mob {
     private boolean moving;
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
-    private ArrayList<Entity> list;
+    
     private boolean attacking = false, shooting = false, casting = false, shot = true;
     private Animation[] attackAnimation;
     private Animation[] bowShootAnimation;
@@ -272,6 +272,11 @@ public class Player extends Mob {
 
     public void test(){
         System.out.println(map.isCollision(x, y));
+        try {
+            System.out.println(CharacterStatsManager.getInstance().getExp());
+        } catch (SlickException ex) {
+            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

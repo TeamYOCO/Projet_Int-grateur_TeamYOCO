@@ -22,6 +22,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
+import entities.Slime;
 import gameEngine.DataManager;
 import java.io.Serializable;
 
@@ -69,7 +70,7 @@ public class Overworld extends BasicGameState implements Serializable{
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
-        this.list.add(new Bee(true, 725, 178, player, map)); //725.6064 178.80164
+        this.list.add(new Slime(725, 178, player, map, list)); //725.6064 178.80164
     }
 
     @Override
@@ -124,6 +125,10 @@ public class Overworld extends BasicGameState implements Serializable{
         //peser sur la touche 'p' pour save
         if(input.isKeyPressed(25)){
             DataManager.getInstance().save();
+        }
+        
+        if (input.isMousePressed(0)){
+            System.out.println(input.getMouseX()+" "+input.getMouseY());
         }
     }
 

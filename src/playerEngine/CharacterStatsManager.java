@@ -39,9 +39,9 @@ public class CharacterStatsManager {
         stats[5] = 10;
         stats[6] = 10;
 
-        this.expNeeded = 0;
+        this.expNeeded = 100;
         this.exp = 0;
-        this.level = 0;
+        this.level = 1;
         this.anim = null;
     }
 
