@@ -11,6 +11,7 @@ import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.ResManager;
 import items.EquipmentList;
+import maps.MiniMap;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;

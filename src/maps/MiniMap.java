@@ -52,10 +52,6 @@ public class MiniMap {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
     }
-    
-    public void enter(GameContainer gc, StateBasedGame sbg){
-        System.out.println("yo");
-    }
 
     public boolean isCollision(float x, float y) {
         int tileW = this.tiledMap.getTileWidth();

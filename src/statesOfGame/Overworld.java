@@ -22,14 +22,8 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
-import items.Equipment;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import gameEngine.DataManager;
 import java.io.Serializable;
-import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -129,7 +123,7 @@ public class Overworld extends BasicGameState implements Serializable{
         
         //peser sur la touche 'p' pour save
         if(input.isKeyPressed(25)){
-            save();
+            DataManager.getInstance().save();
         }
     }
 
@@ -141,7 +135,7 @@ public class Overworld extends BasicGameState implements Serializable{
             firstTime = false;
             
             if(!newGame){
-                this.load();
+                DataManager.getInstance().load();
             }
         }
     }
@@ -186,39 +180,6 @@ public class Overworld extends BasicGameState implements Serializable{
         newGame = newG;
     }
     
-    public void save() throws SlickException{
-        try {
-            ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
-            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemFound());
-            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemPlayer());
-            for (int i = 0; i < Equipment.MAX_STATS; i++) {
-                save.writeInt(CharacterStatsManager.getInstance().getStats()[i]);
-            }
-            save.writeInt(CharacterStatsManager.getInstance().getHp());
-            save.flush();
-            save.close();
-        } catch (IOException ex) {
-            System.out.println("Erreur d'entrées-sorties");
-        }
-    }
     
-    public void load() throws SlickException{
-        try {
-            ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
-            ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
-            manager.getInventory().setListItemFound(list);
-            list = (ArrayList<Equipment>) load.readObject();
-            manager.getInventory().setListItemPlayer(list);
-            for (int i = 0; i < Equipment.MAX_STATS; i++) {
-                CharacterStatsManager.getInstance().setStats(i, load.readInt());
-            }
-            CharacterStatsManager.getInstance().setHp(load.readInt());
-            load.close();
-        } catch (IOException e) {
-            System.out.println("Erreur de lecture du fichier");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Fichier introuvable");
-        }
-    }
 
 }
