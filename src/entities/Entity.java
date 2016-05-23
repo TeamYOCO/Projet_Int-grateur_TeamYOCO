@@ -21,6 +21,7 @@ public abstract class Entity {
     protected float x, y, xOff, yOff;
     private static float saveX,saveY;
     protected boolean dead = false;
+    protected int xpGiven;
 
     public abstract void update(int delta);
 
@@ -70,6 +71,10 @@ public abstract class Entity {
 
     public boolean isDead() {
         return dead;
+    }
+    
+    public int getXpGiven() {
+        return xpGiven;
     }
     
     // Méthode qui permet de load une animation à partir d'un spritesheet

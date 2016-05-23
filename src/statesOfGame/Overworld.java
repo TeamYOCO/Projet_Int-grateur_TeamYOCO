@@ -24,6 +24,7 @@ import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
 import gameEngine.DataManager;
 import java.io.Serializable;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -82,6 +83,12 @@ public class Overworld extends BasicGameState implements Serializable{
         }
         this.map.renderForeground();
         this.hud.render(g);
+        
+        if(CharacterStatsManager.getInstance().getlvlIsUp()){
+            container.getGraphics().copyArea(screenShot, 0, 0);
+            sbg.enterState(Game.LEVELUPSCREEN);
+            CharacterStatsManager.getInstance().setlvlIsUp(false);
+        }
     }
 
     @Override
@@ -103,10 +110,10 @@ public class Overworld extends BasicGameState implements Serializable{
                     && ((BadEntity)entity).isHitable() && player.isHitable()
                     && player.getHitBox().collision(entity.getHitBox())){
                 player.takeHit(((BadEntity)entity).getDamage(), ((BadEntity)entity).getDirection());
-                System.out.println("il take "+((BadEntity)entity).getDamage());
             }
             if (entity.isDead()) {
                 listRemove.add(entity);
+                CharacterStatsManager.getInstance().gainExp(entity.getXpGiven());
             }
         }
         for (Entity entity : listRemove) {
@@ -114,6 +121,7 @@ public class Overworld extends BasicGameState implements Serializable{
         }
         listRemove.clear();
         this.cam.update(container);
+        
         updateTrigger();
 
         if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'e' ou en clickant sur le bouton droit de la souris

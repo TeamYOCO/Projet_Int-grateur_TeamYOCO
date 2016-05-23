@@ -273,5 +273,4 @@ public class Player extends Mob {
     public void test(){
         System.out.println(map.isCollision(x, y));
     }
-    
 }

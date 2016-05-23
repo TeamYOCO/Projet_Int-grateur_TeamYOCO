@@ -8,6 +8,7 @@ package playerEngine;
 import items.EquipmentList;
 import gameEngine.ResManager;
 import items.Equipment;
+import static items.Equipment.MAX_STATS;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
@@ -20,13 +21,17 @@ import org.newdawn.slick.SlickException;
 public class CharacterStatsManager {
 
     private static CharacterStatsManager instance = null;
-    protected int[] stats = new int[7];
+    public final int NB_LVL_BOOST = 10;
+    protected int[] stats = new int[MAX_STATS];
+    protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
     protected int hp;
     protected int expNeeded;
     protected int exp;
     protected int level;
+    protected int nbLvlBoost = 0;
     protected ArrayList skillSet;
     protected Image anim;
+    protected boolean lvlIsUp = false;
 
     private CharacterStatsManager() {
         
@@ -39,9 +44,9 @@ public class CharacterStatsManager {
         stats[5] = 10;
         stats[6] = 10;
 
-        this.expNeeded = 0;
+        this.expNeeded = 10;
         this.exp = 0;
-        this.level = 0;
+        this.level = 1;
         this.anim = null;
     }
 
@@ -62,19 +67,45 @@ public class CharacterStatsManager {
     public void gainExp(int expGained) {
         exp += expGained;
         if (exp >= expNeeded) {
-            exp -= expNeeded;
-            expNeeded = (int) ((float) expNeeded * 1.5);
-            level++;
             levelUp();
         }
     }
 
     public void levelUp() {
-
+            exp = 0;
+            expNeeded = (int) ((float) expNeeded * 1.84);
+            level++;
+            nbLvlBoost += 10;
+            lvlIsUp = true;
     }
+    
+    public void buffStat(int index){
+        stats[index] += 1;
+        statsUpgrade[index] += 1;
+        nbLvlBoost -= 1;
+    }
+    
+    public void nerfStat(int index){
+        stats[index] -= 1;
+        statsUpgrade[index] -= 1;
+        nbLvlBoost += 1;
+    }
+    
+    public void resetStats(){
+        for (int j = 0; j < MAX_STATS; j++) {
+            stats[j] -= statsUpgrade[j];
+            nbLvlBoost += statsUpgrade[j];
+            statsUpgrade[j] = 0;
+        }
+    }
+
 
     public int[] getStats() {
         return stats;
+    }
+    
+    public int[] getStatsUpgrade(){
+        return statsUpgrade;
     }
     
     public void setStats(int index, int stat){
@@ -121,7 +152,11 @@ public class CharacterStatsManager {
     public int getLevel() {
         return level;
     }
-
+    
+    public int getLvlBoost(){
+        return nbLvlBoost;
+    }
+    
     public ArrayList getSkillSet() {
         return skillSet;
     }
@@ -130,7 +165,13 @@ public class CharacterStatsManager {
         this.anim = anim;
     }
     
+    public boolean getlvlIsUp(){
+        return lvlIsUp;
+    }
     
+    public void setlvlIsUp(boolean bool){
+        this.lvlIsUp = bool;
+    }
 
     public void takeDamage(int damage){
         this.hp -= damage;

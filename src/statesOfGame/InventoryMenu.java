@@ -63,7 +63,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
 
-//  creer la police de caractère
+////  creer la police de caractère
 //        Font font = new Font("Serif", Font.BOLD, 15);
 //        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
 //        ufont.addAsciiGlyphs();

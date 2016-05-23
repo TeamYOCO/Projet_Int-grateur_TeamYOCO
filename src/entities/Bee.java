@@ -40,6 +40,7 @@ public class Bee extends Mob implements BadEntity {
         this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
         this.hitpoints = 50;
         this.damage = 5;
+        this.xpGiven = 10;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
