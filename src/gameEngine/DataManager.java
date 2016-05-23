@@ -6,6 +6,8 @@
 package gameEngine;
 
 import static ca.qc.bdeb.info204.Game.manager;
+import entities.Entity;
+import entities.Player;
 import items.Equipment;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -46,6 +48,9 @@ public class DataManager {
                 save.writeInt(CharacterStatsManager.getInstance().getStats()[i]);
             }
             save.writeInt(CharacterStatsManager.getInstance().getHp());
+            save.writeUTF(MiniMap.getFileName());
+            save.writeFloat(Entity.getSaveX());
+            save.writeFloat(Entity.getSaveY());
             save.flush();
             save.close();
         } catch (IOException ex) {
@@ -64,6 +69,9 @@ public class DataManager {
                 CharacterStatsManager.getInstance().setStats(i, load.readInt());
             }
             CharacterStatsManager.getInstance().setHp(load.readInt());
+            MiniMap.changeMap(load.readUTF());
+            Player.setSaveX(load.readFloat());
+            Player.setSaveY(load.readFloat());
             load.close();
         } catch (IOException e) {
             System.out.println("Erreur de lecture du fichier");

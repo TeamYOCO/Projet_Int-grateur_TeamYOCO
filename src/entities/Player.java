@@ -7,8 +7,6 @@ package entities;
 
 import gameEngine.ResManager;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -46,8 +44,8 @@ public class Player extends Mob {
         this.attackAnimation = new Animation[4];
         this.bowShootAnimation = new Animation[4];
         this.bowAnimation = new Animation[4];
-        this.x = 620;
-        this.y = 430;
+        this.setX(620);
+        this.setY(430);
         this.xOff = -16;
         this.yOff = -50;
         moving = false;
@@ -94,10 +92,14 @@ public class Player extends Mob {
     // Update la position du joueur
     @Override
     public void update(int delta) {
+        this.setX(Player.getSaveX());
+        this.setY(Player.getSaveY());
         if (moving && !attacking && !shooting && !casting && knockbackTimer <= 0) {
             if (!map.isCollision(futurX(delta), futurY(delta))) {
-                this.x = futurX(delta);
-                this.y = futurY(delta);
+                this.setX(futurX(delta));
+                this.setY(futurY(delta));
+//                this.x = futurX(delta);
+//                this.y = futurY(delta);
             }
         } else if (knockbackTimer <= 0) {
             attackCounter -= delta;
@@ -110,8 +112,10 @@ public class Player extends Mob {
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(delta), futurY(delta))) {
-                this.x = futurX(-delta);
-                this.y = futurY(-delta);
+                this.setX(futurX(-delta));
+                this.setY(futurY(-delta));
+//                this.x = futurX(-delta);
+//                this.y = futurY(-delta);
             }
             speed = tempSpeed;
             knockbackTimer -= delta;

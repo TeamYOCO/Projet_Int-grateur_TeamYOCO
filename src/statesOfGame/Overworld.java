@@ -162,7 +162,7 @@ public class Overworld extends BasicGameState implements Serializable{
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));
         String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "destMap", "undefined");
         if (!"undefined".equals(newMap)) {
-            this.map.changeMap(newMap);
+            MiniMap.changeMap(newMap);
         }
         this.list.clear();
         this.listRemove.clear();

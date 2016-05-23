@@ -19,6 +19,7 @@ public abstract class Entity {
 
     protected Box hitBox;
     protected float x, y, xOff, yOff;
+    private static float saveX,saveY;
     protected boolean dead = false;
 
     public abstract void update(int delta);
@@ -36,17 +37,35 @@ public abstract class Entity {
     public float getX() {
         return x;
     }
-
+    
     public float getY() {
         return y;
     }
 
+    public static float getSaveX(){
+        return saveX;
+    }
+    
+    public static float getSaveY(){
+        return saveY;
+    }
+    
     public void setX(float x) {
         this.x = x;
+        saveX = x;
     }
 
     public void setY(float y) {
         this.y = y;
+        saveY = y;
+    }
+    
+    public static void setSaveX(float x){
+        saveX = x;
+    }
+    
+    public static void setSaveY(float y){
+        saveY = y;
     }
 
     public boolean isDead() {

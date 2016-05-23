@@ -21,19 +21,20 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class MiniMap {
     
-    private String fileName;
-    private TiledMap tiledMap;
+    private static String fileName;
+    private static TiledMap tiledMap;
 
     public MiniMap() {
     }
-
-    public MiniMap(String fileName) {
-        this.fileName = fileName;
+    
+    public MiniMap(String path) {
+        this.fileName = path;
     }
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
-        this.tiledMap = new TiledMap("res/maps/map_1-1.tmx");
+        fileName = "res/maps/map_1-1.tmx";
+        this.tiledMap = new TiledMap(fileName);
     }
 
     
@@ -70,6 +71,10 @@ public class MiniMap {
     public TiledMap getTiledMap() {
         return tiledMap;
     }
+    
+    public static String getFileName(){
+        return fileName;
+    }
 
     public int getObjectCount() {
         return this.tiledMap.getObjectCount(0);
@@ -99,7 +104,8 @@ public class MiniMap {
         return this.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
 
-    public void changeMap(String file) throws SlickException {
-        this.tiledMap = new TiledMap(file);
+    public static void changeMap(String file) throws SlickException {
+        fileName = file;
+        tiledMap = new TiledMap(file);
     }
 }
