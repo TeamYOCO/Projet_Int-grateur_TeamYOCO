@@ -20,7 +20,6 @@ import java.util.Random;
 import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import playerEngine.PlayerGameManager;
 import entities.FriendlyEntity;
 import entities.Slime;
 import gameEngine.DataManager;
@@ -34,7 +33,6 @@ import playerEngine.CharacterStatsManager;
 public class Overworld extends BasicGameState implements Serializable {
 
     private Random rnd = new Random();
-    private PlayerGameManager manager;
     private ArrayList<Entity> list = new ArrayList();
     private ArrayList<Entity> listRemove = new ArrayList();
     private static int stateID;
@@ -52,9 +50,8 @@ public class Overworld extends BasicGameState implements Serializable {
     private String oldMusic="";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
 
-    public Overworld(int stateID, PlayerGameManager manager) {
+    public Overworld(int stateID) {
         Overworld.stateID = stateID;
-        this.manager = manager;
     }
 
     @Override

@@ -5,7 +5,6 @@
  */
 package gameEngine;
 
-import static ca.qc.bdeb.info204.Game.manager;
 import entities.Entity;
 import entities.Player;
 import items.Equipment;
@@ -54,8 +53,8 @@ public class DataManager {
             save.writeFloat(Entity.getSaveX());
             save.writeFloat(Entity.getSaveY());
             save.writeInt(CharacterStatsManager.getInstance().getLevel());
-            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemFound());
-            save.writeObject((ArrayList<Equipment>)manager.getInventory().getListItemPlayer());
+            save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemFound());
+            save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemPlayer());
             save.flush();
             save.close();
         } catch (IOException ex) {
@@ -75,9 +74,9 @@ public class DataManager {
             Player.setSaveY(load.readFloat());
             CharacterStatsManager.getInstance().setLevel(load.readInt());
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
-            manager.getInventory().setListItemFound(list);
+            CharacterStatsManager.getInstance().getInventory().setListItemFound(list);
             list = (ArrayList<Equipment>) load.readObject();
-            manager.getInventory().setListItemPlayer(list);
+            CharacterStatsManager.getInstance().getInventory().setListItemPlayer(list);
             load.close();
         } catch (IOException e) {
             System.out.println("Erreur de lecture du fichier");

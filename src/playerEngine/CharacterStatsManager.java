@@ -6,6 +6,7 @@
 package playerEngine;
 
 import static items.Equipment.MAX_STATS;
+import items.EquipmentList;
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -28,6 +29,7 @@ public class CharacterStatsManager {
     protected ArrayList skillSet;
     protected Image anim;
     protected boolean lvlIsUp = false;
+    private Inventory inventory;
 
     private CharacterStatsManager() {
         
@@ -44,6 +46,7 @@ public class CharacterStatsManager {
         this.exp = 0;
         this.level = 1;
         this.anim = null;
+        this.inventory = new Inventory();
     }
 
     public static CharacterStatsManager getInstance() throws SlickException {
@@ -211,4 +214,11 @@ public class CharacterStatsManager {
         this.skillSet = skillSet;
     }
 
+    public void addItem(String newItem) throws SlickException{
+        this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
 }

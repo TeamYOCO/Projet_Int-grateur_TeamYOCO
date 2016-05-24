@@ -18,7 +18,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -26,13 +25,11 @@ import playerEngine.PlayerGameManager;
  */
 public class Credits extends BasicGameState {
 
-    private PlayerGameManager manager;
     private static int stateID;
     private Image background;
     
-    public Credits(int stateID, PlayerGameManager manager) throws SlickException {
+    public Credits(int stateID) throws SlickException {
         Credits.stateID = stateID;
-        this.manager = manager;
     }
 
     @Override
