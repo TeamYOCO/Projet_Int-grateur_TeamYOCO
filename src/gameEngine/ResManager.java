@@ -5,6 +5,7 @@
  */
 package gameEngine;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.Serializable;
@@ -13,6 +14,8 @@ import java.util.HashMap;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
 
 /**
  *
@@ -131,6 +134,16 @@ public class ResManager implements Serializable{
             }
 
         }
+    }
+    
+    public UnicodeFont getFont(String fontName, int fontSize) throws SlickException{
+        Font font = new Font(fontName, Font.PLAIN, fontSize);
+        UnicodeFont ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
+        ufont.addAsciiGlyphs();
+        ufont.addGlyphs(400, 600);
+        ufont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
+        ufont.loadGlyphs();
+        return ufont;
     }
 
     public SpriteSheet getSpriteSheet(String filePath) {

@@ -18,7 +18,7 @@ import org.newdawn.slick.SlickException;
 public class CharacterStatsManager {
 
     private static CharacterStatsManager instance = null;
-    public final int NB_LVL_BOOST = 10;
+    public final int NB_LVL_BOOST = 5;
     protected int[] stats = new int[MAX_STATS];
     protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
     protected int hp;

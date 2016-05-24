@@ -7,6 +7,7 @@ package statesOfGame;
 
 import static ca.qc.bdeb.info204.Game.CREDITS;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
+import static ca.qc.bdeb.info204.Game.HELP;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.DataManager;
@@ -72,7 +73,7 @@ public class MainMenu extends BasicGameState {
         g.drawRect(WIDTH / 2 - newGameX / 2, HEIGHT / 3 + playY / 2 + 10, newGameX, newGameY);
         g.drawString("Nouvelle partie", WIDTH / 2 - 70, HEIGHT / 3 + playY / 2 + 10 + 15);//15 & 5 : depends on the string lenght
         g.drawRect(WIDTH / 2 - settingsX, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10, settingsX, settingsY);
-        g.drawString("Paramètres", WIDTH / 2 - settingsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
+        g.drawString("Commandes", WIDTH / 2 - settingsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
         g.drawRect(WIDTH / 2, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10, creditsX, creditsY);
         g.drawString("Credits", WIDTH / 2 + creditsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
     }
@@ -111,6 +112,16 @@ public class MainMenu extends BasicGameState {
             if(input.isMousePressed(0)){
                 Overworld.setNewGame(false);
                 sbg.enterState(OVERWORLD);
+            }
+        }
+        
+        //clique sur le bouton "commandes"
+        if((mouseX> (WIDTH / 2 - settingsX) && mouseX < (WIDTH / 2)) 
+                && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10 - settingsY 
+                && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY - 10)){
+            if(input.isMousePressed(0)){
+                stopMusic = false;
+                sbg.enterState(HELP);
             }
         }
     }
