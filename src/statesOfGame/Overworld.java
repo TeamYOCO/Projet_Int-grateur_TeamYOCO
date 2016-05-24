@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import static ca.qc.bdeb.info204.Game.SHOP;
 import entities.BadEntity;
 import entities.Bat;
 import entities.Bee;
@@ -26,6 +27,7 @@ import entities.FriendlyEntity;
 import entities.Slime;
 import gameEngine.DataManager;
 import java.io.Serializable;
+import org.lwjgl.input.Mouse;
 import playerEngine.CharacterStatsManager;
 
 /**

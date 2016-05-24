@@ -128,7 +128,7 @@ public class MainMenu extends BasicGameState {
             }
         }
         
-        if(Mouse.isButtonDown(1)){
+        if(input.isMousePressed(1)){
             sbg.enterState(SHOP);
         }
     }
