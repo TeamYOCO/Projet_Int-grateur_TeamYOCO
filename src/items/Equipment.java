@@ -39,8 +39,9 @@ public class Equipment implements Serializable{
     private boolean isAbove;
     private ArrayList<Particle> particle;
     private EquipmentType equipmentType;
+    private int price;
 
-    public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType) {
+    public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType, int price) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
         this.isAbove = false;
@@ -54,6 +55,7 @@ public class Equipment implements Serializable{
         this.stats[5] = stats[5];
         this.stats[6] = stats[6];
         this.equipmentType = equipmentType;
+        this.price = price;
     }
     
     public void update(int delta) {
@@ -126,6 +128,10 @@ public class Equipment implements Serializable{
             case 6 : return "Eng-";
             default : return "wut";
         }
+    }
+    
+    public int getPrice(){
+        return price;
     }
     
     public EquipmentType getType(){

@@ -19,11 +19,12 @@ import statesOfGame.Credits;
 import statesOfGame.Help;
 import statesOfGame.InventoryMenu;
 import statesOfGame.LevelUpScreen;
+import statesOfGame.Shop;
 
 public class Game extends StateBasedGame {
 
     public static final String GAMENAME = "Projet intégrateur V1.0";
-    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5;
+    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5, SHOP = 6;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
 
@@ -41,6 +42,7 @@ public class Game extends StateBasedGame {
         this.addState(new Credits(CREDITS));
         this.addState(new LevelUpScreen(LEVELUPSCREEN));
         this.addState(new Help(HELP));
+        this.addState(new Shop(SHOP));
     }
 
     // Boucle main

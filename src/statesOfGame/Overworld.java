@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import static ca.qc.bdeb.info204.Game.SHOP;
 import entities.BadEntity;
 import entities.Bat;
 import entities.Bee;
@@ -26,6 +27,7 @@ import entities.FriendlyEntity;
 import entities.Slime;
 import gameEngine.DataManager;
 import java.io.Serializable;
+import org.lwjgl.input.Mouse;
 import playerEngine.CharacterStatsManager;
 
 /**
@@ -52,6 +54,7 @@ public class Overworld extends BasicGameState implements Serializable {
     private boolean mapChanger=false;
     private String oldMusic="res/musics/006-link-s-house.WAV";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
+    private int savedGameCompteur = 0;
 
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -92,8 +95,10 @@ public class Overworld extends BasicGameState implements Serializable {
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
         
-        if(gameSaved){
-            g.drawString("Partie Sauvegardée", 900, 10);
+        if(gameSaved && savedGameCompteur < 200){
+            g.setColor(Color.white);
+            g.drawString("Partie Sauvegardée", 800, 10);
+            savedGameCompteur += 1;
         }
     }
 
