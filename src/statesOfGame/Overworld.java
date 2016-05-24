@@ -73,7 +73,6 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
-        this.list.add(new Slime(725, 178, player, map, list)); //725.6064 178.80164
     }
 
     @Override

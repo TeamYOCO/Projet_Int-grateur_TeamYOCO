@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="41">
  <properties>
-  <property name="ennemy" value="3;1,576,192;1,960,160;2,48,320"/>
+  <property name="ennemy" value="1;1,576,192"/>
   <property name="music" value="res/musics/006-link-s-house.WAV"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
@@ -51,7 +51,7 @@
  </tileset>
  <layer name="collision" width="50" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2a6w6DIAyFDe//eP7ZJduMuufYyCAjDVKwtJaNkzQmGnr4LF5Ah4Gmq/lsL4aY6GDV5hh35nm8250IsTjfmZjHx+i2VnBfKvz51KJYPXJqBDlGkw4OYZ4tcVD1LxxwXy1f6EmVdo7ccaHhflU6lufI/hY5fJtQGjj2SCMHVo+76+MtUSctHNhx7L6f8ywtjT25a4uaF3JIeOb0hdK2JI+2d4W940Ubhza/zqHLT5JD+5wg14fTizt/6CPhwe0jWfeW80v4SI5dqo9tH66nwWMSquGTet/SxoGtrXpNyjly52J2fWBinnfEBL22zvtS0B+4ng1rxKWQg2MOPAuxcHNY1f4GhF2vJeOnRLU5uM43dj13jrgk17JCts4R11Fri50jLioH9h64db13jrh+ZVyt5vutQVIc/6ZI1cR+kzm7eDJ4ri43d12k/g/i4OGuQUpr4E0N6b63qBcsuTfxECcAAA==
+   H4sIAAAAAAAAC+2a6w6DIAyFDe//eP7ZJduMuufYyCAjDQpYWo8bJyFbdPb0s+AE7TqerubzeTHMQDsLhePx9j8x2uTyH5lxaLPy3/uM3/vziaw+I0fK0Zv1JpUn1xeFg6t/4aDbavlST67QOXL7BcL1qrQvj5HtR+Twx4RC4NgiRI5UPe4ux9tKnVA4UvtT1/2c/9LStiV2bXHjUg4Nz5xcOMeWxEG7V9jaX9A40PwaB5afJgf6nCDXR9JLOn7oo+Eh7aNZ9yPH1/DR7LtcH3t8uJ5G92mohs/a/RYaR2pt1WsA58idi9n1gUF43hET9Vo671NBPnQ9m9ZISiGHxBx4VGKR5rCq/ewkNV5L+k+JanNIne/UeG4ccWmuZYVsjSOuvdYWG0dcXI7UfeDSeG8ccf1Kv5rN91mDpiTe6dCqiX0mc3btKeA5u9jSddF6r0aCR7oGa5oDb27Tzv2IegEDaXUSECcAAA==
   </data>
  </layer>
  <layer name="Background 1" width="50" height="50">
@@ -71,7 +71,7 @@
  </layer>
  <layer name="Background3" width="50" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2YzWpCMRBGE7q0bvoAPoXFtxHbLlzosi7tUl9MbWv9tz5EcdmKS/3EuAleaO4YE8N34BAG7h1mIJNA1kqpP4EbWIG/wjxSt1Dp/Gp97GMnzGP74Pj9HbwXWDR9FIR5TpbNWnL870eFpWLFjzpfntB9XIrU+2jAV7O2zBozWX28wDaswjcTH+jBPhz4L82JrD6asAPrsGviA0P4BUf+S3PCdT5mcA4XHmqRkPqcX5Ma7oynDJ//eZ9s/JZ4NXTO+zM2ion0QQghhBBCCCGEkPSJ9T3YlVjfg1059x78Dj/gZ5CKLscYTuA0dCFClvAbrkIXkjD2nrfPqVuZCXvP2+fUrcyEveftc4ozQQghR/aTeaDqECcAAA==
+   H4sIAAAAAAAAC+2YOwoCMRRFEyzVxgW4DXcjfgoLLbXUUjfm//9dhFiqWOodjE1wwJgZM4Z74BAGZh7vQl4GchJCXCy8wgI8W9ax9QaF/F4pnznulnV0c4bvp2DGwqzKkbas8zIgWPOG3x2FWwoR1XGdIyp8z1GHTbW21JpkwnJUYRsWYUc9B/ThAA7jb82IsBwN2IU12FPPAVM4g/P4WzPCdD7WcAO3MfRig+9z/ktK+I+VQ6zIz2pc423xZ8gP8yadrCc5CCGEEEIIIYQQ4j9JvQ82Jan3waa8uw8ewTGcOOkoOhZwCVeuG7FkB/fw4LoRj9H3vH5O/ctM6HteP6f+ZSb0Pa+fU5wJQgh58gAJs8AVECcAAA==
   </data>
  </layer>
  <layer name="Foreground" width="50" height="50">
@@ -84,7 +84,7 @@
    H4sIAAAAAAAAC+3OMQ0AAAgDMKzy4l8AIkbC0ypoFZDq78CR+Q4AAAAAAAAAAEBgAdq/5pYQJwAA
   </data>
  </layer>
- <objectgroup name="tp" width="50" height="50">
+ <objectgroup name="tp" width="40" height="20">
   <properties>
    <property name="destMap" value=""/>
    <property name="destX" value=""/>
@@ -109,24 +109,6 @@
     <property name="destMap" value="res/maps/Cavern_2.tmx"/>
     <property name="destX" value="224"/>
     <property name="destY" value="416"/>
-   </properties>
-  </object>
-  <object id="37" type="stat" x="1154" y="97" width="28" height="31">
-   <properties>
-    <property name="case" value="179"/>
-    <property name="nombre" value="50"/>
-    <property name="repX" value="37"/>
-    <property name="repY" value="4"/>
-    <property name="stat" value="attack"/>
-   </properties>
-  </object>
-  <object id="40" type="stat" x="1154" y="65" width="27" height="29">
-   <properties>
-    <property name="case" value="179"/>
-    <property name="nombre" value="50"/>
-    <property name="repX" value="37"/>
-    <property name="repY" value="3"/>
-    <property name="stat" value="attack"/>
    </properties>
   </object>
  </objectgroup>

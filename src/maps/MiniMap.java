@@ -31,7 +31,7 @@ public class MiniMap {
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
-        fileName = "res/maps/map_1-1.tmx";
+        fileName = "res/maps/Maison_1.tmx";
         MiniMap.tiledMap = new TiledMap(fileName);
     }
 
