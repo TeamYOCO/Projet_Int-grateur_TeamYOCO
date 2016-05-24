@@ -84,7 +84,7 @@
    H4sIAAAAAAAAC+3OMQ0AAAgDMKzy4l8AIkbC0ypoFZDq78CR+Q4AAAAAAAAAAEBgAdq/5pYQJwAA
   </data>
  </layer>
- <objectgroup name="tp" width="50" height="50">
+ <objectgroup name="tp" width="30" height="30">
   <properties>
    <property name="destMap" value=""/>
    <property name="destX" value=""/>

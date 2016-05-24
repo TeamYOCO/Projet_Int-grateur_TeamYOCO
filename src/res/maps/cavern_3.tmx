@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="3">
  <properties>
-  <property name="ennemy" value="6;2,1120,160;1,960,640;1,640,1120;2,672,708;2,640,160;1,160,320"/>
+  <property name="ennemy" value="6;2,1120,160;3,960,640;3,640,1120;2,672,708;2,640,160;3,160,320"/>
   <property name="music" value="res/musics/Caves.WAV"/>
  </properties>
  <tileset firstgid="1" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
@@ -54,7 +54,7 @@
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="40" height="20">
+ <objectgroup name="Object Layer 1" width="30" height="30">
   <object id="1" type="tp" x="386" y="58" width="27" height="17">
    <properties>
     <property name="destMap" value="res/maps/map_3.tmx"/>
