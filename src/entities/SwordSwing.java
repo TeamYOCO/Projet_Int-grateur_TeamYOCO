@@ -48,7 +48,6 @@ public class SwordSwing extends Particle implements FriendlyEntity{
         this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
         this.animation = loadAnimation(anim, 1, 6, direction);
         this.lifeSpam = lifeSpam;
-        System.out.println("damage : "+ damagePhysical);
     }
 
     /**

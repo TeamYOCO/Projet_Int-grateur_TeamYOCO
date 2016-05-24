@@ -47,10 +47,10 @@ public class Boss extends Mob implements BadEntity {
         this.x = x;
         this.y = y;
         this.map = map;
-        this.xOff = -32;
-        this.yOff = -64;
+        this.xOff = -16;
+        this.yOff = -60;
         this.player = player;
-        this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
+        this.hitBox = new Box(x + xOff, y + yOff, 32, 60);
         this.hitpoints = 500;
         this.damagePhysical = 5;
         this.damageSpecial = 0;
@@ -104,14 +104,16 @@ public class Boss extends Mob implements BadEntity {
             speed = tempSpeed;
             knockbackTimer -= delta;
 
-        } else if (attCooldown > 0) {
-            attCooldown -= delta;
-            if (attCounter > 0 && attaquing) {
-                attCounter -= delta;
-                if (attCounter <= 0) {
-                    attaquing = false;
-                }
+        } else if (attCounter > 0 && attaquing) {
+            attCounter -= delta;
+            System.out.println("attCounter: " + attCounter);
+            if (attCounter <= 0) {
+                attaquing = false;
             }
+        }
+        if (attCooldown > 0) {
+            attCooldown -= delta;
+            System.out.println("attCooldown: " + attCooldown);
         }
         hitBox.setPos(x + xOff, y + yOff);
     }
@@ -151,9 +153,10 @@ public class Boss extends Mob implements BadEntity {
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        if (isHitable()) {
+        if (isHitable() && !attaquing) {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64);
-        } else if (attaquing && isHitable()) {
+        } else if (attaquing) {
+            System.out.println("il attaque");
             g.drawAnimation(attackAnimation[direction], x - 96, y - 128);
         } else {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64, Color.red);
@@ -191,8 +194,11 @@ public class Boss extends Mob implements BadEntity {
         }
         if (isInRange && attCooldown <= 0) {
             attaquing = true;
-            attCooldown = 5000;
+            attCooldown = 1000;
             attCounter = 500;
+            for (int i = 0; i < attackAnimation.length; i++) {
+                attackAnimation[i].restart();
+            }
             switch (direction) {
 
             }
