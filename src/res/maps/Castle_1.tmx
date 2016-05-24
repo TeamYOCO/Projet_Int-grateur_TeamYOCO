@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
+ <properties>
+  <property name="ennemy" value="0"/>
+  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+ </properties>
  <tileset firstgid="1" name="castle_outside" tilewidth="32" tileheight="32" tilecount="187" columns="17">
   <image source="../tiles/castle_outside.png" width="544" height="352"/>
  </tileset>
@@ -58,7 +62,7 @@
    H4sIAAAAAAAAC+3BMQEAAADCoPVPbQsvoAAAAD4Gpph7y4AMAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="20" height="20">
+ <objectgroup name="Object Layer 1" width="40" height="20">
   <object id="1" type="tp" x="581" y="626" width="118" height="12">
    <properties>
     <property name="destMap" value="res/maps/City_1.tmx"/>

@@ -15,7 +15,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import playerEngine.PlayerGameManager;
 import statesOfGame.Credits;
 import statesOfGame.Help;
 import statesOfGame.InventoryMenu;
@@ -27,12 +26,10 @@ public class Game extends StateBasedGame {
     public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
-    public static PlayerGameManager manager;
 
     //C'est ici la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
-        manager = new PlayerGameManager();
 
     }
 

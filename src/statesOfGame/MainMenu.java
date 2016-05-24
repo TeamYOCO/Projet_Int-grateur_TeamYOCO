@@ -19,7 +19,6 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.EmptyTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -27,7 +26,6 @@ import playerEngine.PlayerGameManager;
  */
 public class MainMenu extends BasicGameState {
 
-    private PlayerGameManager manager;
     private static int stateID;
     private final int playX = 400, playY = 200;
     private final int newGameX = 400, newGameY = 50;
@@ -38,9 +36,8 @@ public class MainMenu extends BasicGameState {
     private Music menuMusic;
     private boolean stopMusic = true, saveFileIsEmpty;
 
-    public MainMenu(int stateID, PlayerGameManager manager) throws SlickException {
+    public MainMenu(int stateID) throws SlickException {
         MainMenu.stateID = stateID;
-        this.manager = manager;
     }
 
     @Override
@@ -52,7 +49,6 @@ public class MainMenu extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = ResManager.getInstance().getImage("treesun");
         menuMusic = new Music(menuTheme);
-        manager = new PlayerGameManager();
         ResManager resManager = ResManager.getInstance();
         EquipmentList strManager = EquipmentList.getInstance();
         if(DataManager.getInstance().isEmpty()){

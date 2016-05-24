@@ -6,25 +6,18 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
-import static ca.qc.bdeb.info204.Game.HEIGHT;
-import static ca.qc.bdeb.info204.Game.MAINMENU;
-import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.ResManager;
 import static items.Equipment.MAX_STATS;
-import java.awt.Font;
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import playerEngine.CharacterStatsManager;
-import playerEngine.PlayerGameManager;
 
 /**
  *
@@ -32,14 +25,12 @@ import playerEngine.PlayerGameManager;
  */
 public class LevelUpScreen extends BasicGameState {
 
-    private PlayerGameManager manager;
     private static int stateID;
     private Image background;
     private UnicodeFont ufont50,ufont24;
     
-    public LevelUpScreen(int stateID, PlayerGameManager manager) throws SlickException {
+    public LevelUpScreen(int stateID) throws SlickException {
         LevelUpScreen.stateID = stateID;
-        this.manager = manager;
     }
 
     @Override

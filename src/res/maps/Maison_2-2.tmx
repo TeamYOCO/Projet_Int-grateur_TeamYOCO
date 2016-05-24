@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+ <properties>
+  <property name="ennemy" value="0"/>
+  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+ </properties>
  <tileset firstgid="1" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
   <image source="../tiles/cabinets.png" width="192" height="416"/>
  </tileset>
@@ -70,7 +74,7 @@
    H4sIAAAAAAAAC2NgGAWjYBSMgpEDRJgYGESZ6G/HqL2j9g5Ve0cBeQAA/h8A02AJAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="20" height="20">
+ <objectgroup name="Object Layer 1" width="40" height="20">
   <object id="1" type="tp" x="385" y="101" width="27" height="55">
    <properties>
     <property name="destMap" value="res/maps/Maison_2.tmx"/>
