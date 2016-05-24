@@ -17,13 +17,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import playerEngine.PlayerGameManager;
 import statesOfGame.Credits;
+import statesOfGame.Help;
 import statesOfGame.InventoryMenu;
 import statesOfGame.LevelUpScreen;
 
 public class Game extends StateBasedGame {
 
     public static final String GAMENAME = "Projet intégrateur V1.0";
-    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4;
+    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
     public static PlayerGameManager manager;
@@ -42,6 +43,7 @@ public class Game extends StateBasedGame {
         this.addState(new InventoryMenu(INVENTORY, manager));
         this.addState(new Credits(CREDITS, manager));
         this.addState(new LevelUpScreen(LEVELUPSCREEN, manager));
+        this.addState(new Help(HELP,manager));
     }
 
     // Boucle main
