@@ -15,7 +15,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import playerEngine.PlayerGameManager;
 import statesOfGame.Credits;
 import statesOfGame.InventoryMenu;
 import statesOfGame.LevelUpScreen;
@@ -26,22 +25,20 @@ public class Game extends StateBasedGame {
     public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4;
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
-    public static PlayerGameManager manager;
 
     //C'est ici la classe main du jeu
     public Game(String name) throws SlickException {
         super(name);
-        manager = new PlayerGameManager();
 
     }
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        this.addState(new MainMenu(MAINMENU, manager));
-        this.addState(new Overworld(OVERWORLD, manager));
-        this.addState(new InventoryMenu(INVENTORY, manager));
-        this.addState(new Credits(CREDITS, manager));
-        this.addState(new LevelUpScreen(LEVELUPSCREEN, manager));
+        this.addState(new MainMenu(MAINMENU));
+        this.addState(new Overworld(OVERWORLD));
+        this.addState(new InventoryMenu(INVENTORY));
+        this.addState(new Credits(CREDITS));
+        this.addState(new LevelUpScreen(LEVELUPSCREEN));
     }
 
     // Boucle main
