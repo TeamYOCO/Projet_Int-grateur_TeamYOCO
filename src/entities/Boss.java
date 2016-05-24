@@ -27,9 +27,10 @@ public class Boss extends Mob implements BadEntity {
     private boolean aggro = false;
     private Animation[] attackAnimation;
 
-    public Boss(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
+    public Boss(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) throws SlickException {
         this.moving = false;
-        moveAnimations = new Animation[4];
+        this.moveAnimations = new Animation[8];
+        this.attackAnimation = new Animation[4];
         this.list = list;
         this.x = x;
         this.y = y;
@@ -37,7 +38,7 @@ public class Boss extends Mob implements BadEntity {
         this.xOff = -16;
         this.yOff = -32;
         this.player = player;
-        this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
+        this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
         this.hitpoints = 50;
         this.damagePhysical = 5;
         this.damageSpecial = 0;
@@ -45,13 +46,12 @@ public class Boss extends Mob implements BadEntity {
         this.specialDefence = 0;
         this.money = 5;
         this.exp = 10;
-        SpriteSheet moveSpriteSheet = null;
-        try {
-            moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
-        } catch (SlickException ex) {
-        }
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("boss_walk");
+        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("boss_swing");
         for (int i = 0; i < 4; i++) {
-            this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 3, i);
+            this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
+            this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
+            this.attackAnimation[i] = loadAnimation(attackSpriteSheet, 1, 6, i);
         }
     }
 
@@ -122,13 +122,13 @@ public class Boss extends Mob implements BadEntity {
     @Override
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {
-            g.drawAnimation(moveAnimations[direction], x - 16, y - 32);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32);
         } else {
-            g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32, Color.red);
         }
         g.setColor(Color.red);
         g.drawString(""+this.hitpoints, x - 10, y - 45);
-//        hitBox.render(g);
+        hitBox.render(g);
     }
 
 }
