@@ -44,6 +44,7 @@ public class Bat extends Mob implements BadEntity {
         this.defence = 0;
         this.specialDefence = 0;
         this.exp = 15;
+        this.money = 5;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bat");

@@ -64,4 +64,13 @@ public class Inventory implements Serializable{
         }
         return false;
     }
+    
+    public boolean isItemEquiped(String itemName){
+        for(Equipment equipment : listItemPlayer){
+            if (equipment.getName().equals(itemName)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

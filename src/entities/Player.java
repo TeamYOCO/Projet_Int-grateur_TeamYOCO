@@ -29,7 +29,7 @@ public class Player extends Mob {
     private boolean moving;
     private MiniMap map;
     private int hp = 0, attack = 0, defense = 0;
-    
+
     private boolean attacking = false, shooting = false, casting = false, shot = true;
     private Animation[] attackAnimation;
     private Animation[] bowShootAnimation;
@@ -103,8 +103,7 @@ public class Player extends Mob {
                 this.setX(futurX(delta));
                 this.setY(futurY(delta));
             }
-        }
-        // calcule le temps restant au joueur durant sont attaque
+        } // calcule le temps restant au joueur durant sont attaque
         else if (knockbackTimer <= 0) {
             attackCounter -= delta;
             // Vérifie si le joueur est en train de décocher un flèche et la tire au bon momment 
@@ -135,15 +134,14 @@ public class Player extends Mob {
                 shooting = false;
                 casting = false;
             }
-        }
-        // Repousse le joueur si il vient de se faire frapper
+        } // Repousse le joueur si il vient de se faire frapper
         else if (knockbackTimer > 0) {
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(-delta), futurY(-delta))) {
                 this.setX(futurX(-delta));
                 this.setY(futurY(-delta));
-            } 
+            }
             speed = tempSpeed;
             knockbackTimer -= delta;
         }
@@ -190,25 +188,31 @@ public class Player extends Mob {
             }
             SwordSwing swordSwing = null;
             float sx = 0, sy = 0;
-            switch (attackDirection) {
-                case 0:
-                    sx = x - 64;
-                    sy = y - 92;
-                    break;
-                case 1:
-                    sx = x - 64;
-                    sy = y - 87;
-                    break;
-                case 2:
-                    sx = x - 64;
-                    sy = y - 87;
-                    break;
-                case 3:
-                    sx = x - 64;
-                    sy = y - 83;
-                    break;
+            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee legendaire")) {
+                sx = x - 64;
+                sy = sy - 64;
+                swordSwing = new BigSwordSwing(sx, sy, direction, 500);
+            } else {
+                switch (attackDirection) {
+                    case 0:
+                        sx = x - 64;
+                        sy = y - 92;
+                        break;
+                    case 1:
+                        sx = x - 64;
+                        sy = y - 87;
+                        break;
+                    case 2:
+                        sx = x - 64;
+                        sy = y - 87;
+                        break;
+                    case 3:
+                        sx = x - 64;
+                        sy = y - 83;
+                        break;
+                }
+                swordSwing = new SwordSwing(sx, sy, attackDirection, 500);
             }
-            swordSwing = new SwordSwing(sx, sy, attackDirection, 500);
             list.add(swordSwing);
         }
     }
@@ -267,7 +271,7 @@ public class Player extends Mob {
         }
     }
 
-    public void test(){
+    public void test() {
         System.out.println(map.isCollision(x, y));
         try {
             System.out.println(CharacterStatsManager.getInstance().getExp());

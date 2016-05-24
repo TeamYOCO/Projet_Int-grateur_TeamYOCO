@@ -15,31 +15,19 @@ import playerEngine.CharacterStatsManager;
  *
  * @author 1455367
  */
-public class BigSwordSwing extends Particle{
-    private int damage;
+public class BigSwordSwing extends SwordSwing{
 
     public BigSwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
-        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("longsword_male");
-        this.x = x;
-        this.y = y;
-        this.xOff = 0;
-        this.yOff = 0;
-        switch(direction){
-            case 0: xOff = 48; yOff = 27; break;
-            case 1: xOff = 11; yOff = 50; break;
-            case 2: xOff = 48; yOff = 82; break;
-            case 3: xOff = 85; yOff = 45; break;
-        }
-        this.hitBox = new Box(x+xOff, y+yOff, 0, 0);
-        this.damage = CharacterStatsManager.getInstance().getStats()[1];
-        this.animation = loadAnimation(anim, 1, 6, direction);
-        this.lifeSpam = lifeSpam;
+        super(x, y, direction, lifeSpam);
+        SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("longsword");
+        this.animation = loadAnimation(sheet, 1, 6, direction);
     }
+    
 
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
-        hitBox.render(g);
+//        hitBox.render(g);
     }
 
     @Override

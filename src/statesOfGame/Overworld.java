@@ -24,8 +24,10 @@ import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import entities.FriendlyEntity;
+import entities.ItemDrop;
 import entities.Slime;
 import gameEngine.DataManager;
+import items.EquipmentList;
 import java.io.Serializable;
 import org.lwjgl.input.Mouse;
 import playerEngine.CharacterStatsManager;
@@ -51,8 +53,8 @@ public class Overworld extends BasicGameState implements Serializable {
     private boolean gameSaved = false;
     private static Image screenShot;
     private Music overworldMusic;
-    private boolean mapChanger=false;
-    private String oldMusic="res/musics/006-link-s-house.WAV";
+    private boolean mapChanger = false;
+    private String oldMusic = "res/musics/006-link-s-house.WAV";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
     private int savedGameCompteur = 0;
 
@@ -76,6 +78,7 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
+        list.add(new ItemDrop(321, 520, EquipmentList.getInstance().getEquipment("Epee legendaire")));
     }
 
     @Override
@@ -88,41 +91,47 @@ public class Overworld extends BasicGameState implements Serializable {
         }
         this.map.renderForeground();
         this.hud.render(g);
-        
-        if(CharacterStatsManager.getInstance().getlvlIsUp()){
+
+        if (CharacterStatsManager.getInstance().getlvlIsUp()) {
             container.getGraphics().copyArea(screenShot, 0, 0);
             sbg.enterState(Game.LEVELUPSCREEN);
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
-        
-        if(gameSaved && savedGameCompteur < 200){
+
+        if (gameSaved && savedGameCompteur < 200) {
             g.setColor(Color.white);
             g.drawString("Partie Sauvegardée", 800, 10);
             savedGameCompteur += 1;
         }
     }
 
+    // méthode qui est passé chaque fois dans le thread du jeu
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
-        this.player.update(delta);
+        this.player.update(delta); // Update le joueur en fonction du temps passé depuis la dernière update
         for (Entity entity : list) {
-            entity.update(delta);
+            entity.update(delta); // Update l'entity en fonction du temps passé depuis la dernière update
             for (Entity entity2 : list) {
-                if (entity != entity2 && entity instanceof BadEntity
+                if (entity instanceof BadEntity
                         && entity2 instanceof FriendlyEntity
                         && entity.getHitBox().collision(entity2.getHitBox())
-                        && ((BadEntity) entity).isHitable()) {
-                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(),((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
+                        && ((BadEntity) entity).isHitable()) { // détecte la collision entre un enemi et une attaque du joueur
+                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(), ((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
 //                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
                 }
             }
             if (entity instanceof BadEntity
-                    && ((BadEntity)entity).isHitable() && player.isHitable()
-                    && player.getHitBox().collision(entity.getHitBox())){
-                player.takeHit(((BadEntity)entity).getDamagePhysical(),((BadEntity)entity).getDamageSpecial(), ((BadEntity)entity).getDirection());
+                    && ((BadEntity) entity).isHitable() && player.isHitable()
+                    && player.getHitBox().collision(entity.getHitBox())) { // Détecte la collision entre le joueur et une attaque enemie
+                player.takeHit(((BadEntity) entity).getDamagePhysical(), ((BadEntity) entity).getDamageSpecial(), ((BadEntity) entity).getDirection());
             }
-            if (entity.isDead()) {
+            if (entity instanceof ItemDrop
+                    && player.isHitable()
+                    && player.getHitBox().collision(entity.getHitBox())){
+                ((ItemDrop)entity).pickUp();
+            }
+            if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
                 listRemove.add(entity);
             }
         }
@@ -131,15 +140,15 @@ public class Overworld extends BasicGameState implements Serializable {
         }
         listRemove.clear();
         this.cam.update(container);
-        
+
         updateTrigger();
 
         if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'e' ou en clickant sur le bouton droit de la souris
             container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
             sbg.enterState(Game.INVENTORY);
         }
-        if(mapChanger){
-        String[] temp;
+        if (mapChanger) {
+            String[] temp;
             temp = map.getMapProperty("ennemy").split(";");
             String[] temp2;
             for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
@@ -154,16 +163,16 @@ public class Overworld extends BasicGameState implements Serializable {
                     this.list.add(new Snake(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 }
             }
-            
-        mapChanger=false;
+
+            mapChanger = false;
         }
         if (!oldMusic.equals(map.getMapProperty("music"))) {
-                this.setMusic(map.getMapProperty("music"));
-                overworldMusic= new Music(map.getMapProperty("music"));
-                overworldMusic.play();
+            this.setMusic(map.getMapProperty("music"));
+            overworldMusic = new Music(map.getMapProperty("music"));
+            overworldMusic.play();
             overworldMusic.loop();
-            oldMusic=map.getMapProperty("music");
-            }
+            oldMusic = map.getMapProperty("music");
+        }
 
         //peser sur la touche 'p' pour save
         if (input.isKeyPressed(25)) {
@@ -211,9 +220,9 @@ public class Overworld extends BasicGameState implements Serializable {
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));
         String newMap = this.map.getTiledMap().getObjectProperty(0, objectID, "destMap", "undefined");
         if (!"undefined".equals(newMap)) {
-           oldMusic = this.overworldTheme;
+            oldMusic = this.overworldTheme;
             MiniMap.changeMap(newMap);
-            mapChanger=true;
+            mapChanger = true;
         }
         this.list.clear();
         this.listRemove.clear();
