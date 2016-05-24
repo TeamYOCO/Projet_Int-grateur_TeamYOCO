@@ -74,26 +74,33 @@ public class CharacterStatsManager {
             exp = 0;
             expNeeded = (int) ((float) expNeeded * 1.84);
             level++;
-            nbLvlBoost += 10;
+            nbLvlBoost += NB_LVL_BOOST;
             lvlIsUp = true;
     }
     
-    public void buffStat(int index){
+    public void buffStat(int index, boolean onlyOnce){
+        System.out.println(index);
         stats[index] += 1;
         statsUpgrade[index] += 1;
-        nbLvlBoost -= 1;
+        if(onlyOnce){
+            nbLvlBoost -= 1;
+        }
     }
     
-    public void nerfStat(int index){
+    public void nerfStat(int index, boolean onlyOnce){
         stats[index] -= 1;
         statsUpgrade[index] -= 1;
-        nbLvlBoost += 1;
+        if(onlyOnce){
+            nbLvlBoost += 1;
+        }
     }
     
     public void resetStats(){
-        for (int j = 0; j < MAX_STATS; j++) {
+        for (int j = 0; j < 5; j++) {
             stats[j] -= statsUpgrade[j];
-            nbLvlBoost += statsUpgrade[j];
+            if(j != 4){
+                nbLvlBoost += statsUpgrade[j];
+            }
             statsUpgrade[j] = 0;
         }
     }

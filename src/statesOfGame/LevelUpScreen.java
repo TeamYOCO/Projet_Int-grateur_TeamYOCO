@@ -51,8 +51,8 @@ public class LevelUpScreen extends BasicGameState {
         g.setFont(ufont50);
         g.drawString(""+CharacterStatsManager.getInstance().getLvlBoost(), 475, 260);
         g.setFont(ufont24);
-        for (int i = 0; i < MAX_STATS; i++) {
-            g.drawString(""+CharacterStatsManager.getInstance().getStats()[i] + "+" + CharacterStatsManager.getInstance().getStatsUpgrade()[i], 52+(143*i), 555);
+        for (int i = 0; i < 4; i++) {
+            g.drawString(""+CharacterStatsManager.getInstance().getStats()[i] + "+" + CharacterStatsManager.getInstance().getStatsUpgrade()[i], 127+(235*i), 555);
         }
     }
 
@@ -64,95 +64,58 @@ public class LevelUpScreen extends BasicGameState {
         int mouseY = Mouse.getY();
         
         //si le joueur clique sur "vie"
-        if((mouseX > 21 && mouseX < 145) && (mouseY>166 && mouseY<303)){
+        if((mouseX > 55 && mouseX < 255) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(0);
+                    CharacterStatsManager.getInstance().buffStat(0,true);
                     CharacterStatsManager.getInstance().setHp(CharacterStatsManager.getInstance().getHp()+1);
               //clique gauche -> diminuer la stat
             } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[0] > 0) 
                     && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(0);
+                    CharacterStatsManager.getInstance().nerfStat(0,true);
                     CharacterStatsManager.getInstance().setHp(CharacterStatsManager.getInstance().getHp()-1);
             }
         }
         
         //si le joueur clique sur "att"
-        if((mouseX > 164 && mouseX < 288) && (mouseY>166 && mouseY<303)){
+        if((mouseX > 282 && mouseX < 482) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(1);
+                    CharacterStatsManager.getInstance().buffStat(1,true);
               //clique gauche -> diminuer la stat
             } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[1] > 0) 
                     && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(1);
+                    CharacterStatsManager.getInstance().nerfStat(1,true);
             }
         }
         
-        //si le joueur clique sur "def"
-        if((mouseX > 307 && mouseX < 431) && (mouseY>166 && mouseY<303)){
+        //si le joueur clique sur "def spdef"
+        if((mouseX > 526 && mouseX < 726) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(2);
+                    CharacterStatsManager.getInstance().buffStat(2,true);
+                    CharacterStatsManager.getInstance().buffStat(4,false);
               //clique gauche -> diminuer la stat
             } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[2] > 0) 
                     && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(2);
+                    CharacterStatsManager.getInstance().nerfStat(2,true);
+                    CharacterStatsManager.getInstance().nerfStat(4,false);
             }
         }
         
         //si le joueur clique sur "spAtt"
-        if((mouseX > 450 && mouseX < 574) && (mouseY>166 && mouseY<303)){
+        if((mouseX > 770 && mouseX < 970) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(3);
+                    CharacterStatsManager.getInstance().buffStat(3,true);
               //clique gauche -> diminuer la stat
             } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[3] > 0) 
                     && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(3);
-            }
-        }
-        
-        //si le joueur clique sur "spDef"
-        if((mouseX > 593 && mouseX < 717) && (mouseY>166 && mouseY<303)){
-            //clique droit -> augementer la stat
-            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(4);
-              //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
-                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[4] > 0) 
-                    && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(4);
-            }
-        }
-        
-        //si le joueur clique sur "vit"
-        if((mouseX > 736 && mouseX < 860) && (mouseY>166 && mouseY<303)){
-            //clique droit -> augementer la stat
-            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(5);
-              //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
-                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[5] > 0) 
-                    && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(5);
-            }
-        }
-        
-        //si le joueur clique sur "eng"
-        if((mouseX > 879 && mouseX < 1003) && (mouseY>166 && mouseY<303)){
-            //clique droit -> augementer la stat
-            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    CharacterStatsManager.getInstance().buffStat(6);
-              //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
-                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[6] > 0) 
-                    && (input.isMousePressed(1))){
-                    CharacterStatsManager.getInstance().nerfStat(6);
+                    CharacterStatsManager.getInstance().nerfStat(3,true);
             }
         }
         
