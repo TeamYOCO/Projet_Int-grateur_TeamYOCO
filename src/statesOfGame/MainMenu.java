@@ -9,6 +9,7 @@ import static ca.qc.bdeb.info204.Game.CREDITS;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.HELP;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
+import static ca.qc.bdeb.info204.Game.SHOP;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.DataManager;
 import gameEngine.ResManager;
@@ -125,6 +126,10 @@ public class MainMenu extends BasicGameState {
                 stopMusic = false;
                 sbg.enterState(HELP);
             }
+        }
+        
+        if(input.isMousePressed(1)){
+            sbg.enterState(SHOP);
         }
     }
 

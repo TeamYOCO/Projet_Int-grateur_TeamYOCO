@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="30" tilewidth="32" tileheight="32" nextobjectid="38">
  <properties>
   <property name="ennemy" value="7;1,1920,160;1,1920,640;1,1280,640;1,1280,160;1,320,160;3,160,800;2,480,480"/>
-  <property name="music" value="res/musics/Lorule Main Theme.WAV"/>
+  <property name="music" value="res/musics/Cafofo_-_MUSIC_-_Uplifting_converted.WAV"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
@@ -75,7 +75,7 @@
    H4sIAAAAAAAAC+3VTQqAIBCG4ZlLtMzD1g3qDnpMizYGIxgxaPE+MAyIC/3wRwRoN+u940IeALzwvtiCko2Ff9rGeQEAAAAA4Hum3gsAfsLrLi0qsurzPgqPXEbbY6tUVCyqNhaNqs07+3Zksr/IJQMXrVHH0CAAAA==
   </data>
  </layer>
- <objectgroup name="tp" width="30" height="30">
+ <objectgroup name="tp" width="50" height="50">
   <object id="29" type="tp" x="193" y="577" width="29" height="39">
    <properties>
     <property name="destMap" value="res/maps/cavern_3.tmx"/>
