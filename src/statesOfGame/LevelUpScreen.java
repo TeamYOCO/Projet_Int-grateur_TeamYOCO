@@ -40,28 +40,17 @@ public class LevelUpScreen extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-//        Font font50 = new Font("Abadi MT Condensed Light", Font.PLAIN, 50);
-//        ufont50 = new UnicodeFont(font50, font50.getSize(), font50.isBold(), font50.isItalic());
-//        ufont50.addAsciiGlyphs();
-//        ufont50.addGlyphs(400, 600);
-//        ufont50.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
-//        ufont50.loadGlyphs();
-//        
-//        Font font24 = new Font("Abadi MT Condensed Light", Font.PLAIN, 24);
-//        ufont24 = new UnicodeFont(font24, font24.getSize(), font24.isBold(), font24.isItalic());
-//        ufont24.addAsciiGlyphs();
-//        ufont24.addGlyphs(400, 600);
-//        ufont24.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
-//        ufont24.loadGlyphs();
+        ufont50 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 50);
+        ufont24 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 24);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
         ResManager.getInstance().getImage("LevelUpScreenPic").draw(0, 0);
-//        g.setFont(ufont50);
+        g.setFont(ufont50);
         g.drawString(""+CharacterStatsManager.getInstance().getLvlBoost(), 475, 260);
-//        g.setFont(ufont24);
+        g.setFont(ufont24);
         for (int i = 0; i < MAX_STATS; i++) {
             g.drawString(""+CharacterStatsManager.getInstance().getStats()[i] + "+" + CharacterStatsManager.getInstance().getStatsUpgrade()[i], 52+(143*i), 555);
         }
@@ -81,7 +70,7 @@ public class LevelUpScreen extends BasicGameState {
                     CharacterStatsManager.getInstance().buffStat(0);
                     CharacterStatsManager.getInstance().setHp(CharacterStatsManager.getInstance().getHp()+1);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[0] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(0);
@@ -95,7 +84,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(1);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[1] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(1);
@@ -108,7 +97,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(2);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[2] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(2);
@@ -121,7 +110,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(3);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[3] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(3);
@@ -134,7 +123,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(4);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[4] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(4);
@@ -147,7 +136,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(5);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[5] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(5);
@@ -160,7 +149,7 @@ public class LevelUpScreen extends BasicGameState {
             if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
                     CharacterStatsManager.getInstance().buffStat(6);
               //clique gauche -> diminuer la stat
-            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < 10) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
                     && (CharacterStatsManager.getInstance().getStatsUpgrade()[6] > 0) 
                     && (input.isMousePressed(1))){
                     CharacterStatsManager.getInstance().nerfStat(6);
