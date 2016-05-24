@@ -127,6 +127,11 @@ public class Shop extends BasicGameState {
             }
             itemCompteur += 1;
         }
+        
+        g.setColor(Color.yellow);
+        g.fillRect(220, 13, 40, 18);
+        g.setColor(Color.black);
+        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
     }
 
     /**
