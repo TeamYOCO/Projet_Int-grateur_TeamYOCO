@@ -5,7 +5,7 @@
  */
 package entities;
 
-import gameEngine.ResMng;
+import gameEngine.ResManager;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +15,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import playerEngine.StatsMng;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -54,11 +54,11 @@ public class Player extends Mob {
         moving = false;
         this.hitpoints = 100;
         this.hitBox = new Box(x + xOff, y + yOff, 32, 50);
-        SpriteSheet moveSpriteSheet = ResMng.getInstance().getSpriteSheet("main_character_walk");
-        SpriteSheet attackSpriteSheet = ResMng.getInstance().getSpriteSheet("main_character_swing");
-        SpriteSheet bowShootSpriteSheet = ResMng.getInstance().getSpriteSheet("main_character_shoot");
-        SpriteSheet bowSpriteSheet = ResMng.getInstance().getSpriteSheet("recurvebow");
-        SpriteSheet castSheet = ResMng.getInstance().getSpriteSheet("main_character_cast");
+        SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_walk");
+        SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_swing");
+        SpriteSheet bowShootSpriteSheet = ResManager.getInstance().getSpriteSheet("main_character_shoot");
+        SpriteSheet bowSpriteSheet = ResManager.getInstance().getSpriteSheet("recurvebow");
+        SpriteSheet castSheet = ResManager.getInstance().getSpriteSheet("main_character_cast");
         for (int i = 0; i < 4; i++) {
             this.moveAnimations[i] = loadAnimation(moveSpriteSheet, 0, 1, i);
             this.moveAnimations[i + 4] = loadAnimation(moveSpriteSheet, 1, 9, i);
@@ -72,7 +72,7 @@ public class Player extends Mob {
 
     @Override
     public void render(Graphics g) throws SlickException {
-        speed = 0.02f * StatsMng.getInstance().getStats()[5];
+        speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
         for (int i = 0; i < moveAnimations.length; i++) {
             moveAnimations[i].setSpeed(speed * 4);
         }
@@ -181,7 +181,7 @@ public class Player extends Mob {
     }
 
     public void attack() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable() && StatsMng.getInstance().getInventory().isSwordEquiped()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSwordEquiped()) {
             attacking = true;
             attackDirection = direction;
             attackCounter = 500;
@@ -214,7 +214,7 @@ public class Player extends Mob {
     }
 
     public void shoot() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable() && StatsMng.getInstance().getInventory().isBowEquiped()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isBowEquiped()) {
             shooting = true;
             attackDirection = direction;
             attackCounter = 1000;
@@ -227,7 +227,7 @@ public class Player extends Mob {
     }
 
     public void cast() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable() && StatsMng.getInstance().getInventory().isSpellTomeEquiped()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()) {
             casting = true;
             attackDirection = direction;
             attackCounter = 500;
@@ -262,7 +262,7 @@ public class Player extends Mob {
     public void takeHit(int damage, int hitDirection) {
         super.takeHit(damage, hitDirection);
         try {
-            StatsMng.getInstance().takeDamage(damage);
+            CharacterStatsManager.getInstance().takeDamage(damage);
         } catch (SlickException ex) {
         }
     }
@@ -270,7 +270,7 @@ public class Player extends Mob {
     public void test(){
         System.out.println(map.isCollision(x, y));
         try {
-            System.out.println(StatsMng.getInstance().getExp());
+            System.out.println(CharacterStatsManager.getInstance().getExp());
         } catch (SlickException ex) {
             Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
         }

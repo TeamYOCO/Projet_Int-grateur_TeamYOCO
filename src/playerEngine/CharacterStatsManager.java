@@ -15,9 +15,9 @@ import org.newdawn.slick.SlickException;
  *
  * @author 1455367
  */
-public class StatsMng {
+public class CharacterStatsManager {
 
-    private static StatsMng instance = null;
+    private static CharacterStatsManager instance = null;
     public final int NB_LVL_BOOST = 5;
     protected int[] stats = new int[MAX_STATS];
     protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
@@ -31,7 +31,7 @@ public class StatsMng {
     protected boolean lvlIsUp = false;
     private Inventory inventory;
 
-    private StatsMng() {
+    private CharacterStatsManager() {
         
         hp = 100;
         stats[0] = 100;
@@ -49,9 +49,9 @@ public class StatsMng {
         this.inventory = new Inventory();
     }
 
-    public static StatsMng getInstance() throws SlickException {
+    public static CharacterStatsManager getInstance() throws SlickException {
         if (instance == null) {
-            instance = new StatsMng();
+            instance = new CharacterStatsManager();
         }
         return instance;
     }

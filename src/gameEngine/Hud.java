@@ -4,7 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import playerEngine.StatsMng;
+import playerEngine.CharacterStatsManager;
 
 /**
  * Code sous licence GPLv3 (http://www.gnu.org/licenses/gpl.html)
@@ -31,22 +31,22 @@ public class Hud {
     private Image playerbars;
 
     public void init() throws SlickException {
-        this.playerbars = ResMng.getInstance().getImage("player-bar");
+        this.playerbars = ResManager.getInstance().getImage("player-bar");
     }
 
     public void render(Graphics g) throws SlickException {
         g.resetTransform();
         g.setColor(LIFE_COLOR);
-        g.fillRect(BAR_X, LIFE_BAR_Y,((float)StatsMng.getInstance().getHp()/StatsMng.getInstance().getStats()[0])* BAR_WIDTH, BAR_HEIGHT);
+        g.fillRect(BAR_X, LIFE_BAR_Y,((float)CharacterStatsManager.getInstance().getHp()/CharacterStatsManager.getInstance().getStats()[0])* BAR_WIDTH, BAR_HEIGHT);
         g.setColor(MANA_COLOR);
         g.fillRect(BAR_X, MANA_BAR_Y, BAR_WIDTH, BAR_HEIGHT);
         g.setColor(XP_COLOR);
-        g.fillRect(BAR_X, XP_BAR_Y, ((float)StatsMng.getInstance().getExp()/StatsMng.getInstance().getExpNeeded())*BAR_WIDTH, BAR_HEIGHT);
+        g.fillRect(BAR_X, XP_BAR_Y, ((float)CharacterStatsManager.getInstance().getExp()/CharacterStatsManager.getInstance().getExpNeeded())*BAR_WIDTH, BAR_HEIGHT);
         g.drawImage(playerbars, P_BAR_X, P_BAR_Y);
         g.setColor(Color.blue);
-        g.drawString(""+StatsMng.getInstance().getHp(), 100, LIFE_BAR_Y);
-        g.drawString(""+StatsMng.getInstance().getExp(), 100, XP_BAR_Y);
-        g.drawString("Level : "+StatsMng.getInstance().getLevel(), 27, 80);
+        g.drawString(""+CharacterStatsManager.getInstance().getHp(), 100, LIFE_BAR_Y);
+        g.drawString(""+CharacterStatsManager.getInstance().getExp(), 100, XP_BAR_Y);
+        g.drawString("Level : "+CharacterStatsManager.getInstance().getLevel(), 27, 80);
     }
 
 }

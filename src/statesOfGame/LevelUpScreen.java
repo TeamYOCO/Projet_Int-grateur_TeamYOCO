@@ -6,7 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
-import gameEngine.ResMng;
+import gameEngine.ResManager;
 import static items.Equipment.MAX_STATS;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
@@ -17,7 +17,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import playerEngine.StatsMng;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -40,19 +40,19 @@ public class LevelUpScreen extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        ufont50 = ResMng.getInstance().getFont("Abadi MT Condensed Light", 50);
-        ufont24 = ResMng.getInstance().getFont("Abadi MT Condensed Light", 24);
+        ufont50 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 50);
+        ufont24 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 24);
     }
 
-    @Override
+    @Override 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
-        ResMng.getInstance().getImage("LevelUpScreenPic").draw(0, 0);
+        ResManager.getInstance().getImage("LevelUpScreenPic").draw(0, 0);
         g.setFont(ufont50);
-        g.drawString(""+StatsMng.getInstance().getLvlBoost(), 475, 260);
+        g.drawString(""+CharacterStatsManager.getInstance().getLvlBoost(), 475, 260);
         g.setFont(ufont24);
         for (int i = 0; i < MAX_STATS; i++) {
-            g.drawString(""+StatsMng.getInstance().getStats()[i] + "+" + StatsMng.getInstance().getStatsUpgrade()[i], 52+(143*i), 555);
+            g.drawString(""+CharacterStatsManager.getInstance().getStats()[i] + "+" + CharacterStatsManager.getInstance().getStatsUpgrade()[i], 52+(143*i), 555);
         }
     }
 
@@ -66,105 +66,105 @@ public class LevelUpScreen extends BasicGameState {
         //si le joueur clique sur "vie"
         if((mouseX > 21 && mouseX < 145) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(0);
-                    StatsMng.getInstance().setHp(StatsMng.getInstance().getHp()+1);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(0);
+                    CharacterStatsManager.getInstance().setHp(CharacterStatsManager.getInstance().getHp()+1);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[0] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[0] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(0);
-                    StatsMng.getInstance().setHp(StatsMng.getInstance().getHp()-1);
+                    CharacterStatsManager.getInstance().nerfStat(0);
+                    CharacterStatsManager.getInstance().setHp(CharacterStatsManager.getInstance().getHp()-1);
             }
         }
         
         //si le joueur clique sur "att"
         if((mouseX > 164 && mouseX < 288) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(1);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(1);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[1] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[1] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(1);
+                    CharacterStatsManager.getInstance().nerfStat(1);
             }
         }
         
         //si le joueur clique sur "def"
         if((mouseX > 307 && mouseX < 431) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(2);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(2);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[2] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[2] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(2);
+                    CharacterStatsManager.getInstance().nerfStat(2);
             }
         }
         
         //si le joueur clique sur "spAtt"
         if((mouseX > 450 && mouseX < 574) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(3);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(3);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[3] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[3] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(3);
+                    CharacterStatsManager.getInstance().nerfStat(3);
             }
         }
         
         //si le joueur clique sur "spDef"
         if((mouseX > 593 && mouseX < 717) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(4);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(4);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[4] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[4] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(4);
+                    CharacterStatsManager.getInstance().nerfStat(4);
             }
         }
         
         //si le joueur clique sur "vit"
         if((mouseX > 736 && mouseX < 860) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(5);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(5);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[5] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[5] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(5);
+                    CharacterStatsManager.getInstance().nerfStat(5);
             }
         }
         
         //si le joueur clique sur "eng"
         if((mouseX > 879 && mouseX < 1003) && (mouseY>166 && mouseY<303)){
             //clique droit -> augementer la stat
-            if((StatsMng.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
-                    StatsMng.getInstance().buffStat(6);
+            if((CharacterStatsManager.getInstance().getLvlBoost() > 0) && (input.isMousePressed(0))){
+                    CharacterStatsManager.getInstance().buffStat(6);
               //clique gauche -> diminuer la stat
-            } else if ((StatsMng.getInstance().getLvlBoost() < StatsMng.getInstance().NB_LVL_BOOST) 
-                    && (StatsMng.getInstance().getStatsUpgrade()[6] > 0) 
+            } else if ((CharacterStatsManager.getInstance().getLvlBoost() < CharacterStatsManager.getInstance().NB_LVL_BOOST) 
+                    && (CharacterStatsManager.getInstance().getStatsUpgrade()[6] > 0) 
                     && (input.isMousePressed(1))){
-                    StatsMng.getInstance().nerfStat(6);
+                    CharacterStatsManager.getInstance().nerfStat(6);
             }
         }
         
         //si le joueur clique sur "effacer", réinitialiser toutes les stats
         if((mouseX > 252 && mouseX < 472) && (mouseY > 37 && mouseY < 87) && (input.isMousePressed(0))){
-           StatsMng.getInstance().resetStats();
+           CharacterStatsManager.getInstance().resetStats();
         }
         
         //si le joueur clique sur "enregistrer", retourner dans le overworld
         if((mouseX > 552 && mouseX < 772) && (mouseY > 37 && mouseY < 87) && (input.isMousePressed(0))){
             for (int j = 0; j < MAX_STATS; j++) {
-                StatsMng.getInstance().setStatsUpgrade(j, 0);
+                CharacterStatsManager.getInstance().setStatsUpgrade(j, 0);
             }
             sbg.enterState(Game.OVERWORLD);
         }

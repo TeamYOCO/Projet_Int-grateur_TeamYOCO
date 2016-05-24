@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.SlickException;
-import playerEngine.StatsMng;
+import playerEngine.CharacterStatsManager;
 import statesOfGame.Overworld;
 
 /**
@@ -46,15 +46,15 @@ public class DataManager {
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
             for (int i = 0; i < Equipment.MAX_STATS; i++) {
-                save.writeInt(StatsMng.getInstance().getStats()[i]);
+                save.writeInt(CharacterStatsManager.getInstance().getStats()[i]);
             }
-            save.writeInt(StatsMng.getInstance().getHp());
+            save.writeInt(CharacterStatsManager.getInstance().getHp());
             save.writeUTF(MiniMap.getFileName());
             save.writeFloat(Entity.getSaveX());
             save.writeFloat(Entity.getSaveY());
-            save.writeInt(StatsMng.getInstance().getLevel());
-            save.writeObject((ArrayList<Equipment>)StatsMng.getInstance().getInventory().getListItemFound());
-            save.writeObject((ArrayList<Equipment>)StatsMng.getInstance().getInventory().getListItemPlayer());
+            save.writeInt(CharacterStatsManager.getInstance().getLevel());
+            save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemFound());
+            save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemPlayer());
             save.flush();
             save.close();
         } catch (IOException ex) {
@@ -66,17 +66,17 @@ public class DataManager {
         try {
             ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
             for (int i = 0; i < Equipment.MAX_STATS; i++) {
-                StatsMng.getInstance().setStats(i, load.readInt());
+                CharacterStatsManager.getInstance().setStats(i, load.readInt());
             }
-            StatsMng.getInstance().setHp(load.readInt());
+            CharacterStatsManager.getInstance().setHp(load.readInt());
             MiniMap.changeMap(load.readUTF());
             Player.setSaveX(load.readFloat());
             Player.setSaveY(load.readFloat());
-            StatsMng.getInstance().setLevel(load.readInt());
+            CharacterStatsManager.getInstance().setLevel(load.readInt());
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
-            StatsMng.getInstance().getInventory().setListItemFound(list);
+            CharacterStatsManager.getInstance().getInventory().setListItemFound(list);
             list = (ArrayList<Equipment>) load.readObject();
-            StatsMng.getInstance().getInventory().setListItemPlayer(list);
+            CharacterStatsManager.getInstance().getInventory().setListItemPlayer(list);
             load.close();
         } catch (IOException e) {
             System.out.println("Erreur de lecture du fichier");

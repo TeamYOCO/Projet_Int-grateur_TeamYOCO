@@ -11,7 +11,7 @@ import static ca.qc.bdeb.info204.Game.HELP;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.DataManager;
-import gameEngine.ResMng;
+import gameEngine.ResManager;
 import items.EquipmentList;
 import maps.MiniMap;
 import org.lwjgl.input.Mouse;
@@ -19,7 +19,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.EmptyTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import playerEngine.StatsMng;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -48,9 +48,9 @@ public class MainMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = ResMng.getInstance().getImage("treesun");
+        background = ResManager.getInstance().getImage("treesun");
         menuMusic = new Music(menuTheme);
-        ResMng resManager = ResMng.getInstance();
+        ResManager resManager = ResManager.getInstance();
         EquipmentList strManager = EquipmentList.getInstance();
         if(DataManager.getInstance().isEmpty()){
             saveFileIsEmpty = true;
@@ -91,7 +91,7 @@ public class MainMenu extends BasicGameState {
                 && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
-                StatsMng.getInstance().addItem("Epee de bois");
+                CharacterStatsManager.getInstance().addItem("Epee de bois");
                 Overworld.setNewGame(true);
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }

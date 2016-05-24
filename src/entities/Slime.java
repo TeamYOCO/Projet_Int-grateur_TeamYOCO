@@ -5,7 +5,7 @@
  */
 package entities;
 
-import gameEngine.ResMng;
+import gameEngine.ResManager;
 import java.util.ArrayList;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
@@ -43,7 +43,7 @@ public class Slime extends Mob implements BadEntity {
         this.exp = 15;
         SpriteSheet moveSpriteSheet = null;
         try {
-            Image temp = ResMng.getInstance().getSpriteSheet("slime").getScaledCopy(2);
+            Image temp = ResManager.getInstance().getSpriteSheet("slime").getScaledCopy(2);
             moveSpriteSheet = new  SpriteSheet(temp, 64, 64);
         } catch (SlickException ex) {
         }

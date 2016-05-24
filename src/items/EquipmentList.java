@@ -5,7 +5,7 @@
  */
 package items;
 
-import gameEngine.ResMng;
+import gameEngine.ResManager;
 import java.io.Serializable;
 import java.util.HashMap;
 import org.newdawn.slick.Animation;
@@ -38,7 +38,7 @@ public class EquipmentList implements Serializable{
     private void loadStrings() throws SlickException{
 //      constructeur Equipment : int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats
 
-        SpriteSheet spriteSheet = ResMng.getInstance().getSpriteSheet("new_items");
+        SpriteSheet spriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
         Animation animation = new Animation();
         for (int i = 0; i < SPRITE_SHEET_HEIGHT; i++) {
             for (int j = 0; j < SPRITE_SHEET_WIDTH; j++) {
