@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="4">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="55" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="163" name="forest_tiles" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="../tiles/forest_tiles.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="419" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="444" name="youngwheat" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/youngwheat.png" width="96" height="192"/>
+ </tileset>
+ <layer name="collision" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YUQoDIQxEd+9/jP0p/So94SJFGkISjY4xlA4stBjj67ga7XF8dZ2f59F4eMzrPEJ0dYwjxTwD+Kp3nviqKL7eOP5b3kHz7fWPcq70U/JkRkg+JFcVmg+tiPXyy9rtX+udyLA+rD4r9hdkngz+af3L51pPUHXEw6jFSbUE5ePM2cDKg+RbIQQfeu1S7eLr6VfaM/Kh37/ZvcXSbr5Wzgzr15rnDHyWdvH1xtN702itm7l7ePqNeomYW54DWYsR9yN+fpHyZvJPatvJZ+XOML89Y4yeWVfyIf7rivKv6s/nF4IPyYi8G6/go7m5Ms4vHWvGP62OSjFWm5ajaHaf1saTuOh3LQfP7+W7Abq/ntAAGQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC4XWuXLEIBAEUOUkSP//sXawW9V+7kGBSloMwxx9+L6u6/l91u9zf97P5/tm7fvseK/P+7vv+3tHnB1nV7ljx3u/nL/j3lViZC07vp+41/PW98SZXeLs638/VnmvQ7xvDPPL3qzrb6+n70Wsu6xlDW1mec5+GtP6Mv4u8fLJfLMv03fmmjmbX/bVe3It+2afV1l3xnJDTNjXrNv+Zrw8+xDbOsWi+6wv80mc2afGk6YDi7vEjJyd+pNYvtnjPJuuyLUph/wt15MTzqrlJ0Zdy/0TB6295Tlhq/XSepqm3GWt9bjNzHwbvxpPpnmqWdaj5jYtbnPMujOO2BYPDV85R/Gad7YY9vBNi7LHzYOm/JpOtnPee7M21eNcGzas0dg5D/U0taVxRj46j4Zx61QnJ93TQ/TZSW/UXvWi+WHzXfHQzjWOOAs1vGl10x3vlWf2ynwW75ZHw27mI0eTx67rew2verRxG09OWFJrmo6p2XrrNC/xmH3JfMSGeThD8Z28arW43nplHlnL5C05y4zR+C3HGoabbkx++xBT3N88U436z4lb4s15Wf/EQ++eNHPSITHqnjyf/X+4u3G1eXHrX/MDOarWtbus2xlas/4q19qeSeubvjpDcd443XirHjafmjAqHtKjvautN983fvMNc5pw4fmmr+r8xMmTlqn1EzZOPpm4FK8nnXt4mu62OBP/p/8b7LE815/UDnXEPr9pkvVMOiDWm983rC/+rs+p+2q7cZvO6dEnH1KvvMtv59C8uPH2pLXG2sOe5jVibPIBMapONC1r+U9cUbud5VP2W1vT1tbPtj5xR86/YaKd87dz8772NC1W38S++jDhsuGreWCeTa6qkW861rS/6Y76kPeecC4uJ/0yP7VLnWiznnBy8mH9xb81zk46Y54NF/ZHbLQ525uGGT1j0mW9UM1yPuq9OjLplPual9jTxgNr+wEgm1J/ABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC6WYAU7jQAxF5xJIgKh2NenNew96NRIpFm9fv7MNjDRKSSfO97f97XIf3+tz3ff989u637Ff1z3XfV33Bddl/7zo77rHfdltTNhaGrt1pvBs64bPH3pm6lnaNaaJMxfsskMby3jEWHsBPnJX+Cbslu2JZ+s72/dzi56nnYlz6R23Hdfnjqvi+irf5ujjRjx+Z8c3+bNftHfDvoO3ZJt54Xj6etXZdKZsOkY8X9zV9WM8xoVxpD3GOeFP3DG+9Lts8R1zx1SxHTs++klfLtqOUfLJV9fH1H3m9VXYCh/jR1/t71Xbdcrv7KvzmnZ55n086hztERP5d510nFnzzF3inn87Zs7VpKmsL+uX/Ur177h09bHd/6v9ErAnjWe/MK+uzVRP9Dv1lrp3H1mX3Weoa+bSPHealuKV8oQ2R4PP70q14RwyxsQjY+JctA9Vv8bnMwmH9dm9s3vWGtj5VM8Wf4Xxz/g3F81DyvekN9QIf29NT7lezxsfV/WSpMGcpS665zix3o3bte/evPVdazTxTe2kB6kvOVfpT9Luqe/KXodtW1usGWP3hxQ754LzjmfdL1KfS3E1hykeR7NHylNyZLxJX+r8EX+Fz/nhPub4pd5B/5yXrm/afIY/z0BdnboOfN7zjnWG9VZ2zsTXvpGr5APvJ11Juefc3NZRjKkx3WyU+qnzIOkfe45nrLIx/sMhNYYxSnplbrq5z/3SHPLss/hoN+kquUn1nmqj6y3koub7DqP73dE8RD7Nhfk399ah8mnDdTvgz1x23HXvTBrp2eWoJx5x51X9JM1s7nupPtIM4N7tvN7wPcvftpJeUxesHT5njUwaxOtP8fk9zh3rJflMvaKrLf5v41l8SYf93qSP1pSuNoj5TP4VvvSeNOMl7jzH8Jy1sOr3LH9db0h97ki7kz+ewX4bX9aB89GYPYOmnug4n8VHvd526U3SizTHuI8zzonv23j8H9GZxfnGumuOunnAdcFcqP5xpkaMj/EjPtdi4s4cep7tfrudwUe7Xd9L2u1t34jvN/yl/uRcZHy7nuvfIpV/lYM/WVUvL6Ofk1I/TtymWv4C83efPAAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YSQ7CMAxFfR5gheAQPWBa9r0otYSlEGLHQD0g8aRsOkhPbn6cFOB9ygfveFG7TY+RCfKZQy14sH4z5PUjyBF9J8jv+ysct3GKlmBAt8M2rtEiAhd49VsiRAR6fp6Oo6yeO9e8a0jripaIb9z2t9vg+QjHAs89WXL08OP2LlkcpV5WhHs1Ho7fYO23x14g2nGUZcTSUZOTEdZ9hXOR5mfrY+3Yc9F8Wy968xCdM5/xkMhznWZvwN333mdx64zk18uIJe1cq725rCzNsKT2Qy/Kx2gN38NtVTwjZTXzuZhqaJHlFXS105C1hpSNbP+4WrL0Eq5Omfx6jln8iPYfa0boHJXV708O7iTLljEAGQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YQQqDMBBF5zbdFXqLQreVblO6bY/TXMB76NWawAxMx4LVCTqL/+ATNWjeQphkiPycG3zjH4aV711LOpVLM6M2pJK7ym1XmynPkpfKY1+dWbb6H9cCPx9R/Y48RvU7lRworl+lOkb2q0g9iVZHhEQx64gg9QR1xAf8fMDPB/x8RPfT56aItS5R3DNTRZ+bUOt8wM8H9qw+sGdtA/x8wM9HZL9M0171kr617Y+P/Gw06c1c5c3r/3LKai7Rd696ad9a1hzYg3iUe+uZ2Y3UtXXSc7ZXPde3/gBQM87hABkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object id="1" type="tp" x="0" y="256" width="11" height="93">
+   <properties>
+    <property name="destMap" value="res/maps/map_2.tmx"/>
+    <property name="destX" value="1568"/>
+    <property name="destY" value="1088"/>
+   </properties>
+  </object>
+  <object id="3" type="tp" x="688" y="259" width="14" height="28">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_1.tmx"/>
+    <property name="destX" value="32"/>
+    <property name="destY" value="672"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
