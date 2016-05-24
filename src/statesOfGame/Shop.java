@@ -150,12 +150,11 @@ public class Shop extends BasicGameState {
         }
         
         if(input.isKeyPressed(Input.KEY_ENTER)){
-                for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
-                    if(equipmentSelected == equipment){
-                        drawPrice = false;
+            for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                if(equipmentSelected != equipment){
+                    if(CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
+                        CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
                     }
-                if(CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
-                CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
                 }
             }
         }
