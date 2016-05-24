@@ -10,6 +10,7 @@ import static ca.qc.bdeb.info204.Game.SHOP;
 import entities.BadEntity;
 import entities.Bat;
 import entities.Bee;
+import entities.Boss;
 import entities.DamageMarker;
 import entities.Entity;
 import entities.Snake;
@@ -154,7 +155,7 @@ public class Overworld extends BasicGameState implements Serializable {
             for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
                 temp2 = temp[i].split(",");
                 if (Integer.parseInt(temp2[0]) == 1) {
-                    this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    this.list.add(new Boss(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 2) {
                     this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 3) {
