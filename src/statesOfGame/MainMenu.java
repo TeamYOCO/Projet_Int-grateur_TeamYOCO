@@ -31,7 +31,7 @@ public class MainMenu extends BasicGameState {
     private final int newGameX = 400, newGameY = 50;
     private final int settingsX = 200, settingsY = 50;
     private final int creditsX = 200, creditsY = 50;
-    private final String menuTheme = "res/musics/102-menu-selection.WAV";
+    private final String menuTheme = "res/musics/FrankJavCee_-_FrankJavCee_VOLUME_1.WAV";
     private Image background;
     private Music menuMusic;
     private boolean stopMusic = true, saveFileIsEmpty;
