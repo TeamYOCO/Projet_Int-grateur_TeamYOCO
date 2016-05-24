@@ -19,15 +19,15 @@ import org.newdawn.slick.SpriteSheet;
  *
  * @author Tomas
  */
-public class Bat extends Mob implements BadEntity {
+public class Snake extends Mob implements BadEntity {
 
-    private float speed = 0.15f;
+    private float speed = 0.1f;
     private MiniMap map;
     private Player player;
     private int aggroRange = 400;
     private boolean aggro = false;
 
-    public Bat(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
+    public Snake(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moveAnimations = new Animation[4];
         this.moving = false;
         this.list = list;
@@ -38,15 +38,17 @@ public class Bat extends Mob implements BadEntity {
         this.yOff = -32;
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
-        this.hitpoints = 40;
-        this.damagePhysical = 10;
+        this.hitpoints = 50;
+       this.damagePhysical = 15;
         this.damageSpecial = 0;
         this.defence = 0;
-        this.specialDefence = 0;
-        this.exp = 15;
+        this.specialDefence = 80;
+        this.exp = 25;
+        this.money = 10;
         SpriteSheet moveSpriteSheet = null;
         try {
-            moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bat");
+            Image temp = ResManager.getInstance().getSpriteSheet("snake").getScaledCopy(2);
+            moveSpriteSheet = new  SpriteSheet(temp, 64, 64);
         } catch (SlickException ex) {
         }
         for (int i = 0; i < 4; i++) {

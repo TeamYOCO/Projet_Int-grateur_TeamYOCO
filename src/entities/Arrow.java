@@ -63,7 +63,7 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
     
     @Override
-    public int getDamage() {
+    public int getDamagePhysical() {
         dead = true;
         return damagePhysical;
     }
@@ -72,6 +72,11 @@ public class Arrow extends Particle implements FriendlyEntity{
     public int getDirection() {
         dead = true;
         return direction;
+    }
+
+    @Override
+    public int getDamageSpecial() {
+        return 0;
     }
     
 }
