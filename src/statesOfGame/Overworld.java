@@ -46,6 +46,7 @@ public class Overworld extends BasicGameState implements Serializable {
     private Hud hud = new Hud();
     private boolean running = false, firstTime;
     private static boolean newGame;
+    private boolean gameSaved = false;
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger=false;
@@ -90,10 +91,10 @@ public class Overworld extends BasicGameState implements Serializable {
             sbg.enterState(Game.LEVELUPSCREEN);
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
-        g.setColor(Color.yellow);
-        g.fillRect(220, 13, 40, 18);
-        g.setColor(Color.black);
-        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
+        
+        if(gameSaved){
+            g.drawString("Partie Sauvegardée", 900, 10);
+        }
     }
 
     @Override
@@ -107,14 +108,14 @@ public class Overworld extends BasicGameState implements Serializable {
                         && entity2 instanceof FriendlyEntity
                         && entity.getHitBox().collision(entity2.getHitBox())
                         && ((BadEntity) entity).isHitable()) {
-                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamage(), ((FriendlyEntity) entity2).getDirection());
+                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(),((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
 //                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
                 }
             }
             if (entity instanceof BadEntity
                     && ((BadEntity)entity).isHitable() && player.isHitable()
                     && player.getHitBox().collision(entity.getHitBox())){
-                player.takeHit(((BadEntity)entity).getDamage(), ((BadEntity)entity).getDirection());
+                player.takeHit(((BadEntity)entity).getDamagePhysical(),((BadEntity)entity).getDamageSpecial(), ((BadEntity)entity).getDirection());
             }
             if (entity.isDead()) {
                 listRemove.add(entity);
@@ -162,6 +163,7 @@ public class Overworld extends BasicGameState implements Serializable {
         //peser sur la touche 'p' pour save
         if (input.isKeyPressed(25)) {
             DataManager.getInstance().save();
+            gameSaved = true;
         }
 
         if (input.isMousePressed(0)) {

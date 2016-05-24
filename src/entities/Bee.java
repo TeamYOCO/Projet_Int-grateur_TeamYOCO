@@ -38,7 +38,10 @@ public class Bee extends Mob implements BadEntity {
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
         this.hitpoints = 50;
-        this.damage = 5;
+        this.damagePhysical = 5;
+        this.damageSpecial = 0;
+        this.defence = 0;
+        this.specialDefence = 0;
         this.money = 5;
         this.exp = 10;
         SpriteSheet moveSpriteSheet = null;

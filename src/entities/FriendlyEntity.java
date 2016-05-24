@@ -11,7 +11,9 @@ package entities;
  */
 public interface FriendlyEntity {
     
-    public int getDamage();
+    public int getDamagePhysical();
+    
+    public int getDamageSpecial();
     
     public int getDirection();
 }

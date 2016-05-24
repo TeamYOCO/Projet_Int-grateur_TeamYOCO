@@ -39,7 +39,10 @@ public class Bat extends Mob implements BadEntity {
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
         this.hitpoints = 40;
-        this.damage = 10;
+        this.damagePhysical = 10;
+        this.damageSpecial = 0;
+        this.defence = 0;
+        this.specialDefence = 0;
         this.exp = 15;
         SpriteSheet moveSpriteSheet = null;
         try {

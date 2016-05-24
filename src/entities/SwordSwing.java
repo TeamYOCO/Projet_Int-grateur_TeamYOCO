@@ -57,12 +57,17 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     @Override
-    public int getDamage() {
+    public int getDamagePhysical() {
         return damagePhysical;
     }
 
     @Override
     public int getDirection() {
         return direction;
+    }
+
+    @Override
+    public int getDamageSpecial() {
+        return 0;
     }
 }
