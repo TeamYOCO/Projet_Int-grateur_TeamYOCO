@@ -42,8 +42,8 @@ public abstract class Mob extends Entity {
             case 2: this.direction = 0; break;
             case 3: this.direction = 1; break;
         }
-        hitpoints -= damage * ((100-defence)/100);
-        hitpoints -= damageSpecial * ((100-specialDefence)/100);
+        hitpoints -= damage * (100-defence)/100;
+        hitpoints -= damageSpecial * (100-specialDefence)/100;
         if (hitpoints <= 0){
             this.dead = true;
             try {

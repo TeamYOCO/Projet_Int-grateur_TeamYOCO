@@ -38,8 +38,8 @@ public class Snake extends Mob implements BadEntity {
         this.yOff = -32;
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
-        this.hitpoints = 50;
-       this.damagePhysical = 15;
+        this.hitpoints = 100;
+        this.damagePhysical = 15;
         this.damageSpecial = 0;
         this.defence = 0;
         this.specialDefence = 80;

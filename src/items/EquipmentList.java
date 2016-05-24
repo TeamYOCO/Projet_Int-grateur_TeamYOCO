@@ -183,10 +183,10 @@ public class EquipmentList implements Serializable{
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW));
+                "Cet arc fera peu de dégat, mais\nvous permettra de vous défendre\nà distance",
+                new int[]{0,5,0,0,0,0,0},EquipmentType.BOW));
         listEquipment.put("Arc elegant",new Equipment(0,0,"Arc elegant",
-                "",
+                "Cet arc, fabriqué par un artisan\nde renom",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.BOW));
         listEquipment.put("Arc lourd",new Equipment(0,0,"Arc lourd",
                 "",
