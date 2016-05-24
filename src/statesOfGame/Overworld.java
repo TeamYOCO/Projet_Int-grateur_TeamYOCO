@@ -52,6 +52,7 @@ public class Overworld extends BasicGameState implements Serializable {
     private boolean mapChanger=false;
     private String oldMusic="res/musics/006-link-s-house.WAV";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
+    private int savedGameCompteur = 0;
 
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
@@ -92,8 +93,10 @@ public class Overworld extends BasicGameState implements Serializable {
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
         
-        if(gameSaved){
-            g.drawString("Partie Sauvegardée", 900, 10);
+        if(gameSaved && savedGameCompteur < 200){
+            g.setColor(Color.white);
+            g.drawString("Partie Sauvegardée", 800, 10);
+            savedGameCompteur += 1;
         }
     }
 
