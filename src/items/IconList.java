@@ -7,6 +7,7 @@ package items;
 
 import gameEngine.ResManager;
 import java.util.HashMap;
+import java.util.TreeMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -19,11 +20,11 @@ import org.newdawn.slick.SpriteSheet;
 public class IconList{
     
     private static IconList instance = null;
-    private final HashMap<String,Image> listIcon;
+    private final TreeMap<String,Image> listIcon;
     private final int SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     
     private IconList() throws SlickException{
-        listIcon = new HashMap();
+        listIcon = new TreeMap();
         loadStrings();
     }
     
@@ -104,7 +105,7 @@ public class IconList{
         
     }
     
-    public HashMap<String, Image> getListIcon() {
+    public TreeMap<String, Image> getListIcon() {
         return listIcon;
     }
 }

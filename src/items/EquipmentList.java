@@ -8,6 +8,7 @@ package items;
 import gameEngine.ResManager;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.TreeMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -19,11 +20,11 @@ import org.newdawn.slick.SpriteSheet;
 public class EquipmentList implements Serializable{
     
     private static EquipmentList instance = null;
-    private final HashMap<String,Equipment> listEquipment;
+    private final TreeMap<String,Equipment> listEquipment;
     private final int SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     
     private EquipmentList() throws SlickException{
-        listEquipment = new HashMap();
+        listEquipment = new TreeMap();
         loadStrings();
     }
     
@@ -215,8 +216,12 @@ public class EquipmentList implements Serializable{
         
     }
     
-    public HashMap<String, Equipment> getListEquipment() {
+    public TreeMap<String, Equipment> getListEquipment() {
         return listEquipment;
+    }
+    
+    public TreeMap<String,Equipment> getReversedListEquipment(){
+        return new TreeMap<>(listEquipment.descendingMap());
     }
     
     public Equipment getEquipment(String name){
