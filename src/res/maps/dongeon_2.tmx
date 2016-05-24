@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="5">
  <properties>
-  <property name="ennemy" value=""/>
+  <property name="ennemy" value="7;3,960,1760;4,960,1440;2,1280,1120;4,1728,1728;3,1664,704;2,1088,640;3,352,224"/>
   <property name="music" value="res/musics/Dark_chamber.WAV"/>
  </properties>
  <tileset firstgid="1" name="cavern_ruins" tilewidth="32" tileheight="32" tilecount="384" columns="24">
@@ -68,7 +68,7 @@
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="40" height="20">
+ <objectgroup name="Object Layer 1" width="30" height="30">
   <properties>
    <property name="ennemy" value="6;2,960,1760;1,960,1440;1,1280,1120;2,1760,1760;2,1600,704;2,960,640"/>
    <property name="music" value="res/musics/Dark_chamber.WAV"/>
