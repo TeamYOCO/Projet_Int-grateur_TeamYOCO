@@ -92,7 +92,6 @@ public class Overworld extends BasicGameState implements Serializable {
         g.setColor(Color.yellow);
         g.fillRect(220, 13, 40, 18);
         g.setColor(Color.black);
-        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
     }
 
     @Override
@@ -106,14 +105,14 @@ public class Overworld extends BasicGameState implements Serializable {
                         && entity2 instanceof FriendlyEntity
                         && entity.getHitBox().collision(entity2.getHitBox())
                         && ((BadEntity) entity).isHitable()) {
-                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamage(), ((FriendlyEntity) entity2).getDirection());
+                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(),((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
 //                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
                 }
             }
             if (entity instanceof BadEntity
                     && ((BadEntity)entity).isHitable() && player.isHitable()
                     && player.getHitBox().collision(entity.getHitBox())){
-                player.takeHit(((BadEntity)entity).getDamage(), ((BadEntity)entity).getDirection());
+                player.takeHit(((BadEntity)entity).getDamagePhysical(),((BadEntity)entity).getDamageSpecial(), ((BadEntity)entity).getDirection());
             }
             if (entity.isDead()) {
                 listRemove.add(entity);

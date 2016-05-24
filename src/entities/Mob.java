@@ -22,7 +22,7 @@ public abstract class Mob extends Entity {
     protected int hitpoints;
     protected int direction = 2;
     protected boolean moving;
-    protected int damage;
+    protected int damagePhysical, damageSpecial, defence, specialDefence;
     protected float knockbackTimer = 0;
     protected int exp = 0;
     protected int money;
@@ -35,14 +35,15 @@ public abstract class Mob extends Entity {
             return false;
     }
     
-    public void takeHit(int damage, int hitDirection) {
+    public void takeHit(int damage, int damageSpecial, int hitDirection) {
         switch(hitDirection){
             case 0: this.direction = 2; break;
             case 1: this.direction = 3; break;
             case 2: this.direction = 0; break;
             case 3: this.direction = 1; break;
         }
-        hitpoints -= damage;
+        hitpoints -= damage * ((100-defence)/100);
+        hitpoints -= damageSpecial * ((100-specialDefence)/100);
         if (hitpoints <= 0){
             this.dead = true;
             try {
@@ -54,8 +55,12 @@ public abstract class Mob extends Entity {
         this.knockbackTimer = 200;
     }
 
-    public int getDamage() {
-        return damage;
+    public int getDamagePhysical() {
+        return damagePhysical;
+    }
+    
+    public int getDamageSpecial(){
+        return damageSpecial;
     }
     
     public int getDirection(){

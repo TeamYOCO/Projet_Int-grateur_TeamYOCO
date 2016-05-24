@@ -259,10 +259,10 @@ public class Player extends Mob {
     }
 
     @Override
-    public void takeHit(int damage, int hitDirection) {
-        super.takeHit(damage, hitDirection);
+    public void takeHit(int damage, int damageSpecial, int hitDirection) {
+        super.takeHit(damage, damageSpecial, hitDirection);
         try {
-            CharacterStatsManager.getInstance().takeDamage(damage);
+            CharacterStatsManager.getInstance().takeDamage(damage, damageSpecial);
         } catch (SlickException ex) {
         }
     }

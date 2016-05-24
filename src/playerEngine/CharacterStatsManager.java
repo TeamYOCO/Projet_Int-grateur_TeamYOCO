@@ -193,8 +193,9 @@ public class CharacterStatsManager {
         this.lvlIsUp = bool;
     }
 
-    public void takeDamage(int damage){
-        this.hp -= damage;
+    public void takeDamage(int damage, int damageSpecial){
+        this.hp -= damage * ((100-this.stats[2])/100);
+        this.hp -= damageSpecial * ((100-this.stats[4])/100);
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);

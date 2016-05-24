@@ -43,10 +43,14 @@ public class Hud {
         g.setColor(XP_COLOR);
         g.fillRect(BAR_X, XP_BAR_Y, ((float)CharacterStatsManager.getInstance().getExp()/CharacterStatsManager.getInstance().getExpNeeded())*BAR_WIDTH, BAR_HEIGHT);
         g.drawImage(playerbars, P_BAR_X, P_BAR_Y);
-        g.setColor(Color.blue);
+        g.setColor(Color.black);
         g.drawString(""+CharacterStatsManager.getInstance().getHp(), 100, LIFE_BAR_Y);
         g.drawString(""+CharacterStatsManager.getInstance().getExp(), 100, XP_BAR_Y);
         g.drawString("Level : "+CharacterStatsManager.getInstance().getLevel(), 27, 80);
+        g.setColor(Color.yellow);
+        g.fillRect(220, 13, 40, 18);
+        g.setColor(Color.black);
+        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
     }
 
 }

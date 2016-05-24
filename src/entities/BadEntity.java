@@ -13,9 +13,11 @@ import org.newdawn.slick.Graphics;
  */
 public interface BadEntity {
 
-    public void takeHit(int damage, int hitDirection);
+    public void takeHit(int damage, int damageSpecial, int hitDirection);
     
-    public int getDamage();
+    public int getDamagePhysical();
+    
+    public int getDamageSpecial();
     
     public boolean isHitable();
     
