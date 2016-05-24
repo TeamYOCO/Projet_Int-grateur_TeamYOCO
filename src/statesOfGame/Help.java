@@ -7,6 +7,7 @@ package statesOfGame;
 
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.MAINMENU;
+import static ca.qc.bdeb.info204.Game.WIDTH;
 import gameEngine.ResManager;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
@@ -50,7 +51,7 @@ public class Help extends BasicGameState {
                 + "Chaque attaque inflige des dégats aux ennemis en fonction de vos \nstatistiques d'attaque et d'attaque spéciale et vous coûte une certaine quantité d'énergie\n"
                 + "Chaque ennemi tué vous fait gagner de l'argent et de l'expérience\n"
                 + "À chaque fois que vous augmenté de niveau, vous obtenez 10 points \nd'augmentation de stats que vous pouvez utiliser pour augmenter n'importe quelle des stats suivantes :\n"
-                + "- Vie\n- Attaque\n- Défense\n- Spécial Attaque\n- Spécial Défense\n- Vitesse\n-"
+                + "- Vie\n- Attaque\n- Défense\n- Spécial Attaque\n- Spécial Défense\n- Vitesse\n- Énergie\n"
                 + "Vous pouvez également accéder à l'inventaire avec la touche 'e'\n"
                 + "Pour sauvegarder votre proression, cliquer sur 'p'", 100, 100);
         g.drawString("< Retour", 15, HEIGHT-25);
