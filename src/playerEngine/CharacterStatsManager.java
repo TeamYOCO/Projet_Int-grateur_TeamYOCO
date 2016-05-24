@@ -24,6 +24,7 @@ public class CharacterStatsManager {
     protected int hp;
     protected int expNeeded;
     protected int exp;
+    protected int money;
     protected int level;
     protected int nbLvlBoost = 0;
     protected ArrayList skillSet;
@@ -44,6 +45,7 @@ public class CharacterStatsManager {
 
         this.expNeeded = 10;
         this.exp = 0;
+        this.money = 0;
         this.level = 1;
         this.anim = null;
         this.inventory = new Inventory();
@@ -68,6 +70,10 @@ public class CharacterStatsManager {
         if (exp >= expNeeded) {
             levelUp();
         }
+    }
+    
+    public void gainMoney(int moneyGained){
+        money += moneyGained;
     }
 
     public void levelUp() {
@@ -108,6 +114,10 @@ public class CharacterStatsManager {
 
     public int[] getStats() {
         return stats;
+    }
+    
+    public int getMoney(){
+        return money;
     }
     
     public int[] getStatsUpgrade(){

@@ -61,12 +61,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
 
 ////  creer la police de caractère
-//        Font font = new Font("Serif", Font.BOLD, 15);
-//        ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
-//        ufont.addAsciiGlyphs();
-//        ufont.addGlyphs(400, 600);
-//        ufont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
-//        ufont.loadGlyphs();
+        ufont = ResManager.getInstance().getFont("Sherif", 15);
 //        manager.addItem("Bottes Royales");
 //        manager.addItem("Casque Metallique");
 //        manager.addItem("Armure d'Argent");
@@ -87,9 +82,9 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         Overworld.getScreenShot().draw(0, 0);
         inventoryPic.draw(0, 0);
         g.setColor(Color.black);
-//        g.setFont(ufont);
+        g.setFont(ufont);
         int i = 0;
-
+        
         for (int j = 0; j < statsManager.getStats().length; j++) {
             g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 23));
         }
