@@ -43,7 +43,7 @@ public class CharacterStatsManager {
         stats[5] = 10;
         stats[6] = 10;
 
-        this.expNeeded = 10;
+        this.expNeeded = 50;
         this.exp = 0;
         this.money = 0;
         this.level = 1;
