@@ -20,11 +20,14 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Boss extends Mob implements BadEntity {
 
-    private float speed = 0.25f;
+    private float speed = 0.15f;
     private MiniMap map;
     private Player player;
     private int aggroRange = 200;
     private boolean aggro = false;
+    private int attCounter = 0;
+    private int attCooldown = 0;
+    private boolean attaquing = false;
     private Animation[] attackAnimation;
 
     public Boss(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) throws SlickException {
@@ -35,11 +38,11 @@ public class Boss extends Mob implements BadEntity {
         this.x = x;
         this.y = y;
         this.map = map;
-        this.xOff = -16;
-        this.yOff = -32;
+        this.xOff = -32;
+        this.yOff = -64;
         this.player = player;
         this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
-        this.hitpoints = 50;
+        this.hitpoints = 500;
         this.damagePhysical = 5;
         this.damageSpecial = 0;
         this.defence = 0;
@@ -122,13 +125,25 @@ public class Boss extends Mob implements BadEntity {
     @Override
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {
-            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64);
         } else {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32, Color.red);
         }
         g.setColor(Color.red);
-        g.drawString(""+this.hitpoints, x - 10, y - 45);
+        g.drawString(""+this.hitpoints, x - 20, y - 80);
         hitBox.render(g);
+        g.setColor(Color.red);
+        g.fillOval(x, y, 2, 2);
+    }
+    
+    public void attack(){
+        boolean isInRange = false;
+        switch (direction){
+            case 0:
+                if (player.getX() > this.x-16){
+                    
+                }
+        }
     }
 
 }
