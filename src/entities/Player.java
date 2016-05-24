@@ -36,11 +36,20 @@ public class Player extends Mob {
     private Animation[] bowAnimation;
     private Animation[] castAnimations;
 
+    /**
+     *
+     * @param map
+     * @param list
+     */
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
         this.list = list;
     }
 
+    /**
+     *
+     * @throws SlickException
+     */
     public void init() throws SlickException {
         this.moveAnimations = new Animation[8];
         this.attackAnimation = new Animation[4];
@@ -70,6 +79,11 @@ public class Player extends Mob {
 
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         speed = 0.02f * CharacterStatsManager.getInstance().getStats()[5];
@@ -93,7 +107,12 @@ public class Player extends Mob {
     }
 
     // Update la position et l'action du joueur
-    @Override
+
+    /**
+     *
+     * @param delta
+     */
+        @Override
     public void update(int delta) {
         this.setX(Player.getSaveX());
         this.setY(Player.getSaveY());
@@ -178,6 +197,10 @@ public class Player extends Mob {
         return futurY;
     }
 
+    /**
+     *
+     * @throws SlickException
+     */
     public void attack() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSwordEquiped()) {
             attacking = true;
@@ -219,6 +242,10 @@ public class Player extends Mob {
         }
     }
 
+    /**
+     *
+     * @throws SlickException
+     */
     public void shoot() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isBowEquiped()) {
             shooting = true;
@@ -232,6 +259,10 @@ public class Player extends Mob {
         }
     }
 
+    /**
+     *
+     * @throws SlickException
+     */
     public void cast() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()) {
             casting = true;
@@ -244,26 +275,53 @@ public class Player extends Mob {
     }
 
     // Les méthodes suivantes sont des getters/setters
-    public int getDirection() {
+
+    /**
+     *
+     * @return
+     */
+        public int getDirection() {
         return direction;
     }
 
+    /**
+     *
+     * @param direction
+     */
     public void setDirection(int direction) {
         this.direction = direction;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getMoving() {
         return moving;
     }
 
+    /**
+     *
+     * @param moving
+     */
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAttacking() {
         return attacking;
     }
 
+    /**
+     *
+     * @param damage
+     * @param damageSpecial
+     * @param hitDirection
+     */
     @Override
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
         super.takeHit(damage, damageSpecial, hitDirection);
@@ -273,6 +331,9 @@ public class Player extends Mob {
         }
     }
 
+    /**
+     *
+     */
     public void test() {
         System.out.println(map.isCollision(x, y));
         try {

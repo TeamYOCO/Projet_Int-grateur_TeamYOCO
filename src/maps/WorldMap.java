@@ -15,6 +15,10 @@ import java.util.HashMap;
  */
 public class WorldMap {
     private HashMap<String, MiniMap> world;
+
+    /**
+     *
+     */
     public static WorldMap instance = null;
 
     private WorldMap() {
@@ -30,6 +34,10 @@ public class WorldMap {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static WorldMap getInstance() {
         if (instance == null){
             instance = new WorldMap();
@@ -37,6 +45,11 @@ public class WorldMap {
         return instance;
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public MiniMap getMap(String name){
         return world.get(name);
     }

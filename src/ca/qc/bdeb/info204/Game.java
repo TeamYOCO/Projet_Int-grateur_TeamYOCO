@@ -21,19 +21,70 @@ import statesOfGame.InventoryMenu;
 import statesOfGame.LevelUpScreen;
 import statesOfGame.Shop;
 
+/**
+ *
+ * @author Tomas
+ */
 public class Game extends StateBasedGame {
 
+    /**
+     *
+     */
     public static final String GAMENAME = "Projet intégrateur V1.0";
-    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5, SHOP = 6;
+    public static final int MAINMENU = 0,
+
+    /**
+     *
+     */
+    OVERWORLD = 1, INVENTORY = 2,
+
+    /**
+     *
+     */
+    CREDITS = 3,
+
+    /**
+     *
+     */
+    LEVELUPSCREEN = 4,
+
+    /**
+     *
+     */
+    HELP = 5,
+
+    /**
+     *
+     */
+    SHOP = 6;
+
+    /**
+     *
+     */
     public static final int WIDTH = 1024;
+
+    /**
+     *
+     */
     public static final int HEIGHT = 704;
 
     //C'est ici la classe main du jeu
-    public Game(String name) throws SlickException {
+
+    /**
+     *
+     * @param name
+     * @throws SlickException
+     */
+        public Game(String name) throws SlickException {
         super(name);
 
     }
 
+    /**
+     *
+     * @param gc
+     * @throws SlickException
+     */
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
         this.addState(new MainMenu(MAINMENU));
@@ -46,7 +97,13 @@ public class Game extends StateBasedGame {
     }
 
     // Boucle main
-    public static void main(String[] args) throws SlickException {
+
+    /**
+     *
+     * @param args
+     * @throws SlickException
+     */
+        public static void main(String[] args) throws SlickException {
         loadNatives(Game.class);
         AppGameContainer appGc;
         try {

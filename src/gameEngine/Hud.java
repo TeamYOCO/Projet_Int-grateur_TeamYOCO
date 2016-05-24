@@ -30,10 +30,19 @@ public class Hud {
 
     private Image playerbars;
 
+    /**
+     *
+     * @throws SlickException
+     */
     public void init() throws SlickException {
         this.playerbars = ResManager.getInstance().getImage("player-bar");
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     public void render(Graphics g) throws SlickException {
         g.resetTransform();
         g.setColor(LIFE_COLOR);

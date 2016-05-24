@@ -22,20 +22,36 @@ public class MiniMap {
     private static String fileName;
     private static TiledMap tiledMap;
 
+    /**
+     *
+     */
     public MiniMap() {
     }
     
+    /**
+     *
+     * @param path
+     */
     public MiniMap(String path) {
         MiniMap.fileName = path;
     }
 
     // Initialise la map dans la boucle init() du jeu
-    public void init() throws SlickException {
+
+    /**
+     *
+     * @throws SlickException
+     */
+        public void init() throws SlickException {
         fileName = "res/maps/Maison_1.tmx";
         MiniMap.tiledMap = new TiledMap(fileName);
     }
 
-    
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     public void renderBackground(Graphics g) throws SlickException {
         tiledMap.render(0, 0, 1);
         tiledMap.render(0, 0, 2);
@@ -44,14 +60,31 @@ public class MiniMap {
     }
 
     // Affiche le foreground de la map
-    public void renderForeground() {
+
+    /**
+     *
+     */
+        public void renderForeground() {
         tiledMap.render(0, 0, 5);
         tiledMap.render(0, 0, 6);
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param delta
+     * @throws SlickException
+     */
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean isCollision(float x, float y) {
         int tileW = MiniMap.tiledMap.getTileWidth();
         int tileH = MiniMap.tiledMap.getTileHeight();
@@ -66,46 +99,100 @@ public class MiniMap {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public TiledMap getTiledMap() {
         return tiledMap;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String getFileName(){
         return fileName;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getObjectCount() {
         return MiniMap.tiledMap.getObjectCount(0);
     }
 
+    /**
+     *
+     * @param objectID
+     * @return
+     */
     public String getObjectType(int objectID) {
         return MiniMap.tiledMap.getObjectType(0, objectID);
     }
 
+    /**
+     *
+     * @param objectID
+     * @return
+     */
     public float getObjectX(int objectID) {
         return MiniMap.tiledMap.getObjectX(0, objectID);
     }
 
+    /**
+     *
+     * @param objectID
+     * @return
+     */
     public float getObjectY(int objectID) {
         return MiniMap.tiledMap.getObjectY(0, objectID);
     }
 
+    /**
+     *
+     * @param objectID
+     * @return
+     */
     public float getObjectWidth(int objectID) {
         return MiniMap.tiledMap.getObjectWidth(0, objectID);
     }
 
+    /**
+     *
+     * @param objectID
+     * @return
+     */
     public float getObjectHeight(int objectID) {
         return MiniMap.tiledMap.getObjectHeight(0, objectID);
     }
 
+    /**
+     *
+     * @param objectID
+     * @param propertyName
+     * @param def
+     * @return
+     */
     public String getObjectProperty(int objectID, String propertyName, String def) {
         return MiniMap.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public String getMapProperty(String name){
         return tiledMap.getMapProperty(name, "0");
     }
 
+    /**
+     *
+     * @param file
+     * @throws SlickException
+     */
     public static void changeMap(String file) throws SlickException {
         fileName = file;
         tiledMap = new TiledMap(file);  

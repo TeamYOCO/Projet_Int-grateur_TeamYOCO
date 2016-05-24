@@ -35,6 +35,10 @@ public class DataManager {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public static DataManager getInstance(){
         if (instance == null) {
             instance = new DataManager();
@@ -42,6 +46,10 @@ public class DataManager {
         return instance;
     }
     
+    /**
+     *
+     * @throws SlickException
+     */
     public void save() throws SlickException{
         try {
             ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("save.dat"));
@@ -62,6 +70,10 @@ public class DataManager {
         }
     }
     
+    /**
+     *
+     * @throws SlickException
+     */
     public void load() throws SlickException{
         try {
             ObjectInputStream load = new ObjectInputStream(new FileInputStream("save.dat"));
@@ -85,6 +97,10 @@ public class DataManager {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isEmpty(){
         boolean isEmpty = false;
         try {

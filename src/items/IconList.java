@@ -28,6 +28,11 @@ public class IconList{
         loadStrings();
     }
     
+    /**
+     *
+     * @return
+     * @throws SlickException
+     */
     public static IconList getInstance() throws SlickException {
         if (instance == null){
             instance = new IconList();
@@ -105,6 +110,10 @@ public class IconList{
         
     }
     
+    /**
+     *
+     * @return
+     */
     public TreeMap<String, Image> getListIcon() {
         return listIcon;
     }

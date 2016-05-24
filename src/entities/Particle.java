@@ -16,10 +16,34 @@ import org.newdawn.slick.SlickException;
  */
 public class Particle extends Entity {
 
+    /**
+     *
+     */
     protected Animation animation = new Animation();
-    protected int lifeSpam,  direction;
-    protected float speedX, speedY;
+    protected int lifeSpam,
 
+    /**
+     *
+     */
+    direction;
+    protected float speedX,
+
+    /**
+     *
+     */
+    speedY;
+
+    /**
+     *
+     * @param animation
+     * @param lifeSpam
+     * @param speedX
+     * @param speedY
+     * @param direction
+     * @param x
+     * @param y
+     * @param hitBox
+     */
     public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Box hitBox) {
         this.animation = animation;
         this.lifeSpam = lifeSpam;
@@ -31,11 +55,16 @@ public class Particle extends Entity {
         this.hitBox = hitBox;
     }
 
+    /**
+     *
+     */
     public Particle() {
     }
     
-
-
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         lifeSpam -= delta;
@@ -47,6 +76,11 @@ public class Particle extends Entity {
         hitBox.setPos(x+xOff, y+yOff);
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);

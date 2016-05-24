@@ -38,15 +38,30 @@ public class MainMenu extends BasicGameState {
     private Music menuMusic;
     private boolean stopMusic = true, saveFileIsEmpty;
 
+    /**
+     *
+     * @param stateID
+     * @throws SlickException
+     */
     public MainMenu(int stateID) throws SlickException {
         MainMenu.stateID = stateID;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = ResManager.getInstance().getImage("treesun");
@@ -60,6 +75,13 @@ public class MainMenu extends BasicGameState {
         }
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
@@ -80,6 +102,13 @@ public class MainMenu extends BasicGameState {
         g.drawString("Credits", WIDTH / 2 + creditsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param i
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
@@ -131,6 +160,11 @@ public class MainMenu extends BasicGameState {
         
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     */
     @Override
     public void enter(GameContainer gc, StateBasedGame sbg) {
         if (stopMusic) {
@@ -139,6 +173,11 @@ public class MainMenu extends BasicGameState {
         }
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     */
     @Override
     public void leave(GameContainer gc, StateBasedGame sbg) {
         if (stopMusic) {
