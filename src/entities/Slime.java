@@ -122,7 +122,7 @@ public class Slime extends Mob implements BadEntity {
             g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
         }
         g.setColor(Color.red);
-        g.drawString(""+this.hitpoints, x - 7, y - 45);
+        g.drawString(""+this.hitpoints, x, y - 45);
 //        hitBox.render(g);
     }
 
