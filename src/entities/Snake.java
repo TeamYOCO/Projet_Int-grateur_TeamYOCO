@@ -130,6 +130,4 @@ public class Snake extends Mob implements BadEntity {
         g.drawString(""+this.hitpoints, x, y - 45);
 //        hitBox.render(g);
     }
-
-    
 }

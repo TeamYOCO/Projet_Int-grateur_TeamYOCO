@@ -60,27 +60,28 @@ public class Boss extends Mob implements BadEntity {
 
     @Override
     public void update(int delta) {
-        if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
+        if (player.getX() < this.x + aggroRange && player.getX() > this.x - aggroRange && player.getY() < this.y + aggroRange && player.getY() > this.y - aggroRange) {
             moving = true;
             aggro = true;
         }
-        if (moving && knockbackTimer <= 0) {
-                int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
-                if (this.x < player.getX() && relativeX > relativeY) {
-                    this.direction = 3;
-                } else if (this.x > player.getX() && relativeX > relativeY) {
-                    this.direction = 1;
-                } else if (this.y < player.getY() && relativeY > relativeX) {
-                    this.direction = 2;
-                } else if (this.y > player.getY() && relativeY > relativeX) {
-                    this.direction = 0;
-                }
+        if (moving && knockbackTimer <= 0 && !attaquing) {
+            int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
+            if (this.x < player.getX() && relativeX > relativeY) {
+                this.direction = 3;
+            } else if (this.x > player.getX() && relativeX > relativeY) {
+                this.direction = 1;
+            } else if (this.y < player.getY() && relativeY > relativeX) {
+                this.direction = 2;
+            } else if (this.y > player.getY() && relativeY > relativeX) {
+                this.direction = 0;
+            }
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
             }
+            this.attack();
         } else if (knockbackTimer > 0) {
-            moving=true;
+            moving = true;
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(-delta), futurY(-delta))) {
@@ -90,6 +91,14 @@ public class Boss extends Mob implements BadEntity {
             speed = tempSpeed;
             knockbackTimer -= delta;
 
+        } else if (attCooldown > 0) {
+            attCooldown -= delta;
+            if (attCounter > 0 && attaquing) {
+                attCounter -= delta;
+                if (attCounter <= 0) {
+                    attaquing = false;
+                }
+            }
         }
         hitBox.setPos(x + xOff, y + yOff);
     }
@@ -126,23 +135,49 @@ public class Boss extends Mob implements BadEntity {
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64);
+        } else if (attaquing && isHitable()) {
+            g.drawAnimation(attackAnimation[direction], x - 96, y - 128);
         } else {
-            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32, Color.red);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64, Color.red);
         }
         g.setColor(Color.red);
-        g.drawString(""+this.hitpoints, x - 20, y - 80);
+        g.drawString("" + this.hitpoints, x - 20, y - 80);
         hitBox.render(g);
         g.setColor(Color.red);
         g.fillOval(x, y, 2, 2);
     }
-    
-    public void attack(){
+
+    public void attack() {
         boolean isInRange = false;
-        switch (direction){
+        switch (direction) {
             case 0:
-                if (player.getX() > this.x-16){
-                    
+                if (player.getX() > this.x - 32 && player.getX() < this.x + 32 && player.getY() > this.y - 128 && player.getY() < this.y - 64) {
+                    isInRange = true;
                 }
+                break;
+            case 1:
+                if (player.getX() > this.x - 96 && player.getX() < this.x - 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
+                    isInRange = true;
+                }
+                break;
+            case 2:
+                if (player.getX() > this.x - 32 && player.getX() < this.x + 32 && player.getY() > this.y && player.getY() < this.y + 64) {
+                    isInRange = true;
+                }
+                break;
+            case 3:
+                if (player.getX() > this.x + 96 && player.getX() < this.x + 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
+                    isInRange = true;
+                }
+                break;
+        }
+        if (isInRange && attCooldown <= 0) {
+            attaquing = true;
+            attCooldown = 5000;
+            attCounter = 500;
+            switch (direction) {
+
+            }
         }
     }
 
