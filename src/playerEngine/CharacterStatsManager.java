@@ -36,10 +36,10 @@ public class CharacterStatsManager {
         
         hp = 100;
         stats[0] = 100;
-        stats[1] = 10;
-        stats[2] = 10;
-        stats[3] = 10;
-        stats[4] = 10;
+        stats[1] = 5;
+        stats[2] = 5;
+        stats[3] = 5;
+        stats[4] = 5;
         stats[5] = 10;
         stats[6] = 10;
 
@@ -194,8 +194,8 @@ public class CharacterStatsManager {
     }
 
     public void takeDamage(int damage, int damageSpecial){
-        this.hp -= damage * ((100-this.stats[2])/100);
-        this.hp -= damageSpecial * ((100-this.stats[4])/100);
+        this.hp -= damage * (100-this.stats[2])/100;
+        this.hp -= damageSpecial * (100-this.stats[4])/100;
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);
