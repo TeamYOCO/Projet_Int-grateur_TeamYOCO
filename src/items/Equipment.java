@@ -40,6 +40,7 @@ public class Equipment implements Serializable{
     private ArrayList<Particle> particle;
     private EquipmentType equipmentType;
     private int price;
+    private boolean shopSelected = false;
 
     public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType, int price) {
         this.inventoryX = inventoryX;
@@ -117,6 +118,10 @@ public class Equipment implements Serializable{
         return description;
     }
     
+    public boolean getShopSelected(){
+        return shopSelected;
+    }
+    
     public String getStatName(int stat){
         switch(stat){
             case 0 : return "Vie-";
@@ -148,5 +153,9 @@ public class Equipment implements Serializable{
 
     public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
+    }
+    
+    public void setShopSelected(boolean shopSelected){
+        this.shopSelected = shopSelected;
     }
 }

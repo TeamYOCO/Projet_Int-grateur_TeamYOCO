@@ -5,6 +5,7 @@
  */
 package statesOfGame;
 
+import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
 import org.lwjgl.input.Mouse;
@@ -38,28 +39,30 @@ public class Shop extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        background = Overworld.getScreenShot();
+        EquipmentList.getInstance().getListEquipment().get("Jambieres Emeraudes").setShopSelected(true);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 //        background.draw(0, 0);
-        
+        int itemCompteur = 0;
         g.setColor(Color.gray);
-        g.fillRect(800, 50, 200, 600);
-        g.setColor(Color.lightGray);
-        for (int i = 0; i < 10; i++) {
-            g.fillRect(810, 55+(60*i), 50, 50);
+        g.fillRect(700, 50, 300, 600);
+        g.setColor(Color.black);
+
+        
+        for (String key : IconList.getInstance().getListIcon().keySet()) {
+            if (EquipmentList.getInstance().getListEquipment().get(key).getShopSelected()) {
+                g.setColor(Color.orange);
+            } else {
+                g.setColor(Color.lightGray);
+            }
+            g.fillRect(710, 55 + (60 * itemCompteur), 50, 50);
+            IconList.getInstance().getListIcon().get(key).draw(719, 64 + (60 * itemCompteur));
+            g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getName(), 770, 60 + (60 * itemCompteur));
+            g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getPrice() + "$", 770, 80 + (60 * itemCompteur));
+            itemCompteur += 1;
         }
-        IconList.getInstance().getListIcon().get("Casque Antique").draw(819,64+(0));
-        IconList.getInstance().getListIcon().get("Casque Metallique").draw(819,64+(60));
-        IconList.getInstance().getListIcon().get("Casque d'Argent").draw(819,64+(120));
-        IconList.getInstance().getListIcon().get("Casque Emeraude").draw(819,64+(180));
-        IconList.getInstance().getListIcon().get("Casque Royal").draw(819,64+(240));
-        IconList.getInstance().getListIcon().get("Armure Antique").draw(819,64+(300));
-        IconList.getInstance().getListIcon().get("Armure Metallique").draw(819,64+(360));
-        IconList.getInstance().getListIcon().get("Armure d'Argent").draw(819,64+(420));
-        IconList.getInstance().getListIcon().get("Armure Emeraude").draw(819,64+(480));
-        IconList.getInstance().getListIcon().get("Armure Royale").draw(819,64+(540));
 
     }
 
@@ -70,6 +73,31 @@ public class Shop extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         
+        boolean next = false;
+        
+        if(input.isKeyPressed(Input.KEY_DOWN)){
+            for (Equipment equipment : EquipmentList.getInstance().getListEquipment().values()) {
+                if(next){
+                    equipment.setShopSelected(true);
+                    next = false;
+                }
+                if(equipment.getShopSelected()){
+                    next = true;
+                }
+            }
+        }
+        
+        if(input.isKeyPressed(Input.KEY_UP)){
+            for (Equipment equipment : EquipmentList.getInstance().getListEquipment().values()) {
+                if(next){
+                    equipment.setShopSelected(true);
+                    next = false;
+                }
+                if(equipment.getShopSelected()){
+                    next = true;
+                }
+            }
+        }
 
     }
 }
