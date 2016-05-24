@@ -64,7 +64,7 @@ public class Shop extends BasicGameState {
      */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-//        background = Overworld.getScreenShot();
+        background = Overworld.getScreenShot();
         int compteur = 0;
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
     }
@@ -78,7 +78,7 @@ public class Shop extends BasicGameState {
      */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-//        background.draw(0, 0);
+        background.draw(0, 0);
         int itemCompteur = 0, displayCompteur = 0;
         g.setColor(Color.gray);
         g.fillRect(700, 50, 300, 600);
