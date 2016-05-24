@@ -23,6 +23,14 @@ public class NPC extends Entity {
     private String text;
     private Animation moveAnimations[];
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param text
+     * @param type
+     * @param spriteType
+     */
     public NPC(int x, int y, String text, NpcType type, int spriteType) {
         this.x = x;
         this.y = y;
@@ -47,11 +55,20 @@ public class NPC extends Entity {
         }
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         

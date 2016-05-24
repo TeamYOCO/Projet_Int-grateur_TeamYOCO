@@ -11,9 +11,21 @@ package entities;
  */
 public interface FriendlyEntity {
     
+    /**
+     *
+     * @return
+     */
     public int getDamagePhysical();
     
+    /**
+     *
+     * @return
+     */
     public int getDamageSpecial();
     
+    /**
+     *
+     * @return
+     */
     public int getDirection();
 }

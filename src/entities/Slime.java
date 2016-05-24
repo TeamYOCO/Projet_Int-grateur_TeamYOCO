@@ -27,6 +27,14 @@ public class Slime extends Mob implements BadEntity {
     private int aggroRange = 400;
     private boolean aggro = false;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param player
+     * @param map
+     * @param list
+     */
     public Slime(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moveAnimations = new Animation[4];
         this.moving = false;
@@ -56,6 +64,10 @@ public class Slime extends Mob implements BadEntity {
         }
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
@@ -119,6 +131,11 @@ public class Slime extends Mob implements BadEntity {
         return futurY;
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {

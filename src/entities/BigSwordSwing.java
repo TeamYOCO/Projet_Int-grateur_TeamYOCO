@@ -16,6 +16,14 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class BigSwordSwing extends SwordSwing implements FriendlyEntity {
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param direction
+     * @param lifeSpam
+     * @throws SlickException
+     */
     public BigSwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
         super(x, y, direction, lifeSpam);
         SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("longsword");
@@ -41,12 +49,21 @@ public class BigSwordSwing extends SwordSwing implements FriendlyEntity {
         this.hitBox = new Box(x, y, 0, 0);
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x - 98, y - 124);
 //        hitBox.render(g);
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         super.update(delta);

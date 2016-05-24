@@ -17,6 +17,12 @@ public class DamageMarker extends Particle{
     
     private int display;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param display
+     */
     public DamageMarker(float x, float y, int display) {
         this.x = x;
         this.y = y;
@@ -26,6 +32,11 @@ public class DamageMarker extends Particle{
         this.speedY = -0.1f;
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawString(""+display, x, y);

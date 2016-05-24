@@ -25,6 +25,15 @@ public class Arrow extends Particle implements FriendlyEntity{
     private Image img;
     private MiniMap map;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param direction
+     * @param lifespam
+     * @param map
+     * @throws SlickException
+     */
     public Arrow(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
         SpriteSheet anim = ResManager.getInstance().getSpriteSheet("arrow");
         this.x = x;
@@ -46,6 +55,11 @@ public class Arrow extends Particle implements FriendlyEntity{
         this.map = map;
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         switch(direction){
@@ -56,24 +70,40 @@ public class Arrow extends Particle implements FriendlyEntity{
         }
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         super.update(delta); //To change body of generated methods, choose Tools | Templates.
         hitBox.setPos(x+xOff, y+yOff);
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDamagePhysical() {
         dead = true;
         return damagePhysical;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDirection() {
         dead = true;
         return direction;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDamageSpecial() {
         return 0;

@@ -12,7 +12,7 @@ import org.newdawn.slick.Graphics;
 
 /**
  * Cette classes contient toutes les méthodes qui claculent la position de la caméra
- * @authors Seb and Tomas
+ * 
  */
 public class Camera {
 
@@ -22,7 +22,13 @@ public class Camera {
     private float xCamera, yCamera;
 
     // constructeur de la classe
-    public Camera(Player player, MiniMap map) {
+
+    /**
+     *
+     * @param player
+     * @param map
+     */
+        public Camera(Player player, MiniMap map) {
         this.player = player;
         this.map = map;
         this.xCamera = player.getX();
@@ -30,13 +36,24 @@ public class Camera {
     }
 
     // Gêre le placement de la caméra
-    public void place(GameContainer container, Graphics g) {
+
+    /**
+     *
+     * @param container
+     * @param g
+     */
+        public void place(GameContainer container, Graphics g) {
         g.translate(container.getWidth() / 2 - (int) this.xCamera,
                 container.getHeight() / 2 - (int) this.yCamera);
     }
 
     // Se charge de positionner la caméra
-    public void update(GameContainer container) {
+
+    /**
+     *
+     * @param container
+     */
+        public void update(GameContainer container) {
         int w = container.getWidth() / 10;
         int min = container.getWidth() / 2;
         int max = this.map.getTiledMap().getWidth() * this.map.getTiledMap().getTileWidth() - container.getWidth() / 2;

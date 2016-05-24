@@ -5,6 +5,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ *
+ * @author Tomas
+ */
 public class Music {
     //déclaration de variables
     private Clip clip;

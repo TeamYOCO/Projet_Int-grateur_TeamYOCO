@@ -26,6 +26,14 @@ public class Bee extends Mob implements BadEntity {
     private int aggroRange = 200;
     private boolean aggro = false;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param player
+     * @param map
+     * @param list
+     */
     public Bee(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moving = false;
         moveAnimations = new Animation[4];
@@ -54,6 +62,10 @@ public class Bee extends Mob implements BadEntity {
         }
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
@@ -118,6 +130,11 @@ public class Bee extends Mob implements BadEntity {
         return futurY;
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {

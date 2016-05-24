@@ -10,5 +10,19 @@ package entities;
  * @author The Ninetail
  */
 public enum NpcType {
-    NONE, INTERACT, VENDOR
+
+    /**
+     *
+     */
+    NONE,
+
+    /**
+     *
+     */
+    INTERACT,
+
+    /**
+     *
+     */
+    VENDOR
 }

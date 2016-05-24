@@ -31,6 +31,11 @@ public class ResManager implements Serializable{
         loadRes();
     }
 
+    /**
+     *
+     * @return
+     * @throws SlickException
+     */
     public static ResManager getInstance() throws SlickException {
         if (instance == null) {
             instance = new ResManager();
@@ -136,6 +141,13 @@ public class ResManager implements Serializable{
         }
     }
     
+    /**
+     *
+     * @param fontName
+     * @param fontSize
+     * @return
+     * @throws SlickException
+     */
     public UnicodeFont getFont(String fontName, int fontSize) throws SlickException{
         Font font = new Font(fontName, Font.PLAIN, fontSize);
         UnicodeFont ufont = new UnicodeFont(font, font.getSize(), font.isBold(), font.isItalic());
@@ -146,10 +158,20 @@ public class ResManager implements Serializable{
         return ufont;
     }
 
+    /**
+     *
+     * @param filePath
+     * @return
+     */
     public SpriteSheet getSpriteSheet(String filePath) {
         return sprites.get(filePath);
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Image getImage(String name) {
         return images.get(name);
     }

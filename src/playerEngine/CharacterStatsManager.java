@@ -19,17 +19,65 @@ import org.newdawn.slick.SlickException;
 public class CharacterStatsManager {
 
     private static CharacterStatsManager instance = null;
+
+    /**
+     *
+     */
     public final int NB_LVL_BOOST = 5;
+
+    /**
+     *
+     */
     protected int[] stats = new int[MAX_STATS];
+
+    /**
+     *
+     */
     protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
+
+    /**
+     *
+     */
     protected int hp;
+
+    /**
+     *
+     */
     protected int expNeeded;
+
+    /**
+     *
+     */
     protected int exp;
+
+    /**
+     *
+     */
     protected int money;
+
+    /**
+     *
+     */
     protected int level;
+
+    /**
+     *
+     */
     protected int nbLvlBoost = 0;
+
+    /**
+     *
+     */
     protected ArrayList skillSet;
+
+    /**
+     *
+     */
     protected Image anim;
+
+    /**
+     *
+     */
     protected boolean lvlIsUp = false;
     private Inventory inventory;
 
@@ -52,6 +100,11 @@ public class CharacterStatsManager {
         this.inventory = new Inventory();
     }
 
+    /**
+     *
+     * @return
+     * @throws SlickException
+     */
     public static CharacterStatsManager getInstance() throws SlickException {
         if (instance == null) {
             instance = new CharacterStatsManager();
@@ -59,6 +112,13 @@ public class CharacterStatsManager {
         return instance;
     }
 
+    /**
+     *
+     * @param expNeeded
+     * @param exp
+     * @param level
+     * @param anim
+     */
     public void setXPStats(int expNeeded, int exp, int level, Image anim) {
         this.expNeeded = expNeeded;
         this.exp = exp;
@@ -66,6 +126,10 @@ public class CharacterStatsManager {
         this.anim = anim;
     }
 
+    /**
+     *
+     * @param expGained
+     */
     public void gainExp(int expGained) {
         exp += expGained;
         if (exp >= expNeeded) {
@@ -73,10 +137,17 @@ public class CharacterStatsManager {
         }
     }
     
+    /**
+     *
+     * @param moneyGained
+     */
     public void gainMoney(int moneyGained){
         money += moneyGained;
     }
 
+    /**
+     *
+     */
     public void levelUp() {
             exp = 0;
             expNeeded = (int) ((float) expNeeded * 1.84);
@@ -85,6 +156,11 @@ public class CharacterStatsManager {
             lvlIsUp = true;
     }
     
+    /**
+     *
+     * @param index
+     * @param onlyOnce
+     */
     public void buffStat(int index, boolean onlyOnce){
         System.out.println(index);
         stats[index] += 1;
@@ -94,6 +170,11 @@ public class CharacterStatsManager {
         }
     }
     
+    /**
+     *
+     * @param index
+     * @param onlyOnce
+     */
     public void nerfStat(int index, boolean onlyOnce){
         stats[index] -= 1;
         statsUpgrade[index] -= 1;
@@ -102,6 +183,9 @@ public class CharacterStatsManager {
         }
     }
     
+    /**
+     *
+     */
     public void resetStats(){
         for (int j = 0; j < 5; j++) {
             stats[j] -= statsUpgrade[j];
@@ -112,35 +196,69 @@ public class CharacterStatsManager {
         }
     }
 
-
+    /**
+     *
+     * @return
+     */
     public int[] getStats() {
         return stats;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getMoney(){
         return money;
     }
     
+    /**
+     *
+     * @return
+     */
     public int[] getStatsUpgrade(){
         return statsUpgrade;
     }
     
+    /**
+     *
+     * @param i
+     * @param change
+     */
     public void setStatsUpgrade(int i, int change){
         this.statsUpgrade[i] = change;
     }
     
+    /**
+     *
+     * @param index
+     * @param stat
+     */
     public void setStats(int index, int stat){
         stats[index] = stat;
     }
 
+    /**
+     *
+     * @return
+     */
     public Image getAnim() {
         return anim;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHp() {
         return hp;
     }
 
+    /**
+     *
+     * @param x
+     * @return
+     */
     public String getStatsName(int x) {
         switch (x) {
             case 0:
@@ -162,38 +280,75 @@ public class CharacterStatsManager {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getExp() {
         return exp;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getExpNeeded() {
         return expNeeded;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLevel() {
         return level;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getLvlBoost(){
         return nbLvlBoost;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList getSkillSet() {
         return skillSet;
     }
 
+    /**
+     *
+     * @param anim
+     */
     public void setAnim(Image anim) {
         this.anim = anim;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean getlvlIsUp(){
         return lvlIsUp;
     }
     
+    /**
+     *
+     * @param bool
+     */
     public void setlvlIsUp(boolean bool){
         this.lvlIsUp = bool;
     }
 
+    /**
+     *
+     * @param damage
+     * @param damageSpecial
+     */
     public void takeDamage(int damage, int damageSpecial){
         this.hp -= damage * (100-this.stats[2])/100;
         this.hp -= damageSpecial * (100-this.stats[4])/100;
@@ -206,6 +361,10 @@ public class CharacterStatsManager {
         }
     }
     
+    /**
+     *
+     * @param hp
+     */
     public void setHp(int hp) {
         this.hp = hp;
         if (this.hp < 0) {
@@ -217,6 +376,10 @@ public class CharacterStatsManager {
         }
     }
 
+    /**
+     *
+     * @param exp
+     */
     public void setExp(int exp) {
         this.exp = exp;
     }
@@ -225,26 +388,51 @@ public class CharacterStatsManager {
         this.money -= moneySpent;
     }
 
+    /**
+     *
+     * @param expNeeded
+     */
     public void setExpNeeded(int expNeeded) {
         this.expNeeded = expNeeded;
     }
 
+    /**
+     *
+     * @param level
+     */
     public void setLevel(int level) {
         this.level = level;
     }
 
+    /**
+     *
+     * @param skillSet
+     */
     public void setSkillSet(ArrayList skillSet) {
         this.skillSet = skillSet;
     }
 
+    /**
+     *
+     * @param newItem
+     * @throws SlickException
+     */
     public void addItem(String newItem) throws SlickException{
         this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
     }
     
+    /**
+     *
+     * @param equipment
+     */
     public void addItem(Equipment equipment){
         this.getInventory().getListItemFound().add(equipment);
     }
 
+    /**
+     *
+     * @return
+     */
     public Inventory getInventory() {
         return inventory;
     }

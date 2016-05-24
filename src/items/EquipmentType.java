@@ -12,5 +12,49 @@ import java.io.Serializable;
  * @author 1455367
  */
 public enum EquipmentType implements Serializable {
-    SWORD, BOW, SPELL_TOME, SHIELD, HELMET, SPEAR, ARMOR, PADS, BOOTS
+
+    /**
+     *
+     */
+    SWORD,
+
+    /**
+     *
+     */
+    BOW,
+
+    /**
+     *
+     */
+    SPELL_TOME,
+
+    /**
+     *
+     */
+    SHIELD,
+
+    /**
+     *
+     */
+    HELMET,
+
+    /**
+     *
+     */
+    SPEAR,
+
+    /**
+     *
+     */
+    ARMOR,
+
+    /**
+     *
+     */
+    PADS,
+
+    /**
+     *
+     */
+    BOOTS
 }
