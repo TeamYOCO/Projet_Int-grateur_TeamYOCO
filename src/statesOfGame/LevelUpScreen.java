@@ -40,17 +40,17 @@ public class LevelUpScreen extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        ufont50 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 50);
-        ufont24 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 24);
+//        ufont50 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 50);
+//        ufont24 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 24);
     }
 
     @Override 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
         ResManager.getInstance().getImage("LevelUpScreenPic").draw(0, 0);
-        g.setFont(ufont50);
+//        g.setFont(ufont50);
         g.drawString(""+CharacterStatsManager.getInstance().getLvlBoost(), 475, 260);
-        g.setFont(ufont24);
+//        g.setFont(ufont24);
         for (int i = 0; i < 4; i++) {
             g.drawString(""+CharacterStatsManager.getInstance().getStats()[i] + "+" + CharacterStatsManager.getInstance().getStatsUpgrade()[i], 127+(235*i), 555);
         }

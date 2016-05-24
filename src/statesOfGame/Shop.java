@@ -5,9 +5,10 @@
  */
 package statesOfGame;
 
+import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
-import org.lwjgl.input.Mouse;
+import java.util.TreeMap;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -25,8 +26,14 @@ public class Shop extends BasicGameState {
 
     private static int stateID;
     private Image background;
+    private TreeMap<String,Equipment> displayItems = new TreeMap();
+    private TreeMap<String,Equipment> reversedDisplayItems;
+    private final int MAX_ITEM_SHOP = 10;
+    private int minimum = 0, maximum, compteur = 0;
+    private boolean clearMap = false;
 
     public Shop(int stateID) throws SlickException {
+        this.maximum = MAX_ITEM_SHOP;
         Shop.stateID = stateID;
     }
 
@@ -38,38 +45,97 @@ public class Shop extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        background = Overworld.getScreenShot();
+        int compteur = 0;
+        EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 //        background.draw(0, 0);
-        
+        int itemCompteur = 0, displayCompteur = 0;
         g.setColor(Color.gray);
-        g.fillRect(800, 50, 200, 600);
-        g.setColor(Color.lightGray);
-        for (int i = 0; i < 10; i++) {
-            g.fillRect(810, 55+(60*i), 50, 50);
+        g.fillRect(700, 50, 300, 600);
+        g.setColor(Color.black);
+
+        if(clearMap){
+            displayItems.clear();
+            reversedDisplayItems.clear();
+            clearMap = false;
         }
-        IconList.getInstance().getListIcon().get("Casque Antique").draw(819,64+(0));
-        IconList.getInstance().getListIcon().get("Casque Metallique").draw(819,64+(60));
-        IconList.getInstance().getListIcon().get("Casque d'Argent").draw(819,64+(120));
-        IconList.getInstance().getListIcon().get("Casque Emeraude").draw(819,64+(180));
-        IconList.getInstance().getListIcon().get("Casque Royal").draw(819,64+(240));
-        IconList.getInstance().getListIcon().get("Armure Antique").draw(819,64+(300));
-        IconList.getInstance().getListIcon().get("Armure Metallique").draw(819,64+(360));
-        IconList.getInstance().getListIcon().get("Armure d'Argent").draw(819,64+(420));
-        IconList.getInstance().getListIcon().get("Armure Emeraude").draw(819,64+(480));
-        IconList.getInstance().getListIcon().get("Armure Royale").draw(819,64+(540));
+        
+        for (String key : IconList.getInstance().getListIcon().keySet()) {
+                if(displayCompteur >= minimum && displayCompteur < maximum){
+                    displayItems.put(key, EquipmentList.getInstance().getListEquipment().get(key));
+                }
+            displayCompteur += 1;
+        }
+        reversedDisplayItems = new TreeMap<>(displayItems.descendingMap());
+        
+        for (String key : displayItems.keySet()) {
+            if (EquipmentList.getInstance().getListEquipment().get(key).getShopSelected()) {
+                g.setColor(Color.orange);
+            } else {
+                g.setColor(Color.lightGray);
+            }
+            g.fillRect(710, 55 + (60 * itemCompteur), 50, 50);
+            IconList.getInstance().getListIcon().get(key).draw(719, 64 + (60 * itemCompteur));
+            g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getName(), 770, 60 + (60 * itemCompteur));
+            g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getPrice() + "$", 770, 80 + (60 * itemCompteur));
+            itemCompteur += 1;
+        }
 
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();
-
-        int mouseX = Mouse.getX();
-        int mouseY = Mouse.getY();
         
+        boolean next = false, present = true;
+        
+        if(input.isKeyPressed(Input.KEY_DOWN)){
+            for (Equipment equipment : displayItems.values()) {
+                if(next){
+                    equipment.setShopSelected(true);
+                    next = false;
+                    present = false;
+                }
+                if(equipment.getShopSelected() && present){
+                    if(equipment != EquipmentList.getInstance().getEquipment("Livre violet")){
+                        compteur++;
+                        equipment.setShopSelected(false);
+                        next = true;
+                        if(compteur == maximum-1){
+                            minimum++;
+                            maximum++;
+                            clearMap = true;
+                        }
+                    }
+                }
+            }
+        }
+        present = true;
+        
+        if(input.isKeyPressed(Input.KEY_UP)){
+            for (Equipment equipment : reversedDisplayItems.values()) {
+                if(next){
+                    equipment.setShopSelected(true);
+                    next = false;
+                    present = false;
+                }
+                if(equipment.getShopSelected() && present){
+                    if(equipment != EquipmentList.getInstance().getEquipment("Arc angelique")){
+                        compteur--;
+                        equipment.setShopSelected(false);
+                        next = true;
+                        if(compteur == minimum){
+                            minimum--;
+                            maximum--;
+                            clearMap = true;
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }
