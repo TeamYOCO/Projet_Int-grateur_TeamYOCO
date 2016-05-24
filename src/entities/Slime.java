@@ -40,7 +40,7 @@ public class Slime extends Mob implements BadEntity {
         this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
         this.hitpoints = 150;
         this.damage = 5;
-        this.exp = 15;
+        this.exp = 20;
         this.money = 5;
         SpriteSheet moveSpriteSheet = null;
         try {
