@@ -60,15 +60,29 @@ public class Overworld extends BasicGameState implements Serializable {
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
     private int savedGameCompteur = 0;
 
+    /**
+     *
+     * @param stateID
+     */
     public Overworld(int stateID) {
         Overworld.stateID = stateID;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param container
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
         this.container = container;
@@ -82,6 +96,13 @@ public class Overworld extends BasicGameState implements Serializable {
         firstTime = true;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
@@ -107,7 +128,15 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     // méthode qui est passé chaque fois dans le thread du jeu
-    @Override
+
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param delta
+     * @throws SlickException
+     */
+        @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
         this.player.update(delta); // Update le joueur en fonction du temps passé depuis la dernière update
@@ -195,6 +224,12 @@ public class Overworld extends BasicGameState implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
         if (firstTime) {
@@ -238,14 +273,26 @@ public class Overworld extends BasicGameState implements Serializable {
         this.listRemove.clear();
     }
 
+    /**
+     *
+     * @return
+     */
     public static Image getScreenShot() {
         return screenShot;
     }
 
+    /**
+     *
+     * @param musicPath
+     */
     public void setMusic(String musicPath) {
         overworldTheme = musicPath;
     }
 
+    /**
+     *
+     * @param newG
+     */
     public static void setNewGame(boolean newG) {
         newGame = newG;
     }

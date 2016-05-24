@@ -44,6 +44,11 @@ public class InventoryMenu extends BasicGameState implements Serializable{
     private boolean isSameType;
     private ArrayList<Equipment> listItemDeleted;
 
+    /**
+     *
+     * @param stateID
+     * @throws SlickException
+     */
     public InventoryMenu(int stateID) throws SlickException {
         InventoryMenu.stateID = stateID;
         listStats = new ArrayList();
@@ -51,11 +56,21 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         listItemDeleted = new ArrayList();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         inventoryPic = ResManager.getInstance().getImage("inventory1player");
@@ -77,6 +92,13 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
@@ -116,6 +138,13 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param i
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         int mouseX = Mouse.getX();
@@ -174,7 +203,14 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         listItemDeleted.clear();
     }
 
-    
+    /**
+     *
+     * @param spriteSheet
+     * @param startX
+     * @param endX
+     * @param y
+     * @return
+     */
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
         for (int x = startX; x < endX; x++) {

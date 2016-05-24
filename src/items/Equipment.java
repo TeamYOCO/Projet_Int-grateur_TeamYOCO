@@ -21,20 +21,83 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Equipment implements Serializable{
 
-    protected int inventoryX, inventoryY;
+    protected int inventoryX,
+
+    /**
+     *
+     */
+    inventoryY;
+
+    /**
+     *
+     */
     public static final int MAX_STATS = 7;
+
+    /**
+     *
+     */
     protected int stats[] = new int[MAX_STATS];
+
+    /**
+     *
+     */
     protected int hpMax;
+
+    /**
+     *
+     */
     protected int mpMax;
+
+    /**
+     *
+     */
     protected int attack;
+
+    /**
+     *
+     */
     protected int speed;
+
+    /**
+     *
+     */
     protected int specialAttack;
+
+    /**
+     *
+     */
     protected int defence;
+
+    /**
+     *
+     */
     protected int specialDefence;
-    protected String name, description;
+    protected String name,
+
+    /**
+     *
+     */
+    description;
+
+    /**
+     *
+     */
     protected Animation animation;
-    protected float x, y;
+    protected float x,
+
+    /**
+     *
+     */
+    y;
+
+    /**
+     *
+     */
     protected MiniMap map;
+
+    /**
+     *
+     */
     protected Rectangle hitBox;
     private boolean isAbove;
     private ArrayList<Particle> particle;
@@ -42,6 +105,16 @@ public class Equipment implements Serializable{
     private int price;
     private boolean shopSelected = false;
 
+    /**
+     *
+     * @param inventoryX
+     * @param inventoryY
+     * @param name
+     * @param description
+     * @param stats
+     * @param equipmentType
+     * @param price
+     */
     public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType, int price) {
         this.inventoryX = inventoryX;
         this.inventoryY = inventoryY;
@@ -59,20 +132,43 @@ public class Equipment implements Serializable{
         this.price = price;
     }
     
+    /**
+     *
+     * @param delta
+     */
     public void update(int delta) {
 
     }
 
     // Méthode init de la classe
-    public void init() throws SlickException {
+
+    /**
+     *
+     * @throws SlickException
+     */
+        public void init() throws SlickException {
 
     }
 
     // Méthode qui permet de dessiner l'élément
-    public void render(Graphics g) throws SlickException {
+
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
+        public void render(Graphics g) throws SlickException {
 
     }
 
+    /**
+     *
+     * @param spriteSheet
+     * @param startX
+     * @param endX
+     * @param y
+     * @return
+     */
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
         for (int x = startX; x < endX; x++) {
@@ -81,6 +177,11 @@ public class Equipment implements Serializable{
         return animation;
     }
 
+    /**
+     *
+     * @param rectObjet
+     * @return
+     */
     public boolean isCollision(Rectangle rectObjet) {
         boolean collision = false;
         if (hitBox.getBounds().intersects(rectObjet)) {
@@ -89,39 +190,75 @@ public class Equipment implements Serializable{
         return collision;
     }
 
+    /**
+     *
+     * @return
+     */
     public Rectangle getHitBox() {
         return hitBox;
     }
 
+    /**
+     *
+     * @return
+     */
     public int[] getStats() {
         return stats;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getInventoryX() {
         return inventoryX;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getInventoryY() {
         return inventoryY;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public boolean getIsAbove() {
         return isAbove;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean getShopSelected(){
         return shopSelected;
     }
     
+    /**
+     *
+     * @param stat
+     * @return
+     */
     public String getStatName(int stat){
         switch(stat){
             case 0 : return "Vie-";
@@ -135,26 +272,50 @@ public class Equipment implements Serializable{
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public int getPrice(){
         return price;
     }
     
+    /**
+     *
+     * @return
+     */
     public EquipmentType getType(){
         return equipmentType;
     }
 
+    /**
+     *
+     * @param x
+     */
     public void setInventoryX(int x) {
         this.inventoryX = x;
     }
 
+    /**
+     *
+     * @param y
+     */
     public void setInventoryY(int y) {
         this.inventoryY = y;
     }
 
+    /**
+     *
+     * @param isAbove
+     */
     public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
     }
     
+    /**
+     *
+     * @param shopSelected
+     */
     public void setShopSelected(boolean shopSelected){
         this.shopSelected = shopSelected;
     }

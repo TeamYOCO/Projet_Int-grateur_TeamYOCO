@@ -28,6 +28,11 @@ public class EquipmentList implements Serializable{
         loadStrings();
     }
     
+    /**
+     *
+     * @return
+     * @throws SlickException
+     */
     public static EquipmentList getInstance() throws SlickException {
         if (instance == null){
             instance = new EquipmentList();
@@ -216,14 +221,27 @@ public class EquipmentList implements Serializable{
         
     }
     
+    /**
+     *
+     * @return
+     */
     public TreeMap<String, Equipment> getListEquipment() {
         return listEquipment;
     }
     
+    /**
+     *
+     * @return
+     */
     public TreeMap<String,Equipment> getReversedListEquipment(){
         return new TreeMap<>(listEquipment.descendingMap());
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Equipment getEquipment(String name){
         return listEquipment.get(name);
     }

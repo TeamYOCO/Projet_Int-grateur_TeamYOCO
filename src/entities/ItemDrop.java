@@ -23,6 +23,12 @@ public class ItemDrop extends Entity {
     private Image image;
     private Equipment equipment;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param equipment
+     */
     public ItemDrop(int x, int y, Equipment equipment) {
         this.x = x;
         this.y = y;
@@ -35,15 +41,27 @@ public class ItemDrop extends Entity {
         this.equipment = equipment;
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawImage(image, x, y);
     }
 
+    /**
+     *
+     */
     public void pickUp() {
         try {
             CharacterStatsManager.getInstance().addItem(equipment);

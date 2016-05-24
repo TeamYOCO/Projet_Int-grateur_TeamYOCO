@@ -29,21 +29,43 @@ public class LevelUpScreen extends BasicGameState {
     private Image background;
     private UnicodeFont ufont50,ufont24;
     
+    /**
+     *
+     * @param stateID
+     * @throws SlickException
+     */
     public LevelUpScreen(int stateID) throws SlickException {
         LevelUpScreen.stateID = stateID;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        ufont50 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 50);
 //        ufont24 = ResManager.getInstance().getFont("Abadi MT Condensed Light", 24);
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Overworld.getScreenShot().draw(0, 0);
@@ -56,6 +78,13 @@ public class LevelUpScreen extends BasicGameState {
         }
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param i
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();

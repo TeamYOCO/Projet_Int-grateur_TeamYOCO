@@ -12,36 +12,66 @@ import playerEngine.CharacterStatsManager;
  * Cette classe gère le controle du joueur dans le overworld
  * @author Seb
  */
+
+/**
+ *
+ * @author Tomas
+ */
+
 public class PlayerController implements KeyListener {
 
     // Variables de la classe
     private Player player;
 
     // Constructeur
-    public PlayerController(Player player) {
+
+    /**
+     *
+     * @param player
+     */
+        public PlayerController(Player player) {
         this.player = player;
     }
 
+    /**
+     *
+     * @param input
+     */
     @Override
     public void setInput(Input input) {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean isAcceptingInput() {
         return true;
     }
 
+    /**
+     *
+     */
     @Override
     public void inputEnded() {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void inputStarted() {
 
     }
 
+    /**
+     *
+     * @param key
+     * @param c
+     */
     @Override
     public void keyPressed(int key, char c) {
         switch (key) {
@@ -105,6 +135,11 @@ public class PlayerController implements KeyListener {
         }
     }
 
+    /**
+     *
+     * @param key
+     * @param c
+     */
     @Override
     public void keyReleased(int key, char c) {
         switch (key) {

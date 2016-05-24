@@ -28,20 +28,42 @@ public class Credits extends BasicGameState {
     private static int stateID;
     private Image background;
     
+    /**
+     *
+     * @param stateID
+     * @throws SlickException
+     */
     public Credits(int stateID) throws SlickException {
         Credits.stateID = stateID;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = ResManager.getInstance().getImage("treesun");
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         background.draw(0,0);
@@ -51,6 +73,13 @@ public class Credits extends BasicGameState {
         
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param i
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();

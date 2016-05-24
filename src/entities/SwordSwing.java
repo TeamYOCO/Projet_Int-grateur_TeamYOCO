@@ -22,6 +22,14 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     private int damagePhysical;
     private int damageSpecial;
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param direction
+     * @param lifeSpam
+     * @throws SlickException
+     */
     public SwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
         SpriteSheet anim = ResManager.getInstance().getSpriteSheet("sword_sheet_128");
         this.x = x;
@@ -43,12 +51,21 @@ public class SwordSwing extends Particle implements FriendlyEntity{
         System.out.println("damage : "+ damagePhysical);
     }
 
+    /**
+     *
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x, y);
 //        hitBox.render(g);
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void update(int delta) {
         super.update(delta); 
@@ -57,16 +74,28 @@ public class SwordSwing extends Particle implements FriendlyEntity{
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDamagePhysical() {
         return damagePhysical;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDirection() {
         return direction;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDamageSpecial() {
         return 0;

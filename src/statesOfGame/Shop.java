@@ -32,16 +32,31 @@ public class Shop extends BasicGameState {
     private int minimum = 0, maximum, compteur = 0;
     private boolean clearMap = false;
 
+    /**
+     *
+     * @param stateID
+     * @throws SlickException
+     */
     public Shop(int stateID) throws SlickException {
         this.maximum = MAX_ITEM_SHOP;
         Shop.stateID = stateID;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getID() {
         return stateID;
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        background = Overworld.getScreenShot();
@@ -49,6 +64,13 @@ public class Shop extends BasicGameState {
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param g
+     * @throws SlickException
+     */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 //        background.draw(0, 0);
@@ -86,6 +108,13 @@ public class Shop extends BasicGameState {
 
     }
 
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @param i
+     * @throws SlickException
+     */
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         Input input = gc.getInput();

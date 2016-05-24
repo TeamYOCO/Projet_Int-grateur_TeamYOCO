@@ -20,16 +20,66 @@ import playerEngine.CharacterStatsManager;
  */
 public abstract class Mob extends Entity {
 
+    /**
+     *
+     */
     protected Animation[] moveAnimations;
+
+    /**
+     *
+     */
     protected int hitpoints;
+
+    /**
+     *
+     */
     protected int direction = 2;
+
+    /**
+     *
+     */
     protected boolean moving;
-    protected int damagePhysical, damageSpecial, defence, specialDefence;
+    protected int damagePhysical,
+
+    /**
+     *
+     */
+    damageSpecial,
+
+    /**
+     *
+     */
+    defence,
+
+    /**
+     *
+     */
+    specialDefence;
+
+    /**
+     *
+     */
     protected float knockbackTimer = 0;
+
+    /**
+     *
+     */
     protected int exp = 0;
+
+    /**
+     *
+     */
     protected int money;
+
+    /**
+     *
+     */
     protected ArrayList<Entity> list;
     
+    /**
+     *
+     * @return
+     */
     public boolean isHitable(){
         if (knockbackTimer <= 0)
             return true;
@@ -37,6 +87,12 @@ public abstract class Mob extends Entity {
             return false;
     }
     
+    /**
+     *
+     * @param damage
+     * @param damageSpecial
+     * @param hitDirection
+     */
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
         switch(hitDirection){
             case 0: this.direction = 2; break;
@@ -57,47 +113,67 @@ public abstract class Mob extends Entity {
         this.knockbackTimer = 200;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDamagePhysical() {
         return damagePhysical;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getDamageSpecial(){
         return damageSpecial;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getDirection(){
         return direction;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getExp(){
         return exp;
     }
     
+    /**
+     *
+     * @throws SlickException
+     */
     public void die() throws SlickException{
         CharacterStatsManager.getInstance().gainExp(exp);
         CharacterStatsManager.getInstance().gainMoney(money);
         Random rdn=new Random();
-        if(rdn.nextInt()%10000==1){
-            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Casque Royal")));
-        }else if(rdn.nextInt()%10000==2){
-            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Armure Royale")));
-        }else if(rdn.nextInt()%10000==3){
-            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Jambieres Royales")));
-        }else if(rdn.nextInt()%10000==4){
-            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Bottes Royales")));
-        }else if(rdn.nextInt()%10000==5){
+        if(rdn.nextInt()%100==1){
+             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Casque Royal")));
+        }else if(rdn.nextInt()%100==2){
+           this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Armure Royale")));
+        }else if(rdn.nextInt()%100==3){
+           this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Jambieres Royales")));
+        }else if(rdn.nextInt()%100==4){
+           this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Bottes Royales")));
+        }else if(rdn.nextInt()%100==5){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Jesus")));
-        }else if(rdn.nextInt()%10000==6){
+        }else if(rdn.nextInt()%100==6){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee legendaire")));
-        }else if(rdn.nextInt()%10000==7){
-            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee extraterrestre")));
-        }else if(rdn.nextInt()%10000==8){
+        }else if(rdn.nextInt()%100==7){
+           this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee extraterrestre")));
+        }else if(rdn.nextInt()%100==8){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee rose")));
-        }else if(rdn.nextInt()%10000==9){
+        }else if(rdn.nextInt()%100==9){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee de glace")));
-        }else if(rdn.nextInt()%10000==10){
+        }else if(rdn.nextInt()%100==10){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Banane")));
-        }else if(rdn.nextInt()%10000==11){
+        }else if(rdn.nextInt()%100==11){
             this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee Royale")));
         }
     }
