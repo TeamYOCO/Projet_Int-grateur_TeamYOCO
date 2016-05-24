@@ -47,8 +47,8 @@ public class Player extends Mob {
         this.bowShootAnimation = new Animation[4];
         this.bowAnimation = new Animation[4];
         this.castAnimations = new Animation[4];
-        this.setX(620);
-        this.setY(430);
+        this.setX(64);
+        this.setY(256);
         this.xOff = -16;
         this.yOff = -50;
         moving = false;
