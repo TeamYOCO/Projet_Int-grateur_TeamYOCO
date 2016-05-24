@@ -5,7 +5,6 @@
  */
 package maps;
 
-import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -27,13 +26,13 @@ public class MiniMap {
     }
     
     public MiniMap(String path) {
-        this.fileName = path;
+        MiniMap.fileName = path;
     }
 
     // Initialise la map dans la boucle init() du jeu
     public void init() throws SlickException {
         fileName = "res/maps/map_1-1.tmx";
-        this.tiledMap = new TiledMap(fileName);
+        MiniMap.tiledMap = new TiledMap(fileName);
     }
 
     
@@ -54,10 +53,10 @@ public class MiniMap {
     }
 
     public boolean isCollision(float x, float y) {
-        int tileW = this.tiledMap.getTileWidth();
-        int tileH = this.tiledMap.getTileHeight();
-        int logicLayer = this.tiledMap.getLayerIndex("collision");
-        Image tile = this.tiledMap.getTileImage((int) x / tileW, (int) y / tileH, logicLayer);
+        int tileW = MiniMap.tiledMap.getTileWidth();
+        int tileH = MiniMap.tiledMap.getTileHeight();
+        int logicLayer = MiniMap.tiledMap.getLayerIndex("collision");
+        Image tile = MiniMap.tiledMap.getTileImage((int) x / tileW, (int) y / tileH, logicLayer);
         boolean collision = tile != null;
         if (collision) {
             Color color = tile.getColor((int) x % tileW, (int) y % tileH);
@@ -76,31 +75,31 @@ public class MiniMap {
     }
 
     public int getObjectCount() {
-        return this.tiledMap.getObjectCount(0);
+        return MiniMap.tiledMap.getObjectCount(0);
     }
 
     public String getObjectType(int objectID) {
-        return this.tiledMap.getObjectType(0, objectID);
+        return MiniMap.tiledMap.getObjectType(0, objectID);
     }
 
     public float getObjectX(int objectID) {
-        return this.tiledMap.getObjectX(0, objectID);
+        return MiniMap.tiledMap.getObjectX(0, objectID);
     }
 
     public float getObjectY(int objectID) {
-        return this.tiledMap.getObjectY(0, objectID);
+        return MiniMap.tiledMap.getObjectY(0, objectID);
     }
 
     public float getObjectWidth(int objectID) {
-        return this.tiledMap.getObjectWidth(0, objectID);
+        return MiniMap.tiledMap.getObjectWidth(0, objectID);
     }
 
     public float getObjectHeight(int objectID) {
-        return this.tiledMap.getObjectHeight(0, objectID);
+        return MiniMap.tiledMap.getObjectHeight(0, objectID);
     }
 
     public String getObjectProperty(int objectID, String propertyName, String def) {
-        return this.tiledMap.getObjectProperty(0, objectID, propertyName, def);
+        return MiniMap.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
     
     public String getMapProperty(String name){
@@ -111,5 +110,6 @@ public class MiniMap {
         fileName = file;
         tiledMap = new TiledMap(file);  
         }
+    
     }
 

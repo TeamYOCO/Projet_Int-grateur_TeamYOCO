@@ -122,7 +122,9 @@ public class Bee extends Mob implements BadEntity {
         } else {
             g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
         }
-        hitBox.render(g);
+        g.setColor(Color.red);
+        g.drawString(""+this.hitpoints, x - 10, y - 45);
+//        hitBox.render(g);
     }
 
 }
