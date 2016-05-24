@@ -188,9 +188,11 @@ public class Player extends Mob {
             }
             SwordSwing swordSwing = null;
             float sx = 0, sy = 0;
-            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee legendaire")) {
-                sx = x - 64;
-                sy = sy - 64;
+            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee legendaire")||
+                    CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee d'argent") ||
+                    CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee Royale")) {
+                sx = x;
+                sy = y;
                 swordSwing = new BigSwordSwing(sx, sy, direction, 500);
             } else {
                 switch (attackDirection) {

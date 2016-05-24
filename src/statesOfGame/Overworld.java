@@ -11,6 +11,7 @@ import entities.BadEntity;
 import entities.Bat;
 import entities.Bee;
 import entities.Boss;
+import entities.BigSwordSwing;
 import entities.DamageMarker;
 import entities.Entity;
 import entities.Snake;
@@ -79,7 +80,6 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
-        list.add(new ItemDrop(321, 520, EquipmentList.getInstance().getEquipment("Epee legendaire")));
     }
 
     @Override

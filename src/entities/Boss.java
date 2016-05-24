@@ -38,7 +38,7 @@ public class Boss extends Mob implements BadEntity {
         this.xOff = -16;
         this.yOff = -32;
         this.player = player;
-        this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
+        this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
         this.hitpoints = 50;
         this.damagePhysical = 5;
         this.damageSpecial = 0;
@@ -122,9 +122,9 @@ public class Boss extends Mob implements BadEntity {
     @Override
     public void render(Graphics g) throws SlickException {
         if (isHitable()) {
-            g.drawAnimation(moveAnimations[direction], x - 16, y - 32);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32);
         } else {
-            g.drawAnimation(moveAnimations[direction], x - 16, y - 32, Color.red);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32, Color.red);
         }
         g.setColor(Color.red);
         g.drawString(""+this.hitpoints, x - 10, y - 45);

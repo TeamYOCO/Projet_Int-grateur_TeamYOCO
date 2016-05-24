@@ -93,6 +93,7 @@ public class MainMenu extends BasicGameState {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
                 CharacterStatsManager.getInstance().addItem("Epee de bois");
+                CharacterStatsManager.getInstance().addItem("Epee legendaire");
                 Overworld.setNewGame(true);
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }
