@@ -23,8 +23,10 @@ import maps.MiniMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import entities.FriendlyEntity;
+import entities.ItemDrop;
 import entities.Slime;
 import gameEngine.DataManager;
+import items.EquipmentList;
 import java.io.Serializable;
 import playerEngine.CharacterStatsManager;
 
@@ -73,6 +75,7 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
+        list.add(new ItemDrop(771, 400, EquipmentList.getInstance().getEquipment("Bottes Antiques")));
     }
 
     @Override

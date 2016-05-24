@@ -5,6 +5,7 @@
  */
 package playerEngine;
 
+import items.Equipment;
 import static items.Equipment.MAX_STATS;
 import items.EquipmentList;
 import java.util.ArrayList;
@@ -234,6 +235,10 @@ public class CharacterStatsManager {
 
     public void addItem(String newItem) throws SlickException{
         this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
+    }
+    
+    public void addItem(Equipment equipment){
+        this.getInventory().getListItemFound().add(equipment);
     }
 
     public Inventory getInventory() {

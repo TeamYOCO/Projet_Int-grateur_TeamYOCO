@@ -26,11 +26,11 @@ public class ItemDrop extends Entity{
     public ItemDrop(int x, int y, Equipment equipment) {
         this.x = x;
         this.y = y;
+        this.dead = false;
         try {
             this.image = ResManager.getInstance().getImage("drop");
-        } catch (SlickException ex) {
-            Logger.getLogger(ItemDrop.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (SlickException ex) {}
+        System.out.println(image);
         this.equipment = equipment;
     }
     
@@ -43,8 +43,15 @@ public class ItemDrop extends Entity{
 
     @Override
     public void render(Graphics g) throws SlickException {
+        g.drawImage(image, x, y);
     }
     
     public void pickUp(){
+        try {
+            CharacterStatsManager.getInstance().addItem(equipment);
+            this.dead = true;
+        } catch (SlickException ex) {
+            Logger.getLogger(ItemDrop.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
