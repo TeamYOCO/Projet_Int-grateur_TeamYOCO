@@ -29,8 +29,11 @@ public class Shop extends BasicGameState {
     private static int stateID;
     private Image background;
     private TreeMap<String,Equipment> displayItems = new TreeMap();
+    private final int MAX_ITEM_SHOP = 10;
+    private int minimum = 0, maximum;
 
     public Shop(int stateID) throws SlickException {
+        this.maximum = MAX_ITEM_SHOP;
         Shop.stateID = stateID;
     }
 
@@ -44,23 +47,24 @@ public class Shop extends BasicGameState {
 //        background = Overworld.getScreenShot();
         int compteur = 0;
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
-        for (String key : IconList.getInstance().getListIcon().keySet()) {
-            if(compteur < 10){
-                displayItems.put(key, EquipmentList.getInstance().getListEquipment().get(key));
-            }
-        }
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 //        background.draw(0, 0);
-        int itemCompteur = 0;
+        int itemCompteur = 0, displayCompteur = 0;
         g.setColor(Color.gray);
         g.fillRect(700, 50, 300, 600);
         g.setColor(Color.black);
 
-        
         for (String key : IconList.getInstance().getListIcon().keySet()) {
+            if(displayCompteur >= minimum && displayCompteur < maximum){
+                displayItems.put(key, EquipmentList.getInstance().getListEquipment().get(key));
+            }
+            displayCompteur += 1;
+        }
+        
+        for (String key : displayItems.keySet()) {
             if (EquipmentList.getInstance().getListEquipment().get(key).getShopSelected()) {
                 g.setColor(Color.orange);
             } else {
@@ -83,9 +87,10 @@ public class Shop extends BasicGameState {
         int mouseY = Mouse.getY();
         
         boolean next = false,present = true;
+        int compteur = 0;
         
         if(input.isKeyPressed(Input.KEY_DOWN)){
-            for (Equipment equipment : EquipmentList.getInstance().getListEquipment().values()) {
+            for (Equipment equipment : displayItems.values()) {
                 if(next){
                     equipment.setShopSelected(true);
                     next = false;
@@ -96,12 +101,19 @@ public class Shop extends BasicGameState {
                     if(equipment != EquipmentList.getInstance().getEquipment("Livre violet")){
                         equipment.setShopSelected(false);
                     }
+                    if(compteur == maximum-1){
+                        minimum += 1;
+                        maximum += 1;
+                    }
+                    compteur += 1;
                 }
             }
         }
+        compteur = 0;
         present = true;
+        
         if(input.isKeyPressed(Input.KEY_UP)){
-            for (Equipment equipment : EquipmentList.getInstance().getReversedListEquipment().values()) {
+            for (Equipment equipment : displayItems.values()) {
                 if(next){
                     equipment.setShopSelected(true);
                     next = false;
@@ -112,6 +124,11 @@ public class Shop extends BasicGameState {
                     if(equipment != EquipmentList.getInstance().getEquipment("Arc angelique")){
                         equipment.setShopSelected(false);
                     }
+                    if(compteur == maximum-1){
+                        minimum += 1;
+                        maximum += 1;
+                    }
+                    compteur += 1;
                 }
             }
         }
