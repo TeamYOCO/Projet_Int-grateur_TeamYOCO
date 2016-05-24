@@ -8,6 +8,7 @@ package statesOfGame;
 import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
+import java.util.NavigableSet;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -26,6 +27,7 @@ public class Shop extends BasicGameState {
 
     private static int stateID;
     private Image background;
+    private NavigableSet nset;
 
     public Shop(int stateID) throws SlickException {
         Shop.stateID = stateID;
@@ -39,7 +41,8 @@ public class Shop extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        background = Overworld.getScreenShot();
-        EquipmentList.getInstance().getListEquipment().get("Jambieres Emeraudes").setShopSelected(true);
+        EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
+        nset=EquipmentList.getInstance().getListEquipment().descendingKeySet();
     }
 
     @Override
@@ -88,7 +91,7 @@ public class Shop extends BasicGameState {
         }
         
         if(input.isKeyPressed(Input.KEY_UP)){
-            for (Equipment equipment : EquipmentList.getInstance().getListEquipment().values()) {
+            for (Equipment equipment : EquipmentList.getInstance().getReversedListEquipment().values()) {
                 if(next){
                     equipment.setShopSelected(true);
                     next = false;
