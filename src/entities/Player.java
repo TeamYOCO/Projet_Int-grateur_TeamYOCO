@@ -47,8 +47,8 @@ public class Player extends Mob {
         this.bowShootAnimation = new Animation[4];
         this.bowAnimation = new Animation[4];
         this.castAnimations = new Animation[4];
-        this.setX(620);
-        this.setY(430);
+        this.setX(205);
+        this.setY(169);
         this.xOff = -16;
         this.yOff = -50;
         moving = false;
@@ -181,7 +181,7 @@ public class Player extends Mob {
     }
 
     public void attack() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSwordEquiped()) {
             attacking = true;
             attackDirection = direction;
             attackCounter = 500;
@@ -214,7 +214,7 @@ public class Player extends Mob {
     }
 
     public void shoot() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isBowEquiped()) {
             shooting = true;
             attackDirection = direction;
             attackCounter = 1000;
@@ -227,7 +227,7 @@ public class Player extends Mob {
     }
 
     public void cast() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()) {
             casting = true;
             attackDirection = direction;
             attackCounter = 500;

@@ -6,6 +6,7 @@
 package playerEngine;
 
 import items.Equipment;
+import items.EquipmentType;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -39,5 +40,28 @@ public class Inventory implements Serializable{
         this.listItemPlayer = listItemPlayer;
     }
     
-    
+    public boolean isSwordEquiped(){
+        for (Equipment equipment : listItemPlayer){
+            if (equipment.getType() == EquipmentType.SWORD){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isBowEquiped(){
+        for (Equipment equipment : listItemPlayer){
+            if (equipment.getType() == EquipmentType.BOW){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isSpellTomeEquiped(){
+        for (Equipment equipment : listItemPlayer){
+            if (equipment.getType() == EquipmentType.SPELL_TOME){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -79,6 +79,9 @@ public class PlayerController implements KeyListener {
                 } catch (SlickException ex) {
                 }
                 break;
+            case Input.KEY_SPACE:
+                System.out.println("space");
+                break;
             case Input.KEY_1:
                 try {
                     CharacterStatsManager.getInstance().gainExp(5);
