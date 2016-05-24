@@ -25,6 +25,7 @@ public abstract class Mob extends Entity {
     protected int damage;
     protected float knockbackTimer = 0;
     protected int exp = 0;
+    protected int money;
     protected ArrayList<Entity> list;
     
     public boolean isHitable(){
@@ -67,5 +68,6 @@ public abstract class Mob extends Entity {
     
     public void die() throws SlickException{
         CharacterStatsManager.getInstance().gainExp(exp);
+        CharacterStatsManager.getInstance().gainMoney(money);
     }
 }

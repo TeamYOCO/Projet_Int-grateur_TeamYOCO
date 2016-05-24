@@ -7,9 +7,6 @@ package entities;
 
 import gameEngine.ResManager;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -42,7 +39,7 @@ public class Bee extends Mob implements BadEntity {
         this.hitBox = new Box(x + xOff, y + yOff, 32, 32);
         this.hitpoints = 50;
         this.damage = 5;
-        this.xpGiven = 10;
+        this.money = 5;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");

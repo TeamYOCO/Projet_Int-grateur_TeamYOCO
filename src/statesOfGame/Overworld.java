@@ -89,6 +89,10 @@ public class Overworld extends BasicGameState implements Serializable {
             sbg.enterState(Game.LEVELUPSCREEN);
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
+        g.setColor(Color.yellow);
+        g.fillRect(220, 13, 40, 18);
+        g.setColor(Color.black);
+        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
     }
 
     @Override
@@ -113,7 +117,6 @@ public class Overworld extends BasicGameState implements Serializable {
             }
             if (entity.isDead()) {
                 listRemove.add(entity);
-                CharacterStatsManager.getInstance().gainExp(entity.getXpGiven());
             }
         }
         for (Entity entity : listRemove) {
