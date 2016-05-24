@@ -9,6 +9,7 @@ import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
 import java.util.NavigableSet;
+import java.util.TreeMap;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -27,7 +28,7 @@ public class Shop extends BasicGameState {
 
     private static int stateID;
     private Image background;
-    private NavigableSet nset;
+    private TreeMap<String,Equipment> displayItems = new TreeMap();
 
     public Shop(int stateID) throws SlickException {
         Shop.stateID = stateID;
@@ -41,8 +42,13 @@ public class Shop extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 //        background = Overworld.getScreenShot();
+        int compteur = 0;
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
-        nset=EquipmentList.getInstance().getListEquipment().descendingKeySet();
+        for (String key : IconList.getInstance().getListIcon().keySet()) {
+            if(compteur < 10){
+                displayItems.put(key, EquipmentList.getInstance().getListEquipment().get(key));
+            }
+        }
     }
 
     @Override
@@ -76,28 +82,36 @@ public class Shop extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
         
-        boolean next = false;
+        boolean next = false,present = true;
         
         if(input.isKeyPressed(Input.KEY_DOWN)){
             for (Equipment equipment : EquipmentList.getInstance().getListEquipment().values()) {
                 if(next){
                     equipment.setShopSelected(true);
                     next = false;
+                    present = false;
                 }
-                if(equipment.getShopSelected()){
+                if(equipment.getShopSelected() && present){
                     next = true;
+                    if(equipment != EquipmentList.getInstance().getEquipment("Livre violet")){
+                        equipment.setShopSelected(false);
+                    }
                 }
             }
         }
-        
+        present = true;
         if(input.isKeyPressed(Input.KEY_UP)){
             for (Equipment equipment : EquipmentList.getInstance().getReversedListEquipment().values()) {
                 if(next){
                     equipment.setShopSelected(true);
                     next = false;
+                    present = false;
                 }
-                if(equipment.getShopSelected()){
+                if(equipment.getShopSelected() && present){
                     next = true;
+                    if(equipment != EquipmentList.getInstance().getEquipment("Arc angelique")){
+                        equipment.setShopSelected(false);
+                    }
                 }
             }
         }
