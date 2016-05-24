@@ -164,6 +164,15 @@ public class Overworld extends BasicGameState implements Serializable {
                     this.list.add(new Snake(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 }
             }
+            String[] temp3;
+            temp3=map.getMapProperty("npc").split(";");
+            String[] temp4;
+            for(int i=1;i<= Integer.parseInt(temp3[0]);i++){
+                temp4= temp[i].split(",");
+                if (Integer.parseInt(temp4[0]) == 1){
+                    //this.list.add()
+                }
+            }
 
             mapChanger = false;
         }

@@ -5,7 +5,9 @@
  */
 package entities;
 
+import items.EquipmentList;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
@@ -74,5 +76,29 @@ public abstract class Mob extends Entity {
     public void die() throws SlickException{
         CharacterStatsManager.getInstance().gainExp(exp);
         CharacterStatsManager.getInstance().gainMoney(money);
+        Random rdn=new Random();
+        if(rdn.nextInt()%10000==1){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Casque Royal")));
+        }else if(rdn.nextInt()%10000==2){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Armure Royale")));
+        }else if(rdn.nextInt()%10000==3){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Jambieres Royales")));
+        }else if(rdn.nextInt()%10000==4){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Bottes Royales")));
+        }else if(rdn.nextInt()%10000==5){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Jesus")));
+        }else if(rdn.nextInt()%10000==6){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee legendaire")));
+        }else if(rdn.nextInt()%10000==7){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee extraterrestre")));
+        }else if(rdn.nextInt()%10000==8){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee rose")));
+        }else if(rdn.nextInt()%10000==9){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee de glace")));
+        }else if(rdn.nextInt()%10000==10){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Banane")));
+        }else if(rdn.nextInt()%10000==11){
+            this.list.add(new ItemDrop((int)this.x,(int)this.y,EquipmentList.getInstance().getEquipment("Epee Royale")));
+        }
     }
 }
