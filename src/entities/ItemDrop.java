@@ -18,8 +18,8 @@ import playerEngine.CharacterStatsManager;
  *
  * @author The Ninetail
  */
-public class ItemDrop extends Entity{
-    
+public class ItemDrop extends Entity {
+
     private Image image;
     private Equipment equipment;
 
@@ -27,15 +27,13 @@ public class ItemDrop extends Entity{
         this.x = x;
         this.y = y;
         this.dead = false;
+        this.hitBox = new Box(x, y, 32, 32);
         try {
             this.image = ResManager.getInstance().getImage("drop");
-        } catch (SlickException ex) {}
-        System.out.println(image);
+        } catch (SlickException ex) {
+        }
         this.equipment = equipment;
     }
-    
-    
-  
 
     @Override
     public void update(int delta) {
@@ -45,8 +43,8 @@ public class ItemDrop extends Entity{
     public void render(Graphics g) throws SlickException {
         g.drawImage(image, x, y);
     }
-    
-    public void pickUp(){
+
+    public void pickUp() {
         try {
             CharacterStatsManager.getInstance().addItem(equipment);
             this.dead = true;
