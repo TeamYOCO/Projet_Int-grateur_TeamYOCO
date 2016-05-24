@@ -20,11 +20,12 @@ import org.newdawn.slick.SpriteSheet;
  */
 public class Boss extends Mob implements BadEntity {
 
-    private float speed = 0.1f;
+    private float speed = 0.25f;
     private MiniMap map;
     private Player player;
     private int aggroRange = 200;
     private boolean aggro = false;
+    private Animation[] attackAnimation;
 
     public Boss(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moving = false;

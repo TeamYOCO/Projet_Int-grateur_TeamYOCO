@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="7">
  <properties>
   <property name="ennemy" value="0"/>
-  <property name="music" value="res/musics/Lorule Main Theme.WAV"/>
+  <property name="music" value="res/musics/Cafofo_-_MUSIC_-_Uplifting_converted.WAV"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
@@ -60,7 +60,7 @@
    H4sIAAAAAAAAC+3YoQ0AIAxE0e6DZSX2XwFVjaBJIXlPnzj9IwAASKN412UW7wAAAIA7p5bwemtIp5agNUC91X0AAOAzG7d7PksQJwAA
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="40" height="20">
+ <objectgroup name="Object Layer 1" width="50" height="50">
   <object id="1" type="tp" x="1586" y="770" width="12" height="96">
    <properties>
     <property name="destMap" value="res/maps/map_3.tmx"/>
