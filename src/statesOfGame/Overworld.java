@@ -44,6 +44,7 @@ public class Overworld extends BasicGameState implements Serializable {
     private Hud hud = new Hud();
     private boolean running = false, firstTime;
     private static boolean newGame;
+    private boolean gameSaved = false;
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger=false;
@@ -92,6 +93,10 @@ public class Overworld extends BasicGameState implements Serializable {
         g.fillRect(220, 13, 40, 18);
         g.setColor(Color.black);
         g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
+        
+        if(gameSaved){
+            g.drawString("Partie Sauvegardée", 900, 10);
+        }
     }
 
     @Override
@@ -160,6 +165,7 @@ public class Overworld extends BasicGameState implements Serializable {
         //peser sur la touche 'p' pour save
         if (input.isKeyPressed(25)) {
             DataManager.getInstance().save();
+            gameSaved = true;
         }
 
         if (input.isMousePressed(0)) {
