@@ -193,18 +193,22 @@ public class Shop extends BasicGameState {
                     isOwned = true;
                 }
             }
+            
             for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
                 if(equipmentSelected == equipment){
                     isOwned = true;
                 }
             }
+            
             if(!isOwned && CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
                 CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
                 listEquipmentAdded.add(equipmentSelected);
             }
+            
             for (Equipment equipment : listEquipmentAdded) {
                 CharacterStatsManager.getInstance().addItem(equipment);
             }
+            
             listEquipmentAdded.clear();
         }
         
