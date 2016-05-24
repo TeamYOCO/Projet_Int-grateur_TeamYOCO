@@ -91,7 +91,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
 
             placeItem(itemFound, i);
-            IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(), itemFound.getInventoryY());
+            IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(),itemFound.getInventoryY());
 
             if (CharacterStatsManager.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
                 g.drawString(itemFound.getName(), 415, 200);

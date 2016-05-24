@@ -17,6 +17,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -30,7 +31,8 @@ public class Shop extends BasicGameState {
     private TreeMap<String,Equipment> reversedDisplayItems;
     private final int MAX_ITEM_SHOP = 10;
     private int minimum = 0, maximum, compteur = 0;
-    private boolean clearMap = false;
+    private boolean clearMap = false, drawPrice = true;
+    private Equipment equipmentSelected;
 
     public Shop(int stateID) throws SlickException {
         this.maximum = MAX_ITEM_SHOP;
@@ -72,18 +74,28 @@ public class Shop extends BasicGameState {
         reversedDisplayItems = new TreeMap<>(displayItems.descendingMap());
         
         for (String key : displayItems.keySet()) {
+            drawPrice = true;
             if (EquipmentList.getInstance().getListEquipment().get(key).getShopSelected()) {
                 g.setColor(Color.orange);
+                equipmentSelected = EquipmentList.getInstance().getListEquipment().get(key);
             } else {
                 g.setColor(Color.lightGray);
             }
             g.fillRect(710, 55 + (60 * itemCompteur), 50, 50);
             IconList.getInstance().getListIcon().get(key).draw(719, 64 + (60 * itemCompteur));
             g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getName(), 770, 60 + (60 * itemCompteur));
-            g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getPrice() + "$", 770, 80 + (60 * itemCompteur));
+            for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                if(equipment == EquipmentList.getInstance().getListEquipment().get(key)){
+                    drawPrice = false;
+                }
+            }
+            if(drawPrice){
+                g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getPrice() + "$", 770, 80 + (60 * itemCompteur));
+            } else {
+                g.drawString("Déjà obtenu", 770, 80 + (60 * itemCompteur));
+            }
             itemCompteur += 1;
         }
-
     }
 
     @Override
@@ -133,6 +145,17 @@ public class Shop extends BasicGameState {
                             clearMap = true;
                         }
                     }
+                }
+            }
+        }
+        
+        if(input.isKeyPressed(Input.KEY_ENTER)){
+                for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                    if(equipmentSelected == equipment){
+                        drawPrice = false;
+                    }
+                if(CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
+                CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
                 }
             }
         }

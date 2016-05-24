@@ -128,9 +128,6 @@ public class MainMenu extends BasicGameState {
             }
         }
         
-        if(input.isMousePressed(1)){
-            sbg.enterState(SHOP);
-        }
     }
 
     @Override
