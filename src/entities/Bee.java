@@ -5,7 +5,7 @@
  */
 package entities;
 
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.logging.Level;
@@ -45,7 +45,7 @@ public class Bee extends Mob implements BadEntity {
         this.xpGiven = 10;
         SpriteSheet moveSpriteSheet = null;
         try {
-            moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
+            moveSpriteSheet = ResMng.getInstance().getSpriteSheet("bee");
         } catch (SlickException ex) {
         }
         for (int i = 0; i < 4; i++) {

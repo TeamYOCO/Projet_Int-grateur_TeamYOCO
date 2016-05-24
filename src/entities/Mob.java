@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /**
  * Classe qui contient tous les éléments représentant un monstre, npc ou joueur
@@ -66,6 +66,6 @@ public abstract class Mob extends Entity {
     }
     
     public void die() throws SlickException{
-        CharacterStatsManager.getInstance().gainExp(exp);
+        StatsMng.getInstance().gainExp(exp);
     }
 }

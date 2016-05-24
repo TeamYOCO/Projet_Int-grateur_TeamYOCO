@@ -5,7 +5,7 @@
  */
 package items;
 
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import java.util.HashMap;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
@@ -38,7 +38,7 @@ public class IconList{
     private void loadStrings() throws SlickException{
 //      constructeur Equipment : int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats
 
-        SpriteSheet spriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
+        SpriteSheet spriteSheet = ResMng.getInstance().getSpriteSheet("new_items");
         Animation animation = new Animation();
         for (int i = 0; i < SPRITE_SHEET_HEIGHT; i++) {
             for (int j = 0; j < SPRITE_SHEET_WIDTH; j++) {

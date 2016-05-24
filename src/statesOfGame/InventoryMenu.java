@@ -6,7 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import items.EquipmentList;
 import items.Equipment;
 import items.EquipmentType;
@@ -26,7 +26,7 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /**
  *
@@ -34,7 +34,7 @@ import playerEngine.CharacterStatsManager;
  */
 public class InventoryMenu extends BasicGameState implements Serializable{
 
-    private final CharacterStatsManager statsManager;
+    private final StatsMng statsManager;
     private static int stateID;
     private Image inventoryPic;
     private final ArrayList<int[]> listStats;
@@ -47,7 +47,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
     public InventoryMenu(int stateID) throws SlickException {
         InventoryMenu.stateID = stateID;
         listStats = new ArrayList();
-        statsManager = CharacterStatsManager.getInstance();
+        statsManager = StatsMng.getInstance();
         listItemDeleted = new ArrayList();
     }
 
@@ -58,7 +58,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        inventoryPic = ResManager.getInstance().getImage("inventory1player");
+        inventoryPic = ResMng.getInstance().getImage("inventory1player");
 
 ////  creer la police de caractère
 //        Font font = new Font("Serif", Font.BOLD, 15);
@@ -93,12 +93,12 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         for (int j = 0; j < statsManager.getStats().length; j++) {
             g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 23));
         }
-        for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+        for (Equipment itemFound : StatsMng.getInstance().getInventory().getListItemFound()) {
 
             placeItem(itemFound, i);
             IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(), itemFound.getInventoryY());
 
-            if (CharacterStatsManager.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
+            if (StatsMng.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
                 g.drawString(itemFound.getName(), 415, 200);
                 g.drawString(itemFound.getDescription(), 435, 220);
                 for (int j = 0; j < itemFound.getStats().length; j++) {
@@ -108,7 +108,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             i++;
         }
 
-        for (Equipment playerItem : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+        for (Equipment playerItem : StatsMng.getInstance().getInventory().getListItemPlayer()) {
             IconList.getInstance().getListIcon().get(playerItem.getName()).draw(playerItem.getInventoryX(), playerItem.getInventoryY());
             if (playerItem.getIsAbove()) {
                 g.drawString(playerItem.getName(), 415, 200);
@@ -132,7 +132,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         }
 
         //passe au travers de la boucle d'item trouve
-        for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+        for (Equipment itemFound : StatsMng.getInstance().getInventory().getListItemFound()) {
             isSameType = false;
             //verifie si la souris est au dessus de l'item
             if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
@@ -152,10 +152,10 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             }
         }
 
-        CharacterStatsManager.getInstance().getInventory().getListItemFound().removeAll(listItemDeleted);
+        StatsMng.getInstance().getInventory().getListItemFound().removeAll(listItemDeleted);
         listItemDeleted.clear();
         
-        for (Equipment itemPlayer : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+        for (Equipment itemPlayer : StatsMng.getInstance().getInventory().getListItemPlayer()) {
 
             //verifie si la souris est au dessus de l'item
             if ((mouseX > itemPlayer.getInventoryX() && mouseX < itemPlayer.getInventoryX() + 40)
@@ -175,7 +175,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             }
         }
 
-        CharacterStatsManager.getInstance().getInventory().getListItemPlayer().removeAll(listItemDeleted);
+        StatsMng.getInstance().getInventory().getListItemPlayer().removeAll(listItemDeleted);
         listItemDeleted.clear();
     }
 
@@ -209,17 +209,17 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
     private void itemFoundClicked(Equipment itemFound) throws SlickException{
         //s'il y a deja un objet du meme type
-        for (Equipment itemPlayer : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+        for (Equipment itemPlayer : StatsMng.getInstance().getInventory().getListItemPlayer()) {
             if (itemFound.getType() == itemPlayer.getType()) {
                 isSameType = true;
             }
         }
 
         //impossible de rajouter des objet si la limite d'equipement est atteinte ou s'il y a deja un objet du meme type
-        if ((CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) && !isSameType) {
+        if ((StatsMng.getInstance().getInventory().getListItemPlayer().size() < MAX_LIST_JOUEUR) && !isSameType) {
 
             itemFound.setIsAbove(false); //la souris n'est plus au dessus de l'objet (puisqu'il change de place)
-            CharacterStatsManager.getInstance().getInventory().getListItemPlayer().add(itemFound); // changer l'objet de liste
+            StatsMng.getInstance().getInventory().getListItemPlayer().add(itemFound); // changer l'objet de liste
 
             //changer les stats du joueur
             for (int k = 0; k < itemFound.getStats().length; k++) {
@@ -230,11 +230,11 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             statsManager.setHp(statsManager.getHp() + itemFound.getStats()[0]);
             
             //deplacer les icones d'items
-            int x = 430 + (40 * (CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1));
+            int x = 430 + (40 * (StatsMng.getInstance().getInventory().getListItemPlayer().size()-1));
             int y = 155;
             try {
-                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryX(x);
-                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryY(y);
+                StatsMng.getInstance().getInventory().getListItemPlayer().get(StatsMng.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryX(x);
+                StatsMng.getInstance().getInventory().getListItemPlayer().get(StatsMng.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryY(y);
             } catch (ArrayIndexOutOfBoundsException e) {
             }
             
@@ -244,7 +244,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
     private void itemPlayerClicked(Equipment itemPlayer) throws SlickException{
         itemPlayer.setIsAbove(false);//la souris n'est plus au dessus de l'objet (puisqu'il change de place)
-        CharacterStatsManager.getInstance().getInventory().getListItemFound().add(itemPlayer);// changer l'objet de liste
+        StatsMng.getInstance().getInventory().getListItemFound().add(itemPlayer);// changer l'objet de liste
 
         //changer les stats du joueur
         for (int k = 0; k < statsManager.getStats().length; k++) {
@@ -254,8 +254,8 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         statsManager.setHp(statsManager.getHp() - itemPlayer.getStats()[0]);
 
         //replacer les objets restants
-        for (int k = CharacterStatsManager.getInstance().getInventory().getListItemPlayer().indexOf(itemPlayer); k < CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size(); k++) {
-            CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(k).setInventoryX(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
+        for (int k = StatsMng.getInstance().getInventory().getListItemPlayer().indexOf(itemPlayer); k < StatsMng.getInstance().getInventory().getListItemPlayer().size(); k++) {
+            StatsMng.getInstance().getInventory().getListItemPlayer().get(k).setInventoryX(StatsMng.getInstance().getInventory().getListItemPlayer().get(k).getInventoryX() - 40);
         }
         listItemDeleted.add(itemPlayer);
     }

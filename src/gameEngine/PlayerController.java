@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /*
  * Cette classe gère le controle du joueur dans le overworld
@@ -84,13 +84,13 @@ public class PlayerController implements KeyListener {
                 break;
             case Input.KEY_1:
                 try {
-                    CharacterStatsManager.getInstance().gainExp(5);
+                    StatsMng.getInstance().gainExp(5);
                 } catch (SlickException ex) {
                 }
                 break;
             case Input.KEY_2:
                 try {
-                    CharacterStatsManager.getInstance().takeDamage(-10);
+                    StatsMng.getInstance().takeDamage(-10);
                 } catch (SlickException ex) {
                 }
                 break;

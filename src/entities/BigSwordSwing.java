@@ -5,11 +5,11 @@
  */
 package entities;
 
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /**
  *
@@ -19,7 +19,7 @@ public class BigSwordSwing extends Particle{
     private int damage;
 
     public BigSwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
-        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("longsword_male");
+        SpriteSheet anim = ResMng.getInstance().getSpriteSheet("longsword_male");
         this.x = x;
         this.y = y;
         this.xOff = 0;
@@ -31,7 +31,7 @@ public class BigSwordSwing extends Particle{
             case 3: xOff = 85; yOff = 45; break;
         }
         this.hitBox = new Box(x+xOff, y+yOff, 0, 0);
-        this.damage = CharacterStatsManager.getInstance().getStats()[1];
+        this.damage = StatsMng.getInstance().getStats()[1];
         this.animation = loadAnimation(anim, 1, 6, direction);
         this.lifeSpam = lifeSpam;
     }

@@ -8,7 +8,7 @@ package statesOfGame;
 import static ca.qc.bdeb.info204.Game.HEIGHT;
 import static ca.qc.bdeb.info204.Game.MAINMENU;
 import static ca.qc.bdeb.info204.Game.WIDTH;
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -39,7 +39,7 @@ public class Help extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = ResManager.getInstance().getImage("treesun");
+        background = ResMng.getInstance().getImage("treesun");
     }
 
     @Override

@@ -5,13 +5,14 @@
  */
 package entities;
 
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import items.Equipment;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import playerEngine.StatsMng;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ItemDrop extends Entity{
         this.x = x;
         this.y = y;
         try {
-            this.image = ResManager.getInstance().getImage("drop");
+            this.image = ResMng.getInstance().getImage("drop");
         } catch (SlickException ex) {
             Logger.getLogger(ItemDrop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -44,5 +45,6 @@ public class ItemDrop extends Entity{
     public void render(Graphics g) throws SlickException {
     }
     
-    
+    public void pickUp(){
+    }
 }

@@ -24,7 +24,7 @@ import entities.FriendlyEntity;
 import entities.Slime;
 import gameEngine.DataManager;
 import java.io.Serializable;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /**
  *
@@ -83,10 +83,10 @@ public class Overworld extends BasicGameState implements Serializable {
         this.map.renderForeground();
         this.hud.render(g);
         
-        if(CharacterStatsManager.getInstance().getlvlIsUp()){
+        if(StatsMng.getInstance().getlvlIsUp()){
             container.getGraphics().copyArea(screenShot, 0, 0);
             sbg.enterState(Game.LEVELUPSCREEN);
-            CharacterStatsManager.getInstance().setlvlIsUp(false);
+            StatsMng.getInstance().setlvlIsUp(false);
         }
     }
 
@@ -112,7 +112,7 @@ public class Overworld extends BasicGameState implements Serializable {
             }
             if (entity.isDead()) {
                 listRemove.add(entity);
-                CharacterStatsManager.getInstance().gainExp(entity.getXpGiven());
+                StatsMng.getInstance().gainExp(entity.getXpGiven());
             }
         }
         for (Entity entity : listRemove) {

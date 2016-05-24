@@ -21,19 +21,19 @@ import org.newdawn.slick.font.effects.ColorEffect;
  *
  * @author 1455367
  */
-public class ResManager implements Serializable{
+public class ResMng implements Serializable{
 
-    private static ResManager instance = null;
+    private static ResMng instance = null;
     private HashMap<String, SpriteSheet> sprites;
     private HashMap<String, Image> images;
 
-    private ResManager() throws SlickException {
+    private ResMng() throws SlickException {
         loadRes();
     }
 
-    public static ResManager getInstance() throws SlickException {
+    public static ResMng getInstance() throws SlickException {
         if (instance == null) {
-            instance = new ResManager();
+            instance = new ResMng();
         }
         return instance;
     }

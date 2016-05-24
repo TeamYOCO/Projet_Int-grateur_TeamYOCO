@@ -5,14 +5,14 @@
  */
 package entities;
 
-import gameEngine.ResManager;
+import gameEngine.ResMng;
 import maps.MiniMap;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import playerEngine.CharacterStatsManager;
+import playerEngine.StatsMng;
 
 /**
  *
@@ -26,7 +26,7 @@ public class Arrow extends Particle implements FriendlyEntity{
     private MiniMap map;
 
     public Arrow(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
-        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("arrow");
+        SpriteSheet anim = ResMng.getInstance().getSpriteSheet("arrow");
         this.x = x;
         this.y = y;
         this.xOff = 0;
@@ -40,8 +40,8 @@ public class Arrow extends Particle implements FriendlyEntity{
             case 2: speedY = 0.5f; xOff = -2; yOff = -32; this.hitBox = new Box(x, y, 4, 30); break;
             case 3: speedX = 0.5f; yOff = -2; xOff = -32; this.hitBox = new Box(x, y, 30, 4); break;
         }
-        this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
-        this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
+        this.damagePhysical = StatsMng.getInstance().getStats()[1];
+        this.damageSpecial = StatsMng.getInstance().getStats()[3];
         this.lifeSpam = lifespam;
         this.map = map;
     }
