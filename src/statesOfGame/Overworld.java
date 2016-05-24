@@ -7,6 +7,7 @@ package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
 import entities.BadEntity;
+import entities.Bat;
 import entities.Bee;
 import entities.DamageMarker;
 import entities.Entity;
@@ -146,7 +147,7 @@ public class Overworld extends BasicGameState implements Serializable {
                 } else if (Integer.parseInt(temp2[0]) == 2) {
                     this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 3) {
-                    this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    this.list.add(new Bat(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 4) {
                     this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 }

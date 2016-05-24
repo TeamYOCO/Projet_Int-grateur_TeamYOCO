@@ -19,6 +19,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.EmptyTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import playerEngine.CharacterStatsManager;
 
 /**
  *
@@ -31,7 +32,7 @@ public class MainMenu extends BasicGameState {
     private final int newGameX = 400, newGameY = 50;
     private final int settingsX = 200, settingsY = 50;
     private final int creditsX = 200, creditsY = 50;
-    private final String menuTheme = "res/musics/102-menu-selection.WAV";
+    private final String menuTheme = "res/musics/FrankJavCee_-_FrankJavCee_VOLUME_1.WAV";
     private Image background;
     private Music menuMusic;
     private boolean stopMusic = true, saveFileIsEmpty;
@@ -90,6 +91,7 @@ public class MainMenu extends BasicGameState {
                 && (mouseY > 2 * HEIGHT / 3 - playY / 2 - 10 - newGameY && mouseY < 2 * HEIGHT / 3 - playY / 2 - 10)) {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
+                CharacterStatsManager.getInstance().addItem("Epee de bois");
                 Overworld.setNewGame(true);
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }

@@ -40,6 +40,7 @@ public class Bee extends Mob implements BadEntity {
         this.hitpoints = 50;
         this.damage = 5;
         this.money = 5;
+        this.exp = 10;
         SpriteSheet moveSpriteSheet = null;
         try {
             moveSpriteSheet = ResManager.getInstance().getSpriteSheet("bee");
@@ -72,6 +73,7 @@ public class Bee extends Mob implements BadEntity {
                 this.y = futurY(delta);
             }
         } else if (knockbackTimer > 0) {
+            moving=true;
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(-delta), futurY(-delta))) {
