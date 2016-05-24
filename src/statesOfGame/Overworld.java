@@ -47,7 +47,7 @@ public class Overworld extends BasicGameState implements Serializable {
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger=false;
-    private String oldMusic="";
+    private String oldMusic="res/musics/006-link-s-house.WAV";
     private String overworldTheme = "res/musics/006-link-s-house.WAV";
 
     public Overworld(int stateID) {
@@ -143,11 +143,16 @@ public class Overworld extends BasicGameState implements Serializable {
                     this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 }
             }
-            if (!oldMusic.equals(map.getMapProperty("music"))) {
-                this.setMusic(map.getMapProperty("music"));
-            }
+            
         mapChanger=false;
         }
+        if (!oldMusic.equals(map.getMapProperty("music"))) {
+                this.setMusic(map.getMapProperty("music"));
+                overworldMusic= new Music(map.getMapProperty("music"));
+                overworldMusic.play();
+            overworldMusic.loop();
+            oldMusic=map.getMapProperty("music");
+            }
 
         //peser sur la touche 'p' pour save
         if (input.isKeyPressed(25)) {

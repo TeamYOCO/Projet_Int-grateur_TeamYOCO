@@ -57,6 +57,7 @@ public class Bee extends Mob implements BadEntity {
     public void update(int delta) {
         if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
             moving = true;
+            aggro = true;
         }
         if (moving && knockbackTimer <= 0) {
                 int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());

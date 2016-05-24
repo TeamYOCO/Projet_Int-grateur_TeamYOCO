@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="4">
+ <properties>
+  <property name="ennemy" value=""/>
+  <property name="music" value="res/musics/Dark_chamber.WAV"/>
+ </properties>
  <tileset firstgid="1" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/dirt2.png" width="96" height="192"/>
  </tileset>
@@ -64,7 +68,7 @@
  <objectgroup name="Object Layer 1" width="40" height="20">
   <properties>
    <property name="ennemy" value="9;2,320,800;1,480,320;2,640,640;2,1632,608;2,1280,1280;2,1760,1760;1,1280,1760;2,320,1760;2,320,1440"/>
-   <property name="music" value="res/musics/006-link-s-house.WAV"/>
+   <property name="music" value="res/musics/Dark_chamber.WAV"/>
   </properties>
   <object id="1" type="tp" x="0" y="615" width="11" height="56">
    <properties>
