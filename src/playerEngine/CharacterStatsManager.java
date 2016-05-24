@@ -383,6 +383,10 @@ public class CharacterStatsManager {
     public void setExp(int exp) {
         this.exp = exp;
     }
+    
+    public void buyItem(int moneySpent){
+        this.money -= moneySpent;
+    }
 
     /**
      *

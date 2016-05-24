@@ -222,6 +222,11 @@ public class Overworld extends BasicGameState implements Serializable {
         if (input.isMousePressed(0)) {
             System.out.println(input.getMouseX() + " " + input.getMouseY());
         }
+        
+        
+        if(input.isKeyPressed(Input.KEY_0)){
+            sbg.enterState(SHOP);
+        }
     }
 
     /**
