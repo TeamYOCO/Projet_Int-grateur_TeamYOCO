@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="3">
  <properties>
   <property name="ennemy" value="6;2,1120,160;1,960,640;1,640,1120;2,672,708;2,640,160;1,160,320"/>
-  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="music" value="res/musics/Caves.WAV"/>
  </properties>
  <tileset firstgid="1" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/dirt2.png" width="96" height="192"/>

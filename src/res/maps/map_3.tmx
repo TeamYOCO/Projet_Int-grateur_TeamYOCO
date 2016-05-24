@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="30" tilewidth="32" tileheight="32" nextobjectid="38">
  <properties>
   <property name="ennemy" value="7;1,1920,160;1,1920,640;1,1280,640;1,1280,160;1,320,160;2,160,800;2,480,480"/>
-  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="music" value="res/musics/Lorule Main Theme.WAV"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
   <image source="../tiles/grass.png" width="96" height="192"/>
