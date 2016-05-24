@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="41">
  <properties>
-  <property name="ennemy" value="1;1,576,192"/>
+  <property name="ennemy" value="1;3,576,192"/>
   <property name="music" value="res/musics/Lorule Main Theme.WAV"/>
  </properties>
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
@@ -84,7 +84,7 @@
    H4sIAAAAAAAAC+3OMQ0AAAgDMKzy4l8AIkbC0ypoFZDq78CR+Q4AAAAAAAAAAEBgAdq/5pYQJwAA
   </data>
  </layer>
- <objectgroup name="tp" width="40" height="20">
+ <objectgroup name="tp" width="50" height="50">
   <properties>
    <property name="destMap" value=""/>
    <property name="destX" value=""/>
