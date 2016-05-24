@@ -78,7 +78,7 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
         firstTime = true;
-        list.add(new ItemDrop(321, 520, EquipmentList.getInstance().getEquipment("Bottes Antiques")));
+        list.add(new ItemDrop(321, 520, EquipmentList.getInstance().getEquipment("Epee legendaire")));
     }
 
     @Override
