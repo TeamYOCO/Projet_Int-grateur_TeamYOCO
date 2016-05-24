@@ -35,12 +35,12 @@ public class Game extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-        this.addState(new MainMenu(MAINMENU, manager));
-        this.addState(new Overworld(OVERWORLD, manager));
-        this.addState(new InventoryMenu(INVENTORY, manager));
-        this.addState(new Credits(CREDITS, manager));
-        this.addState(new LevelUpScreen(LEVELUPSCREEN, manager));
-        this.addState(new Help(HELP,manager));
+        this.addState(new MainMenu(MAINMENU));
+        this.addState(new Overworld(OVERWORLD));
+        this.addState(new InventoryMenu(INVENTORY));
+        this.addState(new Credits(CREDITS));
+        this.addState(new LevelUpScreen(LEVELUPSCREEN));
+        this.addState(new Help(HELP));
     }
 
     // Boucle main
