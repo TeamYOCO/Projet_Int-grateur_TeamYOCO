@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
+ <properties>
+  <property name="ennemy" value="0"/>
+  <property name="music" value="res/musics/Crystal_Cavern.WAV"/>
+  <property name="npc" value="2;Soldat,544,448;Soldat,672,448"/>
+ </properties>
+ <tileset firstgid="1" name="castle_outside" tilewidth="32" tileheight="32" tilecount="187" columns="17">
+  <image source="../tiles/castle_outside.png" width="544" height="352"/>
+ </tileset>
+ <tileset firstgid="188" name="grass" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="206" name="dirt" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="224" name="castlewalls" tilewidth="32" tileheight="32" tilecount="180" columns="12">
+  <image source="../tiles/castlewalls.png" width="384" height="480"/>
+ </tileset>
+ <tileset firstgid="404" name="castle_outside 2" tilewidth="32" tileheight="32" tilecount="187" columns="17">
+  <image source="../tiles/castle_outside 2.png" width="544" height="352"/>
+ </tileset>
+ <tileset firstgid="591" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <layer name="collision" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBKKA+8GfCjulhB7GYFubR0r+UAGQ3hQ8id6GDsFH3UQRA7ksA4lAqYHRADTMTgRgANmN0WYAMAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC4XVS47EIAwEUPr+92ID5EwzIyVS9YthFigfjF0u28X1ae26V2/fa/6uFev51+/vybe22g98jvAx7+/rs18LXz1ijfCR+FZ7Y814s33nVuU1Yv8Px/NMTI+/EWfl0L1exMrnszK+3wPO8+wiXuJIzpKLQdzxj/0ktvmYf74P7M3JWvXi7MIm8Sb/5jBYYu3x37raO9arE6vqW/ld2MrPqc/SJvPs7c1jvhtP/1XuFe6Kk8xJHFkD46sL+nQvcWc+vdXc2zvOSvaTNtb0sXU+d3V0Bpznjk85P/WSGNcm5sKuY6Mm73RT21Md5coa6VMM+trtyUelvWpR1bvpQ82Ud2duFee8Q4xfaXhynn1k7ap+Fq8zuOsPtcGcdvVS08XpbInDGjhHo71rJM7d/SqGSts8W/HjnJzm2/qr3xlHPReH9a/mLjnf5Wrd1ExtOv8rvVL/Tlq2WM5odU9UvV/p467ms7A/ceL8uu/37m51JszDfXmo7qlqbrxLqvs0n1XPjPbOOzFnHOfxpN07fbL/fgAZWf3vgAwAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OIQ4AMAzDwP7/g91+s4KhUgf6pNDIVRk9O3839JlkH2MfYx9jH2MfYx9jn6TtASfbJuqADAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3UO0sDQRSG4ZkUptGUokW0tjH2Fsbf5l8wqbyAkM4bWHsDazVKSNKpUYtoGbFQwXfJLjnB3TiTmcUtHHgIuzl8+3Fgt6uVesErLjOiKzp94BNfGegVkZ0mc0pNoZD7+14R2amIOczjWGeD7LSIEpYytD/ZSXaNm93AJrY8Pdskz2Z/e9jHgad+Jnk2+zvBKc5G5G2jrAZuud5JmDXJs9nfFa5RH5F3iFk1sMv1UcKsSV7S/pbVT3fM3+NBx/8f5J3jEU+YICePCz08E5F5tvuLe/5vgrwbvGGBjBr3ZvhtJPRzeX/H7dfR/V6VUBXPDv18f/864e6i/dUc+9m8v6b9KmJ/6yntb3pMPT28u8A799ZUn22e7LSCMlbhcppohdpuUd46yeOzXxrnv5/bSavfN2eYYb6ADAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQsvoAAAAD4Gpph7y4AMAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQsvoAAAAD4Gpph7y4AMAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQsvoAAAAD4Gpph7y4AMAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 8" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQsvoAAAAD4Gpph7y4AMAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="40" height="20">
+  <object id="1" type="tp" x="581" y="626" width="118" height="12">
+   <properties>
+    <property name="destMap" value="res/maps/City_1.tmx"/>
+    <property name="destX" value="768"/>
+    <property name="destY" value="32"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="576" y="456" width="128" height="24">
+   <properties>
+    <property name="destMap" value="res/maps/Castle_2.tmx"/>
+    <property name="destX" value="608"/>
+    <property name="destY" value="1248"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+ <properties>
+  <property name="ennemy" value="0"/>
+  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="npc" value="1;Marchand,288,384"/>
+ </properties>
+ <tileset firstgid="1" name="barrel" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="../tiles/barrel.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
+  <image source="../tiles/cabinets.png" width="192" height="416"/>
+ </tileset>
+ <tileset firstgid="87" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/city_inside.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="471" name="inside" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/inside.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="571" name="kitchen" tilewidth="32" tileheight="32" tilecount="8" columns="2">
+  <image source="../tiles/kitchen.png" width="64" height="128"/>
+ </tileset>
+ <tileset firstgid="579" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="604" name="victoria" tilewidth="32" tileheight="32" tilecount="55" columns="11">
+  <image source="../tiles/victoria.png" width="352" height="160"/>
+ </tileset>
+ <layer name="collision" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBTgAv5MDAweVMIBQOzNRD23eY2aNyzNc2aCYJh5MD41zAtBMs8TB4YBXPIwHArEAAmLt7VABgAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC7vOyMBwg0r4JhA/BOJHVMKPgfg1EL+hEn4LxP9H8SgexaN4FFMFAwAFxa9WQAYAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3LSQqDQBBA0YYIxgE0QlRwwkRxuoYr73+g/E3vihZJL1z0h7eookopuwUIESFGhRoNWnTCjbTTfwlSvJChxwdfDBiFG2mn/97IUaDEhBkLVmzCjbTTf657tVt2WOZynfWAZ5iv5uNpmP/pB+0pMStABgAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC7vNyEA1cAto1u1R80a0eblM5JtXj0VvBR7z0NWjm9eFJF+Lwxxk8S4C5lEKRs0b/uY9paJ5T4Bmvaeiee+AZv0kwjxhJggmBH4AzQIAGYBkLUAGAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="40" height="20">
+  <object id="1" type="tp" x="284" y="624" width="72" height="16">
+   <properties>
+    <property name="destMap" value="res/maps/City_1.tmx"/>
+    <property name="destX" value="1344"/>
+    <property name="destY" value="1344"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
