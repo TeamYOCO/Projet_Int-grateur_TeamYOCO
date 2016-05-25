@@ -75,6 +75,7 @@ public class CharacterStatsManager {
      */
     protected boolean lvlIsUp = false;
     
+    
     private Inventory inventory;
 
     private CharacterStatsManager() {
