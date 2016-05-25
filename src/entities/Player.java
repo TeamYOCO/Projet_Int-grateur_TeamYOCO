@@ -278,10 +278,15 @@ public class Player extends Mob {
             Particle spell = null;
             if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre rouge")) {
                 spell = new Fireball(this.x, this.y - 25, attackDirection, 1000, map, list);
-            } else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre cyan")){
-                CharacterStatsManager.getInstance().heal(CharacterStatsManager.getInstance().getStats()[4]*2);
+            } else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre cyan")) {
+                CharacterStatsManager.getInstance().heal(CharacterStatsManager.getInstance().getStats()[3] * 2);
+                SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("healing");
+                Animation anim = loadAnimation(sheet, 0, 6, 0);
+                spell = new Particle(anim, 500, 0, 0, 0, x-16, y-32, new Box(x, y, 0, 0));
+            }else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre gris"))
+            if (spell != null) {
+                list.add(spell);
             }
-            list.add(spell);
             for (int i = 0; i < castAnimations.length; i++) {
                 castAnimations[i].restart();
             }

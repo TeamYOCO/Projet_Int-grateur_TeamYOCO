@@ -63,8 +63,9 @@ public class Fireball extends Particle implements FriendlyEntity{
         this.hitBox = new Box(x+xOff, y+yOff, 32, 32);
         animation = loadAnimation(anim1, 0, 8, direction);
         for (int i = 0; i < 4; i++) {
-            explosionAnimation = loadAnimation(anim2, 0, 3, i);
+            explosionAnimation = addAnimation(anim2, 0, 3, i, explosionAnimation);
         }
+        explosionAnimation.setSpeed(1.3f);
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
         this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
         this.lifeSpam = lifespam;
@@ -82,9 +83,6 @@ public class Fireball extends Particle implements FriendlyEntity{
             g.drawAnimation(animation, x-32, y-32);
         else if (exploding)
             g.drawAnimation(explosionAnimation, x-128, y-64);
-        this.hitBox.render(g);
-        g.setColor(Color.red);
-        g.fillOval(x, y, 2, 2);
     }
 
     /**

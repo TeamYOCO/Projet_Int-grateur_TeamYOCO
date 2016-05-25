@@ -158,34 +158,34 @@ public class EquipmentList implements Serializable{
         listEquipment.put("Epee extraterrestre",new Equipment(0,0,"Epee extraterrestre",
                 "Cette arme, qui ne semble pas avoir été\ncréer sur terre, ne fera que des\ndégats magiques. Curieux...",
                 new int[]{0,0,0,25,0,0,0},EquipmentType.SWORD,80));
-        listEquipment.put("Livre bleu",new Equipment(0,0,"Livre bleu",
+        listEquipment.put("Livre bleu",new Equipment(0,0,"Livre des mers",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre violet",new Equipment(0,0,"Livre violet",
+        listEquipment.put("Livre violet",new Equipment(0,0,"Livre de la foudre",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre rouge",new Equipment(0,0,"Livre rouge",
+        listEquipment.put("Livre rouge",new Equipment(0,0,"Livre des flâmes",
                 "Permet de lancer le sort «Boule de feu»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre mauve",
+        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre de l'arcane",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre beige",new Equipment(0,0,"Livre beige",
+        listEquipment.put("Livre beige",new Equipment(0,0,"Livre de la terre",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre brun",new Equipment(0,0,"Livre brun",
+        listEquipment.put("Livre brun",new Equipment(0,0,"Livre de la nature",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre gris",new Equipment(0,0,"Livre gris",
+        listEquipment.put("Livre gris",new Equipment(0,0,"Livre des vents",
                 "Permet de lancer le sort «Tornade»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
+        listEquipment.put("Livre vert",new Equipment(0,0,"Livre de l'âme",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre cyan",new Equipment(0,0,"Livre cyan",
+        listEquipment.put("Livre cyan",new Equipment(0,0,"Livre de la vie",
                 "Permet de lancer le sort «Soin»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
+        listEquipment.put("Livre orange",new Equipment(0,0,"Livre du chaos",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",
