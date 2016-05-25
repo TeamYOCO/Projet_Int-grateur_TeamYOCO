@@ -366,11 +366,16 @@ public class Player extends Mob {
      */
     @Override
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
+        super.takeHit(damage, damageSpecial, hitDirection);
         try {
             CharacterStatsManager.getInstance().takeDamage(damage, damageSpecial);
+            if (CharacterStatsManager.getInstance().getHp() <= 0) {
+                knockbackTimer = 0;
+            }
         } catch (SlickException ex) {
         }
-        super.takeHit(damage, damageSpecial, hitDirection);
+        
+
     }
 
 }

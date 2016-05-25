@@ -31,7 +31,8 @@ public class Boss extends Mob implements BadEntity {
     private Animation[] attackAnimation;
 
     /**
-     *  Crée le boss
+     * Crée le boss
+     *
      * @param x La position en x de départ du boss
      * @param yLa position en y de départ du boss
      * @param player Le joueur
@@ -68,6 +69,7 @@ public class Boss extends Mob implements BadEntity {
 
     /**
      * Permet au boss de se déplacer
+     *
      * @param delta La durée d'une ittération
      */
     @Override
@@ -105,22 +107,20 @@ public class Boss extends Mob implements BadEntity {
 
         } else if (attCounter > 0 && attaquing) {
             attCounter -= delta;
-            System.out.println("attCounter: " + attCounter);
-            
             if (attCounter <= 0) {
                 attaquing = false;
+                xOff = -16; yOff = -60; hitBox = new Box(x+xOff,y+yOff,32,60);
             }
         }
         if (attCooldown > 0) {
-            
             attCooldown -= delta;
-            System.out.println("attCooldown: " + attCooldown);
         }
         hitBox.setPos(x + xOff, y + yOff);
     }
 
     /**
      * Calcul la position en x après l'ittération
+     *
      * @param delta La durée d'une ittération
      * @return la position en x après l'ittération
      */
@@ -139,6 +139,7 @@ public class Boss extends Mob implements BadEntity {
 
     /**
      * Calcul la position en y après l'ittération
+     *
      * @param delta La durée d'une ittération
      * @return la position en y après l'ittération
      */
@@ -155,8 +156,9 @@ public class Boss extends Mob implements BadEntity {
         return futurY;
     }
 
-   /**
+    /**
      * Dessine le boss pour la première fois
+     *
      * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
@@ -165,18 +167,14 @@ public class Boss extends Mob implements BadEntity {
         if (isHitable() && !attaquing) {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64);
         } else if (attaquing) {
-            System.out.println("il attaque");
             g.drawAnimation(attackAnimation[direction], x - 96, y - 128);
         } else {
             g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64, Color.red);
         }
         g.setColor(Color.red);
         g.drawString("" + this.hitpoints, x - 20, y - 80);
-        hitBox.render(g);
-        g.setColor(Color.red);
-        g.fillOval(x, y, 2, 2);
     }
-    
+
     /**
      * L'animation d'attaque du boss
      */
@@ -199,7 +197,7 @@ public class Boss extends Mob implements BadEntity {
                 }
                 break;
             case 3:
-                if (player.getX() > this.x + 96 && player.getX() < this.x + 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
+                if (player.getX() < this.x + 96 && player.getX() > this.x + 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
                     isInRange = true;
                 }
                 break;
@@ -212,8 +210,18 @@ public class Boss extends Mob implements BadEntity {
                 attackAnimation[i].restart();
             }
             switch (direction) {
-
+                case 0: yOff = -124; hitBox = new Box(x+xOff, y+yOff, 32, 128); break;
+                case 1: xOff = -76; hitBox = new Box(x+xOff, y+yOff, 96, 60); break;
+                case 2: hitBox = new Box(+xOff, y+yOff, 32, 128); break;
+                case 3: hitBox = new Box(+xOff, y+yOff, 96, 60); break;
             }
+        }
+    }
+
+    @Override
+    public void takeHit(int damage, int damageSpecial, int hitDirection) {
+        if (!attaquing) {
+            super.takeHit(damage, damageSpecial, hitDirection); //To change body of generated methods, choose Tools | Templates.
         }
     }
 
