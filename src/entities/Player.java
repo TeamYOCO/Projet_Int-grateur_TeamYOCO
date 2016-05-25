@@ -292,7 +292,7 @@ public class Player extends Mob {
                 Animation anim = loadAnimation(sheet, 0, 6, 0);
                 spell = new Particle(anim, 500, 0, 0, 0, x-16, y-32, new Box(x, y, 0, 0));
             }else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre gris")){
-                spell = new Tornade(x, y-25, direction);
+                spell = new Tornade(x, y-64, direction);
             }
             if (spell != null) {
                 list.add(spell);

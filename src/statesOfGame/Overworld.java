@@ -110,11 +110,11 @@ public class Overworld extends BasicGameState implements Serializable {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
         this.map.renderBackground(g);
-
+        this.player.render(g);
         for (Entity entity : list) {
             entity.render(g);
         }
-        this.player.render(g);
+
         this.map.renderForeground();
         this.hud.render(g);
 
