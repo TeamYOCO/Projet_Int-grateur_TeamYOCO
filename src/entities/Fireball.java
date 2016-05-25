@@ -67,7 +67,7 @@ public class Fireball extends Particle implements FriendlyEntity{
         }
         explosionAnimation.setSpeed(1.3f);
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
-        this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
+        this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3]*2;
         this.lifeSpam = lifespam;
         this.map = map;
     }
