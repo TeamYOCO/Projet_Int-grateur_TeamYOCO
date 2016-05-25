@@ -22,6 +22,7 @@ public class ItemDrop extends Entity {
 
     protected Image image;
     private Equipment equipment;
+    private boolean canPickUp = true;
 
     /**
      * Crée le drop d'item
@@ -64,7 +65,20 @@ public class ItemDrop extends Entity {
      */
     public void pickUp() {
         try {
-            CharacterStatsManager.getInstance().addItem(equipment);
+            for (Equipment item : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                if(this.equipment == item){
+                    canPickUp = false;
+                }
+            }
+            for (Equipment item : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+                if(this.equipment == item){
+                    canPickUp = false;
+                }
+            }
+            if(canPickUp){
+                CharacterStatsManager.getInstance().addItem(equipment);
+                canPickUp = true;
+            }
             this.dead = true;
         } catch (SlickException ex) {
             Logger.getLogger(ItemDrop.class.getName()).log(Level.SEVERE, null, ex);
