@@ -60,6 +60,7 @@ public class DataManager {
             save.writeUTF(MiniMap.getFileName());
             save.writeFloat(Entity.getSaveX());
             save.writeFloat(Entity.getSaveY());
+            save.writeInt(CharacterStatsManager.getInstance().getPotionNb());
             save.writeInt(CharacterStatsManager.getInstance().getLevel());
             save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemFound());
             save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemPlayer());
@@ -84,6 +85,7 @@ public class DataManager {
             MiniMap.changeMap(load.readUTF());
             Player.setSaveX(load.readFloat());
             Player.setSaveY(load.readFloat());
+            CharacterStatsManager.getInstance().setPotionCount(load.readInt());
             CharacterStatsManager.getInstance().setLevel(load.readInt());
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
             CharacterStatsManager.getInstance().getInventory().setListItemFound(list);

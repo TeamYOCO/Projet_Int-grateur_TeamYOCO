@@ -488,4 +488,8 @@ public class CharacterStatsManager {
     public int getPotionNb(){
         return potionCount;
     }
+
+    public void setPotionCount(int potionCount) {
+        this.potionCount = potionCount;
+    }
 }
