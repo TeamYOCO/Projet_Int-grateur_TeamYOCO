@@ -30,6 +30,7 @@ import entities.NPC;
 import entities.NpcList;
 import entities.PotionDrop;
 import entities.Slime;
+import entities.SwordSwing;
 import gameEngine.DataManager;
 import items.EquipmentList;
 import java.io.Serializable;
@@ -158,6 +159,10 @@ public class Overworld extends BasicGameState implements Serializable {
                         && ((BadEntity) entity).isHitable() && player.isHitable()
                         && player.getHitBox().collision(entity.getHitBox())) { // Détecte la collision entre le joueur et une attaque enemie
                     player.takeHit(((BadEntity) entity).getDamagePhysical(), ((BadEntity) entity).getDamageSpecial(), ((BadEntity) entity).getDirection());
+                    for (Entity test : list) {
+                        if (test instanceof SwordSwing)
+                            listRemove.add(test);
+                    }
                 }
                 if (entity instanceof ItemDrop
                         && player.isHitable()
