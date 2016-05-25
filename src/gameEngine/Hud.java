@@ -23,6 +23,7 @@ public class Hud {
     private static final int XP_BAR_Y = 44 + P_BAR_Y;
     private static final int BAR_WIDTH = 80;
     private static final int BAR_HEIGHT = 16;
+    private Image potion;
 
     private static final Color LIFE_COLOR = new Color(255, 0, 0);
     private static final Color MANA_COLOR = new Color(0, 255, 0);
@@ -61,6 +62,7 @@ public class Hud {
         g.drawRect(220, 13, 200, 50);
         g.drawString("Money: "+CharacterStatsManager.getInstance().getMoney()+"$", 222, 43);
         g.drawString("Level: "+CharacterStatsManager.getInstance().getLevel(), 222, 15);
+        
     }
 
 }

@@ -28,6 +28,7 @@ import entities.FriendlyEntity;
 import entities.ItemDrop;
 import entities.NPC;
 import entities.NpcList;
+import entities.PotionDrop;
 import entities.Slime;
 import gameEngine.DataManager;
 import items.EquipmentList;
@@ -94,7 +95,7 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
-
+        list.add(new PotionDrop(200, 200, null));
         list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
@@ -163,7 +164,7 @@ public class Overworld extends BasicGameState implements Serializable {
                 if (entity instanceof ItemDrop
                         && player.isHitable()
                         && player.getHitBox().collision(entity.getHitBox())) {
-                    ((ItemDrop) entity).pickUp();
+                        ((ItemDrop) entity).pickUp();
                 }
                 if (entity instanceof NPC
                         && player.isHitable()

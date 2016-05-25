@@ -20,7 +20,7 @@ import playerEngine.CharacterStatsManager;
  */
 public class ItemDrop extends Entity {
 
-    private Image image;
+    protected Image image;
     private Equipment equipment;
 
     /**
@@ -29,7 +29,7 @@ public class ItemDrop extends Entity {
      * @param y la position en y du drop d'item
      * @param equipment L'item qui est à terre
      */
-    public ItemDrop(int x, int y, Equipment equipment) {
+    public ItemDrop(float x, float y, Equipment equipment) {
         this.x = x;
         this.y = y;
         this.dead = false;

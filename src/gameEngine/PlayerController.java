@@ -10,24 +10,25 @@ import playerEngine.CharacterStatsManager;
 
 /**
  * Cette classe gère le controle du joueur dans le overworld
+ *
  * @author Seb
  */
-
-
 public class PlayerController implements KeyListener {
 
     private Player player;
 
     /**
      * Constructeur des contrôle du joueur
+     *
      * @param player le joueur
      */
-        public PlayerController(Player player) {
+    public PlayerController(Player player) {
         this.player = player;
     }
 
     /**
      * Change l'entrée de commande
+     *
      * @param input le nouvel entrée de commande
      */
     @Override
@@ -37,6 +38,7 @@ public class PlayerController implements KeyListener {
 
     /**
      * retourne si le jeu accepte des entrées de commande
+     *
      * @return si le jeu accepte des entrées de commande
      */
     @Override
@@ -62,6 +64,7 @@ public class PlayerController implements KeyListener {
 
     /**
      * Ce qui se passe lorsqu'on appuit sur une touche
+     *
      * @param key La touche appuyée
      * @param c il est la parce qu'il a besoin d'être implémenté
      */
@@ -102,6 +105,12 @@ public class PlayerController implements KeyListener {
                 } catch (SlickException ex) {
                 }
                 break;
+            case Input.KEY_W: {
+                try {
+                    CharacterStatsManager.getInstance().drinkPotion();
+                } catch (SlickException ex) {
+                }
+            }
             case Input.KEY_3:
                 System.out.println(player.getX() + " " + player.getY());
                 break;
@@ -110,6 +119,7 @@ public class PlayerController implements KeyListener {
 
     /**
      * Ce qui se passe lorsqu'on enlève une touche
+     *
      * @param key La touche enlevé
      * @param c il est la parce qu'il a besoin d'être implémenté
      */

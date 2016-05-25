@@ -20,10 +20,9 @@ public class CharacterStatsManager {
 
     private static CharacterStatsManager instance = null;
 
-    
     public final int NB_LVL_BOOST = 5;
     protected int[] stats = new int[MAX_STATS];
-    protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
+    protected int[] statsUpgrade = new int[]{0, 0, 0, 0, 0, 0, 0};
     protected int hp;
     protected int expNeeded;
     protected int exp;
@@ -32,8 +31,8 @@ public class CharacterStatsManager {
     protected int nbLvlBoost = 0;
     protected Image anim;
     protected boolean lvlIsUp = false;
-    
-    
+    private int potionCount = 1;
+
     private Inventory inventory;
 
     /**
@@ -49,7 +48,7 @@ public class CharacterStatsManager {
         stats[4] = 5;
         stats[5] = 10;
         stats[6] = 5000;
-
+        this.potionCount = 1;
         this.expNeeded = 50;
         this.exp = 0;
         this.money = 0;
@@ -60,6 +59,7 @@ public class CharacterStatsManager {
 
     /**
      * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     *
      * @return une instance
      * @throws SlickException
      */
@@ -72,6 +72,7 @@ public class CharacterStatsManager {
 
     /**
      * Change l'expérience et le niveau du personnage
+     *
      * @param expNeeded l'expérience nécéssaire
      * @param exp l'expérience déjà acquise
      * @param level le niveau du joueur
@@ -86,6 +87,7 @@ public class CharacterStatsManager {
 
     /**
      * Le joueur gagne de l'expérience
+     *
      * @param expGained le nombre d'expérience gagné
      */
     public void gainExp(int expGained) {
@@ -97,6 +99,7 @@ public class CharacterStatsManager {
 
     /**
      * Le joueur gagne de l'argent
+     *
      * @param moneyGained le nombre d'argent gagné
      */
     public void gainMoney(int moneyGained) {
@@ -116,6 +119,7 @@ public class CharacterStatsManager {
 
     /**
      * le joueur augmente ces statistiques
+     *
      * @param index quelle statistiques qui augmente
      * @param onlyOnce si on augmente défense
      */
@@ -130,6 +134,7 @@ public class CharacterStatsManager {
 
     /**
      * le joueur perd des statistiques
+     *
      * @param index quelle statistiques qui augmente
      * @param onlyOnce si on augmente défense
      */
@@ -156,6 +161,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne le tableau des statistiques
+     *
      * @return le tableau des statistiques
      */
     public int[] getStats() {
@@ -164,6 +170,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne l'argent du joueur
+     *
      * @return l'argent du joueur
      */
     public int getMoney() {
@@ -172,6 +179,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne les statistiques qui ont augmenté
+     *
      * @return les statistiques qui ont augmenté
      */
     public int[] getStatsUpgrade() {
@@ -180,6 +188,7 @@ public class CharacterStatsManager {
 
     /**
      * change la valeur des statistiques ajoutées à une valeur
+     *
      * @param i la statistique choisie
      * @param change la valeur choisie
      */
@@ -189,6 +198,7 @@ public class CharacterStatsManager {
 
     /**
      * change une statistique a une valeur discrète
+     *
      * @param index la statistique a changer
      * @param stat la valeur de la statistique
      */
@@ -198,6 +208,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne l'image de l'objet
+     *
      * @return l'image de l'objet
      */
     public Image getAnim() {
@@ -206,6 +217,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne les points de vie
+     *
      * @return les points de vie
      */
     public int getHp() {
@@ -214,6 +226,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne le nom de la statistique
+     *
      * @param x le numéro de la stitistique
      * @return le nom de la statistique
      */
@@ -240,6 +253,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne l'expérience du joueur
+     *
      * @return l'expérience du joueur
      */
     public int getExp() {
@@ -248,6 +262,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne l'expérience que le joueur a besoin pour son prochain niveau
+     *
      * @return l'expérience que le joueur a besoin pour son prochain niveau
      */
     public int getExpNeeded() {
@@ -256,6 +271,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne le niveau du joueur
+     *
      * @return le niveau du joueur
      */
     public int getLevel() {
@@ -263,15 +279,19 @@ public class CharacterStatsManager {
     }
 
     /**
-     * retourne le nombre de statistique à augmenter lors d'un changement de niveau
-     * @return le nombre de statistique à augmenter lors d'un changement de niveau
+     * retourne le nombre de statistique à augmenter lors d'un changement de
+     * niveau
+     *
+     * @return le nombre de statistique à augmenter lors d'un changement de
+     * niveau
      */
     public int getLvlBoost() {
         return nbLvlBoost;
     }
 
     /**
-     * change l'image 
+     * change l'image
+     *
      * @param anim la nouvelle image
      */
     public void setAnim(Image anim) {
@@ -280,6 +300,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne si le joueur change de niveau
+     *
      * @return si le joueur change de niveau
      */
     public boolean getlvlIsUp() {
@@ -288,6 +309,7 @@ public class CharacterStatsManager {
 
     /**
      * change si le joueur change de niveau
+     *
      * @param bool le nouveau booléen
      */
     public void setlvlIsUp(boolean bool) {
@@ -296,6 +318,7 @@ public class CharacterStatsManager {
 
     /**
      * Le joueur prend du dégat
+     *
      * @param damage le dégat physique de l'ennemi
      * @param damageSpecial le dégat magique de l'ennemi
      */
@@ -312,6 +335,7 @@ public class CharacterStatsManager {
 
     /**
      * change les points de vie du joueur
+     *
      * @param hp les points de vie perdu
      */
     public void setHp(int hp) {
@@ -326,6 +350,7 @@ public class CharacterStatsManager {
 
     /**
      * change l'expérience du joueur
+     *
      * @param exp la nouvelle expérience
      */
     public void setExp(int exp) {
@@ -334,6 +359,7 @@ public class CharacterStatsManager {
 
     /**
      * change l'expérience que le joueur a besoin pour changer de niveau
+     *
      * @param expNeeded la nouvelle expérience requise
      */
     public void setExpNeeded(int expNeeded) {
@@ -342,6 +368,7 @@ public class CharacterStatsManager {
 
     /**
      * change le niveau du joueur
+     *
      * @param level le nouveau niveau
      */
     public void setLevel(int level) {
@@ -349,11 +376,12 @@ public class CharacterStatsManager {
     }
 
     /**
-    * le joueur achète un équipement
-    * @param moneySpent le nombre d'argent dépensé
-    */
-    public void buyItem(int moneySpent){
-    money-=moneySpent;
+     * le joueur achète un équipement
+     *
+     * @param moneySpent le nombre d'argent dépensé
+     */
+    public void buyItem(int moneySpent) {
+        money -= moneySpent;
     }
 
     public void addItem(String newItem) throws SlickException {
@@ -374,7 +402,8 @@ public class CharacterStatsManager {
     }
 
     /**
-     *  rajoute un équipement dans l'inventaire du joueur
+     * rajoute un équipement dans l'inventaire du joueur
+     *
      * @param equipment l'équipement à ajouter
      */
     public void addItem(Equipment equipment) {
@@ -383,6 +412,7 @@ public class CharacterStatsManager {
 
     /**
      * retourne l'inventaire
+     *
      * @return l'inventaire
      */
     public Inventory getInventory() {
@@ -391,6 +421,7 @@ public class CharacterStatsManager {
 
     /**
      * guérir le joueur
+     *
      * @param heal les points de vie guérit
      */
     public void heal(int heal) {
@@ -403,9 +434,9 @@ public class CharacterStatsManager {
         }
     }
 
-/**
- * réinitialise les statistiques du joueur
- */
+    /**
+     * réinitialise les statistiques du joueur
+     */
     public void reset() {
         hp = 100;
         stats[0] = 100;
@@ -415,7 +446,7 @@ public class CharacterStatsManager {
         stats[4] = 5;
         stats[5] = 10;
         stats[6] = 10;
-
+        this.potionCount = 1;
         this.expNeeded = 50;
         this.exp = 0;
         this.money = 0;
@@ -423,15 +454,34 @@ public class CharacterStatsManager {
         this.anim = null;
         this.inventory = new Inventory();
     }
-/**
- * mise à jour du temps de chargement du sort du joueur
- */
-    
-    public void updateCooldown(int delta){
-        if (stats[6] < 5000)
-            stats[6]+= delta;
-        if (stats[6] > 5000)
+
+    /**
+     * mise à jour du temps de chargement du sort du joueur
+     */
+
+    public void updateCooldown(int delta) {
+        if (stats[6] < 5000) {
+            stats[6] += delta;
+        }
+        if (stats[6] > 5000) {
             stats[6] = 5000;
+        }
+    }
+    
+    /**
+     * ajoute une potion à l'inventaire
+     */
+    public void pickUpPotion(){
+        potionCount ++;
+    }
+    
+    /**
+     * utilise une potion si il y en a au moins une
+     */
+    public void drinkPotion(){
+        if (potionCount > 0){
+            this.heal((int)(stats[0]*0.5f));
+            potionCount--;
+        }
     }
 }
- 
