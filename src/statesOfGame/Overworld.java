@@ -27,6 +27,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import entities.FriendlyEntity;
 import entities.ItemDrop;
+import entities.NpcList;
 import entities.Slime;
 import gameEngine.DataManager;
 import items.EquipmentList;
@@ -199,7 +200,7 @@ public class Overworld extends BasicGameState implements Serializable {
             for(int i=1;i<= Integer.parseInt(temp3[0]);i++){
                 temp4= temp[i].split(",");
                 if (Integer.parseInt(temp4[0]) == 1){
-                    //this.list.add()
+                   this.list.add(NpcList.getInstance().getNpc("Princess",temp4[1],temp4[2]));
                 }
             }
 
