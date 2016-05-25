@@ -37,6 +37,7 @@ public class Hud {
      */
     public void init() throws SlickException {
         this.playerbars = ResManager.getInstance().getImage("player-bar");
+        this.potion = ResManager.getInstance().getImage("potion");
     }
 
     /**
@@ -62,7 +63,8 @@ public class Hud {
         g.drawRect(220, 13, 200, 50);
         g.drawString("Money: "+CharacterStatsManager.getInstance().getMoney()+"$", 222, 43);
         g.drawString("Level: "+CharacterStatsManager.getInstance().getLevel(), 222, 15);
-        
+        g.drawImage(potion, 330, 20);
+        g.drawString(""+CharacterStatsManager.getInstance().getPotionNb(), 370, 30);
     }
 
 }

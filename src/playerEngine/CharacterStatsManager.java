@@ -484,4 +484,8 @@ public class CharacterStatsManager {
             potionCount--;
         }
     }
+    
+    public int getPotionNb(){
+        return potionCount;
+    }
 }

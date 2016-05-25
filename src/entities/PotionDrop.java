@@ -34,8 +34,7 @@ public class PotionDrop extends ItemDrop{
 
     @Override
     public void render(Graphics g) throws SlickException {
-        super.render(g); //To change body of generated methods, choose Tools | Templates.
-        hitBox.render(g);
+        super.render(g);
     }
     
     
