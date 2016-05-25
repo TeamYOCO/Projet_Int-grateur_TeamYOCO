@@ -30,7 +30,6 @@ public class CharacterStatsManager {
     protected int money;
     protected int level;
     protected int nbLvlBoost = 0;
-    protected ArrayList skillSet;
     protected Image anim;
     protected boolean lvlIsUp = false;
     private Inventory inventory;
@@ -331,8 +330,7 @@ public class CharacterStatsManager {
         this.exp = exp;
     }
    
-        this.money -= moneySpent;
-    }
+    
 
     /**
      * change l'expérience que le joueur a besoin pour changer de niveau

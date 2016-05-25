@@ -209,11 +209,10 @@ public class Overworld extends BasicGameState implements Serializable {
                 String[] temp4;
                 for (int i = 1; i <= Integer.parseInt(temp3[0]); i++) {
                     temp4 = temp3[i].split(",");
-                    if (Integer.parseInt(temp4[0]) == 1) {
                         int x = Integer.parseInt(temp4[1]);
                         int y = Integer.parseInt(temp4[2]);
-                        this.list.add(NpcList.getNpc("Princess", x, y));
-                    }
+                        this.list.add(NpcList.getNpc(temp4[0], x, y));
+                    
                 }
 
                 mapChanger = false;
