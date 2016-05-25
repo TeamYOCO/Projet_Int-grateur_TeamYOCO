@@ -96,6 +96,7 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
+        CharacterStatsManager.getInstance().addItem(EquipmentList.getInstance().getEquipment("Epee legendaire"));
         firstTime = true;
         loadStuff();
     }
@@ -326,20 +327,22 @@ public class Overworld extends BasicGameState implements Serializable {
         gameOver = gg;
     }
 
-    private void loadStuff() {
+    private void loadStuff() throws SlickException {
         String[] temp;
         temp = map.getMapProperty("ennemy").split(";");
         String[] temp2;
         for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
             temp2 = temp[i].split(",");
             if (Integer.parseInt(temp2[0]) == 1) {
-                this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                this.list.add(new Boss(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
             } else if (Integer.parseInt(temp2[0]) == 2) {
                 this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
             } else if (Integer.parseInt(temp2[0]) == 3) {
                 this.list.add(new Bat(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
             } else if (Integer.parseInt(temp2[0]) == 4) {
                 this.list.add(new Snake(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            } else if (Integer.parseInt(temp2[0]) == 5) {
+                this.list.add(new Boss(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
             }
         }
         String[] temp3;

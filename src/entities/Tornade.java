@@ -34,7 +34,7 @@ public class Tornade extends Particle implements FriendlyEntity {
         this.xOff = -70;
         this.yOff = -32;
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
-        this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
+        this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3]*2;
         this.direction = direction;
         this.lifeSpam = 800;
         switch (direction) {

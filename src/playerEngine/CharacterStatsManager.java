@@ -47,7 +47,7 @@ public class CharacterStatsManager {
         stats[3] = 5;
         stats[4] = 5;
         stats[5] = 10;
-        stats[6] = 5000;
+        stats[6] = 4000;
         this.potionCount = 1;
         this.expNeeded = 50;
         this.exp = 0;
@@ -460,11 +460,11 @@ public class CharacterStatsManager {
      */
 
     public void updateCooldown(int delta) {
-        if (stats[6] < 5000) {
+        if (stats[6] < 4000) {
             stats[6] += delta;
         }
-        if (stats[6] > 5000) {
-            stats[6] = 5000;
+        if (stats[6] > 4000) {
+            stats[6] = 4000;
         }
     }
     
