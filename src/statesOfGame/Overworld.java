@@ -95,6 +95,7 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
+
         list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
@@ -110,10 +111,11 @@ public class Overworld extends BasicGameState implements Serializable {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
         this.map.renderBackground(g);
-        this.player.render(g);
+
         for (Entity entity : list) {
             entity.render(g);
         }
+        this.player.render(g);
         this.map.renderForeground();
         this.hud.render(g);
 

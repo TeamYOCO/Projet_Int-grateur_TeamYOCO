@@ -26,12 +26,12 @@ public class Arrow extends Particle implements FriendlyEntity{
     private MiniMap map;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifespam
-     * @param map
+     * Crée une flèche
+     * @param x Position en x du joueur
+     * @param y Position en y du joueur
+     * @param direction La direction du joueur
+     * @param lifespam La durée de vie de la flèche
+     * @param map La map où la flèche va être
      * @throws SlickException
      */
     public Arrow(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
@@ -56,8 +56,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner la flèche
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -71,8 +71,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param delta
+     * Ce qui permet à la flèche de bouger
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -81,8 +81,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
     
     /**
-     *
-     * @return
+     * Calcul le dégat physique de la flèche
+     * @return le dégat physique de la flèche
      */
     @Override
     public int getDamagePhysical() {
@@ -91,8 +91,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Retourne la direction de la flèche
+     * @return un int de la direction de la flèche
      */
     @Override
     public int getDirection() {
@@ -101,8 +101,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat magique de la flèche
+     * @return le dégat magique de la flèche
      */
     @Override
     public int getDamageSpecial() {

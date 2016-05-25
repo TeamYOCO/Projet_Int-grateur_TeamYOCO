@@ -12,20 +12,20 @@ package entities;
 public interface FriendlyEntity {
     
     /**
-     *
-     * @return
+     * retourne le dommage physique de l'entitée
+     * @return le dommage physique de l'entitée
      */
     public int getDamagePhysical();
     
     /**
-     *
-     * @return
+     *retourne le dommage magique de l'entitée
+     * @return le dommage magique de l'entitée
      */
     public int getDamageSpecial();
     
     /**
-     *
-     * @return
+     * La direction de l'entitée
+     * @return La direction de l'entitée
      */
     public int getDirection();
 }

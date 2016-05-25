@@ -18,84 +18,74 @@ import org.newdawn.slick.SpriteSheet;
  */
 public abstract class Entity {
 
-    /**
-     *
-     */
     protected Box hitBox;
     protected float x,
-            /**
-             *
-             */
-            y,
-            /**
-             *
-             */
-            xOff, yOff;
-    private static float saveX, saveY;
 
-    /**
-     *
-     */
+    y,
+
+    xOff, yOff;
+    private static float saveX,saveY;
+
     protected boolean dead = false;
 
     /**
-     *
-     * @param delta
+     * Permet la mise à jour des entitées
+     * @param delta le temps d'une ittérations
      */
     public abstract void update(int delta);
 
     /**
-     *
-     * @return
+     * Retourne la boîte de collision de l'entitée
+     * @return la boîte de collision de l'entitée
      */
     public Box getHitBox() {
         return hitBox;
     }
 
-    // Méthode qui permet de dessiner l'élément
+
     /**
-     *
-     * @param g
+     * Méthode qui permet de dessiner l'élément
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     public abstract void render(Graphics g) throws SlickException;
 
     // Les méthodes suivantes sont des getters/setters
     /**
-     *
-     * @return
+     * Retourne la position en x de l'entitée
+     * @return la position en x de l'entitée
      */
     public float getX() {
         return x;
     }
 
     /**
-     *
-     * @return
+     *Retourne la position en y de l'entitée
+     * @return la position en y de l'entitée
      */
     public float getY() {
         return y;
     }
 
     /**
-     *
-     * @return
+     * Retourne la position en x de l'entitée pour la sauveguarde
+     * @return la position en x de l'entitée
      */
     public static float getSaveX() {
         return saveX;
     }
 
     /**
-     *
-     * @return
+     *Retourne la position en y de l'entitée pour la sauveguarde
+     * @return la position en y de l'entitée
      */
     public static float getSaveY() {
         return saveY;
     }
 
     /**
-     *
-     * @param x
+     * Change la position de l'entitée à x
+     * @param x la nouvelle position
      */
     public void setX(float x) {
         this.x = x;
@@ -103,8 +93,8 @@ public abstract class Entity {
     }
 
     /**
-     *
-     * @param y
+     * Change la position de l'entitée à y
+     * @param y la nouvelle position
      */
     public void setY(float y) {
         this.y = y;
@@ -112,37 +102,38 @@ public abstract class Entity {
     }
 
     /**
-     *
-     * @param x
+     *Change la position de l'entitée à x pour la sauveguarde
+     * @param x la nouvelle position
      */
     public static void setSaveX(float x) {
         saveX = x;
     }
 
     /**
-     *
-     * @param y
+     * Change la position de l'entitée à y pour la sauveguarde
+     * @param y la nouvelle position
      */
     public static void setSaveY(float y) {
         saveY = y;
     }
 
     /**
-     *
-     * @return
+     * retourne si l"entitée est morte
+     * @return un booléen si l'entitée est morte
      */
     public boolean isDead() {
         return dead;
     }
+    
 
     // Méthode qui permet de load une animation à partir d'un spritesheet
     /**
-     *
-     * @param spriteSheet
-     * @param startX
-     * @param endX
-     * @param y
-     * @return
+     * Méthode qui permet de load une animation à partir d'un spritesheet
+     * @param spriteSheet la spritesheet de l'entitée
+     * @param startX La position x où commence l'animation dans la spritesheet
+     * @param endX La position x où finit l'animation dans la spritesheet
+     * @param y La position y dans la spritesheet
+     * @return l'animation de l'entitée
      */
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();

@@ -28,27 +28,14 @@ import statesOfGame.Shop;
  */
 public class Game extends StateBasedGame {
 
-    /**
-     *
-     */
     public static final String GAMENAME = "Projet intégrateur V1.0";
     public static final int MAINMENU = 0,OVERWORLD = 1, INVENTORY = 2,CREDITS = 3, LEVELUPSCREEN = 4,HELP = 5,SHOP = 6, DIALOG = 7;
-
-    /**
-     *
-     */
     public static final int WIDTH = 1024;
-
-    /**
-     *
-     */
     public static final int HEIGHT = 704;
-
-    //C'est ici la classe main du jeu
-
+    
     /**
-     *
-     * @param name
+     * C'est ici la classe main du jeu
+     * @param name Le nom du jeu
      * @throws SlickException
      */
         public Game(String name) throws SlickException {
@@ -57,8 +44,8 @@ public class Game extends StateBasedGame {
     }
 
     /**
-     *
-     * @param gc
+     *La liste des états possibles du jeu
+     * @param gc La fenêtre
      * @throws SlickException
      */
     @Override
@@ -73,11 +60,9 @@ public class Game extends StateBasedGame {
         this.addState(new Dialog(DIALOG));
     }
 
-    // Boucle main
-
     /**
-     *
-     * @param args
+     * Boucle main
+     * @param args l'argument quand on lance le programme
      * @throws SlickException
      */
         public static void main(String[] args) throws SlickException {
@@ -93,7 +78,10 @@ public class Game extends StateBasedGame {
         }
     }
 
-    // Load les natives !ne pas toucher!
+    /**
+     * Ce qui charge les natives
+     * @param c une classe
+     */
     private static void loadNatives(Class c) {
         final File jarFile = new File(c.getProtectionDomain().getCodeSource().getLocation().getPath());
         final String path = "res/native/";

@@ -17,11 +17,12 @@ import org.newdawn.slick.SpriteSheet;
 public class BigSwordSwing extends SwordSwing implements FriendlyEntity {
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifeSpam
+     * Crée une épée
+     * @param x Position en x du joueur
+     * @param y Position en y du joueur
+     * @param direction La direction du joueur
+     * @param lifespam La durée de vie de l'épée
+     * @param map La map où l'épée va être
      * @throws SlickException
      */
     public BigSwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
@@ -50,8 +51,8 @@ public class BigSwordSwing extends SwordSwing implements FriendlyEntity {
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner l'épée
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -61,8 +62,8 @@ public class BigSwordSwing extends SwordSwing implements FriendlyEntity {
     }
 
     /**
-     *
-     * @param delta
+     * Ce qui permet à l'épée de bouger
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {

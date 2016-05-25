@@ -16,10 +16,17 @@ public class NpcList {
     private NpcList instance = null;
     private static HashMap<String, NPC> npcList;
 
+    /**
+     * Crée une liste de PNJ
+     */
     private NpcList() {
         loadNpcs();
     }
 
+    /**
+     * Retourne une instance dans la liste 
+     * @return une instance dans la liste
+     */
     public NpcList getInstance() {
         if (instance == null) {
             instance = new NpcList();
@@ -27,6 +34,9 @@ public class NpcList {
         return instance;
     }
 
+    /**
+     * Charge les PNJ
+     */
     private static void loadNpcs() {
         npcList = new HashMap();
         npcList.put("Princess",
@@ -39,6 +49,13 @@ public class NpcList {
         npcList.put("villageoise 2", new NPC(0, 0, "Coucou! Tu est une belle cruche toi!", NpcType.NONE, 5));
     }
 
+    /**
+     * Va prendre un PNJ dans la liste
+     * @param name Le nom du PNJ
+     * @param x la position en x du PNJ
+     * @param y la position en y du PNJ
+     * @return  le PNJ
+     */
     public static NPC getNpc(String name, int x, int y) {
         NpcList.loadNpcs();
         npcList.get(name).setCoords(x, y);

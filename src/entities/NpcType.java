@@ -12,17 +12,17 @@ package entities;
 public enum NpcType {
 
     /**
-     *
+     * ne peut pas interagir
      */
     NONE,
 
     /**
-     *
+     * Interagit avec un dialogue
      */
     INTERACT,
 
     /**
-     *
+     * Interagit avec un magasin
      */
     VENDOR
 }

@@ -28,12 +28,12 @@ public class Bat extends Mob implements BadEntity {
     private boolean aggro = false;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param player
-     * @param map
-     * @param list
+     *  Crée une chauve-souris
+     * @param x La position en x de départ de la chauve-souris
+     * @param yLa position en y de départ de la chauve-souris
+     * @param player Le joueur
+     * @param map La carte
+     * @param list la liste d'entité de la carte
      */
     public Bat(int x, int y, Player player, MiniMap map, ArrayList<Entity> list) {
         this.moveAnimations = new Animation[4];
@@ -64,8 +64,8 @@ public class Bat extends Mob implements BadEntity {
     }
 
     /**
-     *
-     * @param delta
+     * Permet à la chauve-souris de se déplacer
+     * @param delta La durée d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -102,7 +102,11 @@ public class Bat extends Mob implements BadEntity {
         hitBox.setPos(x + xOff, y + yOff);
     }
 
-    // Teste la position pour se déplacer en X
+    /**
+     * Calcul la position en x après l'ittération
+     * @param delta La durée d'une ittération
+     * @return la position en x après l'ittération
+     */
     private float futurX(int delta) {
         float futurX = this.x;
         switch (this.direction) {
@@ -116,7 +120,11 @@ public class Bat extends Mob implements BadEntity {
         return futurX;
     }
 
-    // Teste la position pour se déplacer en Y
+     /**
+     * Calcul la position en y après l'ittération
+     * @param delta La durée d'une ittération
+     * @return la position en y après l'ittération
+     */
     private float futurY(int delta) {
         float futurY = this.y;
         switch (this.direction) {
@@ -131,8 +139,8 @@ public class Bat extends Mob implements BadEntity {
     }
 
     /**
-     *
-     * @param g
+     * Dessine la chauve-souris pour la première fois
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override

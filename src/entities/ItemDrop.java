@@ -24,10 +24,10 @@ public class ItemDrop extends Entity {
     private Equipment equipment;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param equipment
+     * Crée le drop d'item
+     * @param x la position en x du drop d'item
+     * @param y la position en y du drop d'item
+     * @param equipment L'item qui est à terre
      */
     public ItemDrop(int x, int y, Equipment equipment) {
         this.x = x;
@@ -42,16 +42,16 @@ public class ItemDrop extends Entity {
     }
 
     /**
-     *
-     * @param delta
+     * la mise à jour du drop
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner le drop
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -60,7 +60,7 @@ public class ItemDrop extends Entity {
     }
 
     /**
-     *
+     * Permet de rammasser l'item
      */
     public void pickUp() {
         try {

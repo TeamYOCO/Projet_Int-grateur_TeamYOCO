@@ -22,7 +22,7 @@ public class Tornade extends Particle implements FriendlyEntity{
     private int damageSpecial;
     private Animation transitionAnimation[];
 
-    public Tornade(int x, int y, int direction) throws SlickException{
+    public Tornade(float x, float y, int direction) throws SlickException{
         SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("tornado");
         this.animation = animation;
         transitionAnimation = new Animation[2];
