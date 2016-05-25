@@ -107,19 +107,19 @@ public class EquipmentList implements Serializable{
                 new int[]{0,0,0,0,50,0,0},EquipmentType.PADS,125));
         listEquipment.put("Bottes Antiques",new Equipment(0,0,"Bottes Antiques",
                 "Bottes ayant appartenu à un soldat mort \ndurant sa premiere bataille il y a plusieurs siecles.  \nPermet de courrir un peu plus vite",
-                new int[]{0,0,0,0,0,0,1},EquipmentType.BOOTS,25));
+                new int[]{0,0,0,0,0,1,0},EquipmentType.BOOTS,25));
         listEquipment.put("Bottes Metalliques",new Equipment(0,0,"Bottes Metalliques",
                 "Bottes en métal moderne. Procure une bonne \nPermet de courrir plus vite",
-                new int[]{0,0,0,0,0,0,2},EquipmentType.BOOTS,50));
+                new int[]{0,0,0,0,0,2,0},EquipmentType.BOOTS,50));
         listEquipment.put("Bottes d'Argent",new Equipment(0,0,"Bottes d'Argent",
                 "A appartenu a un général emerite. Permet de\ncourrir encore plus vite",
-                new int[]{0,0,0,0,0,0,3},EquipmentType.BOOTS,75));
+                new int[]{0,0,0,0,0,3,0},EquipmentType.BOOTS,75));
         listEquipment.put("Bottes Emeraudes",new Equipment(0,0,"Bottes Emeraudes",
                 "Bottes forgée par les plus grands forgerons du \npays, il est incruster d'emeraude, permentant\nde courrir beaucoup plus vite",
-                new int[]{0,0,0,0,0,0,4},EquipmentType.BOOTS,100));
+                new int[]{0,0,0,0,0,4,0},EquipmentType.BOOTS,100));
         listEquipment.put("Bottes Royales",new Equipment(0,0,"Bottes Royales",
                 "Bottes dont l'ancien proprietaire est inconnu, \nmais on croit qu'il s'agirait d'un roi tres \npuissant.  Vitesse maximale",
-                new int[]{0,0,0,0,0,0,5},EquipmentType.BOOTS,125));
+                new int[]{0,0,0,0,0,5,0},EquipmentType.BOOTS,125));
         listEquipment.put("Bouclier Serpent",new Equipment(0,0,"Bouclier Serpent",
                 "Bouclier incruster d'une efigie de Serpent.\nIl offre une restiance contre la magie",
                 new int[]{0,0,0,0,5,0,0},EquipmentType.SHIELD,25));
