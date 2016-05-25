@@ -177,13 +177,13 @@ public class EquipmentList implements Serializable{
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre gris",new Equipment(0,0,"Livre gris",
-                "",
+                "Permet de lancer le sort «Tornade»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre cyan",new Equipment(0,0,"Livre cyan",
-                "",
+                "Permet de lancer le sort «Soin»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
                 "",

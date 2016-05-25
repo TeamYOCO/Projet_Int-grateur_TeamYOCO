@@ -274,8 +274,14 @@ public class Player extends Mob {
             attackDirection = direction;
             attackCounter = 500;
             CharacterStatsManager.getInstance().getStats()[6] = 0;
-            Fireball fireball = new Fireball(this.x, this.y - 25, attackDirection, 1000, map, list);
-            list.add(fireball);
+
+            Particle spell = null;
+            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre rouge")) {
+                spell = new Fireball(this.x, this.y - 25, attackDirection, 1000, map, list);
+            } else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre cyan")){
+                CharacterStatsManager.getInstance().heal(CharacterStatsManager.getInstance().getStats()[4]*2);
+            }
+            list.add(spell);
             for (int i = 0; i < castAnimations.length; i++) {
                 castAnimations[i].restart();
             }
