@@ -32,6 +32,8 @@ public class CharacterStatsManager {
     protected int nbLvlBoost = 0;
     protected Image anim;
     protected boolean lvlIsUp = false;
+    
+    
     private Inventory inventory;
 
     /**
@@ -329,8 +331,6 @@ public class CharacterStatsManager {
     public void setExp(int exp) {
         this.exp = exp;
     }
-   
-    
 
     /**
      * change l'expérience que le joueur a besoin pour changer de niveau
@@ -354,7 +354,7 @@ public class CharacterStatsManager {
     */
     public void buyItem(int moneySpent){
     money-=moneySpent;
-}
+    }
 
     public void addItem(String newItem) throws SlickException {
         boolean addOk = true;

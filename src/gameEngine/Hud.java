@@ -55,11 +55,12 @@ public class Hud {
         g.setColor(Color.black);
         g.drawString(""+CharacterStatsManager.getInstance().getHp(), 100, LIFE_BAR_Y);
         g.drawString(""+CharacterStatsManager.getInstance().getExp(), 100, XP_BAR_Y);
-        g.drawString("Level : "+CharacterStatsManager.getInstance().getLevel(), 27, 80);
-        g.setColor(Color.yellow);
-        g.fillRect(220, 13, 40, 18);
+        g.setColor(Color.white);
+        g.fillRect(220, 13, 200, 50);
         g.setColor(Color.black);
-        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
+        g.drawRect(220, 13, 200, 50);
+        g.drawString("Money: "+CharacterStatsManager.getInstance().getMoney()+"$", 222, 43);
+        g.drawString("Level: "+CharacterStatsManager.getInstance().getLevel(), 222, 15);
     }
 
 }
