@@ -27,6 +27,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import entities.FriendlyEntity;
 import entities.ItemDrop;
+import entities.NPC;
 import entities.Slime;
 import gameEngine.DataManager;
 import items.EquipmentList;
@@ -161,6 +162,12 @@ public class Overworld extends BasicGameState implements Serializable {
                     && player.getHitBox().collision(entity.getHitBox())){
                 ((ItemDrop)entity).pickUp();
             }
+            if (entity instanceof  NPC &&
+                    player.isHitable()
+                    && entity.getHitBox().collision(player.getHitBox())&&
+                    input.isKeyPressed(Input.KEY_SPACE)){
+                ((NPC)entity).interact(sbg);
+            }
             if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
                 listRemove.add(entity);
             }
@@ -218,7 +225,7 @@ public class Overworld extends BasicGameState implements Serializable {
             DataManager.getInstance().save();
             gameSaved = true;
         }
-
+        
         if (input.isMousePressed(0)) {
             System.out.println(input.getMouseX() + " " + input.getMouseY());
         }
