@@ -26,12 +26,12 @@ public class Arrow extends Particle implements FriendlyEntity{
     private MiniMap map;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifespam
-     * @param map
+     * Crée une flèche
+     * @param x Position en x du joueur
+     * @param y Position en y du joueur
+     * @param direction La direction du joueur
+     * @param lifespam La durée de vie de la flèche
+     * @param map La map où la flèche va être
      * @throws SlickException
      */
     public Arrow(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
@@ -56,8 +56,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner la flèche
+     * @param g La méthode qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -71,8 +71,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param delta
+     * 
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
