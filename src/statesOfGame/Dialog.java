@@ -143,7 +143,7 @@ public class Dialog extends BasicGameState {
         Dialog.text = text;
     }
 
-    public static void setDestionation(int i) {
+    public static void setDestination(int i) {
         switch (i) {
             case Game.OVERWORLD:
                 destination = Destination.dOVERWORLD;

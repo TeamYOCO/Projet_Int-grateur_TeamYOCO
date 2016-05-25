@@ -5,6 +5,7 @@
  */
 package entities;
 
+import ca.qc.bdeb.info204.Game;
 import static ca.qc.bdeb.info204.Game.DIALOG;
 import static ca.qc.bdeb.info204.Game.SHOP;
 import gameEngine.ResManager;
@@ -15,6 +16,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
+import statesOfGame.Dialog;
 
 /**
  *
@@ -42,6 +44,7 @@ public class NPC extends Entity {
         this.moveAnimations = new Animation[8];
         this.xOff = -32;
         this.yOff = -64;
+        this.type = type;
         this.hitBox = new Box(x - xOff, y - yOff, 64, 64);
         SpriteSheet sheet = null;
         try {
@@ -109,9 +112,13 @@ public class NPC extends Entity {
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
-                sbg.enterState(SHOP);
+                Dialog.setText(text);
+                Dialog.setCommingFrom(Game.OVERWORLD);
+                Dialog.setDestination(Game.SHOP);
+                sbg.enterState(Game.DIALOG);
             case INTERACT:
-                sbg.enterState(DIALOG);
+                Dialog.setText(text);
+                sbg.enterState(Game.DIALOG);
         }
     }
     

@@ -250,8 +250,9 @@ public class Overworld extends BasicGameState implements Serializable {
             }
             
             if(gameOver){
-                gameOver = false;
                 sbg.enterState(Game.GAMEOVER);
+                overworldMusic.stop();
+                gameOver = false;
                 CharacterStatsManager.getInstance().reset();
                 MiniMap.changeMap("res/maps/Maison_1.tmx");
                 list.clear();
