@@ -169,7 +169,8 @@ public class Overworld extends BasicGameState implements Serializable {
                     player.isHitable()
                     && entity.getHitBox().collision(player.getHitBox())&&
                     input.isKeyPressed(Input.KEY_SPACE)){
-                ((NPC)entity).interact(sbg);
+                container.getGraphics().copyArea(screenShot, 0, 0);
+                ((NPC)entity).interact(sbg,container);
             }
             if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
                 listRemove.add(entity);
