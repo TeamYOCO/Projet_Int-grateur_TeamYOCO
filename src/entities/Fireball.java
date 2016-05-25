@@ -11,7 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import maps.MiniMap;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import playerEngine.CharacterStatsManager;
@@ -27,6 +29,7 @@ public class Fireball extends Particle implements FriendlyEntity{
     private MiniMap map;
     private Animation explosionAnimation;
     private ArrayList<Entity> list;
+    private boolean exploding = false;
 
     /**
      *
@@ -39,6 +42,8 @@ public class Fireball extends Particle implements FriendlyEntity{
      */
     public Fireball(float x, float y, int direction, int lifespam, MiniMap map, ArrayList<Entity> list) throws SlickException{
         SpriteSheet anim1 = ResManager.getInstance().getSpriteSheet("fireball");
+        Image temp = ResManager.getInstance().getSpriteSheet("explosion");
+        SpriteSheet anim2 = new SpriteSheet(temp, 256, 128);
         animation = new Animation();
         explosionAnimation = new Animation();
         this.list = list;
@@ -53,10 +58,13 @@ public class Fireball extends Particle implements FriendlyEntity{
             case 2: speedY = 0.3f; break;
             case 3: speedX = 0.3f; break;
         }
-        xOff = 16;
-        yOff = 16;
+        xOff = -16;
+        yOff = -16;
         this.hitBox = new Box(x+xOff, y+yOff, 32, 32);
         animation = loadAnimation(anim1, 0, 8, direction);
+        for (int i = 0; i < 4; i++) {
+            explosionAnimation = loadAnimation(anim2, 0, 3, i);
+        }
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
         this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
         this.lifeSpam = lifespam;
@@ -70,9 +78,13 @@ public class Fireball extends Particle implements FriendlyEntity{
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        
-        g.drawAnimation(animation, x, y);
+        if (!exploding)
+            g.drawAnimation(animation, x-32, y-32);
+        else if (exploding)
+            g.drawAnimation(explosionAnimation, x-128, y-64);
         this.hitBox.render(g);
+        g.setColor(Color.red);
+        g.fillOval(x, y, 2, 2);
     }
 
     /**
@@ -82,6 +94,7 @@ public class Fireball extends Particle implements FriendlyEntity{
     @Override
     public void update(int delta) {
         super.update(delta); //To change body of generated methods, choose Tools | Templates.
+        if (exploding)
         hitBox.setPos(x+xOff, y+yOff);
     }
     
@@ -100,7 +113,6 @@ public class Fireball extends Particle implements FriendlyEntity{
      */
     @Override
     public int getDirection() {
-        dead = true;
         return direction;
     }
 
@@ -110,8 +122,18 @@ public class Fireball extends Particle implements FriendlyEntity{
      */
     @Override
     public int getDamageSpecial() {
-        dead=true;
+        explode();
         return damageSpecial;
+    }
+    
+    private void explode(){
+        exploding = true;
+        lifeSpam = 500;
+        speedX = 0;
+        speedY = 0;
+        xOff = -100;
+        yOff = -50;
+        hitBox = new Box(x+xOff, y+yOff, 200, 100);
     }
     
 }

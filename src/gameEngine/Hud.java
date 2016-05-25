@@ -48,7 +48,7 @@ public class Hud {
         g.setColor(LIFE_COLOR);
         g.fillRect(BAR_X, LIFE_BAR_Y,((float)CharacterStatsManager.getInstance().getHp()/CharacterStatsManager.getInstance().getStats()[0])* BAR_WIDTH, BAR_HEIGHT);
         g.setColor(MANA_COLOR);
-        g.fillRect(BAR_X, MANA_BAR_Y, BAR_WIDTH, BAR_HEIGHT);
+        g.fillRect(BAR_X, MANA_BAR_Y, ((float)CharacterStatsManager.getInstance().getStats()[6]/5000)*BAR_WIDTH, BAR_HEIGHT);
         g.setColor(XP_COLOR);
         g.fillRect(BAR_X, XP_BAR_Y, ((float)CharacterStatsManager.getInstance().getExp()/CharacterStatsManager.getInstance().getExpNeeded())*BAR_WIDTH, BAR_HEIGHT);
         g.drawImage(playerbars, P_BAR_X, P_BAR_Y);
