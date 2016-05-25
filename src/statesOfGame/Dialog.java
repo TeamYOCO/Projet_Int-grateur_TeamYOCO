@@ -26,6 +26,7 @@ public class Dialog extends BasicGameState {
     private static int stateID;
     private Image background;
     private static String text = "...";
+    private boolean isEntered = false;
 
     private enum Destination {
 
@@ -67,17 +68,41 @@ public class Dialog extends BasicGameState {
      *
      * @param gc
      * @param sbg
+     * @throws SlickException
+     */
+    @Override
+    public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        isEntered = true;
+    }
+
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
+    @Override
+    public void leave(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        isEntered = false;
+    }
+
+    /**
+     *
+     * @param gc
+     * @param sbg
      * @param g
      * @throws SlickException
      */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        background.draw(0, 0);
-        g.setColor(Color.white);
-        g.fillRect(12, 550, 1000, 150);
-        g.setColor(Color.black);
-        g.drawString(text, 20, 570);
-        g.drawString("Ok", 990, 680);
+        if (isEntered) {
+            background.draw(0, 0);
+            g.setColor(Color.white);
+            g.fillRect(12, 550, 1000, 150);
+            g.setColor(Color.black);
+            g.drawString(text, 20, 570);
+            g.drawString("Ok", 990, 680);
+        }
     }
 
     /**
@@ -94,20 +119,22 @@ public class Dialog extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        if (commingFrom == Destination.dOVERWORLD) {
-            if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
-                if (destination == Destination.dOVERWORLD) {
-                    sbg.enterState(Game.OVERWORLD);
-                } else if (destination == Destination.dSHOP) {
+        if (isEntered) {
+            if (commingFrom == Destination.dOVERWORLD) {
+                if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
+                    if (destination == Destination.dOVERWORLD) {
+                        sbg.enterState(Game.OVERWORLD);
+                    } else if (destination == Destination.dSHOP) {
+                        sbg.enterState(Game.SHOP);
+                    }
+                }
+            } else if (commingFrom == Destination.dSHOP) {
+                if (input.isKeyPressed(Input.KEY_ENTER)) {
+                    Shop.setConfirmation(true);
+                    sbg.enterState(Game.SHOP);
+                } else if (input.isKeyPressed(Input.KEY_BACK)) {
                     sbg.enterState(Game.SHOP);
                 }
-            }
-        } else if(commingFrom == Destination.dSHOP){
-            if(input.isKeyPressed(Input.KEY_ENTER)){
-                Shop.setConfirmation(true);
-                sbg.enterState(Game.SHOP);
-            } else if(input.isKeyPressed(Input.KEY_BACK)){
-                sbg.enterState(Game.SHOP);
             }
         }
     }

@@ -123,10 +123,13 @@ public class Overworld extends BasicGameState implements Serializable {
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
 
-        if (gameSaved && savedGameCompteur < 200) {
+        if (gameSaved) {
             g.setColor(Color.white);
             g.drawString("Partie Sauvegardée", 800, 10);
             savedGameCompteur += 1;
+        }
+        if(savedGameCompteur < 1000){
+            gameSaved = false;
         }
     }
 
