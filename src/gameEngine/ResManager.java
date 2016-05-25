@@ -140,7 +140,6 @@ public class ResManager implements Serializable{
             String extention = name.substring(name.lastIndexOf('.'), name.length());
             name = name.substring(0, name.lastIndexOf('.'));
             if (extention.equals(".png")) {
-                System.out.println(name);
                 images.put(name, new Image(path));
             }
 
