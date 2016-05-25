@@ -32,6 +32,7 @@ import entities.Slime;
 import gameEngine.DataManager;
 import items.EquipmentList;
 import java.io.Serializable;
+import java.util.ConcurrentModificationException;
 import org.lwjgl.input.Mouse;
 import playerEngine.CharacterStatsManager;
 
@@ -94,8 +95,8 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
-        
-        list.add(NpcList.getNpc("Princess", 323,471));
+
+        list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
 
@@ -110,10 +111,11 @@ public class Overworld extends BasicGameState implements Serializable {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
         this.map.renderBackground(g);
-        this.player.render(g);
+
         for (Entity entity : list) {
             entity.render(g);
         }
+        this.player.render(g);
         this.map.renderForeground();
         this.hud.render(g);
 
@@ -123,15 +125,17 @@ public class Overworld extends BasicGameState implements Serializable {
             CharacterStatsManager.getInstance().setlvlIsUp(false);
         }
 
-        if (gameSaved && savedGameCompteur < 200) {
+        if (gameSaved) {
             g.setColor(Color.white);
             g.drawString("Partie Sauvegardée", 800, 10);
             savedGameCompteur += 1;
         }
+        if(savedGameCompteur < 1000){
+            gameSaved = false;
+        }
     }
 
     // méthode qui est passé chaque fois dans le thread du jeu
-
     /**
      *
      * @param gc
@@ -139,111 +143,113 @@ public class Overworld extends BasicGameState implements Serializable {
      * @param delta
      * @throws SlickException
      */
-        @Override
+    @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
-        this.player.update(delta); // Update le joueur en fonction du temps passé depuis la dernière update
-        for (Entity entity : list) {
-            entity.update(delta); // Update l'entity en fonction du temps passé depuis la dernière update
-            for (Entity entity2 : list) {
-                if (entity instanceof BadEntity
-                        && entity2 instanceof FriendlyEntity
-                        && entity.getHitBox().collision(entity2.getHitBox())
-                        && ((BadEntity) entity).isHitable()) { // détecte la collision entre un enemi et une attaque du joueur
-                    ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(), ((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
+        try {
+            this.player.update(delta); // Update le joueur en fonction du temps passé depuis la dernière update
+            for (Entity entity : list) {
+                entity.update(delta); // Update l'entity en fonction du temps passé depuis la dernière update
+                for (Entity entity2 : list) {
+                    if (entity instanceof BadEntity
+                            && entity2 instanceof FriendlyEntity
+                            && entity.getHitBox().collision(entity2.getHitBox())
+                            && ((BadEntity) entity).isHitable()) { // détecte la collision entre un enemi et une attaque du joueur
+                        ((BadEntity) entity).takeHit(((FriendlyEntity) entity2).getDamagePhysical(), ((FriendlyEntity) entity2).getDamageSpecial(), ((FriendlyEntity) entity2).getDirection());
 //                    list.add(new DamageMarker(entity.getX(), entity.getY(), ((FriendlyEntity)entity2).getDamage()));
+                    }
+                }
+                if (entity instanceof BadEntity
+                        && ((BadEntity) entity).isHitable() && player.isHitable()
+                        && player.getHitBox().collision(entity.getHitBox())) { // Détecte la collision entre le joueur et une attaque enemie
+                    player.takeHit(((BadEntity) entity).getDamagePhysical(), ((BadEntity) entity).getDamageSpecial(), ((BadEntity) entity).getDirection());
+                }
+                if (entity instanceof ItemDrop
+                        && player.isHitable()
+                        && player.getHitBox().collision(entity.getHitBox())) {
+                    ((ItemDrop) entity).pickUp();
+                }
+                if (entity instanceof NPC
+                        && player.isHitable()
+                        && entity.getHitBox().collision(player.getHitBox())
+                        && input.isKeyPressed(Input.KEY_SPACE)) {
+                    container.getGraphics().copyArea(screenShot, 0, 0);
+                    ((NPC) entity).interact(sbg);
+                }
+                if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
+                    listRemove.add(entity);
                 }
             }
-            if (entity instanceof BadEntity
-                    && ((BadEntity) entity).isHitable() && player.isHitable()
-                    && player.getHitBox().collision(entity.getHitBox())) { // Détecte la collision entre le joueur et une attaque enemie
-                player.takeHit(((BadEntity) entity).getDamagePhysical(), ((BadEntity) entity).getDamageSpecial(), ((BadEntity) entity).getDirection());
+            for (Entity entity : listRemove) {
+                list.remove(entity);
             }
-            if (entity instanceof ItemDrop
-                    && player.isHitable()
-                    && player.getHitBox().collision(entity.getHitBox())){
-                ((ItemDrop)entity).pickUp();
-            }
-            if (entity instanceof  NPC &&
-                    player.isHitable()
-                    && entity.getHitBox().collision(player.getHitBox())&&
-                    input.isKeyPressed(Input.KEY_SPACE)){
-                ((NPC)entity).interact(sbg);
-            }
-            if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
-                listRemove.add(entity);
-            }
-        }
-        for (Entity entity : listRemove) {
-            list.remove(entity);
-        }
-        listRemove.clear();
-        this.cam.update(container);
+            listRemove.clear();
+            this.cam.update(container);
 
-        updateTrigger();
+            updateTrigger();
 
-        if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'e' ou en clickant sur le bouton droit de la souris
-            container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
-            sbg.enterState(Game.INVENTORY);
-        }
-        if (mapChanger) {
-            String[] temp;
-            temp = map.getMapProperty("ennemy").split(";");
-            String[] temp2;
-            for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
-                temp2 = temp[i].split(",");
-                if (Integer.parseInt(temp2[0]) == 1) {
-                    this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-                } else if (Integer.parseInt(temp2[0]) == 2) {
-                    this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-                } else if (Integer.parseInt(temp2[0]) == 3) {
-                    this.list.add(new Bat(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-                } else if (Integer.parseInt(temp2[0]) == 4) {
-                    this.list.add(new Snake(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
-                }else if (Integer.parseInt(temp2[0]) == 5) {
-                    this.list.add(new Boss(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+            if (input.isKeyPressed(18) || input.isMousePressed(1)) { // entrer dans le menu inventaire en pesant sur 'e' ou en clickant sur le bouton droit de la souris
+                container.getGraphics().copyArea(screenShot, 0, 0); // le contenu graphique du container est placé dans l'image "screenshot"
+                sbg.enterState(Game.INVENTORY);
+            }
+            if (mapChanger) {
+                String[] temp;
+                temp = map.getMapProperty("ennemy").split(";");
+                String[] temp2;
+                for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
+                    temp2 = temp[i].split(",");
+                    if (Integer.parseInt(temp2[0]) == 1) {
+                        this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    } else if (Integer.parseInt(temp2[0]) == 2) {
+                        this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    } else if (Integer.parseInt(temp2[0]) == 3) {
+                        this.list.add(new Bat(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    } else if (Integer.parseInt(temp2[0]) == 4) {
+                        this.list.add(new Snake(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    }
                 }
-            }
-            String[] temp3;
-            temp3=map.getMapProperty("npc").split(";");
-            String[] temp4;
-            for(int i=1;i<= Integer.parseInt(temp3[0]);i++){
-                temp4= temp3[i].split(",");
-                if (Integer.parseInt(temp4[0]) == 1){
-                    int x = Integer.parseInt(temp4[1]); int y = Integer.parseInt(temp4[2]);
-                    this.list.add(NpcList.getNpc("Princess",x,y));
+                String[] temp3;
+                temp3 = map.getMapProperty("npc").split(";");
+                String[] temp4;
+                for (int i = 1; i <= Integer.parseInt(temp3[0]); i++) {
+                    temp4 = temp3[i].split(",");
+                    if (Integer.parseInt(temp4[0]) == 1) {
+                        int x = Integer.parseInt(temp4[1]);
+                        int y = Integer.parseInt(temp4[2]);
+                        this.list.add(NpcList.getNpc("Princess", x, y));
+                    }
                 }
+
+                mapChanger = false;
+            }
+            if (!oldMusic.equals(map.getMapProperty("music"))) {
+                this.setMusic(map.getMapProperty("music"));
+                overworldMusic = new Music(map.getMapProperty("music"));
+                overworldMusic.play();
+                overworldMusic.loop();
+                oldMusic = map.getMapProperty("music");
             }
 
-            mapChanger = false;
-        }
-        if (!oldMusic.equals(map.getMapProperty("music"))) {
-            this.setMusic(map.getMapProperty("music"));
-            overworldMusic = new Music(map.getMapProperty("music"));
-            overworldMusic.play();
-            overworldMusic.loop();
-            oldMusic = map.getMapProperty("music");
-        }
+            //peser sur la touche 'p' pour save
+            if (input.isKeyPressed(25)) {
+                DataManager.getInstance().save();
+                gameSaved = true;
+            }
 
-        //peser sur la touche 'p' pour save
-        if (input.isKeyPressed(25)) {
-            DataManager.getInstance().save();
-            gameSaved = true;
-        }
-        
-        if (input.isMousePressed(0)) {
-            System.out.println(input.getMouseX() + " " + input.getMouseY());
-        }
-        
-        
-        if(input.isKeyPressed(Input.KEY_0)){
-            container.getGraphics().copyArea(screenShot, 0, 0);
-            sbg.enterState(Game.SHOP);
-        }
-        
-        if(input.isKeyPressed(Input.KEY_9)){
-            container.getGraphics().copyArea(screenShot, 0, 0);
-            sbg.enterState(Game.DIALOG);
+            if (input.isMousePressed(0)) {
+                System.out.println(input.getMouseX() + " " + input.getMouseY());
+            }
+
+            if (input.isKeyPressed(Input.KEY_0)) {
+                container.getGraphics().copyArea(screenShot, 0, 0);
+                sbg.enterState(Game.SHOP);
+            }
+
+            if (input.isKeyPressed(Input.KEY_9)) {
+                container.getGraphics().copyArea(screenShot, 0, 0);
+                sbg.enterState(Game.DIALOG);
+            }
+        } catch (ConcurrentModificationException e) {
         }
     }
 

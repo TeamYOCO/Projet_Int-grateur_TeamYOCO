@@ -6,6 +6,7 @@
 package statesOfGame;
 
 import ca.qc.bdeb.info204.Game;
+import gameEngine.DataManager;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -24,7 +25,16 @@ public class Dialog extends BasicGameState {
 
     private static int stateID;
     private Image background;
-    
+    private static String text = "...";
+    private boolean isEntered = false;
+
+    private enum Destination {
+
+        dSHOP, dOVERWORLD
+    };
+    private static Destination destination = Destination.dOVERWORLD;
+    private static Destination commingFrom = Destination.dSHOP;
+
     /**
      *
      * @param stateID
@@ -58,17 +68,41 @@ public class Dialog extends BasicGameState {
      *
      * @param gc
      * @param sbg
+     * @throws SlickException
+     */
+    @Override
+    public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        isEntered = true;
+    }
+
+    /**
+     *
+     * @param gc
+     * @param sbg
+     * @throws SlickException
+     */
+    @Override
+    public void leave(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        isEntered = false;
+    }
+
+    /**
+     *
+     * @param gc
+     * @param sbg
      * @param g
      * @throws SlickException
      */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        background.draw(0,0);
-        g.setColor(Color.white);
-        g.fillRect(12, 550, 1000, 150);
-        g.setColor(Color.black);
-        g.drawString("Ok", 990, 680);
-        
+        if (isEntered) {
+            background.draw(0, 0);
+            g.setColor(Color.white);
+            g.fillRect(12, 550, 1000, 150);
+            g.setColor(Color.black);
+            g.drawString(text, 20, 570);
+            g.drawString("Ok", 990, 680);
+        }
     }
 
     /**
@@ -85,10 +119,48 @@ public class Dialog extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        if ((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20)) {
-            if (input.isMouseButtonDown(0)) {
-                sbg.enterState(Game.OVERWORLD);
+        if (isEntered) {
+            if (commingFrom == Destination.dOVERWORLD) {
+                if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
+                    if (destination == Destination.dOVERWORLD) {
+                        sbg.enterState(Game.OVERWORLD);
+                    } else if (destination == Destination.dSHOP) {
+                        sbg.enterState(Game.SHOP);
+                    }
+                }
+            } else if (commingFrom == Destination.dSHOP) {
+                if (input.isKeyPressed(Input.KEY_ENTER)) {
+                    Shop.setConfirmation(true);
+                    sbg.enterState(Game.SHOP);
+                } else if (input.isKeyPressed(Input.KEY_BACK)) {
+                    sbg.enterState(Game.SHOP);
+                }
             }
+        }
+    }
+
+    public static void setText(String text) {
+        Dialog.text = text;
+    }
+
+    public static void setDestionation(int i) {
+        switch (i) {
+            case Game.OVERWORLD:
+                destination = Destination.dOVERWORLD;
+                break;
+            case Game.SHOP:
+                destination = Destination.dSHOP;
+                break;
+        }
+    }
+
+    public static void setCommingFrom(int i) {
+        switch (i) {
+            case Game.OVERWORLD:
+                commingFrom = Destination.dOVERWORLD;
+                break;
+            case Game.SHOP:
+                commingFrom = Destination.dSHOP;
         }
     }
 }

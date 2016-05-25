@@ -5,16 +5,21 @@
  */
 package entities;
 
+import ca.qc.bdeb.info204.Game;
 import static ca.qc.bdeb.info204.Game.DIALOG;
 import static ca.qc.bdeb.info204.Game.SHOP;
+import gameEngine.DataManager;
 import gameEngine.ResManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
+import statesOfGame.Dialog;
 
 /**
  *
@@ -26,6 +31,7 @@ public class NPC extends Entity {
     private String text;
     private Animation moveAnimations[];
     private int direction = 2;
+    private boolean isCommingFromShop = false;
 
     /**
      * Crée un personnage non joueur
@@ -43,6 +49,7 @@ public class NPC extends Entity {
         this.xOff = -32;
         this.yOff = -64;
         this.hitBox = new Box(x - xOff, y - yOff, 64, 64);
+        this.type = type;
         SpriteSheet sheet = null;
         try {
             switch (spriteType) {
@@ -90,7 +97,10 @@ public class NPC extends Entity {
      */
     @Override
     public void render(Graphics g) throws SlickException {
+        g.setColor(new Color(0, 0, 0, .5f));
+        g.fillOval(x +16, y +56, 32, 16);
         g.drawAnimation(moveAnimations[direction], x, y);
+        hitBox.render(g);
     }
     /**
      * Permet de mettre de nouvelles coordonnées au PNJ
@@ -109,8 +119,15 @@ public class NPC extends Entity {
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
-                sbg.enterState(SHOP);
+                Dialog.setText(this.text);
+                Dialog.setDestionation(Game.SHOP);
+                Dialog.setCommingFrom(Game.OVERWORLD);
+                sbg.enterState(DIALOG);
+                break;
             case INTERACT:
+                Dialog.setText(this.text);
+                Dialog.setDestionation(Game.OVERWORLD);
+                Dialog.setCommingFrom(Game.OVERWORLD);
                 sbg.enterState(DIALOG);
         }
     }

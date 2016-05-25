@@ -145,19 +145,19 @@ public class EquipmentList implements Serializable{
                 new int[]{0,25,0,0,0,0,0},EquipmentType.SWORD,100));
         listEquipment.put("Banane",new Equipment(0,0,"Banane",
                 "Pourquoi utilisé une banane en combat?\nPourquoi pas!",
-                new int[]{0,5,0,5,0,0,0},EquipmentType.SWORD,0));
+                new int[]{0,5,0,5,0,0,0},EquipmentType.SWORD,1));
         listEquipment.put("Epee legendaire",new Equipment(0,0,"Epee legendaire",
                 "Épée ayant appartenue à un héro\nd'un ancien pays. Il fait du domage physique\net magique",
-                new int[]{0,15,0,15,0,0,0},EquipmentType.SWORD,0));
+                new int[]{0,25,0,25,0,0,0},EquipmentType.SWORD,500));
         listEquipment.put("Epee de glace",new Equipment(0,0,"Epee de glace",
                 "Le simple fait de tenir cette arme\nvous recouvre de glace, vous protègeant des\nattaques physiques",
-                new int[]{0,15,10,0,0,0,0},EquipmentType.SWORD,0));
+                new int[]{0,15,10,0,0,0,0},EquipmentType.SWORD,100));
         listEquipment.put("Epee rose",new Equipment(0,0,"Epee rose",
                 "Vous aurez l'air magnifique evec\ncette arme! Votre charme vous confère\nplus de résistance à la magie",
-                new int[]{0,15,0,0,10,0,0},EquipmentType.SWORD,0));
+                new int[]{0,15,0,0,10,0,0},EquipmentType.SWORD,75));
         listEquipment.put("Epee extraterrestre",new Equipment(0,0,"Epee extraterrestre",
                 "Cette arme, qui ne semble pas avoir été\ncréer sur terre, ne fera que des\ndégats magiques. Curieux...",
-                new int[]{0,0,0,25,0,0,0},EquipmentType.SWORD,0));
+                new int[]{0,0,0,25,0,0,0},EquipmentType.SWORD,80));
         listEquipment.put("Livre bleu",new Equipment(0,0,"Livre bleu",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
@@ -190,34 +190,34 @@ public class EquipmentList implements Serializable{
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",
                 "Cet arc fera peu de dégat, mais\nvous permettra de vous défendre\nà distance",
-                new int[]{0,5,0,0,0,0,0},EquipmentType.BOW,0));
+                new int[]{0,5,0,0,0,0,0},EquipmentType.BOW,25));
         listEquipment.put("Arc elegant",new Equipment(0,0,"Arc elegant",
-                "Cet arc, fabriqué par un artisan\nde renom",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Bel arc infligeant des dégats considérables",
+                new int[]{0,10,0,0,0,0,0},EquipmentType.BOW,50));
         listEquipment.put("Arc lourd",new Equipment(0,0,"Arc lourd",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "La masse de cet arc est plus grand\n que celui de trois hommes adultes, ralentissant \nconsidérablement le porteur. Les dommages\ninfligés sont toutefois importants",
+                new int[]{0,30,0,0,0,-5,0},EquipmentType.BOW,100));
         listEquipment.put("Arc sombre",new Equipment(0,0,"Arc sombre",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Arc créé par le seigneur \ndes Ténèbres, Sauron lui-même",
+                new int[]{0,40,0,0,0,0,0},EquipmentType.BOW,200));
         listEquipment.put("Arc clair",new Equipment(0,0,"Arc clair",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Arc béni par le renommé Gandalf le magicien blanc",
+                new int[]{0,20,0,0,0,0,0},EquipmentType.BOW,250));
         listEquipment.put("Arc infernal",new Equipment(0,0,"Arc infernal",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Arc créé dans les flames de l'enfer.\nIl brûle et vous fait perdre de la vie,\n mais inflige de gros dégats",
+                new int[]{-5,35,0,0,0,0,0},EquipmentType.BOW,95));
         listEquipment.put("Arc de feu",new Equipment(0,0,"Arc de feu",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Une réplique de l'arc infernal.\nCelui-ci n'est pas fait de vraies flammes,\nmais inflige des dégats similaires",
+                new int[]{0,35,0,0,0,0,0},EquipmentType.BOW,130));
         listEquipment.put("Arc angelique",new Equipment(0,0,"Arc angelique",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Arc tombé du ciel.  Il est assez puissant et\naugmente curieusement la défense spéciale",
+                new int[]{0,20,0,0,10,0,0},EquipmentType.BOW,95));
         listEquipment.put("Arc metallique",new Equipment(0,0,"Arc metallique",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Arc en fer forgé.  Elle permet\nde bloquer certaines attaques physiques",
+                new int[]{0,20,10,0,0,0,0},EquipmentType.BOW,100));
         listEquipment.put("Arc artisanal",new Equipment(0,0,"Arc artisanal",
-                "",
-                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,0));
+                "Cet arc, fabriqué par un artisan\nde renom, n'a pas été fabriqué pour le combat,\nelle ne fait aucun dégat",
+                new int[]{0,0,0,0,0,0,0},EquipmentType.BOW,10));
         
     }
     
