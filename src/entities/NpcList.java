@@ -29,7 +29,7 @@ public class NpcList {
     private void loadNpcs() {
         npcList.put("Princess",
                 new NPC(0, 0, "Bonjour à toi brâve guerrier. Tu doit vaincre\nle méchant chevalier qui rode dans la mine", NpcType.INTERACT, 0));
-        npcList.put("",new NPC(0, 0, "", NpcType.NONE, 0));
+        npcList.put("",new NPC(0, 0, "", NpcType.VENDOR, 1));
     }
 
     public static NPC getNpc(String name, int x, int y) {
