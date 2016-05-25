@@ -77,18 +77,6 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
 ////  creer la police de caractère
 //        ufont = ResManager.getInstance().getFont("Sherif", 15);
-//        manager.addItem("Bottes Royales");
-//        manager.addItem("Casque Metallique");
-//        manager.addItem("Armure d'Argent");
-//        manager.addItem("Jambieres Royales");
-//        manager.addItem("Bouclier legendaire");
-//        manager.addItem("Jesus");
-//        manager.addItem("Banane");
-//        manager.addItem("Epee legendaire");
-//        manager.addItem("Livre bleu");
-//        manager.addItem("Livre mauve");
-//        manager.addItem("Arc de feu");
-//        manager.addItem("Arc artisanal");
 
     }
 
@@ -159,8 +147,8 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
             isSameType = false;
             //verifie si la souris est au dessus de l'item
-            if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 40)
-                    && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 50))) {
+            if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 32)
+                    && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 32))) {
 
                 if (gc.getInput().isMousePressed(0)) {  //si l'item est clique
                     itemFoundClicked(itemFound);
@@ -228,7 +216,7 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             x = 200 + (40 * ((i - (i / 16) * 16)));
         }
 
-        if (i % 16 == 0 && i != 0) {
+        if (i >= 16) {
             y = 350 + ((i / 16) * 44);
         } else {
             y=350;
