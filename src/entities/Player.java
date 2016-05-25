@@ -38,6 +38,7 @@ public class Player extends Mob {
 
     /**
      * Crée le joueur
+     *
      * @param map La carte
      * @param list Une liste d'entité
      */
@@ -48,6 +49,7 @@ public class Player extends Mob {
 
     /**
      * Initialise le joueur
+     *
      * @throws SlickException
      */
     public void init() throws SlickException {
@@ -81,7 +83,8 @@ public class Player extends Mob {
 
     /**
      * Dessine le joueur pour la première fois
-     * @param g  Le graphique qui permet de dessiner
+     *
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -106,9 +109,9 @@ public class Player extends Mob {
         }
     }
 
-   
     /**
-     *Update la position et l'action du joueur
+     * Update la position et l'action du joueur
+     *
      * @param delta Le temps d'une ittération
      */
     @Override
@@ -175,6 +178,7 @@ public class Player extends Mob {
 
     /**
      * Calcul la position en x après l'ittération
+     *
      * @param delta La durée d'une ittération
      * @return la position en x après l'ittération
      */
@@ -193,6 +197,7 @@ public class Player extends Mob {
 
     /**
      * Calcul la position en y après l'ittération
+     *
      * @param delta La durée d'une ittération
      * @return la position en y après l'ittération
      */
@@ -211,6 +216,7 @@ public class Player extends Mob {
 
     /**
      * Donne un coup d'épée
+     *
      * @throws SlickException
      */
     public void attack() throws SlickException {
@@ -256,6 +262,7 @@ public class Player extends Mob {
 
     /**
      * Tire a l'arc
+     *
      * @throws SlickException
      */
     public void shoot() throws SlickException {
@@ -273,6 +280,7 @@ public class Player extends Mob {
 
     /**
      * Lance un sort
+     *
      * @throws SlickException
      */
     public void cast() throws SlickException {
@@ -290,9 +298,9 @@ public class Player extends Mob {
                 CharacterStatsManager.getInstance().heal(CharacterStatsManager.getInstance().getStats()[3] * 2);
                 SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("healing");
                 Animation anim = loadAnimation(sheet, 0, 6, 0);
-                spell = new Particle(anim, 500, 0, 0, 0, x-16, y-32, new Box(x, y, 0, 0));
-            }else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre gris")){
-                spell = new Tornade(x, y-64, direction);
+                spell = new Particle(anim, 500, 0, 0, 0, x - 16, y - 32, new Box(x, y, 0, 0));
+            } else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre gris")) {
+                spell = new Tornade(x, y - 64, direction);
             }
             if (spell != null) {
                 list.add(spell);
@@ -306,6 +314,7 @@ public class Player extends Mob {
     // Les méthodes suivantes sont des getters/setters
     /**
      * Retourne la direction du joueur
+     *
      * @return la direction du joueur
      */
     public int getDirection() {
@@ -314,6 +323,7 @@ public class Player extends Mob {
 
     /**
      * Change la direction du joueur
+     *
      * @param direction la nouvelle direction
      */
     public void setDirection(int direction) {
@@ -322,6 +332,7 @@ public class Player extends Mob {
 
     /**
      * retourne si le joueur bouge
+     *
      * @return un bolléen si le joueur bouge
      */
     public boolean getMoving() {
@@ -330,7 +341,8 @@ public class Player extends Mob {
 
     /**
      * Change le booléen de mouvement
-     * @param moving le  nouveau booléen
+     *
+     * @param moving le nouveau booléen
      */
     public void setMoving(boolean moving) {
         this.moving = moving;
@@ -338,6 +350,7 @@ public class Player extends Mob {
 
     /**
      * Retourne si le joueur est en train d'attaquer
+     *
      * @return si le joueur est en train d'attaquer
      */
     public boolean isAttacking() {
@@ -346,17 +359,18 @@ public class Player extends Mob {
 
     /**
      * Lorsque le joueur se fait toucher
+     *
      * @param damage le dégat physique de l'ennemie
      * @param damageSpecial le dégat magique de l'ennemie
      * @param hitDirection la direction du coup
      */
     @Override
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
-        super.takeHit(damage, damageSpecial, hitDirection);
         try {
             CharacterStatsManager.getInstance().takeDamage(damage, damageSpecial);
         } catch (SlickException ex) {
         }
+        super.takeHit(damage, damageSpecial, hitDirection);
     }
 
 }
