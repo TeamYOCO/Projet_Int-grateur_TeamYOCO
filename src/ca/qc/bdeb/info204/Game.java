@@ -30,26 +30,28 @@ import statesOfGame.Shop;
 public class Game extends StateBasedGame {
 
     public static final String GAMENAME = "Projet intégrateur V1.0";
-    public static final int MAINMENU = 0,OVERWORLD = 1, INVENTORY = 2,CREDITS = 3, LEVELUPSCREEN = 4,HELP = 5,SHOP = 6, DIALOG = 7,GAMEOVER = 8;
+    public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5, SHOP = 6, DIALOG = 7, GAMEOVER = 8;
 
     /**
      *
      */
     public static final int WIDTH = 1024;
     public static final int HEIGHT = 704;
-    
+
     /**
      * C'est ici la classe main du jeu
+     *
      * @param name Le nom du jeu
      * @throws SlickException
      */
-        public Game(String name) throws SlickException {
+    public Game(String name) throws SlickException {
         super(name);
 
     }
 
     /**
-     *La liste des états possibles du jeu
+     * La liste des états possibles du jeu
+     *
      * @param gc La fenêtre
      * @throws SlickException
      */
@@ -68,10 +70,11 @@ public class Game extends StateBasedGame {
 
     /**
      * Boucle main
+     *
      * @param args l'argument quand on lance le programme
      * @throws SlickException
      */
-        public static void main(String[] args) throws SlickException {
+    public static void main(String[] args) throws SlickException {
         loadNatives(Game.class);
         AppGameContainer appGc;
         try {
@@ -79,6 +82,8 @@ public class Game extends StateBasedGame {
             appGc.setDisplayMode(WIDTH, HEIGHT, false);
             appGc.setShowFPS(false);
             appGc.start();
+        } catch (UnsatisfiedLinkError ex) {
+
         } catch (SlickException ex) {
             ex.printStackTrace();
         }
@@ -86,6 +91,7 @@ public class Game extends StateBasedGame {
 
     /**
      * Ce qui charge les natives
+     *
      * @param c une classe
      */
     private static void loadNatives(Class c) {

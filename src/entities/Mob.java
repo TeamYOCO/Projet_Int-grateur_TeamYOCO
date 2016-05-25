@@ -127,7 +127,7 @@ public abstract class Mob extends Entity {
         CharacterStatsManager.getInstance().gainExp(exp);
         CharacterStatsManager.getInstance().gainMoney(money);
         Random rdn = new Random();
-        if (rdn.nextInt() % 5 == 1) {
+        if (rdn.nextInt() % 4 == 1) {
             this.list.add(new PotionDrop(x, y, null));
         } else if (rdn.nextInt() % 5 != 1) {
             if (rdn.nextInt() % 100 == 1) {
