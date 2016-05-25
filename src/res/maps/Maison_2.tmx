@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
+ <properties>
+  <property name="ennemy" value="0"/>
+  <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="npc" value="1;villageois 1,544,320"/>
+ </properties>
+ <tileset firstgid="1" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/city_inside.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="385" name="inside" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/inside.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="485" name="kitchen" tilewidth="32" tileheight="32" tilecount="8" columns="2">
+  <image source="../tiles/kitchen.png" width="64" height="128"/>
+ </tileset>
+ <tileset firstgid="493" name="stairs" tilewidth="32" tileheight="32" tilecount="112" columns="8">
+  <image source="../tiles/stairs.png" width="256" height="448"/>
+ </tileset>
+ <tileset firstgid="605" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="630" name="victoria" tilewidth="32" tileheight="32" tilecount="55" columns="11">
+  <image source="../tiles/victoria.png" width="352" height="160"/>
+ </tileset>
+ <tileset firstgid="685" name="inside red" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../tiles/inside red.png" width="320" height="320"/>
+ </tileset>
+ <tileset firstgid="785" name="cabinets" tilewidth="32" tileheight="32" tilecount="78" columns="6">
+  <image source="../tiles/cabinets.png" width="192" height="416"/>
+ </tileset>
+ <tileset firstgid="863" name="barrel" tilewidth="32" tileheight="32" tilecount="8" columns="4">
+  <image source="../tiles/barrel.png" width="128" height="64"/>
+ </tileset>
+ <layer name="collision" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WU0QqAIAxFxf8sSA0Kqv9/bFGjJYqbqS9euC86PU7nlJJp0EpN+js26ntcYqno2hL8P87hz2AHtuBFvzmF5IT8mBzh4hlS8Tn5x7gb2IB3Rvz6xKIvSWvFMXLMiU+doUduqL658y25luEa3BJ9UPq+pdQDF9++NdeQumydL/KRS++glkzgno3gD+QIeZRxeP+d2xvonpw+4jNOwYmzymAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC1vLxMCwjs54PRBvB+IddMY7gfggEB+iMz4MxCsZR/EoHj543QCl6R0DZO+h0Tw8ikfxKCYRAwD9gvMNYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC9vMxEB3sAlo5+YRaG87kN0BxJ1E6OlmxMTk2jsfyF4AxAtJNwIMPIHYiwx7twPZO4B4J5n2JgJxEhn20huM2ks6aCdDPzXsnTRA9pIDRu0dtZdW9u4F4nhmBoYEZvrZuwdo53EgTgbamQLEiUCcRAf7jwHtvIgUzqlAO9PoYO8FoJ0AcJ6kDmAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgwARPGbEIAsEmJgYGRiDuZoTQTED8E8j+BcQfgfgTDn3EgudA/a/QMMzeHkaIvTBMTftf4vFvD1Sum4D95IA3eOwVZEYVw2U/NQHIXnFmTHF0u7spjGds9spisZfWAGTvZiLCMIDKbhtp9u4B2rl3AOw9BrTTh5kwjqSyvReA9gYxE4dHwcCAeGDYJwxA+CcD7UxhhthPTwCzL5nO9iYPQDjD7AOFcyIQJ1Fg/15GCCYGpCDZkwpkpwExADxscmdgCQAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIB5sYmJg2AzEMkAsDMQiTCRopgDA7O1mZGCQpqP9yPbCMD3sh9krxAy0B4hFmOljP8xeCaB9kkAsBbXXEyjnxYBqPy3slQPaJw/ECswQ8UQgTqKuVVjtpTcYLvauY0LgJ0jmPmVClVsPxHuJsHcmkW7bwYTA75D0vGdCldsJxMeBeDoWc5HFlhBp7yEmBP6BpOcnE6rcYSC+OADxOwpGwSgYXAAAveCswWAJAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 8" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="40" height="20">
+  <object id="1" type="tp" x="409" y="2" width="142" height="9">
+   <properties>
+    <property name="destMap" value="res/maps/Maison_2-2.tmx"/>
+    <property name="destX" value="352"/>
+    <property name="destY" value="128"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="449" y="631" width="61" height="8">
+   <properties>
+    <property name="destMap" value="res/maps/City_1.tmx"/>
+    <property name="destX" value="1264"/>
+    <property name="destY" value="704"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

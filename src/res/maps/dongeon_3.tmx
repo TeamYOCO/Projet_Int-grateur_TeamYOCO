@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="3">
+ <properties>
+  <property name="ennemy" value="3;4,1568,1280;2,1728,1440;5,672,1760"/>
+  <property name="music" value="res/musics/Treasures_of_Ancient_Dungeon.WAV"/>
+ </properties>
+ <tileset firstgid="1" name="cavern_ruins" tilewidth="32" tileheight="32" tilecount="384" columns="24">
+  <image source="../tiles/cavern_ruins.png" width="768" height="512"/>
+ </tileset>
+ <tileset firstgid="385" name="dirt2" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="403" name="mountains" tilewidth="32" tileheight="32" tilecount="108" columns="12">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="511" name="lava" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/lava.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="529" name="lavarock" tilewidth="32" tileheight="32" tilecount="18" columns="3">
+  <image source="../tiles/lavarock.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="547" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
+  <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>
+ </tileset>
+ <layer name="collision" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2a3Q6DIAxGzV7Fm/3EaZx7/1eby0JCCHWFNtjqdxJuzFZ6NpSCdB0AAADP9Jf6a1YZ11yvROsrrk3G3R/K+d1P5Pv9n+Fri2XN71bRnoSXdd9aqHEB32OQ8/Vw/9YC3x/wPQaefLdqZm57EV6zQmztGly7ZtZGe4zA1xbwlQFfW3jyHQrXjzk8+VK5lvTpyXcmagbLvumYLBmLgTRny76SXANpXUnVn5z+pfzLX5KrBp7uXw3gKwO+tmjlOwjmH01a+YZ+lp2dNXzjGJy9pz3HfM63dA9qcu5bmg/HZY5+lzP4xp87i2+oJVvXkDEtfS3g0Zfa5+DM7x59t+bQ0vUo5ztbMVr4xs/6mJHxbPDom/ZZ0jd86XM1nHMzrXxz7wo581xJ/Wy9VuQAX5oj+m6tjaj7w7NvTb7wtQt8ZTG0zwCHpgV8ZTFqzzy3au/ErybfOMYHQpd4cEA4AAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   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
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZvQ6CQBREYe77t4qlUVp/WtFW30vs2Kw7hs65nC+ZnhMSwma7DgA8naJcdrcol90zygEAAAAAAAAAAAD4L0PU97ZqR/N7v2vU97ZqF/PeR9T3tmp3897Dwuff02uFXo1eL/Rq9HpZW+9uev7Nl20bXe69La337tyrzkbnhL3qbDQm7FVno1fC3qXf5g96fdD7G70+1tbb+pdU62e9b4QwzgRAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3aOQ7CMBRF0bD/lqEkQMlUMpVAlwVkAVkILlK4saV8faHn+D7pSqksDoqQC9pF07RERIV1CJ3GuujZ2l7AlOsauo/10bO1i4Ap1yv0GRuiZ2tPAVOuXchzWwET3nq9m9DS0CrxPal7vd8LvPMIL16V4juztXPCe3Q42/sOHt+ZrT0S3pvD2d538PjObO2b8L4dzva+g3vfqbzn/RuAV2t48eLFi1dzePHixYtXc3jr81qGV3N4befg1Rxe2zl4NYfXdg5ezeG1nVOyN1VupXrjdRM++xy8fWXeoTLvlOHVHF7b8GrO22v9z/O/Wjt7fw2nphdAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YQQ7CIBCF4aGmWkWPpp5CvaPeQi8kLkiapk20xdJh/i+ZDat5gQwEEQCAZvcJaxo9J6yhPI/cDczslbsBAKMxrwAAAIDf1JXIuqc2Ve7O/qMJubY9tSs0rw+59qGcorzdMznmLHb3ecl5U/Qa9znWYcF5NfUKwKZ6wv2jUbyHVkYyN0reB6lYy+tb714LeT8aY3k9b0h8Yeifo9T7feifo9TZ0J717ZKCZ0PfHpe4t5G1vN1/Eu45AADSODqRU6izy93JPC4h5zXUzUheDd6KfXvaQDgAAA==
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <layer name="Tile Layer 7" width="60" height="60">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAADwZkvEChtAOAAA
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="60" height="60">
+  <properties>
+   <property name="ennemy" value="2;2,1600,1280;2,1760,1440"/>
+   <property name="music" value="res/musics/Dark_chamber.WAV"/>
+  </properties>
+  <object id="1" type="tp" x="193" y="228" width="29" height="21">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_2.tmx"/>
+    <property name="destX" value="320"/>
+    <property name="destY" value="224"/>
+   </properties>
+  </object>
+  <object id="2" type="tp" x="1508" y="1675" width="25" height="19">
+   <properties>
+    <property name="destMap" value="res/maps/dongeon_2.tmx"/>
+    <property name="destX" value="1472"/>
+    <property name="destY" value="1728"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
