@@ -8,6 +8,7 @@ package statesOfGame;
 import ca.qc.bdeb.info204.Game;
 import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import gameEngine.DataManager;
+import gameEngine.ResManager;
 import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
@@ -19,6 +20,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import playerEngine.CharacterStatsManager;
@@ -39,6 +41,7 @@ public class Shop extends BasicGameState {
     private static boolean confirmation = false;
     private Equipment equipmentSelected;
     private ArrayList<Equipment> listEquipmentAdded = new ArrayList();
+    private UnicodeFont ufont15;
 
     /**
      *
@@ -70,6 +73,7 @@ public class Shop extends BasicGameState {
         background = Overworld.getScreenShot();
         int compteur = 0;
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
+        ufont15 = ResManager.getInstance().getFont("Sherif", 15);
     }
 
     /**
@@ -105,6 +109,7 @@ public class Shop extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         if (isEntered) {
             background.draw(0, 0);
+            g.setFont(ufont15);
             int itemCompteur = 0, displayCompteur = 0;
             g.setColor(Color.gray);
             g.fillRect(700, 50, 300, 600);

@@ -70,11 +70,19 @@ public class Help extends BasicGameState {
         g.setColor(Color.black);
         g.drawString("Vous pouvez effectuer les attaque suivante dans le jeu\n"
                 + "A : attaque magique\nS : Tirer une flèche\nD : Coup d'épée\nW: Boire une potion\n"
-                + "pour intéragir avec les NPC, apuyez sur la bare d'espace\n"
+                + "Vous ne pouvez pas utiliser ces touches si vous n'avez pas au moins un des types d'item suivant\n"
+                + "- Épée (pour utiliser la touche D : Coup d'épée\n"
+                + "- Arc (pour utiliser la touche S : Tirer une flèche\n"
+                + "- Livre magique (pour utiliser la touche A : Attaque magique\n"
+                + "Pour équiper ces items, vous devez entrer dans l'inventaire\n grâce à la touche 'E'\n"
+                + "Vous commencez le jeu avec une épée en bois\n"
+                + "Vous pouvez obtenir d'autres items en combattant des ennemis ou en en achetant en \nparlant aux NPC's vendeurs"
+                + "pour intéragir avec les NPC's, appuyez sur la barre d'espace\n"
                 + "Chaque attaque inflige des dégats aux ennemis en fonction de vos \nstatistiques d'attaque et d'attaque spéciale et vous coûte une certaine quantité d'énergie\n"
                 + "Chaque ennemi tué vous fait gagner de l'argent et de l'expérience\n"
-                + "À chaque fois que vous augmenté de niveau, vous obtenez 10 points \nd'augmentation de stats que vous pouvez utiliser pour augmenter n'importe quelle des stats suivantes :\n"
-                + "- Vie\n- Attaque\n- Défense\n- Spécial Attaque\n- Spécial Défense\n- Vitesse\n"
+                + "À chaque fois que vous augmenté de niveau, vous obtenez 5 points \nd'augmentation de stats que vous pouvez utiliser pour augmenter n'importe quelle des stats suivantes :\n"
+                + "- Vie\n- Attaque\n- Défense/Défense Spéciales\n- Spécial Attaque\n"
+                + "La défense et la défense spéciale augmentent en même temps\n"
                 + "Vous pouvez également accéder à l'inventaire avec la touche 'E'\n"
                 + "Pour sauvegarder votre proression, cliquer sur 'p'", 100, 100);
         g.drawString("< Retour", 15, HEIGHT-25);
