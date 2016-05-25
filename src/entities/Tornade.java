@@ -69,7 +69,7 @@ public class Tornade extends Particle implements FriendlyEntity {
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(animation, x - 96, y - 96);
-        hitBox.render(g);
+//        hitBox.render(g);
     }
 
     @Override
