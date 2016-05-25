@@ -492,4 +492,10 @@ public class CharacterStatsManager {
     public void setPotionCount(int potionCount) {
         this.potionCount = potionCount;
     }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+    
+    
 }

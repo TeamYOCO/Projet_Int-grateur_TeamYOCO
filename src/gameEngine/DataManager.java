@@ -62,6 +62,7 @@ public class DataManager {
             save.writeFloat(Entity.getSaveY());
             save.writeInt(CharacterStatsManager.getInstance().getPotionNb());
             save.writeInt(CharacterStatsManager.getInstance().getLevel());
+            save.writeInt(CharacterStatsManager.getInstance().getMoney());
             save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemFound());
             save.writeObject((ArrayList<Equipment>)CharacterStatsManager.getInstance().getInventory().getListItemPlayer());
             save.flush();
@@ -87,6 +88,7 @@ public class DataManager {
             Player.setSaveY(load.readFloat());
             CharacterStatsManager.getInstance().setPotionCount(load.readInt());
             CharacterStatsManager.getInstance().setLevel(load.readInt());
+            CharacterStatsManager.getInstance().setMoney(load.readInt());
             ArrayList<Equipment> list = (ArrayList<Equipment>)load.readObject();
             CharacterStatsManager.getInstance().getInventory().setListItemFound(list);
             list = (ArrayList<Equipment>) load.readObject();
