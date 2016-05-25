@@ -31,9 +31,9 @@ public class ResManager implements Serializable{
         loadRes();
     }
 
-    /**
-     *
-     * @return
+     /**
+     * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     * @return une instance
      * @throws SlickException
      */
     public static ResManager getInstance() throws SlickException {
@@ -43,6 +43,10 @@ public class ResManager implements Serializable{
         return instance;
     }
 
+    /**
+     * Charger les resources
+     * @throws SlickException 
+     */
     private void loadRes() throws SlickException {
         sprites = new HashMap();
         images = new HashMap();
@@ -142,10 +146,10 @@ public class ResManager implements Serializable{
     }
     
     /**
-     *
-     * @param fontName
-     * @param fontSize
-     * @return
+     * Permet d'aller chercher une police de caractère
+     * @param fontName le nom de la police
+     * @param fontSize la grosseur de la police
+     * @return la police de caractère
      * @throws SlickException
      */
     public UnicodeFont getFont(String fontName, int fontSize) throws SlickException{
@@ -159,18 +163,18 @@ public class ResManager implements Serializable{
     }
 
     /**
-     *
-     * @param filePath
-     * @return
+     * Prend une spritesheet a partir de son chemin
+     * @param filePath Le chemin pour aller chercher les images
+     * @return la spritesheet
      */
     public SpriteSheet getSpriteSheet(String filePath) {
         return sprites.get(filePath);
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * Aller chercher une image
+     * @param name le chemin pour aller chercher une image
+     * @return l'image
      */
     public Image getImage(String name) {
         return images.get(name);

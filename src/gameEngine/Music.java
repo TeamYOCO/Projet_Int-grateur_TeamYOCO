@@ -10,12 +10,12 @@ import javax.sound.sampled.Clip;
  * @author Tomas
  */
 public class Music {
-    //déclaration de variables
+    
     private Clip clip;
 
     /**
      * constructeur de musique
-     * @param filepath 
+     * @param filepath Le chemin pour aller chercher la musique
      */
     public Music(String filepath) {
         
@@ -64,7 +64,7 @@ public class Music {
 
     /**
      * getter de l'activité du fichier musical
-     * @return isActive
+     * @return isActive booléen qui retourne true si il y a un fichier musical
      */
     public boolean getActive() {
         return clip.isActive();

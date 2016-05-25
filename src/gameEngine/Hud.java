@@ -31,7 +31,7 @@ public class Hud {
     private Image playerbars;
 
     /**
-     *
+     * initialise le HUD
      * @throws SlickException
      */
     public void init() throws SlickException {
@@ -39,8 +39,8 @@ public class Hud {
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner le HUD
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     public void render(Graphics g) throws SlickException {

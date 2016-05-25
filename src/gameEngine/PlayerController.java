@@ -8,34 +8,27 @@ import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
 import playerEngine.CharacterStatsManager;
 
-/*
+/**
  * Cette classe gère le controle du joueur dans le overworld
  * @author Seb
  */
 
-/**
- *
- * @author Tomas
- */
 
 public class PlayerController implements KeyListener {
 
-    // Variables de la classe
     private Player player;
 
-    // Constructeur
-
     /**
-     *
-     * @param player
+     * Constructeur des contrôle du joueur
+     * @param player le joueur
      */
         public PlayerController(Player player) {
         this.player = player;
     }
 
     /**
-     *
-     * @param input
+     * Change l'entrée de commande
+     * @param input le nouvel entrée de commande
      */
     @Override
     public void setInput(Input input) {
@@ -43,8 +36,8 @@ public class PlayerController implements KeyListener {
     }
 
     /**
-     *
-     * @return
+     * retourne si le jeu accepte des entrées de commande
+     * @return si le jeu accepte des entrées de commande
      */
     @Override
     public boolean isAcceptingInput() {
@@ -52,7 +45,7 @@ public class PlayerController implements KeyListener {
     }
 
     /**
-     *
+     * si l'entrée de commande fini
      */
     @Override
     public void inputEnded() {
@@ -60,7 +53,7 @@ public class PlayerController implements KeyListener {
     }
 
     /**
-     *
+     * quand l'entrée de commande commence
      */
     @Override
     public void inputStarted() {
@@ -68,9 +61,9 @@ public class PlayerController implements KeyListener {
     }
 
     /**
-     *
-     * @param key
-     * @param c
+     * Ce qui se passe lorsqu'on appuit sur une touche
+     * @param key La touche appuyée
+     * @param c il est la parce qu'il a besoin d'être implémenté
      */
     @Override
     public void keyPressed(int key, char c) {
@@ -131,9 +124,9 @@ public class PlayerController implements KeyListener {
     }
 
     /**
-     *
-     * @param key
-     * @param c
+     * Ce qui se passe lorsqu'on enlève une touche
+     * @param key La touche enlevé
+     * @param c il est la parce qu'il a besoin d'être implémenté
      */
     @Override
     public void keyReleased(int key, char c) {
