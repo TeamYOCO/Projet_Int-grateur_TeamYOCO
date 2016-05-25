@@ -351,13 +351,12 @@ public class CharacterStatsManager {
     }
 
     /**
-   /**
     * le joueur achète un équipement
     * @param moneySpent le nombre d'argent dépensé
     */
     public void buyItem(int moneySpent){
-     * @throws SlickException
-     */
+}
+
     public void addItem(String newItem) throws SlickException {
         boolean addOk = true;
         for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
@@ -405,6 +404,9 @@ public class CharacterStatsManager {
         }
     }
 
+/**
+ * réinitialise les statistiques du joueur
+ */
     public void reset() {
         hp = 100;
         stats[0] = 100;
@@ -422,6 +424,9 @@ public class CharacterStatsManager {
         this.anim = null;
         this.inventory = new Inventory();
     }
+/**
+ * mise à jour du temps de chargement du sort du joueur
+ */
     
     public void updateCooldown(int delta){
         if (stats[6] < 5000)
@@ -430,5 +435,4 @@ public class CharacterStatsManager {
             stats[6] = 5000;
     }
 }
-     * rajoute un équipement dans l'inventaire du joueur
-     * @param newItem le nom du nouvel équipement
+ 
