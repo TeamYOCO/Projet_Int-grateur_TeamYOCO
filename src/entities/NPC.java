@@ -102,6 +102,8 @@ public class NPC extends Entity {
         switch (type) {
             case VENDOR:
                 sbg.enterState(SHOP);
+            case INTERACT:
+                
         }
     }
 
