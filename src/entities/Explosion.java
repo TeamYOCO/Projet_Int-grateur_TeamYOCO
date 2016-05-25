@@ -6,11 +6,7 @@
 package entities;
 
 import gameEngine.ResManager;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import maps.MiniMap;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -22,13 +18,12 @@ import playerEngine.CharacterStatsManager;
  *
  * @author Tomas
  */
-public class Fireball extends Particle implements FriendlyEntity{
+public class Explosion extends Particle implements FriendlyEntity{
     
     private int damagePhysical;
     private int damageSpecial;
     private Image img;
     private MiniMap map;
-    private ArrayList<Entity> list;
 
     /**
      *
@@ -39,8 +34,8 @@ public class Fireball extends Particle implements FriendlyEntity{
      * @param map
      * @throws SlickException
      */
-    public Fireball(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
-        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("fireball_0");
+    public Explosion(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
+        SpriteSheet anim = ResManager.getInstance().getSpriteSheet("explosion");
         this.x = x;
         this.y = y;
         this.xOff = 0;
@@ -48,12 +43,6 @@ public class Fireball extends Particle implements FriendlyEntity{
         this.direction = direction;
         animation = loadAnimation(anim, 0, 4, 0);
         img = animation.getImage(direction);
-        switch(direction){
-            case 0: speedY = -0.5f; xOff = -2; this.hitBox = new Box(x, y, 4, 30); break;
-            case 1: speedX = -0.5f; yOff = -2; this.hitBox = new Box(x, y, 30, 4); break;
-            case 2: speedY = 0.5f; xOff = -2; yOff = -32; this.hitBox = new Box(x, y, 4, 30); break;
-            case 3: speedX = 0.5f; yOff = -2; xOff = -32; this.hitBox = new Box(x, y, 30, 4); break;
-        }
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
         this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
         this.lifeSpam = lifespam;
@@ -67,13 +56,9 @@ public class Fireball extends Particle implements FriendlyEntity{
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        switch(direction){
-            case 0: g.drawImage(img, x - 14, y,Color.white); break;
-            case 1: g.drawImage(img, x, y - 16,Color.white); break;
-            case 2: g.drawImage(img, x - 16, y - 32,Color.white); break;
-            case 3: g.drawImage(img, x - 32, y - 16,Color.white); break;
-        }
-        this.hitBox.render(g);
+
+            g.drawImage(img, x - 14, y,Color.white);
+            this.hitBox.render(g);
     }
 
     /**
@@ -112,11 +97,7 @@ public class Fireball extends Particle implements FriendlyEntity{
     @Override
     public int getDamageSpecial() {
         dead=true;
-        try {
-            this.list.add(new Explosion(x-128,y-64,0,1000,this.map));
-        } catch (SlickException ex) {
-            Logger.getLogger(Fireball.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.hitBox = new Box(x, y, 256, 128);
         return damageSpecial;
     }
     
