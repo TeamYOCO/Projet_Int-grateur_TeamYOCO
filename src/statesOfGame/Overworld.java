@@ -52,9 +52,8 @@ public class Overworld extends BasicGameState implements Serializable {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private Hud hud = new Hud();
-    private boolean running = false, firstTime;
-    private static boolean newGame;
-    private boolean gameSaved = false;
+    private boolean running = false, firstTime, gameSaved = false;
+    private static boolean newGame, gameOver = false;
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger = false;
@@ -128,11 +127,8 @@ public class Overworld extends BasicGameState implements Serializable {
         if (gameSaved) {
             g.setColor(Color.white);
             g.drawString("Partie Sauvegardée", 800, 10);
-            savedGameCompteur += 1;
         }
-        if(savedGameCompteur < 1000){
-            gameSaved = false;
-        }
+
     }
 
     // méthode qui est passé chaque fois dans le thread du jeu
@@ -234,8 +230,14 @@ public class Overworld extends BasicGameState implements Serializable {
             if (input.isKeyPressed(25)) {
                 DataManager.getInstance().save();
                 gameSaved = true;
+                savedGameCompteur = 1000;
             }
-
+            if (savedGameCompteur > 0) {
+                savedGameCompteur -= delta;
+                if (savedGameCompteur <= 0) {
+                    gameSaved = false;
+                }
+            }
             if (input.isMousePressed(0)) {
                 System.out.println(input.getMouseX() + " " + input.getMouseY());
             }
@@ -248,6 +250,17 @@ public class Overworld extends BasicGameState implements Serializable {
             if (input.isKeyPressed(Input.KEY_9)) {
                 container.getGraphics().copyArea(screenShot, 0, 0);
                 sbg.enterState(Game.DIALOG);
+            }
+
+            if (gameOver) {
+                sbg.enterState(Game.GAMEOVER);
+                overworldMusic.stop();
+                gameOver = false;
+                CharacterStatsManager.getInstance().reset();
+                MiniMap.changeMap("res/maps/Maison_1.tmx");
+                list.clear();
+                player.setX(64);
+                player.setY(256);
             }
         } catch (ConcurrentModificationException e) {
         }
@@ -324,6 +337,14 @@ public class Overworld extends BasicGameState implements Serializable {
      */
     public static void setNewGame(boolean newG) {
         newGame = newG;
+    }
+
+    /**
+     *
+     * @param newG
+     */
+    public static void setGameOver(boolean gg) {
+        gameOver = gg;
     }
 
 }

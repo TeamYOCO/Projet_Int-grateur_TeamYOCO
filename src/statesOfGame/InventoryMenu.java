@@ -32,7 +32,7 @@ import playerEngine.CharacterStatsManager;
  *
  * @author Hassaoui
  */
-public class InventoryMenu extends BasicGameState implements Serializable{
+public class InventoryMenu extends BasicGameState implements Serializable {
 
     private final CharacterStatsManager statsManager;
     private static int stateID;
@@ -77,7 +77,6 @@ public class InventoryMenu extends BasicGameState implements Serializable{
 
 ////  creer la police de caractère
 //        ufont = ResManager.getInstance().getFont("Sherif", 15);
-
     }
 
     /**
@@ -89,41 +88,44 @@ public class InventoryMenu extends BasicGameState implements Serializable{
      */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        Overworld.getScreenShot().draw(0, 0);
-        inventoryPic.draw(0, 0);
-        g.setColor(Color.black);
+        try {
+            Overworld.getScreenShot().draw(0, 0);
+            inventoryPic.draw(0, 0);
+            g.setColor(Color.black);
 //        g.setFont(ufont);
-        int i = 0;
-        
-        for (int j = 0; j < statsManager.getStats().length; j++) {
-            g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 23));
-        }
-        for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+            int i = 0;
 
-            placeItem(itemFound, i);
-            IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(),itemFound.getInventoryY());
+            for (int j = 0; j < statsManager.getStats().length-1; j++) {
+                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 29));
+            }
+            for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
 
-            if (CharacterStatsManager.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
-                g.drawString(itemFound.getName(), 415, 200);
-                g.drawString(itemFound.getDescription(), 435, 220);
-                for (int j = 0; j < itemFound.getStats().length; j++) {
-                    g.drawString(itemFound.getStatName(j) + itemFound.getStats()[j], 405 + (65 * j), 310);
+                placeItem(itemFound, i);
+                IconList.getInstance().getListIcon().get(itemFound.getName()).draw(itemFound.getInventoryX(), itemFound.getInventoryY());
+
+                if (CharacterStatsManager.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
+                    g.drawString(itemFound.getName(), 415, 200);
+                    g.drawString(itemFound.getDescription(), 435, 220);
+                    for (int j = 0; j < itemFound.getStats().length-1; j++) {
+                        g.drawString(itemFound.getStatName(j) + itemFound.getStats()[j], 405 + (75 * j), 310);
+                    }
+                }
+                i++;
+            }
+
+            for (Equipment playerItem : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+                IconList.getInstance().getListIcon().get(playerItem.getName()).draw(playerItem.getInventoryX(), playerItem.getInventoryY());
+                if (playerItem.getIsAbove()) {
+                    g.drawString(playerItem.getName(), 415, 200);
+                    g.drawString(playerItem.getDescription(), 435, 220);
+                    for (int j = 0; j < playerItem.getStats().length-1; j++) {
+                        g.drawString(playerItem.getStatName(j) + playerItem.getStats()[j], 405 + (75 * j), 310);
+                    }
                 }
             }
-            i++;
-        }
+        } catch (NullPointerException e) {
 
-        for (Equipment playerItem : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
-            IconList.getInstance().getListIcon().get(playerItem.getName()).draw(playerItem.getInventoryX(), playerItem.getInventoryY());
-            if (playerItem.getIsAbove()) {
-                g.drawString(playerItem.getName(), 415, 200);
-                g.drawString(playerItem.getDescription(), 435, 220);
-                for (int j = 0; j < playerItem.getStats().length; j++) {
-                    g.drawString(playerItem.getStatName(j) + playerItem.getStats()[j], 405 + (65 * j), 310);
-                }
-            }
         }
-
     }
 
     /**
@@ -138,57 +140,60 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        //sortir du menu en pesant 'e', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
-        if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) { 
-            sbg.enterState(Game.OVERWORLD);
-        }
+        try {
+            //sortir du menu en pesant 'e', le bouton droit de la souris ou en clickant hors de la fenetre inventaire
+            if (gc.getInput().isKeyPressed(18) || ((mouseX < 163 || mouseX > 863 || mouseY > 580 || mouseY < 119) && gc.getInput().isMousePressed(0)) || gc.getInput().isMousePressed(1)) {
+                sbg.enterState(Game.OVERWORLD);
+            }
 
-        //passe au travers de la boucle d'item trouve
-        for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
-            isSameType = false;
-            //verifie si la souris est au dessus de l'item
-            if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 32)
-                    && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 32))) {
+            //passe au travers de la boucle d'item trouve
+            for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                isSameType = false;
+                //verifie si la souris est au dessus de l'item
+                if ((mouseX > itemFound.getInventoryX() && mouseX < itemFound.getInventoryX() + 32)
+                        && (mouseY < (700 - itemFound.getInventoryY()) && mouseY > (700 - itemFound.getInventoryY() - 32))) {
 
-                if (gc.getInput().isMousePressed(0)) {  //si l'item est clique
-                    itemFoundClicked(itemFound);
+                    if (gc.getInput().isMousePressed(0)) {  //si l'item est clique
+                        itemFoundClicked(itemFound);
+                    } else {
+                        //si l'item n'est pas clique, mais que le curseur est par dessus
+                        itemFound.setIsAbove(true);
+                    }
                 } else {
-                    //si l'item n'est pas clique, mais que le curseur est par dessus
-                    itemFound.setIsAbove(true);
-                }
-            } else {
-                try {
-                    itemFound.setIsAbove(false); //met tous les items non-selectionnes a false
-                } catch (ArrayIndexOutOfBoundsException e) {
+                    try {
+                        itemFound.setIsAbove(false); //met tous les items non-selectionnes a false
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                    }
                 }
             }
-        }
 
-        CharacterStatsManager.getInstance().getInventory().getListItemFound().removeAll(listItemDeleted);
-        listItemDeleted.clear();
-        
-        for (Equipment itemPlayer : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+            CharacterStatsManager.getInstance().getInventory().getListItemFound().removeAll(listItemDeleted);
+            listItemDeleted.clear();
 
-            //verifie si la souris est au dessus de l'item
-            if ((mouseX > itemPlayer.getInventoryX() && mouseX < itemPlayer.getInventoryX() + 40)
-                    && (mouseY < (700 - itemPlayer.getInventoryY()) && mouseY > (700 - itemPlayer.getInventoryY() - 50))) {
+            for (Equipment itemPlayer : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
 
-                if (gc.getInput().isMousePressed(0)) { //si l'item est clique 
-                    itemPlayerClicked(itemPlayer);
+                //verifie si la souris est au dessus de l'item
+                if ((mouseX > itemPlayer.getInventoryX() && mouseX < itemPlayer.getInventoryX() + 40)
+                        && (mouseY < (700 - itemPlayer.getInventoryY()) && mouseY > (700 - itemPlayer.getInventoryY() - 50))) {
+
+                    if (gc.getInput().isMousePressed(0)) { //si l'item est clique 
+                        itemPlayerClicked(itemPlayer);
+                    } else {
+                        itemPlayer.setIsAbove(true);  //si l'item n'est pas clique -> true
+                    }
+
                 } else {
-                    itemPlayer.setIsAbove(true);  //si l'item n'est pas clique -> true
-                }
-
-            } else {
-                try {
-                    itemPlayer.setIsAbove(false); //met tous les items non-selectionne a false
-                } catch (ArrayIndexOutOfBoundsException e) {
+                    try {
+                        itemPlayer.setIsAbove(false); //met tous les items non-selectionne a false
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                    }
                 }
             }
-        }
 
-        CharacterStatsManager.getInstance().getInventory().getListItemPlayer().removeAll(listItemDeleted);
-        listItemDeleted.clear();
+            CharacterStatsManager.getInstance().getInventory().getListItemPlayer().removeAll(listItemDeleted);
+            listItemDeleted.clear();
+        } catch (NullPointerException e) {
+        }
     }
 
     /**
@@ -219,14 +224,14 @@ public class InventoryMenu extends BasicGameState implements Serializable{
         if (i >= 16) {
             y = 350 + ((i / 16) * 44);
         } else {
-            y=350;
+            y = 350;
         }
 
         itemFound.setInventoryX(x);
         itemFound.setInventoryY(y);
     }
 
-    private void itemFoundClicked(Equipment itemFound) throws SlickException{
+    private void itemFoundClicked(Equipment itemFound) throws SlickException {
         //s'il y a deja un objet du meme type
         for (Equipment itemPlayer : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
             if (itemFound.getType() == itemPlayer.getType()) {
@@ -244,24 +249,24 @@ public class InventoryMenu extends BasicGameState implements Serializable{
             for (int k = 0; k < itemFound.getStats().length; k++) {
                 statsManager.getStats()[k] += itemFound.getStats()[k];
             }
-            
+
             //ajouter la stat de vie de l'objet a la stat de vie courante du joueur
             statsManager.setHp(statsManager.getHp() + itemFound.getStats()[0]);
-            
+
             //deplacer les icones d'items
-            int x = 430 + (40 * (CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1));
+            int x = 430 + (40 * (CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size() - 1));
             int y = 155;
             try {
-                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryX(x);
-                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size()-1).setInventoryY(y);
+                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size() - 1).setInventoryX(x);
+                CharacterStatsManager.getInstance().getInventory().getListItemPlayer().get(CharacterStatsManager.getInstance().getInventory().getListItemPlayer().size() - 1).setInventoryY(y);
             } catch (ArrayIndexOutOfBoundsException e) {
             }
-            
+
             listItemDeleted.add(itemFound);
         }
     }
 
-    private void itemPlayerClicked(Equipment itemPlayer) throws SlickException{
+    private void itemPlayerClicked(Equipment itemPlayer) throws SlickException {
         itemPlayer.setIsAbove(false);//la souris n'est plus au dessus de l'objet (puisqu'il change de place)
         CharacterStatsManager.getInstance().getInventory().getListItemFound().add(itemPlayer);// changer l'objet de liste
 

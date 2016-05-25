@@ -8,9 +8,9 @@ package playerEngine;
 import items.Equipment;
 import static items.Equipment.MAX_STATS;
 import items.EquipmentList;
-import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import statesOfGame.Overworld;
 
 /**
  *
@@ -39,7 +39,7 @@ public class CharacterStatsManager {
      * Crée le gestionnaire des statistiques du personnage
      */
     private CharacterStatsManager() {
-        
+
         hp = 100;
         stats[0] = 100;
         stats[1] = 5;
@@ -47,7 +47,7 @@ public class CharacterStatsManager {
         stats[3] = 5;
         stats[4] = 5;
         stats[5] = 10;
-        stats[6] = 10;
+        stats[6] = 5000;
 
         this.expNeeded = 50;
         this.exp = 0;
@@ -93,12 +93,12 @@ public class CharacterStatsManager {
             levelUp();
         }
     }
-    
+
     /**
      * Le joueur gagne de l'argent
      * @param moneyGained le nombre d'argent gagné
      */
-    public void gainMoney(int moneyGained){
+    public void gainMoney(int moneyGained) {
         money += moneyGained;
     }
 
@@ -106,47 +106,47 @@ public class CharacterStatsManager {
      * le joueur gagne un niveau
      */
     public void levelUp() {
-            exp = 0;
-            expNeeded = (int) ((float) expNeeded * 1.84);
-            level++;
-            nbLvlBoost += NB_LVL_BOOST;
-            lvlIsUp = true;
+        exp = 0;
+        expNeeded = (int) ((float) expNeeded * 1.84);
+        level++;
+        nbLvlBoost += NB_LVL_BOOST;
+        lvlIsUp = true;
     }
-    
+
     /**
      * le joueur augmente ces statistiques
      * @param index quelle statistiques qui augmente
      * @param onlyOnce si on augmente défense
      */
-    public void buffStat(int index, boolean onlyOnce){
+    public void buffStat(int index, boolean onlyOnce) {
         System.out.println(index);
         stats[index] += 1;
         statsUpgrade[index] += 1;
-        if(onlyOnce){
+        if (onlyOnce) {
             nbLvlBoost -= 1;
         }
     }
-    
+
     /**
      * le joueur perd des statistiques
      * @param index quelle statistiques qui augmente
      * @param onlyOnce si on augmente défense
      */
-    public void nerfStat(int index, boolean onlyOnce){
+    public void nerfStat(int index, boolean onlyOnce) {
         stats[index] -= 1;
         statsUpgrade[index] -= 1;
-        if(onlyOnce){
+        if (onlyOnce) {
             nbLvlBoost += 1;
         }
     }
-    
+
     /**
      * réinitialiser les statistiques
      */
-    public void resetStats(){
+    public void resetStats() {
         for (int j = 0; j < 5; j++) {
             stats[j] -= statsUpgrade[j];
-            if(j != 4){
+            if (j != 4) {
                 nbLvlBoost += statsUpgrade[j];
             }
             statsUpgrade[j] = 0;
@@ -160,38 +160,38 @@ public class CharacterStatsManager {
     public int[] getStats() {
         return stats;
     }
-    
+
     /**
      * retourne l'argent du joueur
      * @return l'argent du joueur
      */
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
-    
+
     /**
      * retourne les statistiques qui ont augmenté
      * @return les statistiques qui ont augmenté
      */
-    public int[] getStatsUpgrade(){
+    public int[] getStatsUpgrade() {
         return statsUpgrade;
     }
-    
+
     /**
      * change la valeur des statistiques ajoutées à une valeur
      * @param i la statistique choisie
      * @param change la valeur choisie
      */
-    public void setStatsUpgrade(int i, int change){
+    public void setStatsUpgrade(int i, int change) {
         this.statsUpgrade[i] = change;
     }
-    
+
     /**
      * change une statistique a une valeur discrète
      * @param index la statistique a changer
      * @param stat la valeur de la statistique
      */
-    public void setStats(int index, int stat){
+    public void setStats(int index, int stat) {
         stats[index] = stat;
     }
 
@@ -229,8 +229,8 @@ public class CharacterStatsManager {
             case 4:
                 return "Special Defense- ";
             case 5:
-                return "Speed- ";
-            case 6 : 
+                return "Vitesse- ";
+            case 6:
                 return "Energie- ";
             default:
                 return "Noob";
@@ -260,15 +260,14 @@ public class CharacterStatsManager {
     public int getLevel() {
         return level;
     }
-    
+
     /**
      * retourne le nombre de statistique à augmenter lors d'un changement de niveau
      * @return le nombre de statistique à augmenter lors d'un changement de niveau
      */
-    public int getLvlBoost(){
+    public int getLvlBoost() {
         return nbLvlBoost;
     }
-   
 
     /**
      * change l'image 
@@ -277,20 +276,20 @@ public class CharacterStatsManager {
     public void setAnim(Image anim) {
         this.anim = anim;
     }
-    
+
     /**
      * retourne si le joueur change de niveau
      * @return si le joueur change de niveau
      */
-    public boolean getlvlIsUp(){
+    public boolean getlvlIsUp() {
         return lvlIsUp;
     }
-    
+
     /**
      * change si le joueur change de niveau
      * @param bool le nouveau booléen
      */
-    public void setlvlIsUp(boolean bool){
+    public void setlvlIsUp(boolean bool) {
         this.lvlIsUp = bool;
     }
 
@@ -299,18 +298,17 @@ public class CharacterStatsManager {
      * @param damage le dégat physique de l'ennemi
      * @param damageSpecial le dégat magique de l'ennemi
      */
-    public void takeDamage(int damage, int damageSpecial){
-        this.hp -= damage * (100-this.stats[2])/100;
-        this.hp -= damageSpecial * (100-this.stats[4])/100;
-        if (this.hp < 0) {
+    public void takeDamage(int damage, int damageSpecial) {
+        this.hp -= damage * (100 - this.stats[2]) / 100;
+        this.hp -= damageSpecial * (100 - this.stats[4]) / 100;
+        if (this.hp <= 0) {
             this.hp = 0;
-            System.out.println(hp);
-        }
-        else if (this.hp > this.stats[0]){
+            Overworld.setGameOver(true);
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
-    
+
     /**
      * change les points de vie du joueur
      * @param hp les points de vie perdu
@@ -320,8 +318,7 @@ public class CharacterStatsManager {
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);
-        }
-        else if (this.hp > this.stats[0]){
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
@@ -333,11 +330,7 @@ public class CharacterStatsManager {
     public void setExp(int exp) {
         this.exp = exp;
     }
-   /**
-    * le joueur achète un équipement
-    * @param moneySpent le nombre d'argent dépensé
-    */
-    public void buyItem(int moneySpent){
+   
         this.money -= moneySpent;
     }
 
@@ -358,32 +351,35 @@ public class CharacterStatsManager {
     }
 
     /**
-     * rajoute un équipement dans l'inventaire du joueur
-     * @param newItem le nom du nouvel équipement
+   /**
+    * le joueur achète un équipement
+    * @param moneySpent le nombre d'argent dépensé
+    */
+    public void buyItem(int moneySpent){
      * @throws SlickException
      */
-    public void addItem(String newItem) throws SlickException{
+    public void addItem(String newItem) throws SlickException {
         boolean addOk = true;
         for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
-            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+            if (EquipmentList.getInstance().getListEquipment().get(newItem) == equipment) {
                 addOk = false;
             }
         }
         for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
-            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+            if (EquipmentList.getInstance().getListEquipment().get(newItem) == equipment) {
                 addOk = false;
             }
         }
-        if(addOk){
+        if (addOk) {
             this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
         }
     }
-    
+
     /**
      *  rajoute un équipement dans l'inventaire du joueur
      * @param equipment l'équipement à ajouter
      */
-    public void addItem(Equipment equipment){
+    public void addItem(Equipment equipment) {
         this.getInventory().getListItemFound().add(equipment);
     }
 
@@ -394,19 +390,45 @@ public class CharacterStatsManager {
     public Inventory getInventory() {
         return inventory;
     }
-    
+
     /**
      * guérir le joueur
      * @param heal les points de vie guérit
      */
-    public void heal(int heal){
+    public void heal(int heal) {
         this.hp += heal;
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);
-        }
-        else if (this.hp > this.stats[0]){
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
+
+    public void reset() {
+        hp = 100;
+        stats[0] = 100;
+        stats[1] = 5;
+        stats[2] = 5;
+        stats[3] = 5;
+        stats[4] = 5;
+        stats[5] = 10;
+        stats[6] = 10;
+
+        this.expNeeded = 50;
+        this.exp = 0;
+        this.money = 0;
+        this.level = 1;
+        this.anim = null;
+        this.inventory = new Inventory();
+    }
+    
+    public void updateCooldown(int delta){
+        if (stats[6] < 5000)
+            stats[6]+= delta;
+        if (stats[6] > 5000)
+            stats[6] = 5000;
+    }
 }
+     * rajoute un équipement dans l'inventaire du joueur
+     * @param newItem le nom du nouvel équipement
