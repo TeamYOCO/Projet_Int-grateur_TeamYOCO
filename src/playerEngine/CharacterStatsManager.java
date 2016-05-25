@@ -355,6 +355,7 @@ public class CharacterStatsManager {
     * @param moneySpent le nombre d'argent dépensé
     */
     public void buyItem(int moneySpent){
+    money-=moneySpent;
 }
 
     public void addItem(String newItem) throws SlickException {
