@@ -95,6 +95,8 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
+        
+        list.add(NpcList.getNpc("Princess", 323,471));
         firstTime = true;
     }
 
