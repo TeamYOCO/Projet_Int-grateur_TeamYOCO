@@ -25,7 +25,7 @@ public class NPC extends Entity {
     private NpcType type;
     private String text;
     private Animation moveAnimations[];
-    private int direction = 0;
+    private int direction = 2;
 
     /**
      *
