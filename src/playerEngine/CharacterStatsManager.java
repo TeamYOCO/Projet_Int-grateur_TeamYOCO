@@ -11,6 +11,7 @@ import items.EquipmentList;
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import statesOfGame.Overworld;
 
 /**
  *
@@ -352,9 +353,9 @@ public class CharacterStatsManager {
     public void takeDamage(int damage, int damageSpecial){
         this.hp -= damage * (100-this.stats[2])/100;
         this.hp -= damageSpecial * (100-this.stats[4])/100;
-        if (this.hp < 0) {
+        if (this.hp <= 0) {
             this.hp = 0;
-            System.out.println(hp);
+            Overworld.setGameOver(true);
         }
         else if (this.hp > this.stats[0]){
             this.hp = this.stats[0];

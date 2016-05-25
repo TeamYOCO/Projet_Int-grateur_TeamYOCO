@@ -53,9 +53,8 @@ public class Overworld extends BasicGameState implements Serializable {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private Hud hud = new Hud();
-    private boolean running = false, firstTime;
-    private static boolean newGame;
-    private boolean gameSaved = false;
+    private boolean running = false, firstTime, gameSaved = false;
+    private static boolean newGame, gameOver = false;
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger = false;
@@ -250,6 +249,11 @@ public class Overworld extends BasicGameState implements Serializable {
                 container.getGraphics().copyArea(screenShot, 0, 0);
                 sbg.enterState(Game.DIALOG);
             }
+            
+            if(gameOver){
+                gameOver = false;
+                sbg.enterState(Game.GAMEOVER);
+            }
         } catch (ConcurrentModificationException e) {
         }
     }
@@ -325,6 +329,14 @@ public class Overworld extends BasicGameState implements Serializable {
      */
     public static void setNewGame(boolean newG) {
         newGame = newG;
+    }
+    
+    /**
+     *
+     * @param newG
+     */
+    public static void setGameOver(boolean gg) {
+        gameOver = gg;
     }
 
 }
