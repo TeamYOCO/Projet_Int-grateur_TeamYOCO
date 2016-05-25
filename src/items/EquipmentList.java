@@ -184,16 +184,16 @@ public class EquipmentList implements Serializable{
                 "C'est un traité sur les différentes\nplantes",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre gris",new Equipment(0,0,"Livre gris",
-                "Permet de lancer le sort «Tornade»",
+                "Ce livre parle des plus grandes tempètes\nPermet de lancer le sort «Tornade»",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
-                "",
+                "Ce livre parle de l'âme humaine",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre cyan",new Equipment(0,0,"Livre cyan",
-                "Permet de lancer le sort «Soin»",
+                "C'est un manuel de soins infirmier\nPermet de lancer le sort «Soin»",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
-                "",
+                "Ce livre parle des enfers et des\nspooky scary squeletons",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",
                 "Cet arc fera peu de dégat, mais\nvous permettra de vous défendre\nà distance",

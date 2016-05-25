@@ -61,8 +61,8 @@ public class Hud {
         g.fillRect(220, 13, 200, 50);
         g.setColor(Color.black);
         g.drawRect(220, 13, 200, 50);
-        g.drawString("Money: "+CharacterStatsManager.getInstance().getMoney()+"$", 222, 43);
-        g.drawString("Level: "+CharacterStatsManager.getInstance().getLevel(), 222, 15);
+        g.drawString("Money: "+CharacterStatsManager.getInstance().getMoney()+"$", 225, 43);
+        g.drawString("Level: "+CharacterStatsManager.getInstance().getLevel(), 225, 15);
         g.drawImage(potion, 330, 20);
         g.drawString(""+CharacterStatsManager.getInstance().getPotionNb(), 370, 30);
     }
