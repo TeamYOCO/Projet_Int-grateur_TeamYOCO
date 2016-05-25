@@ -5,9 +5,11 @@
  */
 package statesOfGame;
 
+import static ca.qc.bdeb.info204.Game.OVERWORLD;
 import items.Equipment;
 import items.EquipmentList;
 import items.IconList;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -31,8 +33,9 @@ public class Shop extends BasicGameState {
     private TreeMap<String,Equipment> reversedDisplayItems;
     private final int MAX_ITEM_SHOP = 10;
     private int minimum = 0, maximum, compteur = 0;
-    private boolean clearMap = false, drawPrice = true;
+    private boolean clearMap = false, isOwned = false;
     private Equipment equipmentSelected;
+    private ArrayList<Equipment> listEquipmentAdded = new ArrayList();
 
     /**
      *
@@ -61,7 +64,7 @@ public class Shop extends BasicGameState {
      */
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-//        background = Overworld.getScreenShot();
+        background = Overworld.getScreenShot();
         int compteur = 0;
         EquipmentList.getInstance().getListEquipment().get("Arc angelique").setShopSelected(true);
     }
@@ -75,7 +78,7 @@ public class Shop extends BasicGameState {
      */
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-//        background.draw(0, 0);
+        background.draw(0, 0);
         int itemCompteur = 0, displayCompteur = 0;
         g.setColor(Color.gray);
         g.fillRect(700, 50, 300, 600);
@@ -96,7 +99,7 @@ public class Shop extends BasicGameState {
         reversedDisplayItems = new TreeMap<>(displayItems.descendingMap());
         
         for (String key : displayItems.keySet()) {
-            drawPrice = true;
+            isOwned = false;
             if (EquipmentList.getInstance().getListEquipment().get(key).getShopSelected()) {
                 g.setColor(Color.orange);
                 equipmentSelected = EquipmentList.getInstance().getListEquipment().get(key);
@@ -106,18 +109,29 @@ public class Shop extends BasicGameState {
             g.fillRect(710, 55 + (60 * itemCompteur), 50, 50);
             IconList.getInstance().getListIcon().get(key).draw(719, 64 + (60 * itemCompteur));
             g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getName(), 770, 60 + (60 * itemCompteur));
+            
             for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
                 if(equipment == EquipmentList.getInstance().getListEquipment().get(key)){
-                    drawPrice = false;
+                    isOwned = true;
                 }
             }
-            if(drawPrice){
+            for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+                if(equipment == EquipmentList.getInstance().getListEquipment().get(key)){
+                    isOwned = true;
+                }
+            }
+            if(!isOwned){
                 g.drawString(EquipmentList.getInstance().getListEquipment().get(key).getPrice() + "$", 770, 80 + (60 * itemCompteur));
             } else {
                 g.drawString("Déjà obtenu", 770, 80 + (60 * itemCompteur));
             }
             itemCompteur += 1;
         }
+        
+        g.setColor(Color.yellow);
+        g.fillRect(220, 13, 40, 18);
+        g.setColor(Color.black);
+        g.drawString(""+CharacterStatsManager.getInstance().getMoney()+"$", 220, 13);
     }
 
     /**
@@ -179,14 +193,32 @@ public class Shop extends BasicGameState {
         }
         
         if(input.isKeyPressed(Input.KEY_ENTER)){
-                for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
-                    if(equipmentSelected == equipment){
-                        drawPrice = false;
-                    }
-                if(CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
-                CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
+            for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+                if(equipmentSelected == equipment){
+                    isOwned = true;
                 }
             }
+            
+            for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+                if(equipmentSelected == equipment){
+                    isOwned = true;
+                }
+            }
+            
+            if(!isOwned && CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()){
+                CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
+                listEquipmentAdded.add(equipmentSelected);
+            }
+            
+            for (Equipment equipment : listEquipmentAdded) {
+                CharacterStatsManager.getInstance().addItem(equipment);
+            }
+            
+            listEquipmentAdded.clear();
+        }
+        
+        if(input.isKeyPressed(Input.KEY_0)){
+            sbg.enterState(OVERWORLD);
         }
 
     }
