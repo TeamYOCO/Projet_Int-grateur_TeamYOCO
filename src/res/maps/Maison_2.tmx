@@ -3,6 +3,7 @@
  <properties>
   <property name="ennemy" value="0"/>
   <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="npc" value="1;villageois 1,544,320"/>
  </properties>
  <tileset firstgid="1" name="city_inside" tilewidth="32" tileheight="32" tilecount="384" columns="24">
   <image source="../tiles/city_inside.png" width="768" height="512"/>

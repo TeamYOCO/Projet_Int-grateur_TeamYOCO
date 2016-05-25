@@ -3,6 +3,7 @@
  <properties>
   <property name="ennemy" value="0"/>
   <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="npc" value="1;Marchand,288,384"/>
  </properties>
  <tileset firstgid="1" name="barrel" tilewidth="32" tileheight="32" tilecount="8" columns="4">
   <image source="../tiles/barrel.png" width="128" height="64"/>

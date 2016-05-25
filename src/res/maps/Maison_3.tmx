@@ -3,6 +3,7 @@
  <properties>
   <property name="ennemy" value="0"/>
   <property name="music" value="res/musics/006-link-s-house.WAV"/>
+  <property name="npc" value="1;villageoise 1,320,352"/>
  </properties>
  <tileset firstgid="1" name="tuto-slick2d-037-tuile-logic (1)" tilewidth="32" tileheight="32" tilecount="25" columns="5">
   <image source="../tiles/tuto-slick2d-037-tuile-logic (1).png" width="160" height="160"/>

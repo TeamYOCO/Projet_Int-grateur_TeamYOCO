@@ -3,6 +3,7 @@
  <properties>
   <property name="ennemy" value="0"/>
   <property name="music" value="res/musics/Crystal_Cavern.WAV"/>
+  <property name="npc" value="2;Soldat,544,448;Soldat,672,448"/>
  </properties>
  <tileset firstgid="1" name="castle_outside" tilewidth="32" tileheight="32" tilecount="187" columns="17">
   <image source="../tiles/castle_outside.png" width="544" height="352"/>
