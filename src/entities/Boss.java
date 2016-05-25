@@ -112,6 +112,15 @@ public class Boss extends Mob implements BadEntity {
             }
         }
         if (attCooldown > 0) {
+            if(this.direction==0){
+                hitBox.setPos(x + xOff, y + yOff + 64);
+            }else if(this.direction==1){
+                hitBox.setPos(x + xOff - 64, y + yOff);
+            }else if(this.direction==2){
+                hitBox.setPos(x + xOff, y + yOff - 64);
+            }else if(this.direction==3){
+                hitBox.setPos(x + xOff  + 64, y + yOff);
+            }
             attCooldown -= delta;
             System.out.println("attCooldown: " + attCooldown);
         }
