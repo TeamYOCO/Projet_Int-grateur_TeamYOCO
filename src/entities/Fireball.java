@@ -25,6 +25,7 @@ public class Fireball extends Particle implements FriendlyEntity{
     private int damagePhysical;
     private int damageSpecial;
     private MiniMap map;
+    private Animation explosionAnimation;
     private ArrayList<Entity> list;
 
     /**
@@ -39,6 +40,7 @@ public class Fireball extends Particle implements FriendlyEntity{
     public Fireball(float x, float y, int direction, int lifespam, MiniMap map, ArrayList<Entity> list) throws SlickException{
         SpriteSheet anim1 = ResManager.getInstance().getSpriteSheet("fireball");
         animation = new Animation();
+        explosionAnimation = new Animation();
         this.list = list;
         this.x = x;
         this.y = y;
