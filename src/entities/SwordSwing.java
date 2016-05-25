@@ -23,11 +23,11 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     private int damageSpecial;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifeSpam
+     * Crée le coup d"épée
+     * @param x la position en x du coup d'épée
+     * @param y la position en y du coup d'épée
+     * @param direction la direction du coup d'épée
+     * @param lifeSpam la durée du coup d'épée
      * @throws SlickException
      */
     public SwordSwing(float x, float y, int direction, int lifeSpam) throws SlickException {
@@ -51,8 +51,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner le coup d'épée
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -62,8 +62,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param delta
+     * Ce qui permet au coup d'épée de bouger
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -74,8 +74,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat physique du coup d'épée
+     * @return le dégat physique du coup d'épée
      */
     @Override
     public int getDamagePhysical() {
@@ -83,8 +83,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Retourne la direction du coup d'épée
+     * @return un int de la direction du coup d'épée
      */
     @Override
     public int getDirection() {
@@ -92,8 +92,8 @@ public class SwordSwing extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat magique du coup d'épée
+     * @return le dégat magique du coup d'épée
      */
     @Override
     public int getDamageSpecial() {

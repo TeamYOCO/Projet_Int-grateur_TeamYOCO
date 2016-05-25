@@ -5,21 +5,16 @@
  */
 package entities;
 
-import ca.qc.bdeb.info204.Game;
 import static ca.qc.bdeb.info204.Game.DIALOG;
 import static ca.qc.bdeb.info204.Game.SHOP;
-import gameEngine.DataManager;
 import gameEngine.ResManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
-import statesOfGame.Dialog;
 
 /**
  *
@@ -31,15 +26,14 @@ public class NPC extends Entity {
     private String text;
     private Animation moveAnimations[];
     private int direction = 2;
-    private boolean isCommingFromShop = false;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param text
-     * @param type
-     * @param spriteType
+     * Crée un personnage non joueur
+     * @param x la position en x du PNJ
+     * @param y la position en y du PNJ
+     * @param text le texte que le PNJ va dire
+     * @param type le type de PNJ
+     * @param spriteType l'image du PNJ
      */
     public NPC(int x, int y, String text, NpcType type, int spriteType) {
         this.x = x;
@@ -49,7 +43,6 @@ public class NPC extends Entity {
         this.xOff = -32;
         this.yOff = -64;
         this.hitBox = new Box(x - xOff, y - yOff, 64, 64);
-        this.type = type;
         SpriteSheet sheet = null;
         try {
             switch (spriteType) {
@@ -82,8 +75,8 @@ public class NPC extends Entity {
     }
 
     /**
-     *
-     * @param delta
+     * Permet la mise à jour du PNJ
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -91,37 +84,33 @@ public class NPC extends Entity {
     }
 
     /**
-     *
-     * @param g
+     * Dessine le PNJ
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        g.setColor(new Color(0, 0, 0, .5f));
-        g.fillOval(x +16, y +56, 32, 16);
         g.drawAnimation(moveAnimations[direction], x, y);
-        hitBox.render(g);
     }
-    
+    /**
+     * Permet de mettre de nouvelles coordonnées au PNJ
+     * @param x La nouvelle position en x
+     * @param y La nouvelle position en y
+     */
     public void setCoords(int x, int y) {
         this.x = x;
         this.y = y;
         hitBox.setPos(x, y);
     }
-    
-    
+    /**
+     * Permet d'interragir avec un PNJ
+     * @param sbg Représente les différent états d'affichage
+     */
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
-                Dialog.setText(this.text);
-                Dialog.setDestionation(Game.SHOP);
-                Dialog.setCommingFrom(Game.OVERWORLD);
-                sbg.enterState(DIALOG);
-                break;
+                sbg.enterState(SHOP);
             case INTERACT:
-                Dialog.setText(this.text);
-                Dialog.setDestionation(Game.OVERWORLD);
-                Dialog.setCommingFrom(Game.OVERWORLD);
                 sbg.enterState(DIALOG);
         }
     }

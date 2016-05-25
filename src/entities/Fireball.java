@@ -29,12 +29,12 @@ public class Fireball extends Particle implements FriendlyEntity{
     private ArrayList<Entity> list;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifespam
-     * @param map
+     * Crée une boule de feu
+     * @param x Position en x du joueur
+     * @param y Position en y du joueur
+     * @param direction La direction du joueur
+     * @param lifespam La durée de vie de la boule de feu
+     * @param map La map où la boule de feu va être
      * @throws SlickException
      */
     public Fireball(float x, float y, int direction, int lifespam, MiniMap map, ArrayList<Entity> list) throws SlickException{
@@ -64,8 +64,8 @@ public class Fireball extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param g
+     * Permet de desssiner la boule de feu
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -76,8 +76,8 @@ public class Fireball extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param delta
+     * Ce qui permet à la boule de feu de bouger
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -86,8 +86,8 @@ public class Fireball extends Particle implements FriendlyEntity{
     }
     
     /**
-     *
-     * @return
+     * Calcul le dégat physique de la boule de feu
+     * @return le dégat physique
      */
     @Override
     public int getDamagePhysical() {
@@ -95,8 +95,8 @@ public class Fireball extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Retourne la direction de la boule de feu
+     * @return un int de la direction de la boule de feu
      */
     @Override
     public int getDirection() {
@@ -105,8 +105,8 @@ public class Fireball extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat magique de la boule de feu
+     * @return le dégat magique de la boule de feu
      */
     @Override
     public int getDamageSpecial() {

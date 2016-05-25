@@ -19,11 +19,11 @@ public class Box {
     private float width,height;
 
     /**
-     *
-     * @param x1
-     * @param y1
-     * @param width
-     * @param height
+     * Crée la boite
+     * @param x1 Le x où commence la boîte
+     * @param y1 Le y où commence la boîte
+     * @param width La longueur de la boîte
+     * @param height La hauteur de la boîte
      */
     public Box(float x1, float y1, float width, float height) {
         this.x1 = x1;
@@ -35,8 +35,8 @@ public class Box {
     }
     
     /**
-     *
-     * @param g
+     * Dessine la boîte
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     public void render(Graphics g) throws SlickException{
@@ -45,41 +45,41 @@ public class Box {
     }
 
     /**
-     *
-     * @return
+     * Retourne le début de la boîte en x
+     * @return le début de la boîte en x
      */
     public float getX1() {
         return x1;
     }
 
     /**
-     *
-     * @return
+     * Retourne le début de la boîte en y
+     * @return le début de la boîte en y
      */
     public float getY1() {
         return y1;
     }
 
     /**
-     *
-     * @return
+     *Retourne la fin de la boîte en x
+     * @return la fin de la boîte en x
      */
     public float getX2() {
         return x2;
     }
 
     /**
-     *
-     * @return
+     *Retourne la fin de la boîte en y
+     * @return la fin de la boîte en y
      */
     public float getY2() {
         return y2;
     }
     
     /**
-     *
-     * @param x
-     * @param y
+     * Mets la position de la boîte delon un x et un y
+     * @param x La position x du début de la nouvel position de la boîte en x
+     * @param y La position x du début de la nouvel position de la boîte en y
      */
     public void setPos(float x, float y){
         x1 = x;
@@ -89,9 +89,9 @@ public class Box {
     }
     
     /**
-     *
-     * @param box
-     * @return
+     * Requarde si une boîte rentre en collision avec une autre
+     * @param box La boîte à comparer
+     * @return un booléen de si il y a une collision
      */
     public boolean collision(Box box){
         if (y2 < box.getY1())

@@ -12,7 +12,6 @@ import entities.Bat;
 import entities.Bee;
 import entities.Boss;
 import entities.BigSwordSwing;
-import entities.DamageMarker;
 import entities.Entity;
 import entities.Snake;
 import entities.Mob;

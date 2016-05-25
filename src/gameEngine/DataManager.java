@@ -36,8 +36,8 @@ public class DataManager {
     }
     
     /**
-     *
-     * @return
+     * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     * @return une instance
      */
     public static DataManager getInstance(){
         if (instance == null) {
@@ -47,7 +47,7 @@ public class DataManager {
     }
     
     /**
-     *
+     * Sauveguarde la partie
      * @throws SlickException
      */
     public void save() throws SlickException{
@@ -71,7 +71,7 @@ public class DataManager {
     }
     
     /**
-     *
+     * Charger la partie
      * @throws SlickException
      */
     public void load() throws SlickException{
@@ -98,8 +98,8 @@ public class DataManager {
     }
     
     /**
-     *
-     * @return
+     * Retourne si la sauveguarde est vide
+     * @return si la sauveguarde est vide
      */
     public boolean isEmpty(){
         boolean isEmpty = false;

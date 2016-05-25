@@ -16,17 +16,15 @@ import org.newdawn.slick.Graphics;
  */
 public class Camera {
 
-    // Variables de la classe
+
     private Player player;
     private MiniMap map;
     private float xCamera, yCamera;
 
-    // constructeur de la classe
-
     /**
-     *
-     * @param player
-     * @param map
+     * Constructeur de la caméra
+     * @param player Le joueur
+     * @param map La carte
      */
         public Camera(Player player, MiniMap map) {
         this.player = player;
@@ -35,23 +33,20 @@ public class Camera {
         this.yCamera = player.getY();
     }
 
-    // Gêre le placement de la caméra
 
     /**
-     *
-     * @param container
-     * @param g
+     * Gêre le placement de la caméra
+     * @param container la fenêtre
+     * @param g Le graphique qui permet de dessiner
      */
         public void place(GameContainer container, Graphics g) {
         g.translate(container.getWidth() / 2 - (int) this.xCamera,
                 container.getHeight() / 2 - (int) this.yCamera);
     }
 
-    // Se charge de positionner la caméra
-
     /**
-     *
-     * @param container
+     * Se charge de positionner la caméra
+     * @param container la fenêtre
      */
         public void update(GameContainer container) {
         int w = container.getWidth() / 10;
