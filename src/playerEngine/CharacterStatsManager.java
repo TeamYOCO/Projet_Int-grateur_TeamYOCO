@@ -8,7 +8,6 @@ package playerEngine;
 import items.Equipment;
 import static items.Equipment.MAX_STATS;
 import items.EquipmentList;
-import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import statesOfGame.Overworld;
@@ -34,7 +33,7 @@ public class CharacterStatsManager {
     /**
      *
      */
-    protected int[] statsUpgrade = new int[]{0,0,0,0,0,0,0};
+    protected int[] statsUpgrade = new int[]{0, 0, 0, 0, 0, 0, 0};
 
     /**
      *
@@ -69,11 +68,6 @@ public class CharacterStatsManager {
     /**
      *
      */
-    protected ArrayList skillSet;
-
-    /**
-     *
-     */
     protected Image anim;
 
     /**
@@ -83,7 +77,7 @@ public class CharacterStatsManager {
     private Inventory inventory;
 
     private CharacterStatsManager() {
-        
+
         hp = 100;
         stats[0] = 100;
         stats[1] = 5;
@@ -91,7 +85,7 @@ public class CharacterStatsManager {
         stats[3] = 5;
         stats[4] = 5;
         stats[5] = 10;
-        stats[6] = 10;
+        stats[6] = 5000;
 
         this.expNeeded = 50;
         this.exp = 0;
@@ -103,8 +97,7 @@ public class CharacterStatsManager {
 
     /**
      *
-     * @return
-     * @throws SlickException
+     * @return @throws SlickException
      */
     public static CharacterStatsManager getInstance() throws SlickException {
         if (instance == null) {
@@ -137,12 +130,12 @@ public class CharacterStatsManager {
             levelUp();
         }
     }
-    
+
     /**
      *
      * @param moneyGained
      */
-    public void gainMoney(int moneyGained){
+    public void gainMoney(int moneyGained) {
         money += moneyGained;
     }
 
@@ -150,47 +143,47 @@ public class CharacterStatsManager {
      *
      */
     public void levelUp() {
-            exp = 0;
-            expNeeded = (int) ((float) expNeeded * 1.84);
-            level++;
-            nbLvlBoost += NB_LVL_BOOST;
-            lvlIsUp = true;
+        exp = 0;
+        expNeeded = (int) ((float) expNeeded * 1.84);
+        level++;
+        nbLvlBoost += NB_LVL_BOOST;
+        lvlIsUp = true;
     }
-    
+
     /**
      *
      * @param index
      * @param onlyOnce
      */
-    public void buffStat(int index, boolean onlyOnce){
+    public void buffStat(int index, boolean onlyOnce) {
         System.out.println(index);
         stats[index] += 1;
         statsUpgrade[index] += 1;
-        if(onlyOnce){
+        if (onlyOnce) {
             nbLvlBoost -= 1;
         }
     }
-    
+
     /**
      *
      * @param index
      * @param onlyOnce
      */
-    public void nerfStat(int index, boolean onlyOnce){
+    public void nerfStat(int index, boolean onlyOnce) {
         stats[index] -= 1;
         statsUpgrade[index] -= 1;
-        if(onlyOnce){
+        if (onlyOnce) {
             nbLvlBoost += 1;
         }
     }
-    
+
     /**
      *
      */
-    public void resetStats(){
+    public void resetStats() {
         for (int j = 0; j < 5; j++) {
             stats[j] -= statsUpgrade[j];
-            if(j != 4){
+            if (j != 4) {
                 nbLvlBoost += statsUpgrade[j];
             }
             statsUpgrade[j] = 0;
@@ -204,38 +197,38 @@ public class CharacterStatsManager {
     public int[] getStats() {
         return stats;
     }
-    
+
     /**
      *
      * @return
      */
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
-    
+
     /**
      *
      * @return
      */
-    public int[] getStatsUpgrade(){
+    public int[] getStatsUpgrade() {
         return statsUpgrade;
     }
-    
+
     /**
      *
      * @param i
      * @param change
      */
-    public void setStatsUpgrade(int i, int change){
+    public void setStatsUpgrade(int i, int change) {
         this.statsUpgrade[i] = change;
     }
-    
+
     /**
      *
      * @param index
      * @param stat
      */
-    public void setStats(int index, int stat){
+    public void setStats(int index, int stat) {
         stats[index] = stat;
     }
 
@@ -274,7 +267,7 @@ public class CharacterStatsManager {
                 return "Special Defense- ";
             case 5:
                 return "Speed- ";
-            case 6 : 
+            case 6:
                 return "Energie- ";
             default:
                 return "Noob";
@@ -304,21 +297,13 @@ public class CharacterStatsManager {
     public int getLevel() {
         return level;
     }
-    
+
     /**
      *
      * @return
      */
-    public int getLvlBoost(){
+    public int getLvlBoost() {
         return nbLvlBoost;
-    }
-    
-    /**
-     *
-     * @return
-     */
-    public ArrayList getSkillSet() {
-        return skillSet;
     }
 
     /**
@@ -328,20 +313,20 @@ public class CharacterStatsManager {
     public void setAnim(Image anim) {
         this.anim = anim;
     }
-    
+
     /**
      *
      * @return
      */
-    public boolean getlvlIsUp(){
+    public boolean getlvlIsUp() {
         return lvlIsUp;
     }
-    
+
     /**
      *
      * @param bool
      */
-    public void setlvlIsUp(boolean bool){
+    public void setlvlIsUp(boolean bool) {
         this.lvlIsUp = bool;
     }
 
@@ -350,18 +335,17 @@ public class CharacterStatsManager {
      * @param damage
      * @param damageSpecial
      */
-    public void takeDamage(int damage, int damageSpecial){
-        this.hp -= damage * (100-this.stats[2])/100;
-        this.hp -= damageSpecial * (100-this.stats[4])/100;
+    public void takeDamage(int damage, int damageSpecial) {
+        this.hp -= damage * (100 - this.stats[2]) / 100;
+        this.hp -= damageSpecial * (100 - this.stats[4]) / 100;
         if (this.hp <= 0) {
             this.hp = 0;
             Overworld.setGameOver(true);
-        }
-        else if (this.hp > this.stats[0]){
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
-    
+
     /**
      *
      * @param hp
@@ -371,8 +355,7 @@ public class CharacterStatsManager {
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);
-        }
-        else if (this.hp > this.stats[0]){
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
@@ -384,8 +367,8 @@ public class CharacterStatsManager {
     public void setExp(int exp) {
         this.exp = exp;
     }
-    
-    public void buyItem(int moneySpent){
+
+    public void buyItem(int moneySpent) {
         this.money -= moneySpent;
     }
 
@@ -407,39 +390,31 @@ public class CharacterStatsManager {
 
     /**
      *
-     * @param skillSet
-     */
-    public void setSkillSet(ArrayList skillSet) {
-        this.skillSet = skillSet;
-    }
-
-    /**
-     *
      * @param newItem
      * @throws SlickException
      */
-    public void addItem(String newItem) throws SlickException{
+    public void addItem(String newItem) throws SlickException {
         boolean addOk = true;
         for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
-            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+            if (EquipmentList.getInstance().getListEquipment().get(newItem) == equipment) {
                 addOk = false;
             }
         }
         for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
-            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+            if (EquipmentList.getInstance().getListEquipment().get(newItem) == equipment) {
                 addOk = false;
             }
         }
-        if(addOk){
+        if (addOk) {
             this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
         }
     }
-    
+
     /**
      *
      * @param equipment
      */
-    public void addItem(Equipment equipment){
+    public void addItem(Equipment equipment) {
         this.getInventory().getListItemFound().add(equipment);
     }
 
@@ -450,23 +425,22 @@ public class CharacterStatsManager {
     public Inventory getInventory() {
         return inventory;
     }
-    
+
     /**
      *
      * @return
      */
-    public void heal(int heal){
+    public void heal(int heal) {
         this.hp += heal;
         if (this.hp < 0) {
             this.hp = 0;
             System.out.println(hp);
-        }
-        else if (this.hp > this.stats[0]){
+        } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
     }
-    
-    public void reset(){
+
+    public void reset() {
         hp = 100;
         stats[0] = 100;
         stats[1] = 5;
@@ -482,5 +456,12 @@ public class CharacterStatsManager {
         this.level = 1;
         this.anim = null;
         this.inventory = new Inventory();
+    }
+    
+    public void updateCooldown(int delta){
+        if (stats[6] < 5000)
+            stats[6]+= delta;
+        if (stats[6] > 5000)
+            stats[6] = 5000;
     }
 }

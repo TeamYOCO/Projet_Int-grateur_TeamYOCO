@@ -111,8 +111,13 @@ public class Player extends Mob {
      *Update la position et l'action du joueur
      * @param delta Le temps d'une ittération
      */
-        @Override
+    @Override
     public void update(int delta) {
+        try {
+            CharacterStatsManager.getInstance().updateCooldown(delta);
+        } catch (SlickException ex) {
+            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setX(Player.getSaveX());
         this.setY(Player.getSaveY());
         //  vérifie si le déplacement est possible et déplace le joueur si possible
@@ -218,9 +223,9 @@ public class Player extends Mob {
             }
             SwordSwing swordSwing = null;
             float sx = 0, sy = 0;
-            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee legendaire")||
-                    CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee d'argent") ||
-                    CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee Royale")) {
+            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee legendaire")
+                    || CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee d'argent")
+                    || CharacterStatsManager.getInstance().getInventory().isItemEquiped("Epee Royale")) {
                 sx = x;
                 sy = y;
                 swordSwing = new BigSwordSwing(sx, sy, direction, 500);
@@ -271,12 +276,27 @@ public class Player extends Mob {
      * @throws SlickException
      */
     public void cast() throws SlickException {
-        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()) {
+        if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()
+                && CharacterStatsManager.getInstance().getStats()[6] == 5000) {
             casting = true;
             attackDirection = direction;
             attackCounter = 500;
-            Fireball fireball = new Fireball(this.x-36, this.y-48, attackDirection, 1000, map, list);
-            list.add(fireball);
+            CharacterStatsManager.getInstance().getStats()[6] = 0;
+
+            Particle spell = null;
+            if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre rouge")) {
+                spell = new Fireball(this.x, this.y - 25, attackDirection, 1000, map, list);
+            } else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre cyan")) {
+                CharacterStatsManager.getInstance().heal(CharacterStatsManager.getInstance().getStats()[3] * 2);
+                SpriteSheet sheet = ResManager.getInstance().getSpriteSheet("healing");
+                Animation anim = loadAnimation(sheet, 0, 6, 0);
+                spell = new Particle(anim, 500, 0, 0, 0, x-16, y-32, new Box(x, y, 0, 0));
+            }else if (CharacterStatsManager.getInstance().getInventory().isItemEquiped("Livre gris")){
+                spell = new Tornade(x, y-25, direction);
+            }
+            if (spell != null) {
+                list.add(spell);
+            }
             for (int i = 0; i < castAnimations.length; i++) {
                 castAnimations[i].restart();
             }
@@ -284,12 +304,11 @@ public class Player extends Mob {
     }
 
     // Les méthodes suivantes sont des getters/setters
-
     /**
      * Retourne la direction du joueur
      * @return la direction du joueur
      */
-        public int getDirection() {
+    public int getDirection() {
         return direction;
     }
 

@@ -13,6 +13,7 @@ import org.newdawn.slick.SpriteSheet;
 
 /**
  * Classe mère de tous les éléments graphiques du overworld
+ *
  * @author Seb
  */
 public abstract class Entity {
@@ -47,19 +48,17 @@ public abstract class Entity {
      * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
-        public abstract void render(Graphics g) throws SlickException;
+    public abstract void render(Graphics g) throws SlickException;
 
-    
     // Les méthodes suivantes sont des getters/setters
-
     /**
      * Retourne la position en x de l'entitée
      * @return la position en x de l'entitée
      */
-        public float getX() {
+    public float getX() {
         return x;
     }
-    
+
     /**
      *Retourne la position en y de l'entitée
      * @return la position en y de l'entitée
@@ -72,18 +71,18 @@ public abstract class Entity {
      * Retourne la position en x de l'entitée pour la sauveguarde
      * @return la position en x de l'entitée
      */
-    public static float getSaveX(){
+    public static float getSaveX() {
         return saveX;
     }
-    
+
     /**
      *Retourne la position en y de l'entitée pour la sauveguarde
      * @return la position en y de l'entitée
      */
-    public static float getSaveY(){
+    public static float getSaveY() {
         return saveY;
     }
-    
+
     /**
      * Change la position de l'entitée à x
      * @param x la nouvelle position
@@ -101,20 +100,20 @@ public abstract class Entity {
         this.y = y;
         saveY = y;
     }
-    
+
     /**
      *Change la position de l'entitée à x pour la sauveguarde
      * @param x la nouvelle position
      */
-    public static void setSaveX(float x){
+    public static void setSaveX(float x) {
         saveX = x;
     }
-    
+
     /**
      * Change la position de l'entitée à y pour la sauveguarde
      * @param y la nouvelle position
      */
-    public static void setSaveY(float y){
+    public static void setSaveY(float y) {
         saveY = y;
     }
 
@@ -127,6 +126,7 @@ public abstract class Entity {
     }
     
 
+    // Méthode qui permet de load une animation à partir d'un spritesheet
     /**
      * Méthode qui permet de load une animation à partir d'un spritesheet
      * @param spriteSheet la spritesheet de l'entitée
@@ -135,7 +135,7 @@ public abstract class Entity {
      * @param y La position y dans la spritesheet
      * @return l'animation de l'entitée
      */
-        protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
+    protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
         for (int x = startX; x < endX; x++) {
             animation.addFrame(spriteSheet.getSprite(x, y), 100);
@@ -143,5 +143,12 @@ public abstract class Entity {
         return animation;
     }
 
-    
+    protected Animation addAnimation(SpriteSheet spriteSheet, int startX, int endX, int y, Animation animation) {
+        for (int x = startX; x < endX; x++) {
+            animation.addFrame(spriteSheet.getSprite(x, y), 100);
+        }
+        return animation;
+
+    }
+
 }
