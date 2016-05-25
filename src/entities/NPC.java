@@ -116,9 +116,11 @@ public class NPC extends Entity {
                 Dialog.setCommingFrom(Game.OVERWORLD);
                 Dialog.setDestination(Game.SHOP);
                 sbg.enterState(Game.DIALOG);
+                break;
             case INTERACT:
                 Dialog.setText(text);
                 sbg.enterState(Game.DIALOG);
+                break;
         }
     }
     
