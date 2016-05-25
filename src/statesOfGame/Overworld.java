@@ -96,7 +96,6 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
-        CharacterStatsManager.getInstance().addItem(EquipmentList.getInstance().getEquipment("Epee legendaire"));
         firstTime = true;
         loadStuff();
     }
