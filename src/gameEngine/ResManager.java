@@ -8,6 +8,7 @@ package gameEngine;
 import java.awt.Font;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
