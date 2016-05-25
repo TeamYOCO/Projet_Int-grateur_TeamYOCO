@@ -227,7 +227,12 @@ public class Overworld extends BasicGameState implements Serializable {
         
         if(input.isKeyPressed(Input.KEY_0)){
             container.getGraphics().copyArea(screenShot, 0, 0);
-            sbg.enterState(SHOP);
+            sbg.enterState(Game.SHOP);
+        }
+        
+        if(input.isKeyPressed(Input.KEY_9)){
+            container.getGraphics().copyArea(screenShot, 0, 0);
+            sbg.enterState(Game.DIALOG);
         }
     }
 

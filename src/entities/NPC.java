@@ -5,6 +5,7 @@
  */
 package entities;
 
+import static ca.qc.bdeb.info204.Game.DIALOG;
 import static ca.qc.bdeb.info204.Game.SHOP;
 import gameEngine.ResManager;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author The Ninetail
  */
 public class NPC extends Entity {
-
+    
     private NpcType type;
     private String text;
     private Animation moveAnimations[];
@@ -79,7 +80,7 @@ public class NPC extends Entity {
      */
     @Override
     public void update(int delta) {
-
+        
     }
 
     /**
@@ -91,18 +92,20 @@ public class NPC extends Entity {
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(moveAnimations[direction], x, y);
     }
-
+    
     public void setCoords(int x, int y) {
         this.x = x;
         this.y = y;
         hitBox.setPos(x, y);
     }
-
+    
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
                 sbg.enterState(SHOP);
+            case INTERACT:
+                sbg.enterState(DIALOG);
         }
     }
-
+    
 }
