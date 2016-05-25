@@ -161,31 +161,31 @@ public class EquipmentList implements Serializable{
         listEquipment.put("Livre bleu",new Equipment(0,0,"Livre des mers",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre violet",new Equipment(0,0,"Livre de la foudre",
+        listEquipment.put("Livre violet",new Equipment(0,0,"Livre violet",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre rouge",new Equipment(0,0,"Livre des flâmes",
+        listEquipment.put("Livre rouge",new Equipment(0,0,"Livre rouge",
                 "Permet de lancer le sort «Boule de feu»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre de l'arcane",
+        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre mauve",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre beige",new Equipment(0,0,"Livre de la terre",
+        listEquipment.put("Livre beige",new Equipment(0,0,"Livre beige",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre brun",new Equipment(0,0,"Livre de la nature",
+        listEquipment.put("Livre brun",new Equipment(0,0,"Livre brun",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre gris",new Equipment(0,0,"Livre des vents",
+        listEquipment.put("Livre gris",new Equipment(0,0,"Livre gris",
                 "Permet de lancer le sort «Tornade»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre vert",new Equipment(0,0,"Livre de l'âme",
+        listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre cyan",new Equipment(0,0,"Livre de la vie",
+        listEquipment.put("Livre cyan",new Equipment(0,0,"Livre cyan",
                 "Permet de lancer le sort «Soin»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
-        listEquipment.put("Livre orange",new Equipment(0,0,"Livre du chaos",
+        listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",

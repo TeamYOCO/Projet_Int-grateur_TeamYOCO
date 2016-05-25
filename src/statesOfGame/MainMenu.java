@@ -122,9 +122,9 @@ public class MainMenu extends BasicGameState {
             if (input.isMouseButtonDown(0)) {
                 stopMusic = true;
                 CharacterStatsManager.getInstance().addItem("Epee legendaire");
-                CharacterStatsManager.getInstance().addItem("Livre des flâmes");
-                CharacterStatsManager.getInstance().addItem("Livre Livre des vents");
-                CharacterStatsManager.getInstance().addItem("Livre de la vie");
+                CharacterStatsManager.getInstance().addItem("Livre rouge");
+                CharacterStatsManager.getInstance().addItem("Livre gris");
+                CharacterStatsManager.getInstance().addItem("Livre cyan");
                 Overworld.setNewGame(true);
                 sbg.enterState(OVERWORLD, new FadeOutTransition(), new EmptyTransition());
             }

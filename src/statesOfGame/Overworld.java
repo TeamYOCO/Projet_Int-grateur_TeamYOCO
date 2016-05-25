@@ -96,7 +96,6 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
 
-        list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
 
