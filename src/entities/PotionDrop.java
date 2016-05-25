@@ -18,12 +18,21 @@ import playerEngine.CharacterStatsManager;
  * @author The Ninetail
  */
 public class PotionDrop extends ItemDrop{
-    
+    /**
+     * Crée la potion
+     * @param x position x de la potion
+     * @param y position y de la potion
+     * @param equipment il a besoin d'être là pour le constructeur
+     * @throws SlickException 
+     */
     public PotionDrop(float x, float y, Equipment equipment) throws SlickException {
         super(x, y, null);
         this.image = ResManager.getInstance().getImage("potion");
     }
 
+    /**
+     * Prendre les potions a terre
+     */
     @Override
     public void pickUp() {
         try {
@@ -32,6 +41,11 @@ public class PotionDrop extends ItemDrop{
         } catch (SlickException ex) {}
     }
 
+    /**
+     * Permet de desssiner la potion
+     * @param g Le graphique qui permet de dessiner
+     * @throws SlickException
+     */
     @Override
     public void render(Graphics g) throws SlickException {
         super.render(g);

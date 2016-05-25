@@ -81,7 +81,7 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     /**
-     *
+     * Initialise le overworld
      * @param container
      * @param sbg
      * @throws SlickException
@@ -102,7 +102,7 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     /**
-     *
+     * dessine le overworld
      * @param gc
      * @param sbg
      * @param g
@@ -133,9 +133,8 @@ public class Overworld extends BasicGameState implements Serializable {
 
     }
 
-    // méthode qui est passé chaque fois dans le thread du jeu
     /**
-     *
+     * La mise à jour du overworld
      * @param gc
      * @param sbg
      * @param delta
@@ -247,7 +246,7 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     /**
-     *
+     * quand on rentre dans le overworld
      * @param gc
      * @param sbg
      * @throws SlickException
@@ -265,6 +264,10 @@ public class Overworld extends BasicGameState implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @throws SlickException 
+     */
     private void updateTrigger() throws SlickException {
         for (int objectID = 0; objectID < this.map.getTiledMap().getObjectCount(0); objectID++) {
             if (isInTrigger(objectID)) {
@@ -275,6 +278,11 @@ public class Overworld extends BasicGameState implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     private boolean isInTrigger(int id) {
         return player.getX() > this.map.getTiledMap().getObjectX(0, id)
                 && player.getX() < this.map.getTiledMap().getObjectX(0, id) + this.map.getTiledMap().getObjectWidth(0, id)
@@ -282,6 +290,11 @@ public class Overworld extends BasicGameState implements Serializable {
                 && player.getY() < this.map.getTiledMap().getObjectY(0, id) + this.map.getTiledMap().getObjectHeight(0, id);
     }
 
+    /**
+     * Change la carte
+     * @param objectID le chemin vers la nouvelle carte
+     * @throws SlickException 
+     */
     private void changeMap(int objectID) throws SlickException {
         player.setX(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destX", Float.toString(player.getX()))));
         player.setY(Float.parseFloat(this.map.getTiledMap().getObjectProperty(0, objectID, "destY", Float.toString(player.getY()))));
@@ -296,7 +309,7 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     /**
-     *
+     * retourne une image de l'écran
      * @return
      */
     public static Image getScreenShot() {
@@ -304,29 +317,33 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     /**
-     *
-     * @param musicPath
+     * change la musique
+     * @param musicPath le chemin de la nouvelle musique
      */
     public void setMusic(String musicPath) {
         overworldTheme = musicPath;
     }
 
     /**
-     *
-     * @param newG
+     * change si la partie est une nouvelle
+     * @param newG le booléen
      */
     public static void setNewGame(boolean newG) {
         newGame = newG;
     }
 
     /**
-     *
-     * @param newG
+     * change si la partie est fini
+     * @param newG le booléen
      */
     public static void setGameOver(boolean gg) {
         gameOver = gg;
     }
 
+    /**
+     * charge les entitées dans la carte
+     * @throws SlickException 
+     */
     private void loadStuff() throws SlickException {
         String[] temp;
         temp = map.getMapProperty("ennemy").split(";");
