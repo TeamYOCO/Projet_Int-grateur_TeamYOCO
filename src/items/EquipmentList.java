@@ -165,36 +165,36 @@ public class EquipmentList implements Serializable{
         listEquipment.put("Epee extraterrestre",new Equipment(0,0,"Epee extraterrestre",
                 "Cette arme, qui ne semble pas avoir été\ncréer sur terre, ne fera que des\ndégats magiques. Curieux...",
                 new int[]{0,0,0,25,0,0,0},EquipmentType.SWORD,80));
-        listEquipment.put("Livre bleu",new Equipment(0,0,"Livre des mers",
-                "Ce livre contient des écrits sur\nles sept mers",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre violet",new Equipment(0,0,"Livre violet",
-                "Ce livre raconte l'histoire d'un\nsorcier pouvant controller la foudre",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre bleu",new Equipment(0,0,"Livre des mers",
+//                "Ce livre contient des écrits sur\nles sept mers",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre violet",new Equipment(0,0,"Livre violet",
+//                "Ce livre raconte l'histoire d'un\nsorcier pouvant controller la foudre",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre rouge",new Equipment(0,0,"Livre rouge",
                 "Ce livre traite des salamandre ignifuges\nPermet de lancer le sort «Boule de feu»",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre mauve",
-                "Ce livre parle d'un univer spirituel",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre beige",new Equipment(0,0,"Livre beige",
-                "Ce livre traite des forces de la terre",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre brun",new Equipment(0,0,"Livre brun",
-                "C'est un traité sur les différentes\nplantes",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre mauve",new Equipment(0,0,"Livre mauve",
+//                "Ce livre parle d'un univer spirituel",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre beige",new Equipment(0,0,"Livre beige",
+//                "Ce livre traite des forces de la terre",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre brun",new Equipment(0,0,"Livre brun",
+//                "C'est un traité sur les différentes\nplantes",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre gris",new Equipment(0,0,"Livre gris",
                 "Ce livre parle des plus grandes tempètes\nPermet de lancer le sort «Tornade»",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
-                "Ce livre parle de l'âme humaine",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre vert",new Equipment(0,0,"Livre vert",
+//                "Ce livre parle de l'âme humaine",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Livre cyan",new Equipment(0,0,"Livre cyan",
                 "C'est un manuel de soins infirmier\nPermet de lancer le sort «Soin»",
                 new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
-        listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
-                "Ce livre parle des enfers et des\nspooky scary squeletons",
-                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
+//        listEquipment.put("Livre orange",new Equipment(0,0,"Livre orange",
+//                "Ce livre parle des enfers et des\nspooky scary squeletons",
+//                new int[]{0,0,0,10,0,0,0},EquipmentType.SPELL_TOME,50));
         listEquipment.put("Arc simple",new Equipment(0,0,"Arc simple",
                 "Cet arc fera peu de dégat, mais\nvous permettra de vous défendre\nà distance",
                 new int[]{0,5,0,0,0,0,0},EquipmentType.BOW,25));

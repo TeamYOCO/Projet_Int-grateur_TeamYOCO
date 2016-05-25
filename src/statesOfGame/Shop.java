@@ -190,7 +190,7 @@ public class Shop extends BasicGameState {
                             present = false;
                         }
                         if (equipment.getShopSelected() && present) {
-                            if (equipment != EquipmentList.getInstance().getEquipment("Livre violet")) {
+                            if (equipment != EquipmentList.getInstance().getEquipment("Livre rouge")) {
                                 compteur++;
                                 equipment.setShopSelected(false);
                                 next = true;
