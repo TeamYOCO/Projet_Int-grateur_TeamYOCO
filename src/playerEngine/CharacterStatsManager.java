@@ -418,7 +418,20 @@ public class CharacterStatsManager {
      * @throws SlickException
      */
     public void addItem(String newItem) throws SlickException{
-        this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
+        boolean addOk = true;
+        for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
+            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+                addOk = false;
+            }
+        }
+        for (Equipment equipment : CharacterStatsManager.getInstance().getInventory().getListItemPlayer()) {
+            if(EquipmentList.getInstance().getListEquipment().get(newItem) == equipment){
+                addOk = false;
+            }
+        }
+        if(addOk){
+            this.getInventory().getListItemFound().add(EquipmentList.getInstance().getListEquipment().get(newItem));
+        }
     }
     
     /**
