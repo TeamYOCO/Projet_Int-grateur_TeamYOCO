@@ -40,6 +40,7 @@ public class Explosion extends Particle implements FriendlyEntity{
         this.y = y;
         this.xOff = 0;
         this.yOff = 0;
+        this.hitBox = new Box(x, y, 256, 128);
         this.direction = direction;
         animation = loadAnimation(anim, 0, 4, 0);
         img = animation.getImage(direction);
@@ -97,7 +98,6 @@ public class Explosion extends Particle implements FriendlyEntity{
     @Override
     public int getDamageSpecial() {
         dead=true;
-        this.hitBox = new Box(x, y, 256, 128);
         return damageSpecial;
     }
     
