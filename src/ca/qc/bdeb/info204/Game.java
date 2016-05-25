@@ -29,7 +29,7 @@ import statesOfGame.Shop;
  */
 public class Game extends StateBasedGame {
 
-    public static final String GAMENAME = "Projet intégrateur V1.0";
+    public static final String GAMENAME = "Final Dragon Quest Super FF 2000-5XXL";
     public static final int MAINMENU = 0, OVERWORLD = 1, INVENTORY = 2, CREDITS = 3, LEVELUPSCREEN = 4, HELP = 5, SHOP = 6, DIALOG = 7, GAMEOVER = 8;
 
     /**

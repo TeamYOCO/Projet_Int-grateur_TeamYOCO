@@ -37,6 +37,7 @@ public class MainMenu extends BasicGameState {
     private Image background;
     private Music menuMusic;
     private boolean stopMusic = true, saveFileIsEmpty;
+    private UnicodeFont titleFont;
 
     /**
      *
@@ -73,6 +74,7 @@ public class MainMenu extends BasicGameState {
         } else {
             saveFileIsEmpty = false;
         }
+        titleFont = ResManager.getInstance().getFont("Sherif", 50);
     }
 
     /**
@@ -100,6 +102,9 @@ public class MainMenu extends BasicGameState {
         g.drawString("Commandes", WIDTH / 2 - settingsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
         g.drawRect(WIDTH / 2, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10, creditsX, creditsY);
         g.drawString("Credits", WIDTH / 2 + creditsX / 2 - 40, HEIGHT / 3 + playY / 2 + 10 + newGameY + 10 + 15);//40 & 15 : depends on the string lenght
+        g.setFont(titleFont);
+        g.drawString("Final Dragon Quest Super FF 2000-5XXL", 60, 20);
+        
     }
 
     /**
