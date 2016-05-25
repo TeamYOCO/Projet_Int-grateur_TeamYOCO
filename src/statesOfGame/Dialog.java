@@ -5,9 +5,7 @@
  */
 package statesOfGame;
 
-import static ca.qc.bdeb.info204.Game.HEIGHT;
-import static ca.qc.bdeb.info204.Game.MAINMENU;
-import gameEngine.ResManager;
+import ca.qc.bdeb.info204.Game;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -68,7 +66,8 @@ public class Dialog extends BasicGameState {
         background.draw(0,0);
         g.setColor(Color.white);
         g.fillRect(12, 550, 1000, 150);
-        g.drawString("Ok", 1000, 690);
+        g.setColor(Color.black);
+        g.drawString("Ok", 990, 680);
         
     }
 
@@ -86,9 +85,9 @@ public class Dialog extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        if ((mouseX > 1000 && mouseX < 1012) && (mouseY > 4 && mouseY < 30)) {
+        if ((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20)) {
             if (input.isMouseButtonDown(0)) {
-                sbg.enterState(MAINMENU);
+                sbg.enterState(Game.OVERWORLD);
             }
         }
     }
