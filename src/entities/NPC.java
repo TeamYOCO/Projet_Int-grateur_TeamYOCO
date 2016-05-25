@@ -22,6 +22,7 @@ public class NPC extends Entity {
     private NpcType type;
     private String text;
     private Animation moveAnimations[];
+    private int direction = 0;
 
     /**
      *
@@ -71,7 +72,7 @@ public class NPC extends Entity {
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        
+        g.drawAnimation(moveAnimations[direction], x, y);
     }
 
 }
