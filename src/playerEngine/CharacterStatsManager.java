@@ -266,7 +266,7 @@ public class CharacterStatsManager {
             case 4:
                 return "Special Defense- ";
             case 5:
-                return "Speed- ";
+                return "Vitesse- ";
             case 6:
                 return "Energie- ";
             default:
