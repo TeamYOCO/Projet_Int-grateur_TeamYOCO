@@ -11,10 +11,13 @@ import gameEngine.ResManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
+import statesOfGame.Dialog;
 
 /**
  *
@@ -43,6 +46,7 @@ public class NPC extends Entity {
         this.xOff = -32;
         this.yOff = -64;
         this.hitBox = new Box(x - xOff, y - yOff, 64, 64);
+        this.type = type;
         SpriteSheet sheet = null;
         try {
             switch (spriteType) {
@@ -90,7 +94,10 @@ public class NPC extends Entity {
      */
     @Override
     public void render(Graphics g) throws SlickException {
+        g.setColor(new Color(0, 0, 0, .5f));
+        g.fillOval(x +16, y +56, 32, 16);
         g.drawAnimation(moveAnimations[direction], x, y);
+        hitBox.render(g);
     }
     
     public void setCoords(int x, int y) {
@@ -99,11 +106,12 @@ public class NPC extends Entity {
         hitBox.setPos(x, y);
     }
     
-    public void interact(StateBasedGame sbg) {
+    public void interact(StateBasedGame sbg,GameContainer container) {
         switch (type) {
             case VENDOR:
                 sbg.enterState(SHOP);
             case INTERACT:
+                Dialog.setText(this.text);
                 sbg.enterState(DIALOG);
         }
     }

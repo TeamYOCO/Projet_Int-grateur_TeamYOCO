@@ -95,8 +95,8 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
-        
-        list.add(NpcList.getNpc("Princess", 323,471));
+
+        list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
 
@@ -111,10 +111,11 @@ public class Overworld extends BasicGameState implements Serializable {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         this.cam.place(container, g);
         this.map.renderBackground(g);
-        this.player.render(g);
+
         for (Entity entity : list) {
             entity.render(g);
         }
+        this.player.render(g);
         this.map.renderForeground();
         this.hud.render(g);
 
@@ -132,7 +133,6 @@ public class Overworld extends BasicGameState implements Serializable {
     }
 
     // méthode qui est passé chaque fois dans le thread du jeu
-
     /**
      *
      * @param gc
@@ -140,7 +140,7 @@ public class Overworld extends BasicGameState implements Serializable {
      * @param delta
      * @throws SlickException
      */
-        @Override
+    @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = container.getInput();
         this.player.update(delta); // Update le joueur en fonction du temps passé depuis la dernière update
@@ -162,14 +162,15 @@ public class Overworld extends BasicGameState implements Serializable {
             }
             if (entity instanceof ItemDrop
                     && player.isHitable()
-                    && player.getHitBox().collision(entity.getHitBox())){
-                ((ItemDrop)entity).pickUp();
+                    && player.getHitBox().collision(entity.getHitBox())) {
+                ((ItemDrop) entity).pickUp();
             }
-            if (entity instanceof  NPC &&
-                    player.isHitable()
-                    && entity.getHitBox().collision(player.getHitBox())&&
-                    input.isKeyPressed(Input.KEY_SPACE)){
-                ((NPC)entity).interact(sbg);
+            if (entity instanceof NPC
+                    && player.isHitable()
+                    && entity.getHitBox().collision(player.getHitBox())
+                    && input.isKeyPressed(Input.KEY_SPACE)) {
+                container.getGraphics().copyArea(screenShot, 0, 0);
+                ((NPC) entity).interact(sbg, container);
             }
             if (entity.isDead()) { // Retire l'entité du jeu si elle est morte
                 listRemove.add(entity);
@@ -204,13 +205,14 @@ public class Overworld extends BasicGameState implements Serializable {
                 }
             }
             String[] temp3;
-            temp3=map.getMapProperty("npc").split(";");
+            temp3 = map.getMapProperty("npc").split(";");
             String[] temp4;
-            for(int i=1;i<= Integer.parseInt(temp3[0]);i++){
-                temp4= temp3[i].split(",");
-                if (Integer.parseInt(temp4[0]) == 1){
-                    int x = Integer.parseInt(temp4[1]); int y = Integer.parseInt(temp4[2]);
-                   this.list.add(NpcList.getNpc("Princess",x,y));
+            for (int i = 1; i <= Integer.parseInt(temp3[0]); i++) {
+                temp4 = temp3[i].split(",");
+                if (Integer.parseInt(temp4[0]) == 1) {
+                    int x = Integer.parseInt(temp4[1]);
+                    int y = Integer.parseInt(temp4[2]);
+                    this.list.add(NpcList.getNpc("Princess", x, y));
                 }
             }
 
@@ -229,18 +231,17 @@ public class Overworld extends BasicGameState implements Serializable {
             DataManager.getInstance().save();
             gameSaved = true;
         }
-        
+
         if (input.isMousePressed(0)) {
             System.out.println(input.getMouseX() + " " + input.getMouseY());
         }
-        
-        
-        if(input.isKeyPressed(Input.KEY_0)){
+
+        if (input.isKeyPressed(Input.KEY_0)) {
             container.getGraphics().copyArea(screenShot, 0, 0);
             sbg.enterState(Game.SHOP);
         }
-        
-        if(input.isKeyPressed(Input.KEY_9)){
+
+        if (input.isKeyPressed(Input.KEY_9)) {
             container.getGraphics().copyArea(screenShot, 0, 0);
             sbg.enterState(Game.DIALOG);
         }

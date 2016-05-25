@@ -24,6 +24,7 @@ public class Dialog extends BasicGameState {
 
     private static int stateID;
     private Image background;
+    private static String text = "...";
     
     /**
      *
@@ -67,6 +68,7 @@ public class Dialog extends BasicGameState {
         g.setColor(Color.white);
         g.fillRect(12, 550, 1000, 150);
         g.setColor(Color.black);
+        g.drawString(text, 20, 570);
         g.drawString("Ok", 990, 680);
         
     }
@@ -85,10 +87,12 @@ public class Dialog extends BasicGameState {
         int mouseX = Mouse.getX();
         int mouseY = Mouse.getY();
 
-        if ((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20)) {
-            if (input.isMouseButtonDown(0)) {
-                sbg.enterState(Game.OVERWORLD);
-            }
+        if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
+            sbg.enterState(Game.OVERWORLD);
         }
+    }
+    
+    public static void setText(String text){
+        Dialog.text = text;
     }
 }

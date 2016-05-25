@@ -30,8 +30,8 @@ public class NpcList {
     private static void loadNpcs() {
         npcList = new HashMap();
         npcList.put("Princess",
-                new NPC(0, 0, "Bonjour à toi brâve guerrier. Tu doit vaincre\nle méchant chevalier qui rode dans la mine", NpcType.INTERACT, 0));
-        npcList.put("Merchant", new NPC(0, 0, "", NpcType.VENDOR, 1));
+                new NPC(0, 0, "Bonjour à toi brâve guerrier. Tu doit vaincre le méchant chevalier qui rode dans la mine", NpcType.INTERACT, 0));
+        npcList.put("Marchand", new NPC(0, 0, "", NpcType.VENDOR, 1));
     }
 
     public static NPC getNpc(String name, int x, int y) {
