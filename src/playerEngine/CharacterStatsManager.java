@@ -465,4 +465,22 @@ public class CharacterStatsManager {
             this.hp = this.stats[0];
         }
     }
+    
+    public void reset(){
+        hp = 100;
+        stats[0] = 100;
+        stats[1] = 5;
+        stats[2] = 5;
+        stats[3] = 5;
+        stats[4] = 5;
+        stats[5] = 10;
+        stats[6] = 10;
+
+        this.expNeeded = 50;
+        this.exp = 0;
+        this.money = 0;
+        this.level = 1;
+        this.anim = null;
+        this.inventory = new Inventory();
+    }
 }
