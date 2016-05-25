@@ -95,8 +95,8 @@ public class InventoryMenu extends BasicGameState implements Serializable {
 //        g.setFont(ufont);
             int i = 0;
 
-            for (int j = 0; j < statsManager.getStats().length; j++) {
-                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 23));
+            for (int j = 0; j < statsManager.getStats().length-1; j++) {
+                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 29));
             }
             for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
 
@@ -106,8 +106,8 @@ public class InventoryMenu extends BasicGameState implements Serializable {
                 if (CharacterStatsManager.getInstance().getInventory().getListItemFound().get(i).getIsAbove()) {
                     g.drawString(itemFound.getName(), 415, 200);
                     g.drawString(itemFound.getDescription(), 435, 220);
-                    for (int j = 0; j < itemFound.getStats().length; j++) {
-                        g.drawString(itemFound.getStatName(j) + itemFound.getStats()[j], 405 + (65 * j), 310);
+                    for (int j = 0; j < itemFound.getStats().length-1; j++) {
+                        g.drawString(itemFound.getStatName(j) + itemFound.getStats()[j], 405 + (75 * j), 310);
                     }
                 }
                 i++;
@@ -118,8 +118,8 @@ public class InventoryMenu extends BasicGameState implements Serializable {
                 if (playerItem.getIsAbove()) {
                     g.drawString(playerItem.getName(), 415, 200);
                     g.drawString(playerItem.getDescription(), 435, 220);
-                    for (int j = 0; j < playerItem.getStats().length; j++) {
-                        g.drawString(playerItem.getStatName(j) + playerItem.getStats()[j], 405 + (65 * j), 310);
+                    for (int j = 0; j < playerItem.getStats().length-1; j++) {
+                        g.drawString(playerItem.getStatName(j) + playerItem.getStats()[j], 405 + (75 * j), 310);
                     }
                 }
             }
