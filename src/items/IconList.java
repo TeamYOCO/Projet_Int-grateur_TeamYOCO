@@ -29,8 +29,8 @@ public class IconList{
     }
     
     /**
-     *
-     * @return
+     * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     * @return une instance
      * @throws SlickException
      */
     public static IconList getInstance() throws SlickException {
@@ -41,8 +41,11 @@ public class IconList{
         return instance;
     }
 
+    /**
+     * charge l'image pour tous les équipements
+     * @throws SlickException 
+     */
     private void loadStrings() throws SlickException{
-//      constructeur Equipment : int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats
 
         SpriteSheet spriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
         Animation animation = new Animation();
@@ -111,8 +114,8 @@ public class IconList{
     }
     
     /**
-     *
-     * @return
+     * retourne la liste d'icône
+     * @return la liste d'icône
      */
     public TreeMap<String, Image> getListIcon() {
         return listIcon;

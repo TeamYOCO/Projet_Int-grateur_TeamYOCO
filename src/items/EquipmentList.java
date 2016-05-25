@@ -23,14 +23,18 @@ public class EquipmentList implements Serializable{
     private final TreeMap<String,Equipment> listEquipment;
     private final int SPRITE_SHEET_HEIGHT = 13, SPRITE_SHEET_WIDTH = 5;
     
+    /**
+     * constructeur de la liste
+     * @throws SlickException 
+     */
     private EquipmentList() throws SlickException{
         listEquipment = new TreeMap();
         loadStrings();
     }
     
     /**
-     *
-     * @return
+     * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     * @return une instance
      * @throws SlickException
      */
     public static EquipmentList getInstance() throws SlickException {
@@ -41,8 +45,11 @@ public class EquipmentList implements Serializable{
         return instance;
     }
 
+    /**
+     * constructeur Equipment : int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats
+     * @throws SlickException 
+     */
     private void loadStrings() throws SlickException{
-//      constructeur Equipment : int inventoryX, int inventoryY, Animation itemIcon, String name, String description, int[] stats
 
         SpriteSheet spriteSheet = ResManager.getInstance().getSpriteSheet("new_items");
         Animation animation = new Animation();
@@ -222,26 +229,26 @@ public class EquipmentList implements Serializable{
     }
     
     /**
-     *
-     * @return
+     * retourne la liste d'équipement
+     * @return la liste d'équipement
      */
     public TreeMap<String, Equipment> getListEquipment() {
         return listEquipment;
     }
     
     /**
-     *
-     * @return
+     * retourne la liste d'équipement à l'envers
+     * @return la liste d'équipement à l'envers
      */
     public TreeMap<String,Equipment> getReversedListEquipment(){
         return new TreeMap<>(listEquipment.descendingMap());
     }
     
     /**
-     *
-     * @param name
-     * @return
-     */
+     * Retourne l'équipement au nom donné
+     * @param name le nom de l'équipement voulu
+     * @return l'équipement voulu
+     */ 
     public Equipment getEquipment(String name){
         return listEquipment.get(name);
     }

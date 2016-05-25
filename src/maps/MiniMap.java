@@ -23,23 +23,22 @@ public class MiniMap {
     private static TiledMap tiledMap;
 
     /**
-     *
+     * il est là au cas ou
      */
     public MiniMap() {
     }
     
     /**
-     *
-     * @param path
+     * Crée la mini carte
+     * @param path le chemin pour la nouvelle carte
      */
     public MiniMap(String path) {
         MiniMap.fileName = path;
     }
 
-    // Initialise la map dans la boucle init() du jeu
 
     /**
-     *
+     * Initialise la carte
      * @throws SlickException
      */
         public void init() throws SlickException {
@@ -48,8 +47,8 @@ public class MiniMap {
     }
 
     /**
-     *
-     * @param g
+     * Dessine tout ce qui est a l'arrière du personnage
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     public void renderBackground(Graphics g) throws SlickException {
@@ -59,10 +58,9 @@ public class MiniMap {
         tiledMap.render(0, 0, 4);
     }
 
-    // Affiche le foreground de la map
 
     /**
-     *
+     * Dessine tout ce qui est en avant du personnage
      */
         public void renderForeground() {
         tiledMap.render(0, 0, 5);
@@ -70,20 +68,20 @@ public class MiniMap {
     }
 
     /**
-     *
-     * @param gc
-     * @param sbg
-     * @param delta
+     * mise à jour de la map
+     * @param gc la fenêtre
+     * @param sbg le jeu
+     * @param delta le temps d'une ittération
      * @throws SlickException
      */
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
     }
 
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     * reguarde si il y a des collisions avec des murs
+     * @param x position x à tester
+     * @param y position y à tester
+     * @return si il y a une collision
      */
     public boolean isCollision(float x, float y) {
         int tileW = MiniMap.tiledMap.getTileWidth();
@@ -100,97 +98,97 @@ public class MiniMap {
     }
 
     /**
-     *
-     * @return
+     * retourne la carte quadrillée
+     * @return la carte quadrillée
      */
     public TiledMap getTiledMap() {
         return tiledMap;
     }
     
     /**
-     *
-     * @return
-     */
+     * retourne le nom de la carte
+     * @return le nom de la carte
+     */ 
     public static String getFileName(){
         return fileName;
     }
 
     /**
-     *
-     * @return
+     * retourne le nombre d'objet dans la carte
+     * @return le nombre d'objet dans la carte
      */
     public int getObjectCount() {
         return MiniMap.tiledMap.getObjectCount(0);
     }
 
     /**
-     *
-     * @param objectID
-     * @return
+     * retourne le type de la case choisit
+     * @param objectID la case choisit
+     * @return le type de la case
      */
     public String getObjectType(int objectID) {
         return MiniMap.tiledMap.getObjectType(0, objectID);
     }
 
     /**
-     *
-     * @param objectID
-     * @return
+     * Retourne la position en x de la case choisit
+     * @param objectID la case choisit
+     * @return la position en x
      */
     public float getObjectX(int objectID) {
         return MiniMap.tiledMap.getObjectX(0, objectID);
     }
 
-    /**
-     *
-     * @param objectID
-     * @return
+     /**
+     * Retourne la position en y de la case choisit
+     * @param objectID la case choisit
+     * @return la position en y
      */
     public float getObjectY(int objectID) {
         return MiniMap.tiledMap.getObjectY(0, objectID);
     }
 
     /**
-     *
-     * @param objectID
-     * @return
+     * retourne la largeur de la case
+     * @param objectID la case choisit
+     * @return la largeur de la case
      */
     public float getObjectWidth(int objectID) {
         return MiniMap.tiledMap.getObjectWidth(0, objectID);
     }
 
     /**
-     *
-     * @param objectID
-     * @return
+     * retourne la hauteur de la case
+     * @param objectID la case choisit
+     * @return la hauteur de la case
      */
     public float getObjectHeight(int objectID) {
         return MiniMap.tiledMap.getObjectHeight(0, objectID);
     }
 
     /**
-     *
-     * @param objectID
-     * @param propertyName
-     * @param def
-     * @return
+     * retourne la valeur de la propriété de la case choisit
+     * @param objectID la case choisit
+     * @param propertyName le nom de la propriété
+     * @param def valeur de défaut
+     * @return la valeur de la propriété de la case choisit
      */
     public String getObjectProperty(int objectID, String propertyName, String def) {
         return MiniMap.tiledMap.getObjectProperty(0, objectID, propertyName, def);
     }
     
     /**
-     *
-     * @param name
-     * @return
+     * retourne la valeur de la propriété de la carte
+     * @param name le nom de la paropriété
+     * @return la valeur de celle-ci
      */
     public String getMapProperty(String name){
         return tiledMap.getMapProperty(name, "0");
     }
 
     /**
-     *
-     * @param file
+     * change la carte
+     * @param file le chemin de la nouvelle carte
      * @throws SlickException
      */
     public static void changeMap(String file) throws SlickException {

@@ -23,81 +23,21 @@ public class Equipment implements Serializable{
 
     protected int inventoryX,
 
-    /**
-     *
-     */
     inventoryY;
-
-    /**
-     *
-     */
     public static final int MAX_STATS = 7;
-
-    /**
-     *
-     */
     protected int stats[] = new int[MAX_STATS];
-
-    /**
-     *
-     */
     protected int hpMax;
-
-    /**
-     *
-     */
     protected int mpMax;
-
-    /**
-     *
-     */
     protected int attack;
-
-    /**
-     *
-     */
     protected int speed;
-
-    /**
-     *
-     */
     protected int specialAttack;
-
-    /**
-     *
-     */
     protected int defence;
-
-    /**
-     *
-     */
     protected int specialDefence;
     protected String name,
-
-    /**
-     *
-     */
     description;
-
-    /**
-     *
-     */
     protected Animation animation;
-    protected float x,
-
-    /**
-     *
-     */
-    y;
-
-    /**
-     *
-     */
+    protected float x,y;
     protected MiniMap map;
-
-    /**
-     *
-     */
     protected Rectangle hitBox;
     private boolean isAbove;
     private ArrayList<Particle> particle;
@@ -106,14 +46,14 @@ public class Equipment implements Serializable{
     private boolean shopSelected = false;
 
     /**
-     *
-     * @param inventoryX
-     * @param inventoryY
-     * @param name
-     * @param description
-     * @param stats
-     * @param equipmentType
-     * @param price
+     * Crée les equipements
+     * @param inventoryX La position x de l'équipement dans l'inventaire
+     * @param inventoryY La position x de l'équipement dans l'inventaire
+     * @param name le nom de l'équipement
+     * @param description la description de l'équipement
+     * @param stats les statistiques de l'équipement
+     * @param equipmentType le type d'équipement
+     * @param price Le prix de l'équipement
      */
     public Equipment(int inventoryX, int inventoryY, String name, String description, int[] stats, EquipmentType equipmentType, int price) {
         this.inventoryX = inventoryX;
@@ -133,28 +73,24 @@ public class Equipment implements Serializable{
     }
     
     /**
-     *
-     * @param delta
+     * Mise à jour de l'équipement
+     * @param delta le temps d'une ittération
      */
     public void update(int delta) {
 
     }
 
-    // Méthode init de la classe
-
     /**
-     *
+     * initialise la classe
      * @throws SlickException
      */
         public void init() throws SlickException {
 
     }
 
-    // Méthode qui permet de dessiner l'élément
-
     /**
-     *
-     * @param g
+     * Permet de desssiner l'équipement
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
         public void render(Graphics g) throws SlickException {
@@ -162,12 +98,12 @@ public class Equipment implements Serializable{
     }
 
     /**
-     *
-     * @param spriteSheet
-     * @param startX
-     * @param endX
-     * @param y
-     * @return
+     * Charger l'image de l'équipement
+     * @param spriteSheet L'image de l'équipement
+     * @param startX Le début en x dans l'image
+     * @param endX La fin en x dans l'image
+     * @param y La position en y dans l'image
+     * @return L'image de l'équipement
      */
     protected Animation loadAnimation(SpriteSheet spriteSheet, int startX, int endX, int y) {
         Animation animation = new Animation();
@@ -178,9 +114,9 @@ public class Equipment implements Serializable{
     }
 
     /**
-     *
-     * @param rectObjet
-     * @return
+     * Si elle est en collision avec un rectangle
+     * @param rectObjet un rectangle qui représente un autre objet
+     * @return Si il y a eu collision
      */
     public boolean isCollision(Rectangle rectObjet) {
         boolean collision = false;
@@ -191,73 +127,73 @@ public class Equipment implements Serializable{
     }
 
     /**
-     *
-     * @return
+     * Retourne la boîte de collision
+     * @return la boîte de collision
      */
     public Rectangle getHitBox() {
         return hitBox;
     }
 
     /**
-     *
-     * @return
+     * retourne les statistiques
+     * @return les statistiques
      */
     public int[] getStats() {
         return stats;
     }
 
     /**
-     *
-     * @return
+     * retourne la valeur de x dans l'inventaire
+     * @return la valeur de x dans l'inventaire
      */
     public int getInventoryX() {
         return inventoryX;
     }
 
     /**
-     *
-     * @return
+     *retourne la valeur de y dans l'inventaire
+     * @return la valeur de y dans l'inventaire
      */
     public int getInventoryY() {
         return inventoryY;
     }
 
     /**
-     *
-     * @return
+     * retourne si l'équipement est dessus
+     * @return si l'équipement est dessus
      */
     public boolean getIsAbove() {
         return isAbove;
     }
 
     /**
-     *
-     * @return
+     * retourne le nom de l'équipement
+     * @return le nom de l'équipement
      */
     public String getName() {
         return name;
     }
 
     /**
-     *
-     * @return
+     * retourne la description de l'équipement
+     * @return la description de l'équipement
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     *
-     * @return
+     * Si l'équipement est selectionner dans le magasin
+     * @return Si l'équipement est selectionner dans le magasin
      */
     public boolean getShopSelected(){
         return shopSelected;
     }
     
     /**
-     *
-     * @param stat
-     * @return
+     * retourne le nom de la statistique
+     * @param stat le numéro de la statistique
+     * @return le nom de la statistique
      */
     public String getStatName(int stat){
         switch(stat){
@@ -273,48 +209,48 @@ public class Equipment implements Serializable{
     }
     
     /**
-     *
-     * @return
+     * retourne le prix de l'équipement
+     * @return le prix de l'équipement
      */
     public int getPrice(){
         return price;
     }
     
     /**
-     *
-     * @return
+     * retourne le type de l'équipement
+     * @return le type de l'équipement
      */
     public EquipmentType getType(){
         return equipmentType;
     }
 
     /**
-     *
-     * @param x
+     * change la position en x dans l'inventaire
+     * @param x la nouvelle position en x
      */
     public void setInventoryX(int x) {
         this.inventoryX = x;
     }
 
     /**
-     *
-     * @param y
+     * change la position en y dans l'inventaire
+     * @param y la nouvelle position en y
      */
     public void setInventoryY(int y) {
         this.inventoryY = y;
     }
 
     /**
-     *
-     * @param isAbove
+     * change si l'équipement est au dessus
+     * @param isAbove le nouveau booléen
      */
     public void setIsAbove(boolean isAbove) {
         this.isAbove = isAbove;
     }
     
     /**
-     *
-     * @param shopSelected
+     * change si l'équipement est selectionné dans le magasin
+     * @param shopSelected le nouveau booléen
      */
     public void setShopSelected(boolean shopSelected){
         this.shopSelected = shopSelected;
