@@ -436,4 +436,19 @@ public class CharacterStatsManager {
     public Inventory getInventory() {
         return inventory;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public void heal(int heal){
+        this.hp += heal;
+        if (this.hp < 0) {
+            this.hp = 0;
+            System.out.println(hp);
+        }
+        else if (this.hp > this.stats[0]){
+            this.hp = this.stats[0];
+        }
+    }
 }

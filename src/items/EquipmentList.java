@@ -165,7 +165,7 @@ public class EquipmentList implements Serializable{
                 "",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre rouge",new Equipment(0,0,"Livre rouge",
-                "",
+                "Permet de lancer le sort «Boule de feu»",
                 new int[]{0,0,0,0,0,0,0},EquipmentType.SPELL_TOME,0));
         listEquipment.put("Livre mauve",new Equipment(0,0,"Livre mauve",
                 "",

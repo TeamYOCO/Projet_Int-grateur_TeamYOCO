@@ -25,6 +25,9 @@ public class Boss extends Mob implements BadEntity {
     private Player player;
     private int aggroRange = 200;
     private boolean aggro = false;
+    private int attCounter = 0;
+    private int attCooldown = 0;
+    private boolean attaquing = false;
     private Animation[] attackAnimation;
 
     /**
@@ -45,10 +48,10 @@ public class Boss extends Mob implements BadEntity {
         this.y = y;
         this.map = map;
         this.xOff = -16;
-        this.yOff = -32;
+        this.yOff = -60;
         this.player = player;
-        this.hitBox = new Box(x + xOff, y + yOff, 64, 64);
-        this.hitpoints = 50;
+        this.hitBox = new Box(x + xOff, y + yOff, 32, 60);
+        this.hitpoints = 500;
         this.damagePhysical = 5;
         this.damageSpecial = 0;
         this.defence = 0;
@@ -70,27 +73,28 @@ public class Boss extends Mob implements BadEntity {
      */
     @Override
     public void update(int delta) {
-        if (player.getX()<this.x+aggroRange && player.getX()>this.x-aggroRange && player.getY()<this.y+aggroRange && player.getY()>this.y-aggroRange){
+        if (player.getX() < this.x + aggroRange && player.getX() > this.x - aggroRange && player.getY() < this.y + aggroRange && player.getY() > this.y - aggroRange) {
             moving = true;
             aggro = true;
         }
-        if (moving && knockbackTimer <= 0) {
-                int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
-                if (this.x < player.getX() && relativeX > relativeY) {
-                    this.direction = 3;
-                } else if (this.x > player.getX() && relativeX > relativeY) {
-                    this.direction = 1;
-                } else if (this.y < player.getY() && relativeY > relativeX) {
-                    this.direction = 2;
-                } else if (this.y > player.getY() && relativeY > relativeX) {
-                    this.direction = 0;
-                }
+        if (moving && knockbackTimer <= 0 && !attaquing) {
+            int relativeX = Math.abs((int) this.x - (int) player.getX()), relativeY = Math.abs((int) this.y - (int) player.getY());
+            if (this.x < player.getX() && relativeX > relativeY) {
+                this.direction = 3;
+            } else if (this.x > player.getX() && relativeX > relativeY) {
+                this.direction = 1;
+            } else if (this.y < player.getY() && relativeY > relativeX) {
+                this.direction = 2;
+            } else if (this.y > player.getY() && relativeY > relativeX) {
+                this.direction = 0;
+            }
             if (!map.isCollision(futurX(delta), futurY(delta))) {
                 this.x = futurX(delta);
                 this.y = futurY(delta);
             }
+            this.attack();
         } else if (knockbackTimer > 0) {
-            moving=true;
+            moving = true;
             float tempSpeed = speed;
             speed = 0.5f;
             if (!map.isCollision(futurX(-delta), futurY(-delta))) {
@@ -100,6 +104,16 @@ public class Boss extends Mob implements BadEntity {
             speed = tempSpeed;
             knockbackTimer -= delta;
 
+        } else if (attCounter > 0 && attaquing) {
+            attCounter -= delta;
+            System.out.println("attCounter: " + attCounter);
+            if (attCounter <= 0) {
+                attaquing = false;
+            }
+        }
+        if (attCooldown > 0) {
+            attCooldown -= delta;
+            System.out.println("attCooldown: " + attCooldown);
         }
         hitBox.setPos(x + xOff, y + yOff);
     }
@@ -139,14 +153,56 @@ public class Boss extends Mob implements BadEntity {
      */
     @Override
     public void render(Graphics g) throws SlickException {
-        if (isHitable()) {
-            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32);
+        if (isHitable() && !attaquing) {
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64);
+        } else if (attaquing) {
+            System.out.println("il attaque");
+            g.drawAnimation(attackAnimation[direction], x - 96, y - 128);
         } else {
-            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 16, y - 32, Color.red);
+            g.drawAnimation(moveAnimations[direction + (moving ? 4 : 0)], x - 32, y - 64, Color.red);
         }
         g.setColor(Color.red);
-        g.drawString(""+this.hitpoints, x - 10, y - 45);
+        g.drawString("" + this.hitpoints, x - 20, y - 80);
         hitBox.render(g);
+        g.setColor(Color.red);
+        g.fillOval(x, y, 2, 2);
+    }
+
+    public void attack() {
+        boolean isInRange = false;
+        switch (direction) {
+            case 0:
+                if (player.getX() > this.x - 32 && player.getX() < this.x + 32 && player.getY() > this.y - 128 && player.getY() < this.y - 64) {
+                    isInRange = true;
+                }
+                break;
+            case 1:
+                if (player.getX() > this.x - 96 && player.getX() < this.x - 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
+                    isInRange = true;
+                }
+                break;
+            case 2:
+                if (player.getX() > this.x - 32 && player.getX() < this.x + 32 && player.getY() > this.y && player.getY() < this.y + 64) {
+                    isInRange = true;
+                }
+                break;
+            case 3:
+                if (player.getX() > this.x + 96 && player.getX() < this.x + 32 && player.getY() > this.y - 64 && player.getY() < this.y) {
+                    isInRange = true;
+                }
+                break;
+        }
+        if (isInRange && attCooldown <= 0) {
+            attaquing = true;
+            attCooldown = 1000;
+            attCounter = 500;
+            for (int i = 0; i < attackAnimation.length; i++) {
+                attackAnimation[i].restart();
+            }
+            switch (direction) {
+
+            }
+        }
     }
 
 }
