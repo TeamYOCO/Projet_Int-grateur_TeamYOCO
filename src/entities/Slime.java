@@ -52,7 +52,7 @@ public class Slime extends Mob implements BadEntity {
         this.defence = 80;
         this.specialDefence = 0;
         this.exp = 20;
-        this.money = 5;
+        this.money = 20;
         SpriteSheet moveSpriteSheet = null;
         try {
             Image temp = ResManager.getInstance().getSpriteSheet("slime").getScaledCopy(2);

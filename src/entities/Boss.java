@@ -54,10 +54,10 @@ public class Boss extends Mob implements BadEntity {
         this.hitpoints = 500;
         this.damagePhysical = 25;
         this.damageSpecial = 0;
-        this.defence = 0;
-        this.specialDefence = 0;
-        this.money = 15;
-        this.exp = 100;
+        this.defence = 20;
+        this.specialDefence = 20;
+        this.money = 100;
+        this.exp = 200;
         SpriteSheet moveSpriteSheet = ResManager.getInstance().getSpriteSheet("boss_walk");
         SpriteSheet attackSpriteSheet = ResManager.getInstance().getSpriteSheet("boss_swing");
         for (int i = 0; i < 4; i++) {
