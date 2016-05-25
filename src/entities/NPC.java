@@ -28,12 +28,12 @@ public class NPC extends Entity {
     private int direction = 2;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param text
-     * @param type
-     * @param spriteType
+     * Crée un personnage non joueur
+     * @param x la position en x du PNJ
+     * @param y la position en y du PNJ
+     * @param text le texte que le PNJ va dire
+     * @param type le type de PNJ
+     * @param spriteType l'image du PNJ
      */
     public NPC(int x, int y, String text, NpcType type, int spriteType) {
         this.x = x;
@@ -75,8 +75,8 @@ public class NPC extends Entity {
     }
 
     /**
-     *
-     * @param delta
+     * Permet la mise à jour du PNJ
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -84,21 +84,28 @@ public class NPC extends Entity {
     }
 
     /**
-     *
-     * @param g
+     * Dessine le PNJ
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
     public void render(Graphics g) throws SlickException {
         g.drawAnimation(moveAnimations[direction], x, y);
     }
-    
+    /**
+     * Permet de mettre de nouvelles coordonnées au PNJ
+     * @param x La nouvelle position en x
+     * @param y La nouvelle position en y
+     */
     public void setCoords(int x, int y) {
         this.x = x;
         this.y = y;
         hitBox.setPos(x, y);
     }
-    
+    /**
+     * Permet d'interragir avec un PNJ
+     * @param sbg Représente les différent états d'affichage
+     */
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:

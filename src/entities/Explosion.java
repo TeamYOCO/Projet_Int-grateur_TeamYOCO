@@ -26,12 +26,12 @@ public class Explosion extends Particle implements FriendlyEntity{
     private MiniMap map;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param direction
-     * @param lifespam
-     * @param map
+     * Crée une explosion
+     * @param x Position en x du joueur
+     * @param y Position en y du joueur
+     * @param direction La direction du joueur
+     * @param lifespam La durée de vie de l'explosion
+     * @param map La map où l'explosion va être
      * @throws SlickException
      */
     public Explosion(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
@@ -50,9 +50,9 @@ public class Explosion extends Particle implements FriendlyEntity{
         this.map = map;
     }
 
-    /**
-     *
-     * @param g
+   /**
+     * Permet de desssiner l'explosion
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -63,8 +63,8 @@ public class Explosion extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @param delta
+     * Ce qui permet à l'explosion de bouger
+     * @param delta le temps d'une ittération
      */
     @Override
     public void update(int delta) {
@@ -73,8 +73,8 @@ public class Explosion extends Particle implements FriendlyEntity{
     }
     
     /**
-     *
-     * @return
+     * Calcul le dégat physique de l'explosion
+     * @return le dégat physique
      */
     @Override
     public int getDamagePhysical() {
@@ -82,8 +82,8 @@ public class Explosion extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Retourne la direction de l'explosion
+     * @return un int de la direction de l'explosion
      */
     @Override
     public int getDirection() {
@@ -92,8 +92,8 @@ public class Explosion extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat magique de l'explosion
+     * @return le dégat magique de l'explosion
      */
     @Override
     public int getDamageSpecial() {

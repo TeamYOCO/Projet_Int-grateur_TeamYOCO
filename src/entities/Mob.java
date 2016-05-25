@@ -20,65 +20,23 @@ import playerEngine.CharacterStatsManager;
  */
 public abstract class Mob extends Entity {
 
-    /**
-     *
-     */
+
     protected Animation[] moveAnimations;
-
-    /**
-     *
-     */
     protected int hitpoints;
-
-    /**
-     *
-     */
     protected int direction = 2;
-
-    /**
-     *
-     */
     protected boolean moving;
     protected int damagePhysical,
-
-    /**
-     *
-     */
     damageSpecial,
-
-    /**
-     *
-     */
     defence,
-
-    /**
-     *
-     */
     specialDefence;
-
-    /**
-     *
-     */
     protected float knockbackTimer = 0;
-
-    /**
-     *
-     */
     protected int exp = 0;
-
-    /**
-     *
-     */
     protected int money;
-
-    /**
-     *
-     */
     protected ArrayList<Entity> list;
     
     /**
-     *
-     * @return
+     * Retourne si l'entitée peut être frappé par le joueur
+     * @return si l'entitée peut être frappé par le joueur
      */
     public boolean isHitable(){
         if (knockbackTimer <= 0)
@@ -88,10 +46,10 @@ public abstract class Mob extends Entity {
     }
     
     /**
-     *
-     * @param damage
-     * @param damageSpecial
-     * @param hitDirection
+     * Méthode qui indique ce qui arrive lorsque l'entitée est frappé
+     * @param damage le dommage physique du joueur
+     * @param damageSpecial le dommage magique du joueur
+     * @param hitDirection la direction du coup
      */
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
         switch(hitDirection){
@@ -114,39 +72,39 @@ public abstract class Mob extends Entity {
     }
 
     /**
-     *
-     * @return
+     * retourne le dommage physique de l'entitée
+     * @return le dommage physique de l'entitée
      */
     public int getDamagePhysical() {
         return damagePhysical;
     }
     
     /**
-     *
-     * @return
+     *retourne le dommage magique de l'entitée
+     * @return le dommage magique de l'entitée
      */
     public int getDamageSpecial(){
         return damageSpecial;
     }
     
     /**
-     *
-     * @return
+     * La direction de l'entitée
+     * @return La direction de l'entitée
      */
     public int getDirection(){
         return direction;
     }
     
     /**
-     *
-     * @return
+     * Retourne la valeur en expérience de l'ennemie
+     * @return L'expérience
      */
     public int getExp(){
         return exp;
     }
     
     /**
-     *
+     * Ce qui arrive quand cette entitée meurt
      * @throws SlickException
      */
     public void die() throws SlickException{

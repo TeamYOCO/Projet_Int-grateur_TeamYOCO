@@ -16,33 +16,22 @@ import org.newdawn.slick.SlickException;
  */
 public class Particle extends Entity {
 
-    /**
-     *
-     */
     protected Animation animation = new Animation();
     protected int lifeSpam,
-
-    /**
-     *
-     */
     direction;
     protected float speedX,
-
-    /**
-     *
-     */
     speedY;
 
     /**
-     *
-     * @param animation
-     * @param lifeSpam
-     * @param speedX
-     * @param speedY
-     * @param direction
-     * @param x
-     * @param y
-     * @param hitBox
+     * Crée une particule
+     * @param animation L'animation de la particule
+     * @param lifeSpam La durée de vie de la particule
+     * @param speedX La vitesse en x de la particule
+     * @param speedY La vitesse en y de la particule
+     * @param direction La direction de la particule
+     * @param x la position de départ en x de la particule
+     * @param y La position de départ en y de la particule
+     * @param hitBox La boîte de collision de la particule
      */
     public Particle(Animation animation, int lifeSpam, int speedX, int speedY, int direction, float x, float y, Box hitBox) {
         this.animation = animation;
@@ -56,14 +45,14 @@ public class Particle extends Entity {
     }
 
     /**
-     *
+     * crée une particule vide au cas ou
      */
     public Particle() {
     }
     
     /**
-     *
-     * @param delta
+     * permet à la particule de bouger
+     * @param delta Le temps d'une ittérations
      */
     @Override
     public void update(int delta) {
@@ -77,8 +66,8 @@ public class Particle extends Entity {
     }
 
     /**
-     *
-     * @param g
+     * Dessine la particule pour la première fois
+     * @param g  Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override

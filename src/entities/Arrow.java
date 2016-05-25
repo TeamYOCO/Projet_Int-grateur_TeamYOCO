@@ -57,7 +57,7 @@ public class Arrow extends Particle implements FriendlyEntity{
 
     /**
      * Permet de desssiner la flèche
-     * @param g La méthode qui permet de dessiner
+     * @param g Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -71,7 +71,7 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     * 
+     * Ce qui permet à la flèche de bouger
      * @param delta le temps d'une ittération
      */
     @Override
@@ -81,8 +81,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
     
     /**
-     *
-     * @return
+     * Calcul le dégat physique de la flèche
+     * @return le dégat physique de la flèche
      */
     @Override
     public int getDamagePhysical() {
@@ -91,8 +91,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Retourne la direction de la flèche
+     * @return un int de la direction de la flèche
      */
     @Override
     public int getDirection() {
@@ -101,8 +101,8 @@ public class Arrow extends Particle implements FriendlyEntity{
     }
 
     /**
-     *
-     * @return
+     * Calcul le dégat magique de la flèche
+     * @return le dégat magique de la flèche
      */
     @Override
     public int getDamageSpecial() {

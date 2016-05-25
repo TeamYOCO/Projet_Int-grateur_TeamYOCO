@@ -14,40 +14,40 @@ import org.newdawn.slick.Graphics;
 public interface BadEntity {
 
     /**
-     *
-     * @param damage
-     * @param damageSpecial
-     * @param hitDirection
+     *La méthode appelée lorsque un ennemie est touché
+     * @param damage Le dommage physique de l'attaque
+     * @param damageSpecial Le dommage magique de l'attaque
+     * @param hitDirection La direction de l'attaque
      */
     public void takeHit(int damage, int damageSpecial, int hitDirection);
     
     /**
-     *
-     * @return
+     * Retourne le dégat physique de l'ennemie
+     * @return le dégat physique
      */
     public int getDamagePhysical();
     
     /**
-     *
-     * @return
+     *Retourne le dégat magique de l'ennemie
+     * @return le dégat magique
      */
     public int getDamageSpecial();
     
     /**
-     *
-     * @return
+     * Renvoie un booléen qui dit si l'ennemie peut être touché par le joueur
+     * @return booléen qui dit si l'ennemie peut être touché par le joueur
      */
     public boolean isHitable();
     
     /**
-     *
-     * @return
+     * Retourne la direction de cette entitée
+     * @return la direction
      */
     public int getDirection();
     
     /**
-     *
-     * @return
+     * Retourne la valeur en expérience de l'ennemie
+     * @return L'expérience
      */
     public int getExp();
 }

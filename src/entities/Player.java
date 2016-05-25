@@ -37,9 +37,9 @@ public class Player extends Mob {
     private Animation[] castAnimations;
 
     /**
-     *
-     * @param map
-     * @param list
+     * Crée le joueur
+     * @param map La carte
+     * @param list Une liste d'entité
      */
     public Player(MiniMap map, ArrayList<Entity> list) {
         this.map = map;
@@ -47,7 +47,7 @@ public class Player extends Mob {
     }
 
     /**
-     *
+     * Initialise le joueur
      * @throws SlickException
      */
     public void init() throws SlickException {
@@ -80,8 +80,8 @@ public class Player extends Mob {
     }
 
     /**
-     *
-     * @param g
+     * Dessine le joueur pour la première fois
+     * @param g  Le graphique qui permet de dessiner
      * @throws SlickException
      */
     @Override
@@ -106,11 +106,10 @@ public class Player extends Mob {
         }
     }
 
-    // Update la position et l'action du joueur
-
+   
     /**
-     *
-     * @param delta
+     *Update la position et l'action du joueur
+     * @param delta Le temps d'une ittération
      */
         @Override
     public void update(int delta) {
@@ -169,7 +168,11 @@ public class Player extends Mob {
 
     }
 
-    // Teste la position pour se déplacer en X
+    /**
+     * Calcul la position en x après l'ittération
+     * @param delta La durée d'une ittération
+     * @return la position en x après l'ittération
+     */
     private float futurX(int delta) {
         float futurX = this.x;
         switch (this.direction) {
@@ -183,7 +186,11 @@ public class Player extends Mob {
         return futurX;
     }
 
-    // Teste la position pour se déplacer en Y
+    /**
+     * Calcul la position en y après l'ittération
+     * @param delta La durée d'une ittération
+     * @return la position en y après l'ittération
+     */
     private float futurY(int delta) {
         float futurY = this.y;
         switch (this.direction) {
@@ -198,7 +205,7 @@ public class Player extends Mob {
     }
 
     /**
-     *
+     * Donne un coup d'épée
      * @throws SlickException
      */
     public void attack() throws SlickException {
@@ -243,7 +250,7 @@ public class Player extends Mob {
     }
 
     /**
-     *
+     * Tire a l'arc
      * @throws SlickException
      */
     public void shoot() throws SlickException {
@@ -260,7 +267,7 @@ public class Player extends Mob {
     }
 
     /**
-     *
+     * Lance un sort
      * @throws SlickException
      */
     public void cast() throws SlickException {
@@ -279,50 +286,50 @@ public class Player extends Mob {
     // Les méthodes suivantes sont des getters/setters
 
     /**
-     *
-     * @return
+     * Retourne la direction du joueur
+     * @return la direction du joueur
      */
         public int getDirection() {
         return direction;
     }
 
     /**
-     *
-     * @param direction
+     * Change la direction du joueur
+     * @param direction la nouvelle direction
      */
     public void setDirection(int direction) {
         this.direction = direction;
     }
 
     /**
-     *
-     * @return
+     * retourne si le joueur bouge
+     * @return un bolléen si le joueur bouge
      */
     public boolean getMoving() {
         return moving;
     }
 
     /**
-     *
-     * @param moving
+     * Change le booléen de mouvement
+     * @param moving le  nouveau booléen
      */
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
 
     /**
-     *
-     * @return
+     * Retourne si le joueur est en train d'attaquer
+     * @return si le joueur est en train d'attaquer
      */
     public boolean isAttacking() {
         return attacking;
     }
 
     /**
-     *
-     * @param damage
-     * @param damageSpecial
-     * @param hitDirection
+     * Lorsque le joueur se fait toucher
+     * @param damage le dégat physique de l'ennemie
+     * @param damageSpecial le dégat magique de l'ennemie
+     * @param hitDirection la direction du coup
      */
     @Override
     public void takeHit(int damage, int damageSpecial, int hitDirection) {
@@ -333,15 +340,4 @@ public class Player extends Mob {
         }
     }
 
-    /**
-     *
-     */
-    public void test() {
-        System.out.println(map.isCollision(x, y));
-        try {
-            System.out.println(CharacterStatsManager.getInstance().getExp());
-        } catch (SlickException ex) {
-            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }
