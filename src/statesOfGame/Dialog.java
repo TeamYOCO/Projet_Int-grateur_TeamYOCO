@@ -28,13 +28,6 @@ public class Dialog extends BasicGameState {
     private static String text = "...";
     private boolean isEntered = false;
 
-    private enum Destination {
-
-        dSHOP, dOVERWORLD
-    };
-    private static Destination destination = Destination.dOVERWORLD;
-    private static Destination commingFrom = Destination.dSHOP;
-
     /**
      *
      * @param stateID
@@ -120,47 +113,13 @@ public class Dialog extends BasicGameState {
         int mouseY = Mouse.getY();
 
         if (isEntered) {
-            if (commingFrom == Destination.dOVERWORLD) {
-                if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
-                    if (destination == Destination.dOVERWORLD) {
-                        sbg.enterState(Game.OVERWORLD);
-                    } else if (destination == Destination.dSHOP) {
-                        sbg.enterState(Game.SHOP);
-                    }
-                }
-            } else if (commingFrom == Destination.dSHOP) {
-                if (input.isKeyPressed(Input.KEY_ENTER)) {
-                    Shop.setConfirmation(true);
-                    sbg.enterState(Game.SHOP);
-                } else if (input.isKeyPressed(Input.KEY_BACK)) {
-                    sbg.enterState(Game.SHOP);
-                }
+            if (((mouseX > 980 && mouseX < 1012) && (mouseY > 4 && mouseY < 20) && (input.isMouseButtonDown(0))) || (input.isKeyPressed(Input.KEY_SPACE))) {
+                sbg.enterState(Game.OVERWORLD);
             }
         }
     }
 
     public static void setText(String text) {
         Dialog.text = text;
-    }
-
-    public static void setDestination(int i) {
-        switch (i) {
-            case Game.OVERWORLD:
-                destination = Destination.dOVERWORLD;
-                break;
-            case Game.SHOP:
-                destination = Destination.dSHOP;
-                break;
-        }
-    }
-
-    public static void setCommingFrom(int i) {
-        switch (i) {
-            case Game.OVERWORLD:
-                commingFrom = Destination.dOVERWORLD;
-                break;
-            case Game.SHOP:
-                commingFrom = Destination.dSHOP;
-        }
     }
 }

@@ -235,28 +235,13 @@ public class Shop extends BasicGameState {
                         }
                     }
                     if (!isOwned && CharacterStatsManager.getInstance().getMoney() >= equipmentSelected.getPrice()) {
-                        Dialog.setText("Voulez-vous vraiment acheter cet item?");
-                        Dialog.setDestination(Game.SHOP);
-                        Dialog.setCommingFrom(Game.SHOP);
-                        sbg.enterState(Game.DIALOG);
+                        CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
+                        listEquipmentAdded.add(equipmentSelected);
                     }
-                }
-
-                if (confirmation) {
-
-                    CharacterStatsManager.getInstance().buyItem(equipmentSelected.getPrice());
-                    listEquipmentAdded.add(equipmentSelected);
-
                     for (Equipment equipment : listEquipmentAdded) {
                         CharacterStatsManager.getInstance().addItem(equipment);
                     }
-
                     listEquipmentAdded.clear();
-                    confirmation = false;
-                }
-
-                if (input.isKeyPressed(Input.KEY_SPACE)) {
-                    sbg.enterState(OVERWORLD);
                 }
             }
         } catch (NullPointerException e) {

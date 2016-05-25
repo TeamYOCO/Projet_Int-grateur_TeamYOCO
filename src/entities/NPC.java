@@ -112,15 +112,11 @@ public class NPC extends Entity {
     public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
-                Dialog.setText(text);
-                Dialog.setCommingFrom(Game.OVERWORLD);
-                Dialog.setDestination(Game.SHOP);
-                sbg.enterState(Game.DIALOG);
+                sbg.enterState(Game.SHOP);
                 break;
             case INTERACT:
                 Dialog.setText(text);
                 sbg.enterState(Game.DIALOG);
-                break;
         }
     }
     
