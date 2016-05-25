@@ -268,6 +268,8 @@ public class Player extends Mob {
             casting = true;
             attackDirection = direction;
             attackCounter = 500;
+            Fireball fireball= new Fireball(this.x, this.y, attackDirection, 4000, map);
+            list.add(fireball);
             for (int i = 0; i < castAnimations.length; i++) {
                 castAnimations[i].restart();
             }

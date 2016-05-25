@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class NpcList {
 
     private NpcList instance = null;
-    private HashMap<String, NPC> npcList;
+    private static HashMap<String, NPC> npcList;
 
     private NpcList() {
     }
@@ -29,9 +29,10 @@ public class NpcList {
     private void loadNpcs() {
         npcList.put("Princess",
                 new NPC(0, 0, "Bonjour à toi brâve guerrier. Tu doit vaincre\nle méchant chevalier qui rode dans la mine", NpcType.INTERACT, 0));
+        npcList.put("",new NPC(0, 0, "", NpcType.NONE, 0));
     }
 
-    private NPC getNpc(String name, int x, int y) {
+    public static NPC getNpc(String name, int x, int y) {
         npcList.get(name).setCoords(x, y);
         return npcList.get(name);
     }
