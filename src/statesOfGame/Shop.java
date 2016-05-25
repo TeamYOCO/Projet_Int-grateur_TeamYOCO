@@ -243,6 +243,10 @@ public class Shop extends BasicGameState {
                     }
                     listEquipmentAdded.clear();
                 }
+                
+                if(input.isKeyPressed(Input.KEY_SPACE)){
+                    sbg.enterState(Game.OVERWORLD);
+                }
             }
         } catch (NullPointerException e) {
         }
