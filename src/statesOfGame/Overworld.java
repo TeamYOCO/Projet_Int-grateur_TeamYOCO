@@ -95,6 +95,8 @@ public class Overworld extends BasicGameState implements Serializable {
         container.getInput().addKeyListener(controller);
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
+        
+        list.add(NpcList.getNpc("Princess", 323,471));
         firstTime = true;
     }
 
@@ -192,7 +194,7 @@ public class Overworld extends BasicGameState implements Serializable {
             for (int i = 1; i <= Integer.parseInt(temp[0]); i++) {
                 temp2 = temp[i].split(",");
                 if (Integer.parseInt(temp2[0]) == 1) {
-                    this.list.add(new Boss(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
+                    this.list.add(new Bee(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 2) {
                     this.list.add(new Slime(Integer.parseInt(temp2[1]), Integer.parseInt(temp2[2]), player, map, list));
                 } else if (Integer.parseInt(temp2[0]) == 3) {
@@ -205,7 +207,7 @@ public class Overworld extends BasicGameState implements Serializable {
             temp3=map.getMapProperty("npc").split(";");
             String[] temp4;
             for(int i=1;i<= Integer.parseInt(temp3[0]);i++){
-                temp4= temp[i].split(",");
+                temp4= temp3[i].split(",");
                 if (Integer.parseInt(temp4[0]) == 1){
                     int x = Integer.parseInt(temp4[1]); int y = Integer.parseInt(temp4[2]);
                    this.list.add(NpcList.getNpc("Princess",x,y));

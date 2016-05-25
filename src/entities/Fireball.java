@@ -68,10 +68,10 @@ public class Fireball extends Particle implements FriendlyEntity{
     @Override
     public void render(Graphics g) throws SlickException {
         switch(direction){
-            case 0: g.drawImage(img, x - 14, y,Color.white); break;
-            case 1: g.drawImage(img, x, y - 16,Color.white); break;
-            case 2: g.drawImage(img, x - 16, y - 32,Color.white); break;
-            case 3: g.drawImage(img, x - 32, y - 16,Color.white); break;
+            case 0: g.drawImage(img, x - 32, y - 32,Color.white); break;
+            case 1: g.drawImage(img, x - 32, y - 32,Color.white); break;
+            case 2: g.drawImage(img, x - 32, y - 32,Color.white); break;
+            case 3: g.drawImage(img, x - 32, y - 32,Color.white); break;
         }
         this.hitBox.render(g);
     }
