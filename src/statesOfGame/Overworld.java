@@ -52,9 +52,8 @@ public class Overworld extends BasicGameState implements Serializable {
     private PlayerController controller = new PlayerController(player);
     private Camera cam = new Camera(player, map);
     private Hud hud = new Hud();
-    private boolean running = false, firstTime;
-    private static boolean newGame;
-    private boolean gameSaved = false;
+    private boolean running = false, firstTime, gameSaved = false;
+    private static boolean newGame, gameOver = false;
     private static Image screenShot;
     private Music overworldMusic;
     private boolean mapChanger = false;
@@ -96,6 +95,7 @@ public class Overworld extends BasicGameState implements Serializable {
         screenShot = new Image(container.getWidth(), container.getHeight());
         overworldMusic = new Music(overworldTheme);
 
+        list.add(NpcList.getNpc("Marchand", 323, 471));
         firstTime = true;
     }
 
@@ -248,6 +248,17 @@ public class Overworld extends BasicGameState implements Serializable {
                 container.getGraphics().copyArea(screenShot, 0, 0);
                 sbg.enterState(Game.DIALOG);
             }
+            
+            if(gameOver){
+                sbg.enterState(Game.GAMEOVER);
+                overworldMusic.stop();
+                gameOver = false;
+                CharacterStatsManager.getInstance().reset();
+                MiniMap.changeMap("res/maps/Maison_1.tmx");
+                list.clear();
+                player.setX(64);
+                player.setY(256);
+            }
         } catch (ConcurrentModificationException e) {
         }
     }
@@ -323,6 +334,14 @@ public class Overworld extends BasicGameState implements Serializable {
      */
     public static void setNewGame(boolean newG) {
         newGame = newG;
+    }
+    
+    /**
+     *
+     * @param newG
+     */
+    public static void setGameOver(boolean gg) {
+        gameOver = gg;
     }
 
 }

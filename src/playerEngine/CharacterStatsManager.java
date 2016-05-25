@@ -10,6 +10,7 @@ import static items.Equipment.MAX_STATS;
 import items.EquipmentList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import statesOfGame.Overworld;
 
 /**
  *
@@ -63,7 +64,6 @@ public class CharacterStatsManager {
      *
      */
     protected int nbLvlBoost = 0;
-
 
     /**
      *
@@ -306,7 +306,6 @@ public class CharacterStatsManager {
         return nbLvlBoost;
     }
 
-
     /**
      *
      * @param anim
@@ -339,9 +338,9 @@ public class CharacterStatsManager {
     public void takeDamage(int damage, int damageSpecial) {
         this.hp -= damage * (100 - this.stats[2]) / 100;
         this.hp -= damageSpecial * (100 - this.stats[4]) / 100;
-        if (this.hp < 0) {
+        if (this.hp <= 0) {
             this.hp = 0;
-            System.out.println(hp);
+            Overworld.setGameOver(true);
         } else if (this.hp > this.stats[0]) {
             this.hp = this.stats[0];
         }
@@ -388,7 +387,6 @@ public class CharacterStatsManager {
     public void setLevel(int level) {
         this.level = level;
     }
-
 
     /**
      *
@@ -442,12 +440,28 @@ public class CharacterStatsManager {
         }
     }
 
-    public void updateCooldown(int delta) {
-        if (stats[6] < 5000) {
-            stats[6] += delta;
-        } 
-        if (stats[6] >5000){
+    public void reset() {
+        hp = 100;
+        stats[0] = 100;
+        stats[1] = 5;
+        stats[2] = 5;
+        stats[3] = 5;
+        stats[4] = 5;
+        stats[5] = 10;
+        stats[6] = 10;
+
+        this.expNeeded = 50;
+        this.exp = 0;
+        this.money = 0;
+        this.level = 1;
+        this.anim = null;
+        this.inventory = new Inventory();
+    }
+    
+    public void updateCooldown(int delta){
+        if (stats[6] < 5000)
+            stats[6]+= delta;
+        if (stats[6] > 5000)
             stats[6] = 5000;
-        }
     }
 }
