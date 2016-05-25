@@ -19,7 +19,7 @@ public class Inventory implements Serializable{
     private int money;
 
     /**
-     *
+     * constructeur de l'inventaire
      */
     public Inventory() {
         listItemFound = new ArrayList();
@@ -28,40 +28,40 @@ public class Inventory implements Serializable{
     }
     
     /**
-     *
-     * @return
+     * retourne les équipements dans l'inventaire, mais pas équipé
+     * @return les équipements dans l'inventaire, mais pas équipé
      */
     public ArrayList<Equipment> getListItemFound(){
         return listItemFound;
     }
     
     /**
-     *
-     * @return
+     * retourne les équipements équipés
+     * @return les équipements équipés
      */
     public ArrayList<Equipment> getListItemPlayer(){
         return listItemPlayer;
     }
     
     /**
-     *
-     * @param listItemFound
+     * change les équipements dans l'inventaire, mais pas équipé
+     * @param listItemFound la nouvelle liste
      */
     public void setListItemFound(ArrayList<Equipment> listItemFound){
         this.listItemFound = listItemFound;
     }
     
     /**
-     *
-     * @param listItemPlayer
+     * change les équipements équipés
+     * @param listItemPlayer la nouvelle liste
      */
     public void setListItemPlayer(ArrayList<Equipment> listItemPlayer){
         this.listItemPlayer = listItemPlayer;
     }
     
     /**
-     *
-     * @return
+     * retourne si le joueur à une épée d"équipé
+     * @return si le joueur à une épée d"équipé
      */
     public boolean isSwordEquiped(){
         for (Equipment equipment : listItemPlayer){
@@ -73,8 +73,8 @@ public class Inventory implements Serializable{
     }
 
     /**
-     *
-     * @return
+     * retourne si le joueur à un arc d"équipé
+     * @return si le joueur à un arc d"équipé
      */
     public boolean isBowEquiped(){
         for (Equipment equipment : listItemPlayer){
@@ -86,8 +86,8 @@ public class Inventory implements Serializable{
     }
 
     /**
-     *
-     * @return
+     *retourne si le joueur à un livre d"équipé
+     * @return si le joueur à un livre d"équipé
      */
     public boolean isSpellTomeEquiped(){
         for (Equipment equipment : listItemPlayer){
@@ -99,9 +99,9 @@ public class Inventory implements Serializable{
     }
     
     /**
-     *
-     * @param itemName
-     * @return
+     * retourne si l'équipement choisit est équipé
+     * @param itemName l'équipement choisi
+     * @return si l'équipement choisit est équipé
      */
     public boolean isItemEquiped(String itemName){
         for(Equipment equipment : listItemPlayer){

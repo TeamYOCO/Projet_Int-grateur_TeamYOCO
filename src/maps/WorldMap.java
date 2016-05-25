@@ -16,11 +16,12 @@ import java.util.HashMap;
 public class WorldMap {
     private HashMap<String, MiniMap> world;
 
-    /**
-     *
-     */
+    
     public static WorldMap instance = null;
 
+    /**
+     * crée la carte du monde
+     */
     private WorldMap() {
         world = new HashMap();
         File fichier = new File("src\\res\\maps");
@@ -35,8 +36,8 @@ public class WorldMap {
     }
 
     /**
-     *
-     * @return
+     * Pour s'assurer qu'il n'y ait qu'une seule classe comme celle-ci
+     * @return une instance
      */
     public static WorldMap getInstance() {
         if (instance == null){
@@ -46,9 +47,9 @@ public class WorldMap {
     }
     
     /**
-     *
-     * @param name
-     * @return
+     * retourne la carte du nom choisit
+     * @param name le nom de la carte
+     * @return la carte du nom choisit
      */
     public MiniMap getMap(String name){
         return world.get(name);
