@@ -5,8 +5,10 @@
  */
 package entities;
 
+import ca.qc.bdeb.info204.Game;
 import static ca.qc.bdeb.info204.Game.DIALOG;
 import static ca.qc.bdeb.info204.Game.SHOP;
+import gameEngine.DataManager;
 import gameEngine.ResManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,7 @@ public class NPC extends Entity {
     private String text;
     private Animation moveAnimations[];
     private int direction = 2;
+    private boolean isCommingFromShop = false;
 
     /**
      *
@@ -106,12 +109,19 @@ public class NPC extends Entity {
         hitBox.setPos(x, y);
     }
     
-    public void interact(StateBasedGame sbg,GameContainer container) {
+    
+    public void interact(StateBasedGame sbg) {
         switch (type) {
             case VENDOR:
-                sbg.enterState(SHOP);
+                Dialog.setText(this.text);
+                Dialog.setDestionation(Game.SHOP);
+                Dialog.setCommingFrom(Game.OVERWORLD);
+                sbg.enterState(DIALOG);
+                break;
             case INTERACT:
                 Dialog.setText(this.text);
+                Dialog.setDestionation(Game.OVERWORLD);
+                Dialog.setCommingFrom(Game.OVERWORLD);
                 sbg.enterState(DIALOG);
         }
     }
