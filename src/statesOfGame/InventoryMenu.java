@@ -96,7 +96,7 @@ public class InventoryMenu extends BasicGameState implements Serializable {
             int i = 0;
 
             for (int j = 0; j < statsManager.getStats().length-1; j++) {
-                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 29));
+                g.drawString(statsManager.getStatsName(j) + statsManager.getStats()[j], 200, 155 + (j * 28));
             }
             for (Equipment itemFound : CharacterStatsManager.getInstance().getInventory().getListItemFound()) {
 
