@@ -18,8 +18,8 @@ import playerEngine.CharacterStatsManager;
  *
  * @author Tomas
  */
-public class Explosion extends Particle implements FriendlyEntity{
-    
+public class Explosion extends Particle implements FriendlyEntity {
+
     private int damagePhysical;
     private int damageSpecial;
     private Image img;
@@ -34,7 +34,7 @@ public class Explosion extends Particle implements FriendlyEntity{
      * @param map
      * @throws SlickException
      */
-    public Explosion(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException{
+    public Explosion(float x, float y, int direction, int lifespam, MiniMap map) throws SlickException {
         SpriteSheet anim = ResManager.getInstance().getSpriteSheet("explosion");
         this.x = x;
         this.y = y;
@@ -42,7 +42,9 @@ public class Explosion extends Particle implements FriendlyEntity{
         this.yOff = 0;
         this.hitBox = new Box(x, y, 256, 128);
         this.direction = direction;
-        animation = loadAnimation(anim, 0, 4, 0);
+        for (int i = 0; i < 4; i++) {
+            animation = loadAnimation(anim, 0, 3, i);
+        }
         img = animation.getImage(direction);
         this.damagePhysical = CharacterStatsManager.getInstance().getStats()[1];
         this.damageSpecial = CharacterStatsManager.getInstance().getStats()[3];
@@ -57,9 +59,8 @@ public class Explosion extends Particle implements FriendlyEntity{
      */
     @Override
     public void render(Graphics g) throws SlickException {
-
-            g.drawImage(img, x - 14, y,Color.white);
-            this.hitBox.render(g);
+        g.drawAnimation(animation, x-128, y-64);
+        this.hitBox.render(g);
     }
 
     /**
@@ -69,9 +70,9 @@ public class Explosion extends Particle implements FriendlyEntity{
     @Override
     public void update(int delta) {
         super.update(delta); //To change body of generated methods, choose Tools | Templates.
-        hitBox.setPos(x+xOff, y+yOff);
+        hitBox.setPos(x + xOff, y + yOff);
     }
-    
+
     /**
      *
      * @return
@@ -97,8 +98,8 @@ public class Explosion extends Particle implements FriendlyEntity{
      */
     @Override
     public int getDamageSpecial() {
-        dead=true;
+        dead = true;
         return damageSpecial;
     }
-    
+
 }
