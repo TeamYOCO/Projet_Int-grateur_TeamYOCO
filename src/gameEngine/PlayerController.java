@@ -112,7 +112,13 @@ public class PlayerController implements KeyListener {
                 }
             }
             case Input.KEY_3:
-                System.out.println(player.getX() + " " + player.getY());
+        {
+            try {
+                CharacterStatsManager.getInstance().setMoney(5000);
+            } catch (SlickException ex) {
+                Logger.getLogger(PlayerController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
         }
     }

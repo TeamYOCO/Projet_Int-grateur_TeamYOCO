@@ -285,7 +285,7 @@ public class Player extends Mob {
      */
     public void cast() throws SlickException {
         if (!attacking && !shooting && !casting && isHitable() && CharacterStatsManager.getInstance().getInventory().isSpellTomeEquiped()
-                && CharacterStatsManager.getInstance().getStats()[6] == 5000) {
+                && CharacterStatsManager.getInstance().getStats()[6] == 4000) {
             casting = true;
             attackDirection = direction;
             attackCounter = 500;
