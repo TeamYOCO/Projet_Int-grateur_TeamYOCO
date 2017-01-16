@@ -44,7 +44,7 @@ public class NpcList {
         npcList.put("Marchand", 
                 new NPC(0, 0, "Bienvenue dans le magasin général!", NpcType.VENDOR, 1));
         npcList.put("Soldat", new NPC(0, 0, "", NpcType.NONE, 3));
-        npcList.put("villageois 1", new NPC(0, 0, "Bonjours, belle journé n'est-ce pas?", NpcType.INTERACT, 4));
+        npcList.put("villageois 1", new NPC(0, 0, "Bonjours, belle journée n'est-ce pas?", NpcType.INTERACT, 4));
         npcList.put("villageoise 1", new NPC(0, 0, "420 blaze it", NpcType.INTERACT, 2));
         npcList.put("villageoise 2", new NPC(0, 0, "Coucou! Tu est une belle cruche toi!", NpcType.INTERACT, 5));
     }
